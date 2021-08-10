@@ -379,9 +379,10 @@ class HomeController extends Controller
         // return $request->all();
         $name = $request->name;
         $city = $request->city;
+        $category = $request->category;
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
-        $this->data['user_data'] = User::getRecordByName($name, $city);
+        $this->data['user_data'] = User::getRecordByName($name, $city,$category);
         return view('fronted.findLawyer', $this->data);
     }
     public function termsOfUse()

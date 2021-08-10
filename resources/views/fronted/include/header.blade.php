@@ -320,9 +320,9 @@ $login = Auth::user();
 												
 												<div class="mini-search">
 													<select name="city" class="filter-group select2 sr-drop" id="" >
-														<option value="">select city</option>
+														<option value="">Select city</option>
 														@foreach($city as $data)
-														<option value="{{$data->name}}">{{$data->name}}</option>
+														<option value="{{$data->id}}">{{$data->name}}</option>
 														@endforeach
 													</select>
 													<!-- <div class="filter-gr">
@@ -357,13 +357,21 @@ $login = Auth::user();
 										<div class="card-header" id="headingThree">
 											<h2 class="mb-0">
 												<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-													Practice
+													Category
 												</button>
 											</h2>
 										</div>
 										<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 											<div class="card-body">
-												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+												@php
+        											$qcategory =  DB::table('legal_advice_qa_category')->where('status', 1)->where('type','question')->orderBy('id', 'ASC')->get();
+												@endphp
+											<select name="category" class="filter-group select2 sr-drop" id="" >
+														<option value="">Select Category</option>
+														@foreach($qcategory as $data)
+														<option value="{{$data->category_name}}">{{$data->category_name}}</option>
+														@endforeach
+													</select>
 											</div>
 										</div>
 									</div>

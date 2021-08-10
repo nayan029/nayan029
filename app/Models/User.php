@@ -185,12 +185,11 @@ class User extends Authenticatable
         }
         if ($gender) {
             $TEMP .= " AND users.gender like '$gender' and users.user_type = 3 ";
-            
         }
         $query = User::select('users.*')
             ->leftjoin('lawyer_enrollment_category', function ($join) {
 
-                $join->on('users.id', '=', 'lawyer_enrollment_category.userid'); 
+                $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
                 $join->whereNull('users.deleted_at');
             })
             ->leftjoin('lawyer_languages', function ($join) {
@@ -203,30 +202,37 @@ class User extends Authenticatable
 
         return $query;
     }
-    public static function getRecordByName($name,$city)
+    public static function getRecordByName($name, $city, $category)
     {
         $TEMP = "users.status in (1)";
 
-        if($name)
-        {
-            $TEMP .= "AND (CONCAT(users.lname,' ',users.fathername) LIKE '%".$name."%')";
+        if ($name) {
+            $TEMP .= "AND (CONCAT(users.lname,' ',users.fathername) LIKE '%" . $name . "%')";
         }
-        if($city)
-        {
+        if ($city) {
             $TEMP .= "AND users.location like '$city'";
+        }
+        if ($category) {
+            $TEMP .= " AND lawyer_enrollment_category.id = '$category' ";
         }
         // return $name;
         $query = User::select('users.*')
-        ->where('users.user_type', '=', '3')
-        ->whereRaw($TEMP)->orderBy("users.id", 'desc')
-        ->get();
+        ->leftjoin('lawyer_enrollment_category', function ($join) {
+            $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
+            $join->whereNull('users.deleted_at');
+        })
+            ->where('users.user_type', '=', '3')
+            ->whereRaw($TEMP)->groupBy('users.id')->orderBy("users.id", 'desc')
+            // ->whereRaw($TEMP)->orderBy("users.id", 'desc')
+            ->get();
         return $query;
     }
     public static function gettotlaLawyers()
     {
         $query = User::where('email_verify', 1)->where('user_type', 3)->where('status', 1)->get();
         return $query;
-    } public static function gettotalUsers()
+    }
+    public static function gettotalUsers()
     {
         $query = User::where('email_verify', 1)->where('user_type', 2)->where('status', 1)->get();
         return $query;
