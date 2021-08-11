@@ -44,9 +44,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $i = ($quetion_list->currentpage()-1)* $quetion_list->perpage() + 1; @endphp
                                     @foreach($quetion_list as $data)
                                     <tr>
-                                        @php $i = ($quetion_list->currentpage()-1)* $quetion_list->perpage() + 1; @endphp
 
                                         <td>{{$i}}</td>
                                         <td>{{$data->lawarea}}</td>

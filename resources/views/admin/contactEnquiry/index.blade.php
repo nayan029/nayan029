@@ -48,9 +48,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $i = ($contact_us_data->currentpage()-1)* $contact_us_data->perpage() + 1; @endphp
                                     @foreach($contact_us_data as $data)
                                     <tr>
-                                        @php $i = ($contact_us_data->currentpage()-1)* $contact_us_data->perpage() + 1; @endphp
 
                                         <td>{{$i}}</td>
                                         <td>{{$data->name}}</td>
