@@ -81,14 +81,14 @@
                                             <td> <?php
                                                     if (isset($data->profileimage)) {
                                                     ?>
-                                                    <img class="profile-user-img " style="width: 70px;"  width="58px" src="<?php echo URL::to('/'); ?>/uploads/lawyerprofile/{{$data->profileimage}}" alt="User profile picture" style="height: 80px;">
+                                                    <img class="profile-user-img "  width="58px" src="<?php echo URL::to('/'); ?>/uploads/lawyerprofile/{{$data->profileimage}}" alt="User profile picture" style="height: 80px;">
                                                 <?php } else {
                                                 ?>
-                                                    <img style="border: 1px solid #ccc; width: 70px;" width="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" alt="image">
+                                                    <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" alt="image">
                                                     <?php
                                                     } ?>
                                                     </td>
-                                            <td>@if($data->nicno) {{$data->nicno}} @else {{"N/A"}} @endif {{" - "}}{{$data->name}}</td>
+                                            <td>{{$data->name}}</td>
                                             <td>{{$data->username}}</td>
                                             <td>{{$data->email}}</td>
                                             

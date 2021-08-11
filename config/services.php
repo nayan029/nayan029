@@ -30,9 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id'     => env('849017432394847'),
-        'client_secret' => env('ba01726bef0c56442f815ecf97d6afb6'),
-        'redirect'      => env('http://localhost/legalbench/public/'),
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
     ],
 
 ];

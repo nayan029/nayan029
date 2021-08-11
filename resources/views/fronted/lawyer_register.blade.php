@@ -45,7 +45,7 @@
 						<div class="inner">
 							<h4>Create an Account</h4>
 							<ul class="social-icon">
-								<li><a href="#" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-entypo-social_facebook.png"></a></li>
+								<li><a href="{{URL::to('/')}}/lawyer/facebook" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-entypo-social_facebook.png"></a></li>
 								<li><a href="#" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-icomoon-free_google-plus2.png"></a></li>
 								<li><a href="#" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-in.png"></a></li>
 							</ul>
