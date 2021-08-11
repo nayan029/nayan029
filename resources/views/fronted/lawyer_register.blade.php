@@ -34,7 +34,7 @@
 					<div class="bottom">
 						<ul class="social">
 							<li><a href="#" target="_blank"><i class="ti-twitter-alt"></i></a></li>
-							<li><a href="#" target="_blank"><i class="ti-facebook"></i></a></li>
+							<li><a href="{{URL::to('/')}}/lawyer/facebook" target="_blank"><i class="ti-facebook"></i></a></li>
 							<li><a href="#" target="_blank"><i class="ti-linkedin"></i></a></li>
 						</ul>
 

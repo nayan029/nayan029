@@ -270,6 +270,8 @@ Route::post('lawyer/register', 'App\Http\Controllers\fronted\lawyerRegisterContr
 Route::get('lawyer/login', 'App\Http\Controllers\fronted\lawyerRegisterController@login');
 Route::post('lawyer/login', 'App\Http\Controllers\fronted\lawyerLoginController@login');
 
+Route::get('/lawyer/facebook', 'App\Http\Controllers\fronted\SocialAuthFacebookController@redirect');
+
 Route::get('lawyer/forgot-password', [lawyerforgotPasswordController::class, 'index']);
 Route::post('/lawyer/verify-email', [App\Http\Controllers\admin\ForgotPasswordController::class, 'lawyerverify_email']);
 Route::get('/lawyer/verify-email/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'verify_lawyer_email']);
@@ -277,3 +279,7 @@ Route::get('/lawyerreset_password_view/{id}', [App\Http\Controllers\admin\Forgot
 Route::post('/lawyerreset_password/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'lawyerreset_password']);
 
 //----------------------------------------------------------------------Lawyer side---------------------------------------------------------
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
