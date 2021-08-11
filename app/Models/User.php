@@ -197,6 +197,7 @@ class User extends Authenticatable
                 $join->whereNull('users.deleted_at');
             })
             ->where('users.user_type', '=', '3')
+            ->where('step','=','3')
             ->where('email_verify','=','1')
             ->whereRaw($TEMP)->groupBy('users.id')->orderBy("users.id", 'desc')
             ->get();
