@@ -14,6 +14,7 @@ use App\Models\admin\lawyerlanguages;
 use App\Models\admin\legalservices;
 use App\Models\admin\location;
 use App\Models\admin\otherResource;
+use App\Models\admin\reviewrating;
 use App\Models\admin\setting;
 use App\Models\admin\sitesetting;
 use App\Models\admin\trends;
@@ -97,7 +98,7 @@ class HomeController extends Controller
     /* urls */
     public function divorce_legalAdvice(Request $request, $category)
     {
-        return explode('-',$category);
+        // return explode('-',$category);
         // $n = explode("-",$category);
 
         $exploxe = explode('-', $category);
@@ -368,10 +369,14 @@ class HomeController extends Controller
     }
     public function advocateProfile($id)
     {
+        $auth = Auth::user();
+        $this->data['user_login'] = $auth;
         $this->data['title'] = "Advocate Profile";
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         $this->data['lawyerData'] =  User::getrecordbyid($id);
+        $this->data['allreviews'] = reviewrating::getAllRecord();
+        $this->data['lawyer_review'] = reviewrating::getrecordbylawyerid($id);
         return view('fronted.advocateProfile', $this->data);
     }
     public function searchLawyer(Request $request)

@@ -260,6 +260,9 @@ Route::get('advocate/{id}',[FrontedHomeController::class,'advocateProfile']);
 Route::get('/search/lawyer',[FrontedHomeController::class,'searchLawyer']);
 
 Route::get('/page/terms-of-use',[FrontedHomeController::class,'termsOfUse']);
+
+Route::resource('/write-review','App\Http\Controllers\fronted\reviewController');
+
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
 
