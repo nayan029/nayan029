@@ -160,13 +160,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/free-questions/{id}/edit', 'App\Http\Controllers\admin\freeQuestionsController@show');
     //----------------------------------------------ask free questions---------------------------
 
-    Route::resource('admin/review-rating','App\Http\Controllers\fronted\reviewController');
+    Route::resource('admin/review-rating', 'App\Http\Controllers\fronted\reviewController');
 
-    Route::resource('/admin/enquiry','App\Http\Controllers\fronted\enquiryController');
-
-
-
-
+    Route::resource('/admin/enquiry', 'App\Http\Controllers\fronted\enquiryController');
+    Route::post('/enquiry/feedback', 'App\Http\Controllers\fronted\enquiryController@feedback');
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------
@@ -260,17 +257,17 @@ Route::get('indian-kanoons/{name}', 'App\Http\Controllers\admin\indianKanoonCont
 
 Route::post('quick-answer', [FrontedContactEnquiryController::class, 'store']);
 
-Route::get('advocate/{id}',[FrontedHomeController::class,'advocateProfile']);
+Route::get('advocate/{id}', [FrontedHomeController::class, 'advocateProfile']);
 
-Route::get('/search/lawyer',[FrontedHomeController::class,'searchLawyer']);
+Route::get('/search/lawyer', [FrontedHomeController::class, 'searchLawyer']);
 
-Route::get('/page/terms-of-use',[FrontedHomeController::class,'termsOfUse']);
+Route::get('/page/terms-of-use', [FrontedHomeController::class, 'termsOfUse']);
 
-Route::resource('/write-review','App\Http\Controllers\fronted\reviewController');
+Route::resource('/write-review', 'App\Http\Controllers\fronted\reviewController');
 
-Route::get('/experts/reviews/{id}','App\Http\Controllers\fronted\reviewController@allReviews');
+Route::get('/experts/reviews/{id}', 'App\Http\Controllers\fronted\reviewController@allReviews');
 
-Route::resource('/enquiry-form','App\Http\Controllers\fronted\enquiryController');
+Route::resource('/enquiry-form', 'App\Http\Controllers\fronted\enquiryController');
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

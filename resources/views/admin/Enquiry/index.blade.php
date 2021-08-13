@@ -43,6 +43,7 @@
                                         <th>Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
+                                        <th>Verify</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -96,7 +97,8 @@
                                         <td>{{$i}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->mobile}}</td>
-                                        <td>{{$data->email}}</td>
+                                        <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
+                                        <td>{{$status}}</td>
                                         <td data-order="<?= strtotime($data->created_at); ?>">
                                             <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                         </td>
@@ -105,6 +107,7 @@
                                             <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
                                                 <i class="far fa-thumbs-{{$thumbs}}"></i>
                                             </a>
+                                            <a title="Edit"  data-toggle="modal" data-target="#exampleModal" href="#"><i class="fas fa-edit mr-2"></i></a>
                                         </td>
                                         @php $i++; @endphp
                                     </tr>
@@ -132,10 +135,36 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- edit modal -->
-<div class="modal fade" id="exampleModaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" id="append">
-
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form method="POST" action="{{URL::to('/')}}/enquiry/feedback">
+            @csrf
+          <!-- <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div> -->
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <input type="text" name="feedback" class="form-control" id="feedback" maxlength="250">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+      </div>
     </div>
+  </div>
 </div>
 <!-- edit modal -->
 @include('admin/include/footer')

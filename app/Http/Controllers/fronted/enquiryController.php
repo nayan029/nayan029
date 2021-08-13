@@ -102,4 +102,32 @@ class enquiryController extends Controller
         }
         return $delete;
     }
+    public function feedback(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'feedback' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect("/")
+                ->withErrors($validator, '/')
+                ->withInput();
+        } else {
+
+            $input = $request->all();
+            $input['created_at'] = date('Y-m-d H:i:s');
+
+            $inser_id = new enquiry($input);
+            $inser_id->save();
+            $inser_id = $inser_id->id;
+        }
+
+        if ($inser_id) {
+            Session::flash('success', 'Successfully Inserted');
+            return redirect()->back();
+        } else {
+            Session::flash('error', 'Sorry, something went wrong. Please try again');
+            return redirect()->back();
+        }
+    }
 }

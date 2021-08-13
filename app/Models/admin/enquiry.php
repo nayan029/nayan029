@@ -11,7 +11,7 @@ class enquiry extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'enquiry';
-    protected $fillable = ['name', 'email', 'mobile', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['name', 'email', 'mobile','feedback', 'created_at', 'updated_at', 'deleted_at'];
 
     public static function contactlistsearch($name)
     {
