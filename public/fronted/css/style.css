@@ -5702,3 +5702,21 @@ ul.navbar-nav .nav-link{
 #half-stars-example .rating__input--none:hover + .rating__label .rating__icon--none {
     color: red;
 }
+.btn.btn-enquiry {
+    position: fixed;
+     right: -95px;
+     top: 110px;
+     z-index: 999;
+     background: var(--primary-color);
+     padding: 6px 8px;
+     border-radius: 4px 0 0 4px;
+     color: #fff;
+     transition: 0.5s;
+ }
+ .btn.btn-enquiry span {
+     margin-left: 6px;
+ }
+ 
+ .btn.btn-enquiry:hover {
+     right: 0;
+ }

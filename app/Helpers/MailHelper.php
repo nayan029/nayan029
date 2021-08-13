@@ -83,18 +83,18 @@ class MailHelper
 			$mail->Host       = 'smtp.sendgrid.net';                    // Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 			$mail->Username   = 'apikey';                     // SMTP username
-			$mail->Password   = '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';                               // SMTP password
+			$mail->Password   = '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';                               // SMTP password
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 			$mail->Port       = '587';          // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 			//Recipients
-			$mail->setFrom('yogeshrathod@virtualheight.com', 'LegalBench');
+			$mail->setFrom('nayan.vhits@gmail.com', 'LegalBench');
 			/*$mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
 			$mail->addAddress('ellen@example.com');               // Name is optional*/
 			
 			$mail->addAddress($semail);
 			
-			$mail->addReplyTo('yogeshrathod@virtualheight.com', 'LegalBench');
+			$mail->addReplyTo('nayan.vhits@gmail.com', 'LegalBench');
 			/*$mail->addCC('cc@example.com');
 			$mail->addBCC('bcc@example.com');*/
 

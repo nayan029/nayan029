@@ -17,7 +17,7 @@
 						</div>
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
 							<div class="text">
-								<h6>We have  picked the most efficient law conversion courses for you</h6>
+								<h6>We have picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="#" role="button">Learn More</a>
 							</div>
 						</div>
@@ -36,7 +36,7 @@
 						</div>
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/willoughby-zachry-law-02-1.png);">
 							<div class="text">
-								<h6>We have  picked the most efficient law conversion courses for you</h6>
+								<h6>We have picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="#" role="button">Learn More</a>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 						</div>
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
 							<div class="text">
-								<h6>We have  picked the most efficient law conversion courses for you</h6>
+								<h6>We have picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="#" role="button">Learn More</a>
 							</div>
 						</div>
@@ -213,74 +213,74 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/gst-legal-advice">
+				<a href="{{URL::to('/')}}/gst-legal-advice">
 
-				<div class="fbox">
-					<p>GST Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
-					<small>243 cases solved</small>
-				</div>
-			</a>	
+					<div class="fbox">
+						<p>GST Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/property-legal-advice">
-				<div class="fbox">
-					<p>Property Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
-					<small>243 cases solved</small>
-				</div>
-					</a>
+				<a href="{{URL::to('/')}}/property-legal-advice">
+					<div class="fbox">
+						<p>Property Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/family-legal-advice">
+				<a href="{{URL::to('/')}}/family-legal-advice">
 
-				<div class="fbox">
-					<p>Family Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
-					<small>243 cases solved</small>
-				</div>
-			</a>	
+					<div class="fbox">
+						<p>Family Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/insurence-legal-advice">
+				<a href="{{URL::to('/')}}/insurence-legal-advice">
 
-				<div class="fbox">
-					<p>Insurence Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
-					<small>243 cases solved</small>
-				</div>
-			</a>	
+					<div class="fbox">
+						<p>Insurence Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/labourservice-legal-advice">
+				<a href="{{URL::to('/')}}/labourservice-legal-advice">
 
-				
-				<div class="fbox">
-					<p>Labour Service Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
-					<small>243 cases solved</small>
-				</div>
-			</a>	
+
+					<div class="fbox">
+						<p>Labour Service Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/criminal-legal-advice">
+				<a href="{{URL::to('/')}}/criminal-legal-advice">
 
-				<div class="fbox">
-					<p>Criminal Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
-					<small>243 cases solved</small>
-				</div>
-					</a>	
+					<div class="fbox">
+						<p>Criminal Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-			<a href="{{URL::to('/')}}/divorce-legal-advice">
+				<a href="{{URL::to('/')}}/divorce-legal-advice">
 
-				<div class="fbox">
-					<p>Divorce Law</p>
-					<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
-					<small>243 cases solved</small>
-				</div>
-					</a>	
+					<div class="fbox">
+						<p>Divorce Law</p>
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
+						<small>243 cases solved</small>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -394,23 +394,23 @@
 			@foreach($getlawyer as $data)
 			<div class="team-col">
 				<div class="team-box">
-					<a href="advocate/{{$data->id}}">	
-					@if($data->profileimage)
-					<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
-					@else
-					<img class="main" src="{{URL::to('/')}}/fronted/images/team2.png">
-					@endif
-					<div class="text">
+					<a href="advocate/{{$data->id}}">
 						@if($data->profileimage)
-						<!-- <img src="{{ URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}"> -->
+						<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
 						@else
-						<!-- <img class="main" src="{{URL::to('/')}}/fronted/images/team2.png"> -->
+						<img class="main" src="{{URL::to('/')}}/fronted/images/team2.png">
 						@endif
-						<div class="inner">
-							<h5>{{$data->name." ".$data->username}} </h5>
-							<p></p>
+						<div class="text">
+							@if($data->profileimage)
+							<!-- <img src="{{ URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}"> -->
+							@else
+							<!-- <img class="main" src="{{URL::to('/')}}/fronted/images/team2.png"> -->
+							@endif
+							<div class="inner">
+								<h5>{{$data->name." ".$data->username}} </h5>
+								<p></p>
+							</div>
 						</div>
-					</div>
 					</a>
 				</div>
 			</div>
@@ -787,7 +787,7 @@
 					<h4>Get answers quick</h4>
 					<div class="form">
 						<form method="POST" action="{{URl::to('/')}}/quick-answer" onsubmit="return validation();">
-						@csrf
+							@csrf
 							<div class="form-group">
 								<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" name="email" autocomplete="off">
 								<span id="email_error" style="color: red;"></span>
@@ -821,6 +821,42 @@
 
 	</div>
 </section>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-enquiry" data-toggle="modal" data-target="#exampleModal">
+	<img src="{{URL::to('/')}}/fronted/images/phone-call.png"> <span>Enquiry Now</span>
+</button>
+
+<!-- Modal -->
+<div class="modal fade enquiry-mdal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel" style="color: #000;">Enquiry Form</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control border-radius-5px" id="exampleInputText1" aria-describedby="nameHelp" placeholder="Name" autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="email" class="form-control border-radius-5px" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control border-radius-5px" id="exampleInputText1" aria-describedby="nameHelp" placeholder="Mobile number" autocomplete="off">
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary">Submit</button>
+			</div>
+		</div>
+	</div>
+</div>
 @include('fronted/include/footer')
 <script>
 	$('#home').addClass('active');

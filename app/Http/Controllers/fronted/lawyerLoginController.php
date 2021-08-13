@@ -35,7 +35,7 @@ class lawyerLoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password'], 'user_type' => 3,'email_verify'=>1,'status'=>1))) {
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password'], 'user_type' => 3,'email_verify'=>1))) {
             return redirect('/')->with('success', 'Successfully Logged In');
         } else {
             Session::flash('error', 'Please enter a valid email and password');
