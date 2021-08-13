@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Session;
 use App\Models\admin\contactInquiry;
 use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -23,13 +21,15 @@ class reviewController extends Controller
 
     function __construct()
     {
-        // $this->middleware('CheckEmailVerify');
-        $this->data['title'] = 'Review';
+        $this->data['title'] = 'Review Rating';
+        $this->data['allreviews'] = reviewrating::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
+
     }
     public function index(Request $request)
     {
-      
+        $this->data['allreviews'] = reviewrating::getAllRecord();
+        return view('admin.review_rating.index',$this->data);
     }
     public function store(Request $request)
     {
@@ -70,7 +70,7 @@ class reviewController extends Controller
     }
     public function destroy(Request $request, $id)
     {
-        $delete = contactInquiry::where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
+        $delete = reviewrating::where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
         if ($delete) {
             Session::flash('success', 'Successfully Deleted');
             return redirect()->back();

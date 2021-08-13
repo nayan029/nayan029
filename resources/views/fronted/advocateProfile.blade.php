@@ -156,24 +156,24 @@
                                     <div class="rating-group">
                                         <input class="rating__input rating__input--none" checked name="rating2" id="rating2-0" value="0" type="radio">
                                         <label aria-label="0 stars" class="rating__label" for="rating2-0">&nbsp;</label>
-                                        <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                        <input class="rating__input" name="rating2" id="rating2-05" value="0.5" type="radio">
+                                        <!-- <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                        <input class="rating__input" name="rating2" id="rating2-05" value="0.5" type="radio"> -->
                                         <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                         <input class="rating__input" name="rating2" id="rating2-10" value="1" type="radio">
-                                        <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                        <input class="rating__input" name="rating2" id="rating2-15" value="1.5" type="radio">
+                                        <!-- <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                        <input class="rating__input" name="rating2" id="rating2-15" value="1.5" type="radio"> -->
                                         <label aria-label="2 stars" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                         <input class="rating__input" name="rating2" id="rating2-20" value="2" type="radio">
-                                        <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                        <input class="rating__input" name="rating2" id="rating2-25" value="2.5" type="radio">
+                                        <!-- <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                        <input class="rating__input" name="rating2" id="rating2-25" value="2.5" type="radio"> -->
                                         <label aria-label="3 stars" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                         <input class="rating__input" name="rating2" id="rating2-30" value="3" type="radio">
-                                        <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                        <input class="rating__input" name="rating2" id="rating2-35" value="3.5" type="radio">
+                                        <!-- <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                        <input class="rating__input" name="rating2" id="rating2-35" value="3.5" type="radio"> -->
                                         <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                         <input class="rating__input" name="rating2" id="rating2-40" value="4" type="radio">
-                                        <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-                                        <input class="rating__input" name="rating2" id="rating2-45" value="4.5" type="radio">
+                                        <!-- <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                                        <input class="rating__input" name="rating2" id="rating2-45" value="4.5" type="radio"> -->
                                         <label aria-label="5 stars" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                         <input class="rating__input" name="rating2" id="rating2-50" value="5" type="radio">
                                     </div>
@@ -198,7 +198,9 @@
         @endif
         @endif
     </div>
-        <!-- modal to write review -->
+    <!-- modal to write review -->
+    <div class="container">
+
         @foreach($lawyer_review as $data)
         <div class="mitem3  mt-30">
             <div class="row">
@@ -211,11 +213,48 @@
                     <div class="col-md-12 pl-0 pt-3 pb-1">
                         <p class="m-0">{{$data->user_name}} -<span class="pl-1 pr-4"><i class="sa-color2">Verified Client </i></span>
 
+                            @if($data->rating =='1')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+                            @if($data->rating =='2')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+
+                            @endif
+                            @if($data->rating =='3')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+
+                            @endif
+                            @if($data->rating =='4')
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star "></span>
+
+                            @endif
+                            @if($data->rating =='5')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            @endif
+                            <!-- <span class="fa fa-star "></span>  
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span> -->
                         </p>
                     </div>
                     <p class="mb-20">{{$data->review}}</p>
@@ -223,9 +262,11 @@
                     <span class="pro-dt">{{date('d-m-Y', strtotime($data->created_at))}}</span>
                 </div>
             </div>
-        </div>  
+        </div>
         @endforeach
-        <!-- <div class="mitem3  mt-30">
+    </div>
+
+    <!-- <div class="mitem3  mt-30">
             <div class="row">
                 <div class="sr-card col-md-2">
                     <h5 class="user-pic">
@@ -273,47 +314,49 @@
                 </div>
             </div>
         </div> -->
+    <div class="container">
+
         <div class="col-md-12 pl-0">
             <a href="#" class="btn btn-outline-primary">View ALL</a>
-
-        </div>
-
-    </div>
-    <!--   </div> -->
-
-
-
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <div>
-                <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
-            </div>
-            <div class="row mt-5 sr-c ">
-                <div class="col-md-4 text-center">
-                    <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
-
-                    <p>Get the legal help & representation from over 10000 </p>
-                    <p>lawyers across 700 cities in India</p>
-                    <a href="" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</a>
-
-                </div>
-                <div class="col-md-4 text-center">
-                    <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
-                    <p>Post your question for free and get response from</p>
-                    <p>experienced lawyers within 48 hours</p>
-                    <a href="" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
-                </div>
-                <div class="col-md-4 text-center">
-
-                    <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
-                    <p>Contact and get legal assistance from our lawyer</p>
-                    <p> network for your specific matter</p>
-                    <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</button>
-
-                </div>
-            </div>
         </div>
     </div>
+
+</div>
+<!--   </div> -->
+
+
+
+<div class="row mb-5">
+    <div class="col-md-12">
+        <div>
+            <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+        </div>
+        <div class="row mt-5 sr-c ">
+            <div class="col-md-4 text-center">
+                <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
+
+                <p>Get the legal help & representation from over 10000 </p>
+                <p>lawyers across 700 cities in India</p>
+                <a href="" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</a>
+
+            </div>
+            <div class="col-md-4 text-center">
+                <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
+                <p>Post your question for free and get response from</p>
+                <p>experienced lawyers within 48 hours</p>
+                <a href="" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
+            </div>
+            <div class="col-md-4 text-center">
+
+                <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
+                <p>Contact and get legal assistance from our lawyer</p>
+                <p> network for your specific matter</p>
+                <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</button>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

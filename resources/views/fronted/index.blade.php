@@ -17,7 +17,7 @@
 						</div>
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
 							<div class="text">
-								<h6>We have nit picked the most efficient law conversion courses for you</h6>
+								<h6>We have  picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="#" role="button">Learn More</a>
 							</div>
 						</div>
@@ -36,7 +36,7 @@
 						</div>
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/willoughby-zachry-law-02-1.png);">
 							<div class="text">
-								<h6>We have nit picked the most efficient law conversion courses for you</h6>
+								<h6>We have  picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="#" role="button">Learn More</a>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 						</div>
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
 							<div class="text">
-								<h6>We have nit picked the most efficient law conversion courses for you</h6>
+								<h6>We have  picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="#" role="button">Learn More</a>
 							</div>
 						</div>

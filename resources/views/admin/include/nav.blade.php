@@ -275,6 +275,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/review-rating" class="nav-link" id="reviewrating">
+                <i class="fas fa-star nav-icon"></i>
+                <p>Review Rating</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/ContactEnquiry" class="nav-link" id="contactenquiry">
                 <i class="fas fa-users nav-icon"></i>
                 <p>Contact Enquiry</p>

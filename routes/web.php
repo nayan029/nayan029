@@ -160,6 +160,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/free-questions/{id}/edit', 'App\Http\Controllers\admin\freeQuestionsController@show');
     //----------------------------------------------ask free questions---------------------------
 
+    Route::resource('admin/review-rating','App\Http\Controllers\fronted\reviewController');
 
 
 });
