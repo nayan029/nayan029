@@ -26,7 +26,7 @@
                             <h5 class="sr-pro-title mb-2"> @if(isset($lawyerData->name)){{"Advocate"." ".$lawyerData->lname." ".$lawyerData->fathername}}@endif</h5>
                         </a>
                         <div>
-                            <a href="#" class="btn btn-primary sa-color3 poppins-light ">Contact Now</a>
+                            <a href="#" class="btn btn-primary sa-color3 poppins-light " data-toggle="modal" data-target=".bd-example-modal-md">Contact Now</a>
                         </div>
                     </div>
                     <div class="col-md-12 sr-pro-star">
@@ -212,7 +212,6 @@
                 <div class="sr-card col-md-10">
                     <div class="col-md-12 pl-0 pt-3 pb-1">
                         <p class="m-0">{{$data->user_name}} -<span class="pl-1 pr-4"><i class="sa-color2">Verified Client </i></span>
-
                             @if($data->rating =='1')
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star "></span>
@@ -264,60 +263,11 @@
             </div>
         </div>
         @endforeach
-    </div>
-
-    <!-- <div class="mitem3  mt-30">
-            <div class="row">
-                <div class="sr-card col-md-2">
-                    <h5 class="user-pic">
-                        G</h5>
-                </div>
-
-                <div class="sr-card col-md-10">
-                    <div class="col-md-12 pl-0 pt-3 pb-1">
-                        <p class="m-0">Ganesh Kumar Mishra -<span class="pl-1 pr-4"><i class="sa-color2">Verified Client </i></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                        </p>
-                    </div>
-                    <p class="mb-20">Ask questions and get advice from a local experienced advocate on divo....
-                    </p>
-
-                    <span class="pro-dt">Jul 04, 2021</span>
-                </div>
-            </div>
-        </div>
-        <div class="mitem3  mt-30">
-            <div class="row">
-                <div class="sr-card col-md-2">
-                    <h5 class="user-pic">
-                        K</h5>
-                </div>
-
-                <div class="sr-card col-md-10">
-                    <div class="col-md-12 pl-0 pt-3 pb-1">
-                        <p class="m-0">KRM Reddy -<span class="pl-1 pr-4"><i class="sa-color2">Verified Client </i></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                        </p>
-                    </div>
-                    <p class="mb-20">Ask questions and get advice from a local experienced advocate on divo....
-                    </p>
-
-                    <span class="pro-dt">Jul 04, 2021</span>
-                </div>
-            </div>
-        </div> -->
-    <div class="container">
-
+        
+        
         <div class="col-md-12 pl-0">
             <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
+            
         </div>
     </div>
 
@@ -362,6 +312,52 @@
 
 </div>
 </div>
+<!-- model for contact us -->
+<div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content contact-modal">
+      <div class="row">
+          <div class="col-md-6">
+            <div class="sr-contact pr-0">
+              <div class="card">
+                  <div class="card-body modalcard-body" >
+                      <div class="upper">
+                          <h3 class="price">$123</h3>
+                          <p class="mb-0">Weekly</p>
+                      </div>
+                      <div class="bottom">
+                          <p class="w-detail">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet</p>
+                          <a href="#" class="btn btn-primary sa-color3 poppins-light ">Buy Now</a>
+                        </div>
+                      
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+             <div class="sr-contact pl-0">
+              <div class="card">
+                  <div class="card-body modalcard-body" >
+                      <div class="upper">
+                          <h3 class="price">$123</h3>
+                          <p class="mb-0">Monthly</p>
+                      </div>
+                      <div class="bottom">
+                          <p class="w-detail">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet</p>
+                          <a href="#" class="btn btn-primary sa-color3 poppins-light ">Buy Now</a>
+                        </div>
+                      
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end model -->
 
 @include('fronted/include/footer')
 <script>

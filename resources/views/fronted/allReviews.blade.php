@@ -6,6 +6,7 @@
         </div>
         <div class="row">
             <div class="col-md-7 sr-border">
+                @if(count($allreviews)>0)
                 @foreach($allreviews as $data)
                 <div class="row bottom-border">
                     <div class="col-md-12">
@@ -62,6 +63,9 @@
                     </div>
                 </div>
                 @endforeach
+                @else 
+                {{"NO DATA FOUND"}}
+                @endif
             </div>
             <div class=" col-md-5 pl-4">
                 <div class="mitem text-center">

@@ -55,7 +55,7 @@ class lawyerRegisterController extends Controller
             $input['name'] = $request->name;
             $input['username'] = $request->username;
             $input['user_type'] = 3;
-            $input['status'] = 1;
+            $input['status'] = 0;
             $input['password'] = Hash::make($request->password);
 
             $inputuser = User::create($input);

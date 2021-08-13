@@ -4390,11 +4390,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     background: #FBA8135E;
 
-    padding: 12px;
+    /*padding: 12px;*/
 
     border-radius: 4px;
 
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 
 }
 
@@ -5321,7 +5321,8 @@ ol.sr-ol li p.sr-white {
     width: max-content;
     right: 0;
     top: 101px;
-    padding: 30px;
+    /*padding: 30px;*/
+    padding:20px;
     padding-right: 0;
     padding-bottom: 20px;
     flex-wrap: wrap;
@@ -5355,7 +5356,7 @@ ol.sr-ol li p.sr-white {
 
     display: block;
 
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 
 }
 
@@ -5363,7 +5364,7 @@ ol.sr-ol li p.sr-white {
 
 .inner-menu ul li a {
 
-    font-size: 14px;
+    font-size: 13px;
 
     color: #fff;
 
@@ -5377,6 +5378,7 @@ ol.sr-ol li p.sr-white {
 .img-bor{
     height: 131px;
     width: 100%;
+    object-fit: cover;
 }
 
 /*responsive*/
@@ -5469,7 +5471,7 @@ ol.sr-ol li p.sr-white {
 
     color: #f7a642;
 
-    font-size: 18px!important;
+    font-size: 17px!important;
 
 }
 
@@ -5503,7 +5505,9 @@ ol.sr-ol li p.sr-white {
     border-radius: 6px;
 }
 .sr-profile .pro-img{
-        width: 100%;
+    height: 180PX;
+    width: 100%;
+    max-height: 200px;
     border-radius: 5px;
     object-fit: cover;
 }
@@ -5616,62 +5620,85 @@ ol.sr-ol li p.sr-white {
         color: #1b1b1b;
     font-weight: 600!important;
 }
+ul.navbar-nav .nav-link{
+    font-size: 14px;
+}
+.sticky{
+    position: sticky;
+    top:0;
+    display: block;
+}
+.contact-modal{
+    color:#000;
+}
+.sr-contact{
+    padding:20px;
+}
+.modalcard-body{
+    text-align: center;
+    padding: 0 0 10px 0;
+}
+.w-detail{
+        font-size: 11px;
+    text-align: justify;
+}
+.upper{
+     background: #eca835;
+    padding: 11px;
+    margin-bottom: 14px;
+    color:#fff;
+}
+.bottom{
+    padding:12px;
+
+}
+.price{
+        color: #fff;
+    padding: 4px;
+    margin: 0;
+}
 #half-stars-example .rating-group {
     display: inline-flex;
 }
-
 #half-stars-example .rating__icon {
     pointer-events: none;
 }
-
 #half-stars-example .rating__input {
     position: absolute !important;
     left: -9999px !important;
 }
-
 #half-stars-example .rating__label {
     cursor: pointer;
-    
+   / if you change the left/right padding, update the margin-right property of .rating__label--half as well. /
     padding: 0 0.1em;
     font-size: 2rem;
 }
-
 #half-stars-example .rating__label--half {
     padding-right: 0;
     margin-right: -0.6em;
     z-index: 2;
 }
-
 #half-stars-example .rating__icon--star {
     color: orange;
 }
-
 #half-stars-example .rating__icon--none {
     color: #eee;
 }
-
-#half-stars-example .rating__input--none:checked+.rating__label .rating__icon--none {
+#half-stars-example .rating__input--none:checked + .rating__label .rating__icon--none {
     color: red;
 }
-
-#half-stars-example .rating__input:checked~.rating__label .rating__icon--star {
+#half-stars-example .rating__input:checked ~ .rating__label .rating__icon--star {
     color: #ddd;
 }
-
-#half-stars-example .rating-group:hover .rating__label .rating__icon--star,
-#half-stars-example .rating-group:hover .rating__label--half .rating__icon--star {
+#half-stars-example .rating-group:hover .rating__label .rating__icon--star, #half-stars-example .rating-group:hover .rating__label--half .rating__icon--star {
     color: orange;
 }
-
-#half-stars-example .rating__input:hover .rating__label .rating__icon--star,
-#half-stars-example .rating__input:hover .rating__label--half .rating__icon--star {
+#half-stars-example .rating__input:hover  .rating__label .rating__icon--star, #half-stars-example .rating__input:hover  .rating__label--half .rating__icon--star {
     color: #ddd;
 }
-
-#half-stars-example .rating-group:hover .rating__input--none:not(:hover)+.rating__label .rating__icon--none {
+#half-stars-example .rating-group:hover .rating__input--none:not(:hover) + .rating__label .rating__icon--none {
     color: #eee;
 }
-
-#half-stars-example .rating__input--none:hover+.rating__label .rating__icon--none {
+#half-stars-example .rating__input--none:hover + .rating__label .rating__icon--none {
     color: red;
 }
