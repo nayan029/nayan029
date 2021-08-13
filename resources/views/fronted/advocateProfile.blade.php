@@ -317,7 +317,7 @@
     <div class="container">
 
         <div class="col-md-12 pl-0">
-            <a href="#" class="btn btn-outline-primary">View ALL</a>
+            <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
         </div>
     </div>
 

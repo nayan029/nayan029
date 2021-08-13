@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\admin\contactInquiry;
+use App\Models\admin\location;
 use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
 use Illuminate\Support\Facades\Validator;
@@ -24,12 +25,11 @@ class reviewController extends Controller
         $this->data['title'] = 'Review Rating';
         $this->data['allreviews'] = reviewrating::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
-
     }
     public function index(Request $request)
     {
         $this->data['allreviews'] = reviewrating::getAllRecord();
-        return view('admin.review_rating.index',$this->data);
+        return view('admin.review_rating.index', $this->data);
     }
     public function store(Request $request)
     {
@@ -80,5 +80,11 @@ class reviewController extends Controller
         }
         // return $delete;
 
+    }
+    public function allReviews($id)
+    {
+        $this->data['city'] = location::getAllRecord();
+        $this->data['allreviews'] = reviewrating::getrecordbylawyerid($id);
+        return view('fronted.allReviews', $this->data);
     }
 }

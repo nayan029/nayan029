@@ -264,6 +264,8 @@ Route::get('/page/terms-of-use',[FrontedHomeController::class,'termsOfUse']);
 
 Route::resource('/write-review','App\Http\Controllers\fronted\reviewController');
 
+Route::get('/experts/reviews/{id}','App\Http\Controllers\fronted\reviewController@allReviews');
+
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
 
