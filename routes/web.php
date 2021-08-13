@@ -162,6 +162,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('admin/review-rating','App\Http\Controllers\fronted\reviewController');
 
+    Route::resource('/admin/enquiry','App\Http\Controllers\fronted\enquiryController');
+
+
+
 
 });
 
@@ -265,6 +269,8 @@ Route::get('/page/terms-of-use',[FrontedHomeController::class,'termsOfUse']);
 Route::resource('/write-review','App\Http\Controllers\fronted\reviewController');
 
 Route::get('/experts/reviews/{id}','App\Http\Controllers\fronted\reviewController@allReviews');
+
+Route::resource('/enquiry-form','App\Http\Controllers\fronted\enquiryController');
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

@@ -837,22 +837,29 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form method="POST" action="{{URL::to('/')}}/enquiry-form" id="main_form">
+					@csrf
 					<div class="form-group">
-						<input type="text" class="form-control border-radius-5px" id="exampleInputText1" aria-describedby="nameHelp" placeholder="Name" autocomplete="off">
+						<label for="" style="color: #222;">Name</label><span style="color: red;"> *</span>
+						<input type="text" name="name" class="form-control border-radius-5px" id="name" aria-describedby="nameHelp" placeholder="Name" autocomplete="off" maxlength="250">
+						<span id="name_error" style="color: red;"></span>
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control border-radius-5px" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" autocomplete="off">
+						<label for="" style="color: #222;">Mobile</label><span style="color: red;"> *</span>
+						<input type="number" name="mobile" class="form-control border-radius-5px" id="mobile" aria-describedby="nameHelp" placeholder="Mobile number" autocomplete="off" maxlength="12">
+						<span id="mobile_error" style="color: red;"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control border-radius-5px" id="exampleInputText1" aria-describedby="nameHelp" placeholder="Mobile number" autocomplete="off">
+						<label for="" style="color: #222;">Email</label>
+						<input type="email" name="email" class="form-control border-radius-5px" id="email" aria-describedby="emailHelp" placeholder="Email (Optional)" autocomplete="off" maxlength="250">
+						<span id="email_error" style="color: red;"></span>
 					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
 
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary">Submit</button>
 			</div>
 		</div>
 	</div>
@@ -921,4 +928,86 @@
 			// $('#main_id').submit();
 		}
 	}
+</script>
+<script>
+	$('#main_form').submit(function(e) {
+
+		var name = $('#name').val();
+		var email = $('#email').val();
+		var mobile = $('#mobile').val();
+
+
+		var cnt = 0;
+		var f = 0;
+
+		$('#name_error').html("");
+		$('#email_error').html("");
+		$('#mobile_error').html("");
+
+
+
+		var number = /([0-9])/;
+		var alphabets = /([a-zA-Z])/;
+		var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+
+		// if (email.trim() == '') {
+		// 	$('#email_error').html("Please enter Email");
+		// 	cnt = 1;
+		// 	f++;
+		// 	if (f == 1) {
+		// 		$('#email').focus();
+		// 	}
+		// }
+		if (name.trim() == '') {
+			$('#name_error').html("Please enter Name");
+			cnt = 1;
+			f++;
+			if (f == 1) {
+				$('#name').focus();
+			}
+		}
+
+
+		function ValidateEmail(email) {
+			var expr =
+				/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+			return expr.test(email);
+		};
+
+		if (email) {
+			if (!ValidateEmail(email)) {
+				$('#email_error').html("Please enter valid email");
+				cnt = 1;
+				f++;
+				if (f == 1) {
+					$('#email').focus();
+				}
+			}
+		}
+
+		if (mobile.trim() == '') {
+			$('#mobile_error').html("Please enter Mobile No");
+			cnt = 1;
+			f++;
+			if (f == 1) {
+				$('#mobile').focus();
+			}
+		}
+		if (mobile.length > 12) {
+			$('#mobile_error').html("Please enter Valid Mobile ");
+			cnt = 1;
+			f++;
+			if (f == 1) {
+				$('#mobile').focus();
+			}
+		}
+
+		if (cnt == 1) {
+			return false;
+		} else {
+			return true;
+		}
+
+
+	})
 </script>

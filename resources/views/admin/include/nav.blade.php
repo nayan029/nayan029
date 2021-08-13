@@ -286,6 +286,12 @@
                 <p>Contact Enquiry</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/enquiry" class="nav-link" id="enquiry">
+                <i class="fas fa-users nav-icon"></i>
+                <p> Enquiry</p>
+              </a>
+            </li>
           </ul>
           </li>
           </ul>
