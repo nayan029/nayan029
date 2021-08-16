@@ -41,7 +41,7 @@ class askFreeQuestionController extends Controller
         // return $request->all();die;
         $validator = Validator::make($request->all(), [
             'lawarea' => 'required',
-            'city' => 'required',
+            // 'city' => 'required',
             'subject' => 'required',
             'short_description' => 'required',
             'name' => 'required',
@@ -63,7 +63,7 @@ class askFreeQuestionController extends Controller
             }
 
             $input['lawarea'] = $request->lawarea;
-            $input['city'] = $request->city;
+            // $input['city'] = $request->city;
             $input['subject'] = $request->subject;
             $input['short_description'] = $request->short_description;
             $input['name'] = $request->name;

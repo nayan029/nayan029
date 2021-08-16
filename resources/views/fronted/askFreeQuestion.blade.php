@@ -9,7 +9,7 @@
         <form id="main_id" action="{{URL::to('/')}}/ask-a-free-question" method="POST">
           @csrf
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <label for="inputName" class="form-label sa-color2 sa-label">Area of law</label><span style="color:red;"> *</span>
               <select class="form-select sa-form-font border-radius-5px" id="lawarea" name="lawarea">
                 <option value="">Select Area of law</option>
@@ -21,7 +21,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-12">
               <label for="inputName" class="form-label sa-color2 sa-label"> city </label><span style="color:red;"> *</span>
               <select class="form-select sa-form-font border-radius-5px" id="city" name="city">
                 <option value="">Select your city</option>
@@ -31,7 +31,7 @@
               </select>
               <span id="city_error" style="color: red;"></span>
 
-            </div>
+            </div> -->
 
           </div>
 
@@ -207,7 +207,7 @@
 
     var name = $('#name').val();
     var lawarea = $('#lawarea').val();
-    var city = $('#city').val();
+    // var city = $('#city').val();
     var subject = $('#subject').val();
     var short_description = $('#short_description').val();
     var mobile = $('#mobile').val();
@@ -219,7 +219,7 @@
 
     $('#name_error').html("");
     $('#lawarea_error').html();
-    $('#city_error').html("");
+    // $('#city_error').html("");
     $('#subject_error').html("");
     $('#short_description_error').html("");
     $('#email_error').html();
@@ -244,14 +244,14 @@
       }
     }
 
-    if (city.trim() == '') {
-      $('#city_error').html("Please Select City");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#city').focus();
-      }
-    }
+    // if (city.trim() == '') {
+    //   $('#city_error').html("Please Select City");
+    //   cnt = 1;
+    //   f++;
+    //   if (f == 1) {
+    //     $('#city').focus();
+    //   }
+    // }
 
     if (subject.trim() == '') {
       $('#subject_error').html("Please enter subject");
