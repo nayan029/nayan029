@@ -251,3 +251,16 @@
         // });
     }
 </script>
+<script>
+    function functionedit(id) {
+        $.ajax({
+            url: "<?php echo URL::to('/'); ?>/admin/enquiry/" + id + "/edit",
+            type: "GET",
+            success: function(response) {
+                $('#append').html(response);
+                // $('#exampleModaledit').modal('show');
+            }
+        });
+
+    }
+</script>
