@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="offset-md-1 col-md-5 sa-details col2">
-                <div class="sa-opening pb-3">
+                <!-- <div class="sa-opening pb-3">
                     <p class="sa-color">Opening Hours</p>
                     <p><span class="sa-date-time"> {{$getsettings->opning_day}} <br> {{$getsettings->opning_hours}}</span></p>
                 </div>
@@ -49,9 +49,11 @@
                 <div class="sa-supp pb-4">
                     <p class="sa-color">Support</p>
                     <p class="supp-details"><span><a href="mailto:">{{$getsettings->support_email}}</a></span><br><span><a href="tel:">{{$getsettings->support_phone}}</a></span></p>
+                </div> -->
+                <div class="text-center img-cen" style="margin-left: -50px; padding-bottom: 20px;">
+                    <img src="{{URL::to('/')}}/fronted/images/small-logo.png" alt="image" style="width:100px; height:100px; object-fit:contain;s">
                 </div>
-
-                <div class="connect-details">
+                <!-- <div class="connect-details">
                     <p>Connect with us</p>
                 </div>
 
@@ -82,6 +84,19 @@
                             <li><img src="{{asset('fronted/images/new-images/phone.png')}}"><a href="tel:">{{$getsettings->hr_phone}}</a></li>
                         </ul>
                     </div>
+                </div> -->
+
+                <div class="sa-opening pb-3 connect-details">
+                    <p class="sa-color">Opening Hours</p>
+                    <p><span class="sa-date-time"> {{$getsettings->opning_day}} <br> {{$getsettings->opning_hours}}</span></p>
+                </div>
+                <div class="sa-add pb-3">
+                    <p class="sa-color">Address</p>
+                    <p class="sa-lorem-address">{{$getsettings->address}}</p>
+                </div>
+                <div class="sa-supp pb-4">
+                    <p class="sa-color">Support</p>
+                    <p class="supp-details"><span><a href="mailto:">{{$getsettings->support_email}}</a></span><br><span><a href="tel:">{{$getsettings->support_phone}}</a></span></p>
                 </div>
             </div>
         </div>
@@ -90,8 +105,8 @@
 
 @include('fronted/include/footer')
 <script>
-	// $('#contact-us').addClass('active ');
-    
+    // $('#contact-us').addClass('active ');
+
     function validation() {
         // $('#submitBtn1').prop('disabled', true);
         var temp = 0;

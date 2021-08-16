@@ -43,7 +43,7 @@
                                         <th>Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
-                                      <th>Status</th>
+                                        <th>Status</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -99,15 +99,15 @@
                                         <td>{{$data->mobile}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
                                         <td><span title="{{$data->feedback}}">@if(isset($data->status))
-                                            @if($data->status=='1'){{"Call Recived"}}
-                                            @endif
-                                            @if($data->status=='2'){{"Call Not Recived"}}
-                                            @endif
-                                            @else{{"N/A"}}
-                                            @endif
-                                </span>
+                                                @if($data->status=='1'){{"Close"}}
+                                                @endif
+                                                @if($data->status=='2'){{"Call Not Recived"}}
+                                                @else{{"Pending"}}
+                                                @endif
+                                                @endif
+                                            </span>
                                         </td>
-                                       
+
                                         <td data-order="<?= strtotime($data->created_at); ?>">
                                             <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                         </td>
@@ -162,16 +162,16 @@
                     @method('PUT')
                     @csrf
                     <div class="form-group">
-                        <label for="" class="col-form-label">Status:</label><span style="color:red;"> *</span>
-                         <select value="" class="form-control" id="status" name="status"> 
-                         <option name="" id="" value="">Select Status</option>
-                             <option name="" id="" value="2">Call not Recived</option>
-                             <option name="" id="" value="1">Call Recived</option>
-                         </select>
-                         <span style="color: red;" id="status_error"></span>
+                        <label for="" class="col-form-label">Status</label><span style="color:red;"> *</span>
+                        <select value="" class="form-control" id="status" name="status">
+                            <option name="" id="" value="">Select Status</option>
+                            <option name="" id="" value="2">Call Not Recived</option>
+                            <option name="" id="" value="1">Close</option>
+                        </select>
+                        <span style="color: red;" id="status_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
+                        <label for="message-text" class="col-form-label">Message</label>
                         <input type="text" name="feedback" class="form-control" id="feedback" maxlength="250">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -282,34 +282,34 @@
     }
 </script>
 <script>
- $('#edit_form').submit(function(e) {
+    $('#edit_form').submit(function(e) {
 
-var status = $('#status').val();
+        var status = $('#status').val();
 
-var cnt = 0;
-var f = 0;
+        var cnt = 0;
+        var f = 0;
 
-$('#status_error').html("");
+        $('#status_error').html("");
 
 
-var number = /([0-9])/;
-var alphabets = /([a-zA-Z])/;
-var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+        var number = /([0-9])/;
+        var alphabets = /([a-zA-Z])/;
+        var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
 
-if (status.trim() == '') {
-    $('#status_error').html("Please select status");
-    cnt = 1;
-    f++;
-    if (f == 1) {
-        $('#status').focus();
-    }
-}
+        if (status.trim() == '') {
+            $('#status_error').html("Please select status");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#status').focus();
+            }
+        }
 
-if (cnt == 1) {
-    return false;
-} else {
-    return true;
-}
+        if (cnt == 1) {
+            return false;
+        } else {
+            return true;
+        }
 
-})
+    })
 </script>

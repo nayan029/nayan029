@@ -17,7 +17,6 @@ $login = Auth::user();
 	<link rel="stylesheet" href="{{asset('fronted/css/responsive.css')}}">
 	<link rel="stylesheet" href="{{asset('fronted/css/toastr.min.css')}}" type="text/css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="{{asset('datepicker/css/jquery-ui.css')}}" type="text/css">
 
 </head>
 
@@ -33,14 +32,12 @@ $login = Auth::user();
 						<li class="nav-item " id="home">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/">Home</a>
 						</li>
-						<li class="nav-item" id="about">
-							<a class="nav-link" href="<?php echo URL::to('/'); ?>/about-us">About</a>
-						</li>
+						
 						<li class="nav-item" id="practice">
-							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Practice</a>
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">ADB</a>
 						</li>
 						<li class="nav-item" id="advice">
-							<a class="nav-link" href="#">Legal Advice</a>
+							<a class="nav-link" href="#">Legal Query</a>
 							<div class="inner-menu">
 								<ul>
 									<li class="ul-title">Answered Questions</li>
@@ -255,6 +252,9 @@ $login = Auth::user();
 
 
 							</div>
+						</li>
+						<li class="nav-item" id="about">
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/about-us">About</a>
 						</li>
 						<!-- legal services -->
 						<li class="nav-item">

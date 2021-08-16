@@ -76,7 +76,7 @@ class lawyerRegisterController extends Controller
             $html = str_replace('{{DESCRIPTION}}', $emailtemplate->description, $html);
             $html = str_replace('{{LOGO}}', $logo, $html);
 
-            $mail = MailHelper::mail_send_client($html, $request->email, $subject);
+           return $mail = MailHelper::mail_send_client($html, $request->email, $subject);
             /*verify-email*/
 
             if ($inputuser) {

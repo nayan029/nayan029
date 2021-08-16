@@ -1,5 +1,5 @@
 @include('fronted/include/header')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{URL::to('/')}}/fronted/css/datepicker.css">
 <div class="sa-enroll-details">
     <div class="container">
         <div class="sa-pills-design">
@@ -50,7 +50,7 @@
                                         <span id="name_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-md-12 col-lg-6 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Last Name</label><span style="color: red;"> *</span>
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Last Name</label><span style="color: red;"> </span>
                                         <input type="text" value="@if (isset($test->username)){{$test->username}}@endif" name="fathername" class="form-control sa-form-font half-border-radius" id="fathername" placeholder="Enter your Last Name">
                                         <span id="fathername_error" style="color: red;"></span>
                                     </div>
@@ -63,7 +63,7 @@
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">DOB</label><span style="color: red;"> *</span>
                                         <!-- <input type="date" name="dob" class="form-control sa-form-font half-border-radius" id="dob"> -->
-                                        <input type="text" name="ldob" id="dob" class="form-control date sa-form-font half-border-radius" placeholder="mm/dd/yyy" autocomplete="off">
+                                        <input type="text" name="ldob" id="dob" class="form-control date sa-form-font half-border-radius sr-cal" placeholder="dd/mm/yyy" autocomplete="off" readonly>
                                         <span id="dob_error" style="color: red;"></span>
 
                                     </div>
@@ -148,7 +148,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-12 sa-pb">
+                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Nationality of applicant</label><span style="color: red;"> *</span>
                                         <select name="nationality" class="form-select sa-form-font border-radius-5px" id="nationality">
                                             <option value="">Select your nationality</option>
@@ -157,7 +157,7 @@
                                             <option value="3">Sri Lanka</option>
                                         </select>
                                         <span id="nationality_error" style="color: red;"></span>
-                                    </div>
+                                    </div> -->
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">NIC number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
                                         <input name="nicno" type="text" class="form-control sa-form-font half-border-radius" id="nicno" placeholder="" maxlength="13">
@@ -209,13 +209,13 @@
                                                     Hindi
                                                 </label>
                                             </div>
-                                            <div class="pm-check ">
+                                            <!-- <div class="pm-check ">
                                                 <input class="form-check-input language" name="language[]" type="checkbox" value="gujarati" id="three">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="three">
                                                     Gujrati
                                                 </label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <span id="language_error" style="color: red;"></span>
 
@@ -508,15 +508,14 @@
 </div>
 </div>
 
-@include('fronted/include/footer')
+@include('fronted/include/footer')  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $("#dob").datepicker({
-        //  autoUpdateInput: false,
+         autoUpdateInput: false,
         autoclose: true,
-        // todayHighlight: true,
+        todayHighlight: true,
         endDate: new Date(),
-
         format: 'dd-mm-yyyy',
 
     });
@@ -590,7 +589,7 @@
         // var location = $('#location').val();
 
 
-        var nationality = $('#nationality').val();
+        // var nationality = $('#nationality').val();
         var nicno = $('#nicno').val();
 
         var language = $('input[name=language]:checked').val();
@@ -621,7 +620,7 @@
         // $('#tyear_error').html("");
         // $('#tinsti_error').html("");
 
-        $('#nationality_error').html();
+        // $('#nationality_error').html();
         $('#language_error').html("");
         $('#nicno_error').html();
 
@@ -775,14 +774,14 @@
         //         $('#tinsti').focus();
         //     }
         // }
-        if (nationality.trim() == '') {
-            $('#nationality_error').html("Please select nationality");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#nationality').focus();
-            }
-        }
+        // if (nationality.trim() == '') {
+        //     $('#nationality_error').html("Please select nationality");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#nationality').focus();
+        //     }
+        // }
         if (nicno.trim() == '') {
             $('#nicno_error').html("Please enter nic no");
             cnt = 1;

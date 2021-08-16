@@ -30,8 +30,8 @@ class enrollmentController extends Controller
         // $stepcount = $auth->step;
         $input = $request->all();
 
-        $input['ldob'] = date('Y-m-d',strtotime($request->ldob));
-        // $input['mobile'] = $request->mobile;
+        $input['ldob'] = date('Y-m-d', strtotime($request->ldob));
+        $input['location'] = "Delhi";
         // $input['experience'] = $request->experience;
         // $input['finstitue'] = $request->finstitue;
         // $input['sinstitue'] = $request->sinstitue;

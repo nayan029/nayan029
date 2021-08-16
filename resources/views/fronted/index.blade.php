@@ -206,7 +206,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
-						<p>Civil Law</p>
+						<p>Divorce Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
 						<small>243 cases solved</small>
 					</div>
@@ -216,7 +216,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
-						<p>GST Law</p>
+						<p>Bail Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
 						<small>243 cases solved</small>
 					</div>
@@ -225,7 +225,7 @@
 			<div class="col-md-3 col-lg-3 col-6">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=19">
 					<div class="fbox">
-						<p>Property Law</p>
+						<p>Family Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
 						<small>243 cases solved</small>
 					</div>
@@ -235,7 +235,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
 
 					<div class="fbox">
-						<p>Family Law</p>
+						<p>Sexual abuse Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
 						<small>243 cases solved</small>
 					</div>
@@ -245,7 +245,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
-						<p>Insurence Law</p>
+						<p>Court Marriage Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
 						<small>243 cases solved</small>
 					</div>
@@ -256,7 +256,7 @@
 
 
 					<div class="fbox">
-						<p>Labour Service Law</p>
+						<p>Consumer Court Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
 						<small>243 cases solved</small>
 					</div>
@@ -266,7 +266,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
-						<p>Criminal Law</p>
+						<p>Banking Affords Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
 						<small>243 cases solved</small>
 					</div>
