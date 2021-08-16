@@ -166,7 +166,7 @@ class User extends Authenticatable
     }
     public static function getLawyers()
     {
-        $query =  User::where('email_verify', 1)->where('user_type', 3)->orderBy('id', 'desc')->limit(6)->get();
+        $query =  User::where('email_verify', 1)->where('user_type', 3)->where('status',1)->orderBy('id', 'desc')->limit(6)->get();
         return $query;
     }
     public static function getRecordByData($location, $cat, $court, $expi, $language, $gender, $rating, $short_by)
