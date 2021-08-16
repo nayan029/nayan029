@@ -206,6 +206,7 @@ class User extends Authenticatable
     }
     public static function getRecordByName($name, $city, $category)
     {
+        // return $category;
         $TEMP = "users.status in (1)";
 
         if ($name) {
@@ -215,7 +216,7 @@ class User extends Authenticatable
             $TEMP .= "AND users.location like '$city'";
         }
         if ($category) {
-            $TEMP .= " AND lawyer_enrollment_category.id = '$category' ";
+            $TEMP .= " AND lawyer_enrollment_category.categoryid = '$category' ";
         }
         // return $name;
         $query = User::select('users.*')

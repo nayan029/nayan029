@@ -203,8 +203,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/civil-legal-advice">
-
+				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
+				<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
 						<p>Civil Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
@@ -213,7 +213,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/gst-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
 						<p>GST Law</p>
@@ -223,7 +223,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/property-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=19">
 					<div class="fbox">
 						<p>Property Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
@@ -232,7 +232,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/family-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
 
 					<div class="fbox">
 						<p>Family Law</p>
@@ -242,7 +242,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/insurence-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
 						<p>Insurence Law</p>
@@ -252,7 +252,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/labourservice-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 
 					<div class="fbox">
@@ -263,7 +263,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/criminal-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
 						<p>Criminal Law</p>
@@ -273,7 +273,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/divorce-legal-advice">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
 
 					<div class="fbox">
 						<p>Divorce Law</p>

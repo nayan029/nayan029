@@ -369,7 +369,7 @@ $login = Auth::user();
 											<select name="category" class="filter-group select2 sr-drop" id="" >
 														<option value="">Select Category</option>
 														@foreach($qcategory as $data)
-														<option value="{{$data->category_name}}">{{$data->category_name}}</option>
+														<option value="{{$data->id}}">{{$data->category_name}}</option>
 														@endforeach
 													</select>
 											</div>
