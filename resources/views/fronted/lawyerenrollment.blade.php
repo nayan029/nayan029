@@ -239,7 +239,7 @@
                                         <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="20">
                                         <span id="experience_error" style="color: red;"></span>
                                     </div>
-                                    <div class="col-lg-4 sa-pb">
+                                    <!-- <div class="col-lg-4 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Gender</label><span style="color:red;"> *</span>
                                         <select name="gender" class="form-select sa-form-font border-radius-5px" id="gender">
                                             <option value="">Select Gender</option>
@@ -247,7 +247,7 @@
                                             <option value="f">female</option>
                                         </select>
                                         <span id="gender_error" style="color: red;"></span>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="col-lg-4 sa-pb">
                                  <label for="inputName" class="form-label sa-color2 sa-label">Date</label>
                                  <input type="text" class="form-control sa-form-font half-border-radius" id="" placeholder="Date of last">
