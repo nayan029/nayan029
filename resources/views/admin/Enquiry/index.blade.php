@@ -43,7 +43,7 @@
                                         <th>Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
-                                        <th>Verify</th>
+                                      <th>Status</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -98,16 +98,26 @@
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->mobile}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
-                                        <td>{{$status}}</td>
+                                        <td>@if(isset($data->status))
+                                            @if($data->status=='1'){{"Call Recived"}}
+                                            @endif
+                                            @if($data->status=='2'){{"Call Not Recived"}}
+                                            @endif
+                                            @else{{"N/A"}}
+                                            @endif
+                                        </td>
+                                       
                                         <td data-order="<?= strtotime($data->created_at); ?>">
                                             <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                         </td>
                                         <td>
                                             <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="functiondelete('{{ $data->id }}','delete','')"></i></a>
-                                            <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
+                                            <!-- <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
                                                 <i class="far fa-thumbs-{{$thumbs}}"></i>
-                                            </a>
-                                            <a title="Edit"  data-toggle="modal" data-target="#exampleModal" href="#"><i class="fas fa-edit mr-2"></i></a>
+                                            </a> -->
+                                            <!-- <a title="Edit"  data-toggle="modal" data-target="#exampleModal" href="#"><i class="fas fa-edit mr-2"></i></a> -->
+                                            <a title="Edit" class="mr-2" href="javascript:void(0)" onclick="functionedit('{{$data->id}}')" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-edit text-info font-16"></i></a>
+
                                         </td>
                                         @php $i++; @endphp
                                     </tr>
@@ -138,33 +148,39 @@
 <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form method="POST" action="{{URL::to('/')}}/enquiry/feedback">
-            @csrf
-          <!-- <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div> -->
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <input type="text" name="feedback" class="form-control" id="feedback" maxlength="250">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-      </div>
+    <div class="modal-dialog" role="document" id="append">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="edit_form" action="{{URL::to('/')}}/admin/enquiry/{{$data->id}}">
+                    @method('PUT')
+                    @csrf
+                    <div class="form-group">
+                        <label for="" class="col-form-label">Status:</label><span style="color:red;"> *</span>
+                         <select value="" class="form-control" id="status" name="status"> 
+                         <option name="" id="" value="">Select Status</option>
+                             <option name="" id="" value="2">Call not Recived</option>
+                             <option name="" id="" value="1">Call Recived</option>
+                         </select>
+                         <span style="color: red;" id="status_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <input type="text" name="feedback" class="form-control" id="feedback" maxlength="250">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- edit modal -->
 @include('admin/include/footer')
@@ -263,4 +279,36 @@
         });
 
     }
+</script>
+<script>
+ $('#edit_form').submit(function(e) {
+
+var status = $('#status').val();
+
+var cnt = 0;
+var f = 0;
+
+$('#status_error').html("");
+
+
+var number = /([0-9])/;
+var alphabets = /([a-zA-Z])/;
+var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+
+if (status.trim() == '') {
+    $('#status_error').html("Please select status");
+    cnt = 1;
+    f++;
+    if (f == 1) {
+        $('#status').focus();
+    }
+}
+
+if (cnt == 1) {
+    return false;
+} else {
+    return true;
+}
+
+})
 </script>

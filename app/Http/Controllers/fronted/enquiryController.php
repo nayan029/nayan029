@@ -34,6 +34,39 @@ class enquiryController extends Controller
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         return view('admin.enquiry.index', $this->data);
     }
+    public function update(Request $request, $id)
+    {
+        // return $request->all();
+        $validator = Validator::make($request->all(), [
+            'status' => 'required'
+            // 'feedback' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect("admin/enquiry")
+                ->withErrors($validator, 'feddback_error')
+                ->withInput();
+        } else {
+            $auth = Auth::user();
+            $input = $request->all();
+            $input['feedback'] = $request->feedback;
+            $input['status'] = $request->status;
+            $input['updated_at'] = date('Y-m-d H:i:s');
+            $input['updated_by'] = $auth->id;
+
+            $category = enquiry::find($id);
+            $category->update($input);
+
+
+            if ($category) {
+                Session::flash('success', 'feedback add successfully');
+                return redirect('admin/enquiry');
+            } else {
+                Session::flash('error', 'Sorry, something went wrong. Please try again');
+                return redirect()->back();
+            }
+        }
+    }
     public function store(Request $request)
     {
         // return $request->all(); die;
