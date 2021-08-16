@@ -840,27 +840,29 @@
 				<form method="POST" action="{{URL::to('/')}}/enquiry-form" id="main_form">
 					@csrf
 					<div class="form-group">
-						<label for="" style="color: #222;">Name</label><span style="color: red;"> *</span>
+						<!-- <label for="" style="color: #222;">Name</label><span style="color: red;"> *</span> -->
 						<input type="text" name="name" class="form-control border-radius-5px" id="name" aria-describedby="nameHelp" placeholder="Name" autocomplete="off" maxlength="250">
 						<span id="name_error" style="color: red;"></span>
 					</div>
 					<div class="form-group">
-						<label for="" style="color: #222;">Mobile</label><span style="color: red;"> *</span>
+						<!-- <label for="" style="color: #222;">Mobile</label><span style="color: red;"> *</span> -->
 						<input type="number" name="mobile" class="form-control border-radius-5px" id="mobile" aria-describedby="nameHelp" placeholder="Mobile number" autocomplete="off" maxlength="12">
 						<span id="mobile_error" style="color: red;"></span>
 					</div>
 					<div class="form-group">
-						<label for="" style="color: #222;">Email</label>
+						<!-- <label for="" style="color: #222;">Email</label> -->
 						<input type="email" name="email" class="form-control border-radius-5px" id="email" aria-describedby="emailHelp" placeholder="Email (Optional)" autocomplete="off" maxlength="250">
 						<span id="email_error" style="color: red;"></span>
 					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+					<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+				<button type="submit" class="btn btn-primary">Submit</button>
 
+			</div>
 				</form>
 			</div>
-			<div class="modal-footer">
-				<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-			</div>
+			
 		</div>
 	</div>
 </div>
