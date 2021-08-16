@@ -37,11 +37,11 @@
                         <option @if(app('request')->input('language') == 'gujarati'){{"selected"}} @endif  value="gujarati">Gujrati</option>
                         <option @if(app('request')->input('language') == 'hindi'){{"selected"}} @endif  value="hindi">Hindi </option>
                     </select>
-                    <select class="form-select sa-form-font border-radius-5px mb-3" id="gender" name="gender">
+                    <!-- <select class="form-select sa-form-font border-radius-5px mb-3" id="gender" name="gender">
                         <option value="">Select Gender</option>
                         <option @if(app('request')->input('gender') == 'm'){{"selected"}} @endif  value="m">Male </option>
                         <option @if(app('request')->input('gender') == 'f'){{"selected"}} @endif  value="f">Female</option>
-                    </select>
+                    </select> -->
                     <select class="form-select sa-form-font border-radius-5px mb-3" id="rating" name="rating">
                         <option value="">Select Ratings</option>
                         <option value="5">5 ratings </option>
