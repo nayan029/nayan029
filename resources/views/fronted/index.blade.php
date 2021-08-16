@@ -204,7 +204,7 @@
 		<div class="row">
 			<div class="col-md-3 col-lg-3 col-6">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
-				<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
+					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
 						<p>Civil Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
@@ -856,13 +856,11 @@
 					</div>
 					<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
 					<div class="modal-footer">
-				<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-				<button type="submit" class="btn btn-primary">Submit</button>
-
-			</div>
+						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
 				</form>
 			</div>
-			
 		</div>
 	</div>
 </div>

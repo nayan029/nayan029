@@ -180,7 +180,7 @@
                                     <span></span>
                                  </div> -->
                                     </div>
-                                    <div class="col-lg-6 col-md-12 sa-pb">
+                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">Location </label><span style="color: red;"> *</span>
                                         <select name="location" id="location" class="form-control sa-form-font half-border-radius">
                                             <option value="">Select Location</option>
@@ -188,9 +188,8 @@
                                             <option value="{{$data->name}}">{{ucfirst($data->name)}}</option>
                                             @endforeach
                                         </select>
-                                        <!-- <input name="location" type="text" class="form-control sa-form-font half-border-radius" id="location" placeholder="" maxlength="13"> -->
                                         <span id="location_error" style="color: red;"></span>
-                                    </div>
+                                    </div> -->
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
                                         <!-- <input class="form-check-input" name="language[]" type="checkbox" value="" id=""> -->
@@ -574,7 +573,7 @@
         var fathername = $('#fathername').val();
         var image = $('#profileimage').val();
         var experience = $('#experience').val();
-        var gender = $('#gender').val();
+        // var gender = $('#gender').val();
 
         var frollno = $('#frollno').val();
         var fyear = $('#fyear').val();
@@ -588,7 +587,7 @@
         // var trollno = $('#trollno').val();
         // var tyear = $('#tyear').val();
         // var tinsti = $('#tinsti').val();
-        var location = $('#location').val();
+        // var location = $('#location').val();
 
 
         var nationality = $('#nationality').val();
@@ -603,11 +602,11 @@
         var f = 0;
 
         $('#name_error').html("");
-        $('#location_error').html();
+        // $('#location_error').html();
         $('#dob_error').html("");
         $('#fathername_error').html("");
         $('#experience_error').html("");
-        $('#gender_error').html("");
+        // $('#gender_error').html("");
 
 
         $('#frollno_error').html("");
@@ -666,14 +665,14 @@
                 $('#name').focus();
             }
         }
-        if (location.trim() == '') {
-            $('#location_error').html("Please enter location");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#location').focus();
-            }
-        }
+        // if (location.trim() == '') {
+        //     $('#location_error').html("Please enter location");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#location').focus();
+        //     }
+        // }
 
         if (dob.trim() == '') {
             $('#dob_error').html("Please enter Date Of Birth");
@@ -817,14 +816,14 @@
                 $('#experience').focus();
             }
         }
-        if (gender.trim() == '') {
-            $('#gender_error').html("Please select gender");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#gender').focus();
-            }
-        }
+        // if (gender.trim() == '') {
+        //     $('#gender_error').html("Please select gender");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#gender').focus();
+        //     }
+        // }
         // var number = /([0-9])/;
         // var alphabets = /([a-zA-Z])/;
         // var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;

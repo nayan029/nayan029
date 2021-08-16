@@ -5,12 +5,12 @@
             <div class="col-md-3">
                 <h5 class="mb-3">SEARCH </h5>
                 <form method="GET">
-                    <select class="form-select sa-form-font border-radius-5px mb-3" id="city" name="city">
+                    <!-- <select class="form-select sa-form-font border-radius-5px mb-3" id="city" name="city">
                         <option value="">Select city</option>
                         @foreach($city as $data)
                         <option @if(app('request')->input('city') == $data->name){{"selected"}} @endif value="{{$data->name}}">{{ucfirst($data->name)}} </option>
                         @endforeach
-                    </select>
+                    </select> -->
                     <select class="form-select sa-form-font border-radius-5px mb-3" id="category" name="category">
                         <option value="">Select Category</option>
                         @foreach($category as $data)

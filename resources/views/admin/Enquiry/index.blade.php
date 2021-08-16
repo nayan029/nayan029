@@ -98,13 +98,14 @@
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->mobile}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
-                                        <td>@if(isset($data->status))
+                                        <td><span title="{{$data->feedback}}">@if(isset($data->status))
                                             @if($data->status=='1'){{"Call Recived"}}
                                             @endif
                                             @if($data->status=='2'){{"Call Not Recived"}}
                                             @endif
                                             @else{{"N/A"}}
                                             @endif
+                                </span>
                                         </td>
                                        
                                         <td data-order="<?= strtotime($data->created_at); ?>">
