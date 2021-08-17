@@ -120,7 +120,7 @@
               <span>What are others saying?</span>
             </h5>
           </div>
-          <p>“I got clear answers to my legal problem from top lawyers within a few minutes of posting a question at LawRato. It works like magic"</p>
+          <p>“I got clear answers to my legal problem from top lawyers within a few minutes of posting a question at . It works like magic"</p>
           <div class="ml-auto">
             <h6 class="font-weight-bold">- Anuradha S</h6>
           </div>
@@ -156,7 +156,7 @@
         </div>
         <div class="mb-4 sr-l-space">
           <h6 class="mt-3 sa-color2">When can I expect a reply to my question?</h6>
-          <p>Lawyers on LawRato have different and unique expertise. We work to serve your question to the right lawyer for a quick and useful response. You can expect to get a response in 24 working hours after posting your question. Lawyers on LawRato are active and are passionate about helping you solve your legal problems, meaning you won’t have to wait very long to get answers.</p>
+          <p>Lawyers on  have different and unique expertise. We work to serve your question to the right lawyer for a quick and useful response. You can expect to get a response in 24 working hours after posting your question. Lawyers on  are active and are passionate about helping you solve your legal problems, meaning you won’t have to wait very long to get answers.</p>
         </div>
         <div class="mb-4 sr-l-space">
           <h6 class="mt-3 sa-color2">How can I find if my question was answered?</h6>
@@ -170,7 +170,7 @@
     <div class="row mb-5">
       <div class="col-md-12">
         <div>
-          <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+          <h2 class="sr-t">50,000 People Choose  Every Day</h2>
         </div>
         <div class="row mt-5 sr-c ">
           <div class="col-md-4 text-center">
@@ -185,14 +185,14 @@
             <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
             <p>Post your question for free and get response from</p>
             <p>experienced lawyers within 48 hours</p>
-            <a href="<?php echo URL::to('/') ?>/free-legal-advice" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
+            <a href="{{URL::to('/')}}/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
           </div>
           <div class="col-md-4 text-center">
 
             <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
             <p>Contact and get legal assistance from our lawyer</p>
             <p> network for your specific matter</p>
-            <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</button>
+            <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
 
 
           </div>

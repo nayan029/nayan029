@@ -382,7 +382,7 @@
                 <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
                     <p>Post your question for free and get response from</p>
                     <p>experienced lawyers within 48 hours</p>
-                    <a href="<?php echo URL::to('/') ?>/free-legal-advice" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
+                    <a href="{{URL::to('/')}}/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
              </div>
              <div class="col-md-4 text-center">
 

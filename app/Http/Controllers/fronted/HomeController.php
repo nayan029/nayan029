@@ -7,6 +7,7 @@ use App\Models\admin\adviceCategory;
 use App\Models\admin\adviceQuerys;
 use App\Models\admin\blogs;
 use App\Models\admin\Category;
+use App\Models\admin\court;
 use App\Models\admin\freeQuestions;
 use App\Models\admin\guides;
 use App\Models\admin\lawyerenrollmentcatgeory;
@@ -35,6 +36,7 @@ class HomeController extends Controller
     {
         $this->data['title'] = " ";
         $this->data['city'] = location::getAllRecord();
+        $this->data['court'] = court::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
 
@@ -369,8 +371,8 @@ class HomeController extends Controller
     }
     public function advocateProfile($id)
     {
-        $auth = Auth::user();
-        $this->data['user_login'] = $auth;
+        // $auth = Auth::user();
+        // $this->data['user_login'] = $auth;
         $this->data['title'] = "Advocate Profile";
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
@@ -384,10 +386,11 @@ class HomeController extends Controller
         // return $request->all();
         $name = $request->name;
         $city = $request->city;
+        $court = $request->court;
         $category = $request->category;
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
-        $this->data['user_data'] = User::getRecordByName($name, $city,$category);
+        $this->data['user_data'] = User::getRecordByName($name, $city,$category,$court);
         return view('fronted.findLawyer', $this->data);
     }
     public function termsOfUse()

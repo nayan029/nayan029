@@ -7,6 +7,7 @@ use App\Models\admin\adviceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\admin\contactInquiry;
+use App\Models\admin\court;
 use App\Models\admin\freeQuestions;
 use App\Models\admin\location;
 use App\Models\admin\sitesetting;
@@ -26,8 +27,8 @@ class askFreeQuestionController extends Controller
     function __construct()
     {
         // $this->middleware('CheckEmailVerify');
-       
         $this->data['title'] = 'Ask Free Questions';
+        $this->data['court'] = court::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
     public function index(Request $request)

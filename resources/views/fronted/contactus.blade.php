@@ -50,8 +50,8 @@
                     <p class="sa-color">Support</p>
                     <p class="supp-details"><span><a href="mailto:">{{$getsettings->support_email}}</a></span><br><span><a href="tel:">{{$getsettings->support_phone}}</a></span></p>
                 </div> -->
-                <div class="text-center img-cen" style="margin-left: -50px; padding-bottom: 20px;">
-                    <img src="{{URL::to('/')}}/fronted/images/small-logo.png" alt="image" style="width:100px; height:100px; object-fit:contain;s">
+                <div class="text-center img-cen">
+                    <img src="{{URL::to('/')}}/fronted/images/contactus-img.png" alt="image" class="cont-img">
                 </div>
                 <!-- <div class="connect-details">
                     <p>Connect with us</p>

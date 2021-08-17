@@ -31,8 +31,8 @@
             <div class="sa-application">
                 <h5 class="sa-color2 mb-4">IPC Sections - Indian Penal Code 1860 Sections</h5>
                 <p>The Indian Penal Code (IPC) is the principal criminal code of India that defines crimes and provides punishments for almost all kinds of criminal and actionable wrongs. The IPC extends to the whole of India except the states of Jammu and Kashmir and is an extensive law that covers all the substantive aspects of criminal law from nuisance at public places to murder, rape, dacoity, etc.</p>
-    
-            
+
+
 
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
@@ -53,8 +53,8 @@
                                 <div class="panel-body"><?php echo $val->answer; ?>
                                 </div>
                             </div>
-                            <?php    } ?>
-                        </div>
+                        <?php    } ?>
+                    </div>
                     <!-- <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingTwo">
                             <h4 class="panel-title">
@@ -139,7 +139,7 @@
         <div class="row mb-5">
             <div class="col-md-12">
                 <div>
-                    <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+                    <h2 class="sr-t">50,000 People Choose Every Day</h2>
                 </div>
                 <div class="row mt-5 sr-c ">
                     <div class="col-md-4 text-center">
@@ -163,7 +163,7 @@
                         <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                         <p>Contact and get legal assistance from our lawyer</p>
                         <p> network for your specific matter</p>
-                        <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>
+                        <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</a>
 
                     </div>
                 </div>

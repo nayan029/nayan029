@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\fronted;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\court;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use Illuminate\Http\Request;
 use App\Models\admin\lawyerlanguages;
@@ -24,6 +25,7 @@ class lawyerProfileController extends Controller
     {
         $this->data['city'] = location::getAllRecord();
         $this->data['title'] = 'Lawyer Profile';
+        $this->data['court'] = court::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
     public function index(Request $request)

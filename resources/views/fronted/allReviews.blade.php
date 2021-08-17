@@ -10,44 +10,44 @@
                 @foreach($allreviews as $data)
                 <div class="row bottom-border">
                     <div class="col-md-12">
-                    @if($data->rating =='1')
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            @endif
-                            @if($data->rating =='2')
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
+                        @if($data->rating =='1')
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
+                        @endif
+                        @if($data->rating =='2')
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
 
-                            @endif
-                            @if($data->rating =='3')
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
+                        @endif
+                        @if($data->rating =='3')
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
 
-                            @endif
-                            @if($data->rating =='4')
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
+                        @endif
+                        @if($data->rating =='4')
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
 
-                            @endif
-                            @if($data->rating =='5')
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            @endif
+                        @endif
+                        @if($data->rating =='5')
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        @endif
                         <!-- <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 @endforeach
-                @else 
+                @else
                 {{"NO DATA FOUND"}}
                 @endif
             </div>
@@ -91,7 +91,7 @@
         <div class="row mb-5">
             <div class="col-md-12">
                 <div>
-                    <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+                    <h2 class="sr-t">50,000 People Choose Every Day</h2>
                 </div>
                 <div class="row mt-5 sr-c ">
                     <div class="col-md-4 text-center">
@@ -107,7 +107,7 @@
                         <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
                         <p>Post your question for free and get response from</p>
                         <p>experienced lawyers within 48 hours</p>
-                        <a href="{{URL::to('/')}}/free-legal-advice">
+                        <a href="{{URL::to('/')}}/ask-a-free-question">
                             <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Ask a Free Question</button></a>
                     </div>
                     <div class="col-md-4 text-center">
@@ -115,8 +115,7 @@
                         <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                         <p>Contact and get legal assistance from our lawyer</p>
                         <p> network for your specific matter</p>
-                        <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>
-
+                        <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
                     </div>
                 </div>
             </div>

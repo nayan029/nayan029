@@ -4,6 +4,7 @@ namespace App\Http\Controllers\fronted;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\adviceCategory;
+use App\Models\admin\court;
 use App\Models\admin\location;
 use App\Models\admin\sitesetting;
 use App\Models\User;
@@ -13,9 +14,9 @@ class findLawyer extends Controller
 {
     public function __construct()
     {
-
         $this->data['title'] = " ";
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
+        $this->data['court'] = court::getAllRecord();
     }
     public function index(Request $request)
     {

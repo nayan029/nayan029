@@ -33,4 +33,14 @@ class court extends Authenticatable
         $query = $query->paginate(10);
         return $query;
     }
+    public static function getAllRecord()
+    {
+        $query =  court::where('status', 1)->orderBy('name')->get();
+        return $query;
+    }
+    public static function getrecordbyid($id)
+    {
+        $query = court::where('id', $id)->orderBy('id', 'desc')->first();
+        return $query;
+    }
 }

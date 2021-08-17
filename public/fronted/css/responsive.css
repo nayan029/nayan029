@@ -1,695 +1,1403 @@
 @media screen and (max-width: 991px) {
+
 	.navbar-collapse {
+
 		position: absolute;
+
 		top: 81px;
+
 		left: 0;
+
 		right: 0;
+
 		background: #000;
+
 		padding: 20px 30px;
+
 		z-index: 999;
+
 	}
+
 	.navbar-expand-lg .navbar-nav .nav-link {
+
 		margin-left: 0;
+
 		padding: 8px 0;
+
 		border-bottom: 1px solid #1b1b1b;
+
 	}
+
 	.navbar-nav .nav-item:after {
+
 		display: none;
+
 	}
+
 	.navbar-expand-lg .navbar-nav .nav-link {
+
 	    line-height: normal;
+
 	}
+
 	.inner-menu {
+
 	    position: initial;
+
 	    width: 100%;
+
 	    padding: 15px;
+
 	}
+
 }
+
+
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+
 	.masonry {
+
 		-moz-column-count: 2;
+
 		-webkit-column-count: 2;
+
 		column-count: 2;
-	}
-	.footer-ul li a,
-	.footer-ul li a:hover {
-		font-size: 10px;
-	}
-	.footer-title {
-		font-size: 20px;
-	}
-	.footer-ul li {
-		margin-bottom: 10px;
-	}
-	.title h3 {
-		font-size: 28px;
-	}
-	.title h6 {
-		font-size: 20px;
-		max-width: 470px;
-	}
-	.after-text {
-		font-size: 170px;
-	}
-	.navbar-collapse {
-		top: 111px;
-	}
-	.filter-search {
-		margin-left: auto;
-		margin-right: 15px;
-	}
-	.pills-design .nav-item .nav-link {
-		font-size: 16px;
-	}
-	.your-time .inner .g10 {
-		width: 320px;
-	}
-	.your-time .inner .col2 h1 {
-		font-size: 34px;
-	}
-	.your-time .inner .col2 h4 {
-		font-size: 26px;
-	}
-	.fbox p {
-		font-size: 14px;
-	}
-	.fbox {
-		padding: 15px;
-	}
-	.fbox img {
-		height: 72px;
-	}
-	.team-box .main,
-	.team-box .text img {
-		height: 315px;
-	}
-	.team-box:hover .text {
-		height: 150px;
-		padding: 15px;
-	}
-	.team-box .text h5 {
-		font-size: 18px;
-	}
-	.team-box .text p {
-		font-size: 10px;
-	}
-	.find-the .col2 {
-		margin-top: 50px;
-	}
-	.find-the .col2 p {
-		font-size: 14px;
-		letter-spacing: 1px;
-		line-height: 22px;
-	}
-	.find-the .main img {
-		height: 490px;
-	}
-	.fix-img1,
-	.fix-img2,
-	.fix-img3 {
-		height: 130px;
-	}
-	.fix-img3 {
-		top: -73px;
-		right: -45px;
-	}
-	.we-are {
-		padding-top: 170px;
-	}
-	.sa-feel {
-		letter-spacing: 0em;
-		line-height: 23px;
-		padding-bottom: 15px !important;
-	}
-	.sa-details {
-		letter-spacing: 0.1em;
-	}
-	.sa-color {
-		color: #737373;
-		font-size: 13px;
-	}
-	.sa-contact-details .col1,
-	.sa-contact-details .sa-details {
-		padding: 30px;
-	}
-	.sa-contact-details .sa-details {
-		padding-right: 15px;
-	}
-	.sa-bottom:after {
-		left: -70px;
-		width: calc(100% + 140px);
-	}
-	.connect-details:after {
-		left: -70px;
-		width: calc(100% + 70px);
-	}
-	.sa-contact {
-		font-size: 24px;
-	}
-	.connect-details p {
-		margin-bottom: 0;
-	}
-	.sa-pills-design {
-		padding: 0;
-	}
-	.sa-pills-design .nav-item {
-		flex: auto;
-	}
-	.sa-label {
-		font-weight: 500;
-		font-size: 12px;
-		line-height: 30px;
-	}
-	.sa-attach {
-		font-size: 10px;
-	}
-	.sa-pb {
-		padding-bottom: 10px;
-	}
-	.sa-pr {
-		padding-right: 15px;
-	}
-	section {
-		padding: 60px 0;
-	}
-	.after-text {
-		font-size: 120px;
-	}
-	.award-winning .after-text {
-		top: -60px;
-	}
-	.award-winning {
-		padding-top: 150px;
-	}
-	.area-box-sm .blur,
-	.area-box-sm .blur2 {
-		height: 150px;
-	}
-	.area-box .text h5,
-	.area-box-sm h5 {
-		font-size: 20px;
-	}
-	.area-box-sm .text {
-		height: 60px;
-	}
-	.area-box .blur,
-	.area-box-sm.lg,
-	.area-box-sm.lg .blur,
-	.area-box-sm.lg .blur2 {
-		height: 315px;
-	}
-	.area-box .text p {
-		font-size: 14px;
-	}
-	.area-box .text {
-		padding: 30px;
-	}
-	.at-legal-buddy .text h4 {
-		font-size: 24px;
-	}
-	.at-legal-buddy .text p {
-		font-size: 16px;
-	}
-	.at-legal-buddy .col2 img {
-		height: 320px;
-	}
-	.figure-sec {
-		padding: 0px 0;
-	}
-	.figure-row h4 {
-		font-size: 32px;
-	}
-	.figure-row p {
-		font-size: 12px;
-	}
-	.our-key-values .col1 h6 {
-		font-size: 18px;
-		line-height: 30px;
-	}
-	.our-key-values .col1 {
-		min-height: 390px;
-		padding-top: 50px;
-	}
-	.why-legal-buddy {
-		padding-top: 100px;
-	}
-	.why-legal-buddy p {
-		font-size: 16px;
-	}
-	.why-legal-buddy .col1 {
-		padding-left: 50px;
-	}
-	.why-legal-buddy .col1 img {
-		box-shadow: -50px -50px #2a2a2a;
-		height: 350px;
-	}
-	.management {
-		padding-top: 50px;
-		padding-bottom: 30px;
-	}
-	.management .title {
-		margin-bottom: 60px;
-	}
-	.management .after-text {
-		top: -57px;
-	}
-	.signin-section .col2 {
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-	.signin-section .col1 h3 {
-		font-size: 30px;
-	}
-	.themis-figurine .themis {
-		object-fit: cover;
-		width: 50%;
-	}
-	.before-border:before {
-		width: calc(50% - 30px);
-		left: auto;
-		right: 15px;
-	}
-	.signin-section .col2 .top h4 {
-		font-size: 26px;
-	}
-	.signin-section .col2 .top h4 {
-		font-size: 22px;
-	}
-	.aimingto {
-		margin-top: 60px;
-	}
-	.fix-img1 {
-		top: -140px;
+
 	}
 
+	.footer-ul li a,
+
+	.footer-ul li a:hover {
+
+		font-size: 10px;
+
+	}
+
+	.footer-title {
+
+		font-size: 20px;
+
+	}
+
+	.footer-ul li {
+
+		margin-bottom: 10px;
+
+	}
+
+	.title h3 {
+
+		font-size: 28px;
+
+	}
+
+	.title h6 {
+
+		font-size: 20px;
+
+		max-width: 470px;
+
+	}
+
+	.after-text {
+
+		font-size: 170px;
+
+	}
+
+	.navbar-collapse {
+
+		top: 111px;
+
+	}
+
+	.filter-search {
+
+		margin-left: auto;
+
+		margin-right: 15px;
+
+	}
+
+	.pills-design .nav-item .nav-link {
+
+		font-size: 16px;
+
+	}
+
+	.your-time .inner .g10 {
+
+		width: 320px;
+
+	}
+
+	.your-time .inner .col2 h1 {
+
+		font-size: 34px;
+
+	}
+
+	.your-time .inner .col2 h4 {
+
+		font-size: 26px;
+
+	}
+
+	.fbox p {
+
+		font-size: 14px;
+
+	}
+
+	.fbox {
+
+		padding: 15px;
+
+	}
+
+	.fbox img {
+
+		height: 72px;
+
+	}
+
+	.team-box .main,
+
+	.team-box .text img {
+
+		height: 315px;
+
+	}
+
+	.team-box:hover .text {
+
+		height: 150px;
+
+		padding: 15px;
+
+	}
+
+	.team-box .text h5 {
+
+		font-size: 18px;
+
+	}
+
+	.team-box .text p {
+
+		font-size: 10px;
+
+	}
+
+	.find-the .col2 {
+
+		margin-top: 50px;
+
+	}
+
+	.find-the .col2 p {
+
+		font-size: 14px;
+
+		letter-spacing: 1px;
+
+		line-height: 22px;
+
+	}
+
+	.find-the .main img {
+
+		height: 490px;
+
+	}
+
+	.fix-img1,
+
+	.fix-img2,
+
+	.fix-img3 {
+
+		height: 130px;
+
+	}
+
+	.fix-img3 {
+
+		top: -73px;
+
+		right: -45px;
+
+	}
+
+	.we-are {
+
+		padding-top: 170px;
+
+	}
+
+	.sa-feel {
+
+		letter-spacing: 0em;
+
+		line-height: 23px;
+
+		padding-bottom: 15px !important;
+
+	}
+
+	.sa-details {
+
+		letter-spacing: 0.1em;
+
+	}
+
+	.sa-color {
+
+		color: #737373;
+
+		font-size: 13px;
+
+	}
+
+	.sa-contact-details .col1,
+
+	.sa-contact-details .sa-details {
+
+		padding: 30px;
+
+	}
+
+	.sa-contact-details .sa-details {
+
+		padding-right: 15px;
+
+	}
+
+	.sa-bottom:after {
+
+		left: -70px;
+
+		width: calc(100% + 140px);
+
+	}
+
+	.connect-details:after {
+
+		left: -70px;
+
+		width: calc(100% + 70px);
+
+	}
+
+	.sa-contact {
+
+		font-size: 24px;
+
+	}
+
+	.connect-details p {
+
+		margin-bottom: 0;
+
+	}
+
+	.sa-pills-design {
+
+		padding: 0;
+
+	}
+
+	.sa-pills-design .nav-item {
+
+		flex: auto;
+
+	}
+
+	.sa-label {
+
+		font-weight: 500;
+
+		font-size: 12px;
+
+		line-height: 30px;
+
+	}
+
+	.sa-attach {
+
+		font-size: 10px;
+
+	}
+
+	.sa-pb {
+
+		padding-bottom: 10px;
+
+	}
+
+	.sa-pr {
+
+		padding-right: 15px;
+
+	}
+
+	section {
+
+		padding: 60px 0;
+
+	}
+
+	.after-text {
+
+		font-size: 120px;
+
+	}
+
+	.award-winning .after-text {
+
+		top: -60px;
+
+	}
+
+	.award-winning {
+
+		padding-top: 150px;
+
+	}
+
+	.area-box-sm .blur,
+
+	.area-box-sm .blur2 {
+
+		height: 150px;
+
+	}
+
+	.area-box .text h5,
+
+	.area-box-sm h5 {
+
+		font-size: 20px;
+
+	}
+
+	.area-box-sm .text {
+
+		height: 60px;
+
+	}
+
+	.area-box .blur,
+
+	.area-box-sm.lg,
+
+	.area-box-sm.lg .blur,
+
+	.area-box-sm.lg .blur2 {
+
+		height: 315px;
+
+	}
+
+	.area-box .text p {
+
+		font-size: 14px;
+
+	}
+
+	.area-box .text {
+
+		padding: 30px;
+
+	}
+
+	.at-legal-buddy .text h4 {
+
+		font-size: 24px;
+
+	}
+
+	.at-legal-buddy .text p {
+
+		font-size: 16px;
+
+	}
+
+	.at-legal-buddy .col2 img {
+
+		height: 320px;
+
+	}
+
+	.figure-sec {
+
+		padding: 0px 0;
+
+	}
+
+	.figure-row h4 {
+
+		font-size: 32px;
+
+	}
+
+	.figure-row p {
+
+		font-size: 12px;
+
+	}
+
+	.our-key-values .col1 h6 {
+
+		font-size: 18px;
+
+		line-height: 30px;
+
+	}
+
+	.our-key-values .col1 {
+
+		min-height: 390px;
+
+		padding-top: 50px;
+
+	}
+
+	.why-legal-buddy {
+
+		padding-top: 100px;
+
+	}
+
+	.why-legal-buddy p {
+
+		font-size: 16px;
+
+	}
+
+	.why-legal-buddy .col1 {
+
+		padding-left: 50px;
+
+	}
+
+	.why-legal-buddy .col1 img {
+
+		box-shadow: -50px -50px #2a2a2a;
+
+		height: 350px;
+
+	}
+
+	.management {
+
+		padding-top: 50px;
+
+		padding-bottom: 30px;
+
+	}
+
+	.management .title {
+
+		margin-bottom: 60px;
+
+	}
+
+	.management .after-text {
+
+		top: -57px;
+
+	}
+
+	.signin-section .col2 {
+
+		padding-left: 15px;
+
+		padding-right: 15px;
+
+	}
+
+	.signin-section .col1 h3 {
+
+		font-size: 30px;
+
+	}
+
+	.themis-figurine .themis {
+
+		object-fit: cover;
+
+		width: 50%;
+
+	}
+
+	.before-border:before {
+
+		width: calc(50% - 30px);
+
+		left: auto;
+
+		right: 15px;
+
+	}
+
+	.signin-section .col2 .top h4 {
+
+		font-size: 26px;
+
+	}
+
+	.signin-section .col2 .top h4 {
+
+		font-size: 22px;
+
+	}
+
+	.aimingto {
+
+		margin-top: 60px;
+
+	}
+
+	.fix-img1 {
+
+		top: -140px;
+
+	}
+	.cont-img{
+    height: auto;
+    object-fit: contain;
+ }
+ .img-cen{
+    margin-left: 0;
+ }
+
+
+
 }
+
+
 
 @media (max-width: 767px) {
+
 	.navbar-brand img {
+
 		height: 50px;
+
 	}
+	.sr-conbtn{
+    position: absolute;
+        bottom: 4px;
+    
+ }
+
+
 	.filter-search li img {
+
 		height: 20px;
+
 	}
+
 	.filter-search li {
+
 		margin-left: 15px;
+
 	}
+
 	header .navbar {
+
 		padding: 10px 0;
+
 	}
+
 	.sa-contact-details .col1 {
+
 		padding: 30px 50px 0;
+
 	}
+
 	.sa-feel br {
+
 		display: none;
+
 	}
+
 	.sa-feel {
+
 		padding-bottom: 15px !important;
+
 	}
+
 	.sa-bottom {
+
 		margin-top: 50px;
+
 	}
+
 	.sa-bottom:after,
+
 	.connect-details:after {
+
 		left: -35px;
+
 		width: calc(100% + 70px);
+
 	}
+
 	.sa-social {
+
 		justify-content: center;
+
 		padding-top: 30px;
+
 	}
+
 	.sa-details {
+
 		padding: 30px 50px;
+
 	}
+
 	.sa-pr {
+
 		padding-right: 13px;
+
 	}
+
 	.sa-pb {
+
 		padding-bottom: 10px;
+
 	}
+
 	.sa-personal {
+
 		padding-left: 0px;
+
 	}
+
 	section {
+
 		padding: 50px 0;
+
 	}
+
 	.aiming-item .col1 .text {
+
 		margin-top: 0;
+
 	}
+
 	.aiming-item .col1 h3,
+
 	.gradient-title {
+
 		font-size: 24px;
+
 		line-height: 40px;
+
 	}
+
 	body {
+
 		font-size: 14px;
+
 	}
+
 	.profile-dropdown .dropdown-menu {
+
 		right: 0;
+
 		left: auto;
+
 		margin-top: 10px;
+
 	}
+
 	.after-text {
+
 		display: none;
+
 	}
+
 	.aiming-item .row .col2 {
+
 		margin-top: 30px;
+
 	}
+
 	.aiming-item .col2 .text {
+
 		margin-top: 20px;
+
 		max-width: 100%;
+
 	}
+
 	.aiming-item .row .col2 {
+
 		background-size: 60%;
+
 	}
+
 	.aiming-item .col2 .text h6 {
+
 		font-size: 18px;
+
 		line-height: 28px;
+
 		max-width: 190px;
+
 	}
+
 	.aiming-owl .owl-dots {
+
 		text-align: center;
+
 		padding-right: 0;
+
 		margin-top: 30px;
+
 	}
+
 	.title h3 {
+
 		font-size: 26px;
+
 	}
+
 	.title {
+
 		margin-bottom: 30px;
+
 	}
+
 	.pills-design .nav-item {
+
 		flex: auto;
+
 	}
+
 	.pills-design .nav-item .nav-link {
+
 		font-size: 14px;
+
 		padding: 10px 0;
+
 	}
+
 	.award-winning {
+
 		padding-top: 60px;
+
 		padding-bottom: 30px;
+
 	}
+
 	.award-winning .title {
+
 		margin-bottom: 30px;
+
 	}
+
 	.award-winning .title h3 {
+
 		margin-right: 30px;
+
 	}
+
 	.entypo-chat {
+
 		padding: 10px 20px;
+
 		font-size: 10px;
+
 	}
+
 	.entypo-chat img {
+
 		height: 20px;
+
 	}
+
 	.entypo-chat span {
+
 		margin-left: 10px;
+
 	}
+
 	.area-box .text h5,
+
 	.area-box-sm h5 {
+
 		font-size: 18px;
+
 	}
+
 	.area-box .text {
+
 		padding: 30px;
+
 	}
+
 	.area-box .text p {
+
 		font-size: 16px;
+
 	}
+
 	.area-box .blur,
+
 	.area-box-sm.lg,
+
 	.area-box-sm.lg .blur,
+
 	.area-box-sm.lg .blur2 {
+
 		height: 300px;
+
 	}
+
 	.area-box-sm .blur,
+
 	.area-box-sm .blur2 {
+
 		height: 150px;
+
 	}
+
 	.area-box-sm .text {
+
 		height: 50px;
+
 	}
+
 	.we-are {
+
 		padding-top: 50px;
+
 	}
+
 	.we-are .title:after {
+
 		left: calc(74%);
+
 		height: 70px;
+
 		width: 700px;
+
 		background-size: 70px;
+
 	}
+
 	.title h6 {
+
 		font-size: 20px;
+
 		line-height: 28px;
+
 	}
+
 	.masonry {
+
 		padding-top: 30px;
+
 		-moz-column-count: 1;
+
 		-webkit-column-count: 1;
+
 		column-count: 1;
+
 	}
+
 	.mitem {
+
 		padding: 20px 30px;
+
 	}
+
 	.mitem p {
+
 		margin-bottom: 20px;
+
 	}
+
 	.mitem .bottom img {
+
 		height: 40px;
+
 		width: 40px;
+
 		margin-right: 10px;
+
 		flex: 0 0 40px;
+
 	}
+
 	.mitem .bottom h5 {
+
 		font-size: 14px;
+
 	}
+
 	.mitem .bottom h6 {
+
 		font-size: 8px;
+
 	}
+
 	.your-time .inner .col2 h1 {
+
 		font-size: 24px;
+
 	}
+
 	.your-time .inner .col2 h4 {
+
 		font-size: 22px;
+
 	}
+
 	.your-time .form {
+
 		padding: 0 20px;
+
 	}
+
 	.your-time .inner .g10 {
+
 		display: none;
+
 	}
+
 	.your-time .inner {
+
 		padding: 30px 0;
+
 	}
+
 	.footer-title {
+
 		margin-bottom: 30px;
+
 		font-size: 18px;
+
 	}
+
 	.footer-ul li {
+
 		margin-bottom: 8px;
+
 	}
+
 	.footer-ul li a,
+
 	.footer-ul li a:hover {
+
 		font-size: 12px;
+
 	}
+
 	footer {
+
 		background-color: #000;
+
 		padding: 50px 0 40px;
+
 	}
+
 	.at-legal-buddy .text h4 {
+
 		font-size: 22px;
+
 		margin-bottom: 20px;
+
 	}
+
 	.at-legal-buddy .text p {
+
 		font-size: 14px;
+
 	}
+
 	.at-legal-buddy .col2 img {
+
 		height: 342px;
+
 	}
+
 	.at-legal-buddy {
+
 		padding: 50px 0;
+
 	}
+
 	.figure-sec {
+
 		padding: 0 30px;
+
 	}
+
 	.figure-row {
+
 		padding: 0;
+
 	}
+
 	.figure-row>div {
+
 		border-top: 1px solid var(--primary-color);
+
 		border-left: 0;
+
 	}
+
 	.figure-row>div:first-child {
+
 		border-top: 0;
+
 		border-left: 0;
+
 	}
+
 	.our-key-values .col1 h6 {
+
 		font-size: 20px;
+
 		line-height: 30px;
+
 	}
+
 	.our-key-values .container {
+
 		background-image: none !important;
+
 	}
+
 	.our-key-values .col1 {
+
 		background-size: 60%;
+
 		min-height: 380px;
+
 		padding-top: 40px;
+
 	}
+
 	.why-legal-buddy {
+
 		padding-top: 45px;
+
 	}
+
 	.why-legal-buddy .col1 {
+
 		padding-left: 75px;
+
 		margin-bottom: 40px;
+
 	}
+
 	.why-legal-buddy .col1 img {
+
 		box-shadow: -60px -60px #2a2a2a;
+
 		height: 340px;
+
 	}
+
 	.why-legal-buddy p {
+
 		font-size: 18px;
+
 	}
+
 	.management {
+
 		padding-top: 0;
+
 	}
+
 	.management .title {
+
 		margin-bottom: 40px;
+
 	}
+
 	.sa-pills-design {
+
 		padding: 0;
+
 	}
+
 	.sa-pills-design .nav-item {
+
 		flex: auto;
+
 	}
+
 	.themis-figurine-stands {
+
 		width: 100%;
+
 	}
+
 	.signin-section .col1 h3 {
+
 		font-size: 28px;
+
 	}
+
 	.signin-section .col2 .top .inner .big-logo {
+
 		margin-bottom: 30px;
+
 		max-width: 300px;
+
 	}
+
 	.signin-section .col2 .top .inner {
+
 		padding-left: 0;
+
 		padding-right: 0;
+
 	}
+
 	.themis-figurine .themis {
+
 		height: 100vh;
+
 		object-fit: cover;
+
 	}
+
 	.before-border {
+
 		position: relative;
+
 	}
+
 	.signin-section .col2 {
+
 		padding-left: 15px;
+
 		padding-right: 15px;
+
 	}
+
 	.before-border:before {
+
 		width: calc(100% - 30px);
+
 		bottom: 64px;
+
 		left: 15px;
+
 		right: 0;
+
 	}
+
 	.aimingto {
+
 		margin-top: 60px;
+
 	}
+
 	.aimingto .col2 img {
+
 		left: 0;
+
 		margin-top: 30px;
+
 	}
+
 	.fbox {
+
 		padding: 15px;
+
 		margin-bottom: 30px;
+
 	}
+
 	.fbox img {
+
 		height: 70px;
+
 	}
+
 	.fourbox {
+
 		padding-left: 15px;
+
 		padding-right: 15px;
+
 		padding-bottom: 50px;
+
 	}
+
 	.fix-img1,
+
 	.fix-img2,
+
 	.fix-img3 {
+
 		display: none;
+
 	}
+
 	.management .entypo-chat {
+
 		right: -39px;
+
 		top: 0;
+
 	}
+
 	.management {
+
 		padding-bottom: 30px;
+
 	}
+
 	.find-the .main:before,
+
 	.find-the .main:after,
+
 	.find-the .col1:after {
+
 		display: none;
+
 	}
+
 	.find-the {
+
 		padding-top: 50px;
+
 		padding-bottom: 0;
+
 	}
+
 	.find-the .main img {
+
 		height: 320px;
+
 	}
+
 	.find-the .col2 {
+
 		padding-left: 15px;
+
 		margin-top: 50px;
+
 	}
+
 	.find-the .box {
+
 		position: initial;
+
 		height: auto;
+
 		padding: 40px;
+
 		width: 230px;
+
 		margin: auto;
+
 		margin-top: 50px;
+
 	}
+
 	.find-the .col2 p {
+
 		font-size: 16px;
+
 	}
+	
+
 }
+
+
 
 @media screen and (max-width: 575px) {
+
 	.filter-div {
+
 		position: fixed;
+
 		right: 15px;
+
 		top: 71px;
+
 		width: 250px;
+
 	}
+
 }
 
+
+
 @media screen and (max-width: 374px) {
+
 	.navbar-light .navbar-toggler {
+
 		margin-left: 0;
+
 		font-size: 14px;
+
 		padding: 6px 8px;
+
 	}
+
 	.filter-search li img {
+
 		height: 16px;
+
 		width: 16px;
+
 	}
+
 	.filter-search li {
+
 		margin-left: 10px;
+
 	}
+
 	.navbar-brand img {
+
 		height: 32px;
+
 	}
+
 	.profile-dropdown .btn {
+
 		height: 20px;
+
 		width: 20px;
+
 		display: flex;
+
 	}
+
 	.navbar-collapse {
+
 		top: 64px;
+
 	}
+
 	.fourbox {
+
 		padding-left: 0px;
+
 		padding-right: 0px;
+
 	}
+
 	.fbox p {
+
 		font-size: 12px;
+
 	}
+
 }

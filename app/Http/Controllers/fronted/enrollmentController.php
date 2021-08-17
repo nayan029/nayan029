@@ -32,6 +32,7 @@ class enrollmentController extends Controller
 
         $input['ldob'] = date('Y-m-d', strtotime($request->ldob));
         $input['location'] = "Delhi";
+        // $input['court'] = $request->court;
         // $input['experience'] = $request->experience;
         // $input['finstitue'] = $request->finstitue;
         // $input['sinstitue'] = $request->sinstitue;

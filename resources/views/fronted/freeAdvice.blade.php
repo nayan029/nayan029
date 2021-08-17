@@ -226,7 +226,7 @@
               <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                <p>Contact and get legal assistance from our lawyer</p>
                <p> network for your specific matter</p>
-               <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>
+               <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</a>
                
              </div>
            </div>

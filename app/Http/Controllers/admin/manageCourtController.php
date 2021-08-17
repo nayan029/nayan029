@@ -47,8 +47,8 @@ class manageCourtController extends Controller
         } else {
 
             $auth = Auth::user();
-            $input['status'] = 1;
             $input = $request->all();
+            $input['status'] = 1;
             $input['name'] = $request->name;
             $input['created_at'] = date('Y-m-d H:i:s');
             $input['created_by'] = $auth->id;
@@ -69,49 +69,41 @@ class manageCourtController extends Controller
     {
         $auth = Auth::user();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
-        $this->data['advicecategory'] = adviceCategory::getquestioncategorylist();
-        $this->data['data'] = adviceQuerys::getrecordbyid($id);
+        $this->data['data'] = court::getrecordbyid($id);
         return view('admin.court_managment.edit', $this->data);
     }
     public function update(Request $request, $id)
     {
         // return $request->all();
         $validator = Validator::make($request->all(), [
-            'category_id' => 'required',
-            'question' => 'required',
-            'details' => 'required',
+            'name' => 'required',
+
         ]);
         if ($validator->fails()) {
-            return redirect("/admin/adviceQuerys")
+            return redirect("/admin/court-managment")
                 ->withErrors($validator, 'query_error')
                 ->withInput();
         } else {
 
             $auth = Auth::user();
             $input = $request->all();
-            $input['category_id'] = $request->category_id;
-            $input['question_details'] = $request->details;
+
+            $input['name'] = $request->name;
+            $input['status'] = 1;
             $input['updated_by'] = $auth->id;
             $input['updated_at'] = date('Y-m-d H:i:s');
 
-            $query = adviceQuerys::find($id);
+            $query = court::find($id);
             $query->update($input);
 
             if ($query) {
-                Session::flash('success', 'Advice Querys updated successfully.');
-                return redirect('admin/adviceQuerys');
+                Session::flash('success', 'Court updated successfully.');
+                return redirect('admin/court-managment');
             } else {
                 Session::flash('error', 'Sorry, something went wrong. Please try again');
                 return redirect()->back();
             }
         }
-    }
-    public function addQuerys(Request $request)
-    {
-        $auth = Auth::user();
-        $this->data['userdata'] = User::getrecordbyid($auth->id);
-        $this->data['advicecategory'] = adviceCategory::getquestioncategorylist();
-        return view('admin.adviceQuerys.add', $this->data);
     }
     public function destroy(Request $request, $id)
     {

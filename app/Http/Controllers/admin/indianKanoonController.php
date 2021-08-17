@@ -7,6 +7,7 @@ use App\Models\admin\adviceCategory;
 use App\Models\admin\adviceQuerys;
 use App\Models\admin\blogs;
 use App\Models\admin\Category;
+use App\Models\admin\court;
 use App\Models\admin\location;
 use App\Models\admin\otherResource;
 use App\Models\admin\sitesetting;
@@ -24,6 +25,7 @@ class indianKanoonController extends Controller
     {
         $this->data['title'] = "Other Resources";
         $this->data['city'] = location::getAllRecord();
+        $this->data['court'] = court::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
     public function ips(Request $request){

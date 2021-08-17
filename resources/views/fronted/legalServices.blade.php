@@ -5,39 +5,40 @@
       <h5 class="sa-color2 mb-2">Family / Matrimonial Legal Services</h5>
       <p class=" mb-3">Solve your divorce / family related issues with a local, experienced lawyer for a fixed fee</p>
     </div>
-    
-   
-    <div class="row mt-30">
-    <?php foreach ($familydata as $data) {
-    ?>
-      <div class="col-md-6">
-        <div class="mitem3">
-          <div class="sr-card">
-            <a href="<?php echo URL::to('/'); ?>/legal-services/<?php echo strtolower($data->slug);?>">
-              <h5 class="sr-title-left d-flex align-items-center">
-              {{$data->service_name}}</h5>
-            </a>
-          </div>
-          <div class="col-md-12 pl-0 pb-3">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="pl-4"> 4.8 |371+ ratings</span>
-          </div>
 
-          <div class="d-flex justify-content-end">
-            <a href="<?php echo URL::to('/'); ?>/legal-services/<?php echo strtolower($data->slug);?>" class="btn btn-outline-primary">Learn More</a>
+
+    <div class="row mt-30">
+      <?php foreach ($familydata as $data) {
+      ?>
+        <div class="col-md-6">
+          <div class="mitem3">
+            <div class="sr-card">
+              <a href="<?php echo URL::to('/'); ?>/legal-services/<?php echo strtolower($data->slug); ?>">
+                <h5 class="sr-title-left d-flex align-items-center">
+                  {{$data->service_name}}
+                </h5>
+              </a>
+            </div>
+            <div class="col-md-12 pl-0 pb-3">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="pl-4"> 4.8 |371+ ratings</span>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <a href="<?php echo URL::to('/'); ?>/legal-services/<?php echo strtolower($data->slug); ?>" class="btn btn-outline-primary">Learn More</a>
+            </div>
+
           </div>
 
         </div>
 
-      </div>
 
-     
       <?php
-    } ?>
+      } ?>
     </div>
 
 
@@ -87,21 +88,21 @@
 
             <p>Get the legal help & representation from over 10000 </p>
             <p>lawyers across 700 cities in India</p>
-            <a href="talk_to_a_lawyer.html" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</a>
+            <a href="{{URL::to('/')}}/free-legal-advice-phone" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</a>
 
           </div>
           <div class="col-md-4 text-center">
             <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
             <p>Post your question for free and get response from</p>
             <p>experienced lawyers within 48 hours</p>
-            <a href="ask_question.html" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
+            <a href="{{URL::to('/')}}/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
           </div>
           <div class="col-md-4 text-center">
 
             <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
             <p>Contact and get legal assistance from our lawyer</p>
             <p> network for your specific matter</p>
-            <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</button>
+            <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
 
           </div>
         </div>

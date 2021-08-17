@@ -5720,3 +5720,18 @@ ul.navbar-nav .nav-link{
  .btn.btn-enquiry:hover {
      right: 0;
  }
+
+ .sr-rel{
+    position: relative;
+ }
+ .sr-conbtn{
+    position: absolute;
+        bottom: 26px;
+    right: 244px;
+ }
+ .cont-img{
+     object-fit: contain;
+ }
+ .img-cen{
+    padding-bottom: 35px;
+ }

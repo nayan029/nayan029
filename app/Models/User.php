@@ -48,6 +48,7 @@ class User extends Authenticatable
         'about',
         'experience',
         'gender',
+        'court',
         'created_at',
         'created_by',
         'updated_at',
@@ -204,7 +205,7 @@ class User extends Authenticatable
 
         return $query;
     }
-    public static function getRecordByName($name, $city, $category)
+    public static function getRecordByName($name, $city, $category,$court)
     {
         // return $category;
         $TEMP = "users.status in (1)";
@@ -217,6 +218,9 @@ class User extends Authenticatable
         }
         if ($category) {
             $TEMP .= " AND lawyer_enrollment_category.categoryid = '$category' ";
+        }
+        if ($court) {
+            $TEMP .= "AND users.court like '$court'";
         }
         // return $name;
         $query = User::select('users.*')

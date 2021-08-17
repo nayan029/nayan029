@@ -147,7 +147,7 @@
                 <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
                     <p>Post your question for free and get response from</p>
                     <p>experienced lawyers within 48 hours</p>
-                     <a href="<?php echo URL::to('/') ?>/free-legal-advice">
+                     <a href="{{URL::to('/')}}/ask-a-free-question">
                     <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Ask a Free Question</button></a>
              </div>
              <div class="col-md-4 text-center">
@@ -155,7 +155,7 @@
               <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                <p>Contact and get legal assistance from our lawyer</p>
                <p> network for your specific matter</p>
-               <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>
+               <a href="{{URL::to('/')}}/legal-enquiry" type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>
                
              </div>
            </div>

@@ -191,11 +191,21 @@
                                         <span id="location_error" style="color: red;"></span>
                                     </div> -->
                                     <div class="col-lg-6 col-md-12 sa-pb">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Court </label><span style="color: red;"> *</span>
+                                        <select name="court" id="court" class="form-control sa-form-font half-border-radius">
+                                            <option value="">Select Location</option>
+                                            @foreach ($court as $data)
+                                            <option value="{{$data->name}}">{{ucfirst($data->name)}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span id="court_error" style="color: red;"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
                                         <!-- <input class="form-check-input" name="language[]" type="checkbox" value="" id=""> -->
 
                                         <div class="sa-lang-check">
-                                              <div class="pm-check ">
+                                            <div class="pm-check ">
                                                 <input class="form-check-input language" name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="one">
@@ -508,11 +518,11 @@
 </div>
 </div>
 
-@include('fronted/include/footer')  
+@include('fronted/include/footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $("#dob").datepicker({
-         autoUpdateInput: false,
+        autoUpdateInput: false,
         autoclose: true,
         todayHighlight: true,
         endDate: new Date(),
@@ -587,6 +597,7 @@
         // var tyear = $('#tyear').val();
         // var tinsti = $('#tinsti').val();
         // var location = $('#location').val();
+        var court = $('#court').val();
 
 
         // var nationality = $('#nationality').val();
@@ -602,6 +613,7 @@
 
         $('#name_error').html("");
         // $('#location_error').html();
+        $('#court_error').html();
         $('#dob_error').html("");
         $('#fathername_error').html("");
         $('#experience_error').html("");
@@ -672,6 +684,15 @@
         //         $('#location').focus();
         //     }
         // }
+
+        if (court.trim() == '') {
+            $('#court_error').html("Please select court");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#court').focus();
+            }
+        }
 
         if (dob.trim() == '') {
             $('#dob_error').html("Please enter Date Of Birth");

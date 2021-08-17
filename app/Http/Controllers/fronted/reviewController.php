@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\admin\contactInquiry;
+use App\Models\admin\court;
 use App\Models\admin\location;
 use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
@@ -24,6 +25,7 @@ class reviewController extends Controller
     {
         $this->data['title'] = 'Review Rating';
         $this->data['allreviews'] = reviewrating::getAllRecord();
+        $this->data['court'] = court::getAllRecord();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
     public function index(Request $request)

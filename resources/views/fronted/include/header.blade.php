@@ -34,7 +34,7 @@ $login = Auth::user();
 						</li>
 						
 						<li class="nav-item" id="practice">
-							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">ADB</a>
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">ADV Login</a>
 						</li>
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
@@ -306,7 +306,7 @@ $login = Auth::user();
 										<div class="card-header" id="headingOne">
 											<h2 class="mb-0">
 												<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-													City
+													Court
 												</button>
 											</h2>
 										</div>
@@ -319,9 +319,9 @@ $login = Auth::user();
 												</div> -->
 												
 												<div class="mini-search">
-													<select name="city" class="filter-group select2 sr-drop" id="" >
-														<option value="">Select city</option>
-														@foreach($city as $data)
+													<select name="court" class="filter-group select2 sr-drop" id="" >
+														<option value="">Select court</option>
+														@foreach($court as $data)
 														<option value="{{$data->id}}">{{$data->name}}</option>
 														@endforeach
 													</select>

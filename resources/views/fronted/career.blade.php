@@ -140,8 +140,8 @@
                     <label for="inputName" class="form-label sa-color2 sa-label">Applying for</label>
                     <div>
                       <div class="sr-form">
-                          <input type="radio" id="LawRato In-house team" name="Applying for" >
-                          <label for="LawRato In-house team" class="pr-3">LawRato In-house team </label>
+                          <input type="radio" id=" In-house team" name="Applying for" >
+                          <label for=" In-house team" class="pr-3"> In-house team </label>
                       </div>
                       <div class="sr-form">
                           <input type="radio" id="Litigation Associate" name="Applying for" value="">
@@ -168,16 +168,16 @@
           <div class=" col-md-5 pl-4">
             <div class="mitem">
               <div class="sr-card">
-                <h5 class="sr-title">Be a part of LawRato’s exciting journey</h5>
+                <h5 class="sr-title">Be a part of ’s exciting journey</h5>
               </div>
-              <p>We are India’s leading legal advice and lawyer search platform, and are always looking for passionate young minds who can help us grow faster. Select ‘Applying for LawRato In-house team’ if you wish to work with LawRato. We currently operate from our corporate office in South Delhi.</p>
+              <p>We are India’s leading legal advice and lawyer search platform, and are always looking for passionate young minds who can help us grow faster. Select ‘Applying for  In-house team’ if you wish to work with . We currently operate from our corporate office in South Delhi.</p>
             </div>
 
             <div class="mitem">
               <div class="sr-card">
                 <h5 class="sr-title">Work with a top rated lawyer in India</h5>
               </div>
-              <p>LawRato has partnered with thousands of top lawyers across hundreds of cities in India. Select Applying for - ‘Litigation Associate’ or ‘Corporate Law Firm’ if you wish to join a lawyer in the city of your choice. Lawyers having a vacancy will directly get in touch with you for an interview.</p>
+              <p> has partnered with thousands of top lawyers across hundreds of cities in India. Select Applying for - ‘Litigation Associate’ or ‘Corporate Law Firm’ if you wish to join a lawyer in the city of your choice. Lawyers having a vacancy will directly get in touch with you for an interview.</p>
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@
        <div class="row mb-5">
          <div class="col-md-12">
           <div>
-            <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
           </div>
            <div class="row mt-5 sr-c ">
              <div class="col-md-4 text-center">
@@ -226,14 +226,14 @@
                 <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
                     <p>Post your question for free and get response from</p>
                     <p>experienced lawyers within 48 hours</p>
-                    <a href="<?php echo URL::to('/') ?>/free-legal-advice" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
+                    <a href="{{URL::to('/')}}/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
              </div>
              <div class="col-md-4 text-center">
 
               <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                <p>Contact and get legal assistance from our lawyer</p>
                <p> network for your specific matter</p>
-               <a href="#" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
+               <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
                
              </div>
            </div>
