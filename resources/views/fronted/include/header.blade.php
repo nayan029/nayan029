@@ -32,9 +32,9 @@ $login = Auth::user();
 						<li class="nav-item " id="home">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/">Home</a>
 						</li>
-						
+
 						<li class="nav-item" id="practice">
-							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">ADV Login</a>
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv Login</a>
 						</li>
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
@@ -317,9 +317,9 @@ $login = Auth::user();
 													<span>Chandhigarh</span>
 													<i class="ti-minus"></i>
 												</div> -->
-												
+
 												<div class="mini-search">
-													<select name="court" class="filter-group select2 sr-drop" id="" >
+													<select name="court" class="filter-group select2 sr-drop" id="">
 														<option value="">Select court</option>
 														@foreach($court as $data)
 														<option value="{{$data->id}}">{{$data->name}}</option>
@@ -364,14 +364,14 @@ $login = Auth::user();
 										<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 											<div class="card-body">
 												@php
-        											$qcategory =  DB::table('legal_advice_qa_category')->where('status', 1)->where('type','question')->orderBy('id', 'ASC')->get();
+												$qcategory = DB::table('legal_advice_qa_category')->where('status', 1)->where('type','question')->orderBy('id', 'ASC')->get();
 												@endphp
-											<select name="category" class="filter-group select2 sr-drop" id="" >
-														<option value="">Select Category</option>
-														@foreach($qcategory as $data)
-														<option value="{{$data->id}}">{{$data->category_name}}</option>
-														@endforeach
-													</select>
+												<select name="category" class="filter-group select2 sr-drop" id="">
+													<option value="">Select Category</option>
+													@foreach($qcategory as $data)
+													<option value="{{$data->id}}">{{$data->category_name}}</option>
+													@endforeach
+												</select>
 											</div>
 										</div>
 									</div>
@@ -389,10 +389,11 @@ $login = Auth::user();
 						</a>
 						<div class="search-div " id="search-div" style="display: none;">
 							<form method="GET" action="{{URL::to('/')}}/search/lawyer/">
-								<h4>Filter By</h4>
-								<div class="filter-group">
+								<h4>Search By</h4>
+								<div class="filter-group d-flex">
 									<input type="text" name="name">
-									<img src="{{asset('fronted/images/svg/feather_search-active.svg')}} ">
+									<img src="{{asset('fronted/images/svg/feather_search-active.svg')}} ">	
+									<button type="submit" class="btn btn-outline-primary ml-1">Search</button>
 								</div>
 							</form>
 						</div>
@@ -418,10 +419,10 @@ $login = Auth::user();
 
 								<?php	} elseif (isset($login) && $login->user_type == '2') { ?>
 									<a href="<?php echo URL::to('/') ?>/my-account" class="dropdown-item"><i class="icon fa fa-user"></i><?php if (isset($login)) {
-																																					echo ucfirst($login->name . " " . $login->username);
-																																				} else {
-																																					echo "";
-																																				} ?>
+																																				echo ucfirst($login->name . " " . $login->username);
+																																			} else {
+																																				echo "";
+																																			} ?>
 									</a>
 
 									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
@@ -457,3 +458,45 @@ $login = Auth::user();
 
 	@endif
 	@endif
+	<button type="button" class="btn btn-enquiry sr-enquiry" data-toggle="modal" data-target="#exampleModal">
+		<img src="{{URL::to('/')}}/fronted/images/phone-call.png"> <span>Enquiry Now</span>
+	</button>
+	<!-- modal -->
+	<div class="modal fade enquiry-mdal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel" style="color: #000;">Enquiry Form</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="{{URL::to('/')}}/enquiry-form" id="main_form">
+						@csrf
+						<div class="form-group">
+							<!-- <label for="" style="color: #222;">Name</label><span style="color: red;"> *</span> -->
+							<input type="text" name="name" class="form-control border-radius-5px" id="name" aria-describedby="nameHelp" placeholder="Name" autocomplete="off" maxlength="250">
+							<span id="name_error" style="color: red;"></span>
+						</div>
+						<div class="form-group">
+							<!-- <label for="" style="color: #222;">Mobile</label><span style="color: red;"> *</span> -->
+							<input type="number" name="mobile" class="form-control border-radius-5px" id="mobile" aria-describedby="nameHelp" placeholder="Mobile number" autocomplete="off" maxlength="12">
+							<span id="mobile_error" style="color: red;"></span>
+						</div>
+						<div class="form-group">
+							<!-- <label for="" style="color: #222;">Email</label> -->
+							<input type="email" name="email" class="form-control border-radius-5px" id="email" aria-describedby="emailHelp" placeholder="Email (Optional)" autocomplete="off" maxlength="250">
+							<span id="email_error" style="color: red;"></span>
+						</div>
+						<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+						<div class="modal-footer">
+							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal -->
