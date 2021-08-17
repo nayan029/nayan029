@@ -1,5 +1,5 @@
 <!-- <h5 class="sa-color2">Consult Best Divorce Lawyers / Advocates in India</h5> -->
-<h5 class="sa-color2">Consult Best Advocates</h5>
+<h5 class="sa-color2">Consult Best Divorce / Advocates</h5>
 <br />
 @if(count($user_data)>0)
 @foreach($user_data as $data)
@@ -24,7 +24,7 @@
                         <div class="sr-card">
                             <!-- <a href="{{URL::to('/')}}/advocate/{{$data->id}}"> -->
                             <h5 class="sr-title-left mb-2">
-                                Advocate {{$data->lname." ".$data->fathername}}
+                                Advocate {{$data->lname." ".$data->fathername}} 
                             </h5>
                             <!-- </a> -->
                         </div>
