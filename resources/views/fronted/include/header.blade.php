@@ -32,10 +32,13 @@ $login = Auth::user();
 						<li class="nav-item " id="home">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/">Home</a>
 						</li>
-						
+						@if(isset($login['step']) && $login->user_type == '3')
+						@if($login['step'] == '0' || $login['step'] == '1' || $login['step'] == '2')
 						<li class="nav-item" id="practice">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">ADV Login</a>
 						</li>
+						@endif
+						@endif
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
 							<div class="inner-menu">
@@ -317,9 +320,9 @@ $login = Auth::user();
 													<span>Chandhigarh</span>
 													<i class="ti-minus"></i>
 												</div> -->
-												
+
 												<div class="mini-search">
-													<select name="court" class="filter-group select2 sr-drop" id="" >
+													<select name="court" class="filter-group select2 sr-drop" id="">
 														<option value="">Select court</option>
 														@foreach($court as $data)
 														<option value="{{$data->id}}">{{$data->name}}</option>
@@ -364,14 +367,14 @@ $login = Auth::user();
 										<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 											<div class="card-body">
 												@php
-        											$qcategory =  DB::table('legal_advice_qa_category')->where('status', 1)->where('type','question')->orderBy('id', 'ASC')->get();
+												$qcategory = DB::table('legal_advice_qa_category')->where('status', 1)->where('type','question')->orderBy('id', 'ASC')->get();
 												@endphp
-											<select name="category" class="filter-group select2 sr-drop" id="" >
-														<option value="">Select Category</option>
-														@foreach($qcategory as $data)
-														<option value="{{$data->id}}">{{$data->category_name}}</option>
-														@endforeach
-													</select>
+												<select name="category" class="filter-group select2 sr-drop" id="">
+													<option value="">Select Category</option>
+													@foreach($qcategory as $data)
+													<option value="{{$data->id}}">{{$data->category_name}}</option>
+													@endforeach
+												</select>
 											</div>
 										</div>
 									</div>
@@ -409,10 +412,10 @@ $login = Auth::user();
 
 								<?php	} elseif (isset($login) && $login->user_type == '2') { ?>
 									<a href="<?php echo URL::to('/') ?>/my-account" class="dropdown-item"><i class="icon fa fa-user"></i><?php if (isset($login)) {
-																																					echo ucfirst($login->name . " " . $login->username);
-																																				} else {
-																																					echo "";
-																																				} ?>
+																																				echo ucfirst($login->name . " " . $login->username);
+																																			} else {
+																																				echo "";
+																																			} ?>
 									</a>
 
 									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
