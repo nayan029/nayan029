@@ -85,18 +85,18 @@
               <div class="col-md-12 mt-1">
                 <div class="sa-pb">
                   <label for="inputName" class="form-label sa-color2 sa-label">Name</label><span style="color: red;">*</span>
-                  <input type="text" class="form-control sa-form-font half-border-radius" placeholder="Enter your name" id="name" name="name">
+                  <input type="text" class="form-control sa-form-font half-border-radius" placeholder="Enter your name" id="iname" name="name" maxlength="250">
                 </div>
                 <span id="name_error" style="color: red;"></span>
                 <div class="sa-pb">
                   <label for="inputName" class="form-label sa-color2 sa-label">Contact no.</label><span style="color: red;">*</span>
-                  <input type="number" class="form-control sa-form-font half-border-radius" placeholder="Enter your Contact No." name="mobile" id="mobile">
+                  <input type="number" class="form-control sa-form-font half-border-radius" placeholder="Enter your Contact No." name="mobile" id="imobile">
                 </div>
                 <span id="mobile_error" style="color: red;"></span>
 
                 <div class="sa-pb mb-4">
                   <label for="inputName" class="form-label sa-color2 sa-label">Email</label>
-                  <input type="email" class="form-control sa-form-font half-border-radius" placeholder="Enter your Email" id="email" name="email">
+                  <input type="email" class="form-control sa-form-font half-border-radius" placeholder="Enter your Email" id="email" name="email" maxlength="250">
                 </div>
                 <span id="email_error" style="color: red;"></span>
 
@@ -278,8 +278,8 @@
 </script>
 <script>
   function nextPrevthree(n) {
-    var name = $('#name').val();
-    var phone = $('#mobile').val();
+    var iname = $('#iname').val();
+    var phone = $('#imobile').val();
     var city = $('#location').val();
     var email = $('#email').val();
     // var issueid = $('#issueid').val();
@@ -298,7 +298,7 @@
         $("#Section4").hide();
         $("#errorname").html("Please select your city");
         return false;
-      } else if (name == "") {
+      } else if (iname == "") {
         $("#Section1").hide();
         $("#Section2").hide();
         $("#Section3").show();
@@ -325,7 +325,7 @@
           url: '{{ URL::to("/")}}/insert-quer',
           type: 'POST',
           data: {
-            name: name,
+            name: iname,
             phone: phone,
             city: city,
             email: email,

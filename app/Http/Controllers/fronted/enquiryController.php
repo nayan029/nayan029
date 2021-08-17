@@ -76,7 +76,7 @@ class enquiryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect("/")
+            return redirect()->back()
                 ->withErrors($validator, '/')
                 ->withInput();
         } else {

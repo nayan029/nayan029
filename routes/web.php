@@ -217,6 +217,8 @@ Route::resource('/ask-a-free-question', 'App\Http\Controllers\fronted\askFreeQue
 
 
 Route::get('/free-legal-advice-phone', [FrontedHomeController::class, 'freeAdvicePhone']);
+Route::post('/free-legal-advice-phone', 'App\Http\Controllers\fronted\enquiryController@store');
+
 Route::get('/divorce-legal-services', [FrontedHomeController::class, 'divorce_legalServices']);
 Route::get('/property-legal-services', [FrontedHomeController::class, 'property_legalServices']);
 Route::get('/labour-service-legal-services', [FrontedHomeController::class, 'labour_legalServices']);
