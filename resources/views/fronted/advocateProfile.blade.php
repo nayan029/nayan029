@@ -113,9 +113,17 @@
 
         <div class="sa-application col-md-12 sr-pro-review">
             <h3 class="sa-color2">Top Reviews</h3>
+            @if(isset($user_login))
+            @if($user_login->user_type == '2')
             <div>
                 <a type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
             </div>
+            @else
+            <script>
+                window.location.href = "{{url('/login')}}";
+            </script>
+            @endif
+            @endif
 
         </div>
         <!-- modal to write review -->
@@ -263,11 +271,11 @@
             </div>
         </div>
         @endforeach
-        
-        
+
+
         <div class="col-md-12 pl-0">
             <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
-            
+
         </div>
     </div>
 
@@ -279,7 +287,7 @@
 <div class="row mb-5">
     <div class="col-md-12">
         <div>
-            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
+            <h2 class="sr-t">50,000 People Choose Every Day</h2>
         </div>
         <div class="row mt-5 sr-c ">
             <div class="col-md-4 text-center">
@@ -301,7 +309,7 @@
                 <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                 <p>Contact and get legal assistance from our lawyer</p>
                 <p> network for your specific matter</p>
-                <a href="{{URL::to('/')}}/legal-enquiry"  class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</a>
+                <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</a>
             </div>
         </div>
     </div>
@@ -313,48 +321,48 @@
 </div>
 <!-- model for contact us -->
 <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content contact-modal">
-      <div class="row">
-          <div class="col-md-6">
-            <div class="sr-contact pr-0">
-              <div class="card">
-                  <div class="card-body modalcard-body" >
-                      <div class="upper">
-                          <h3 class="price">$123</h3>
-                          <p class="mb-0">Weekly</p>
-                      </div>
-                      <div class="bottom">
-                          <p class="w-detail">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet</p>
-                          <a href="#" class="btn btn-primary sa-color3 poppins-light ">Buy Now</a>
+    <div class="modal-dialog modal-md">
+        <div class="modal-content contact-modal">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sr-contact pr-0">
+                        <div class="card">
+                            <div class="card-body modalcard-body">
+                                <div class="upper">
+                                    <h3 class="price">$123</h3>
+                                    <p class="mb-0">Weekly</p>
+                                </div>
+                                <div class="bottom">
+                                    <p class="w-detail">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet</p>
+                                    <a href="#" class="btn btn-primary sa-color3 poppins-light ">Buy Now</a>
+                                </div>
+
+                            </div>
                         </div>
-                      
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-             <div class="sr-contact pl-0">
-              <div class="card">
-                  <div class="card-body modalcard-body" >
-                      <div class="upper">
-                          <h3 class="price">$123</h3>
-                          <p class="mb-0">Monthly</p>
-                      </div>
-                      <div class="bottom">
-                          <p class="w-detail">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet</p>
-                          <a href="#" class="btn btn-primary sa-color3 poppins-light ">Buy Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sr-contact pl-0">
+                        <div class="card">
+                            <div class="card-body modalcard-body">
+                                <div class="upper">
+                                    <h3 class="price">$123</h3>
+                                    <p class="mb-0">Monthly</p>
+                                </div>
+                                <div class="bottom">
+                                    <p class="w-detail">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet</p>
+                                    <a href="#" class="btn btn-primary sa-color3 poppins-light ">Buy Now</a>
+                                </div>
+
+                            </div>
                         </div>
-                      
-                  </div>
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- end model -->
 

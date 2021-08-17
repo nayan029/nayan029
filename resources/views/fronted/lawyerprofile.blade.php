@@ -38,16 +38,16 @@
                 <div class="sr-loc">
                     <div class="row">
                         <div class="col-md-6">
-                        <div class="d-flex">
-                            <span><img src="{{asset('fronted/images/map-marker-icon.png')}}" class="mr-2"></span>
+                            <div class="d-flex">
+                                <span><img src="{{asset('fronted/images/map-marker-icon.png')}}" class="mr-2"></span>
                                 <p class="sr-p-title">Location : </p>
                                 <p>{{ucfirst($lawyerData->location)}}</p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            
+
                             <div class="d-flex">
-                            <span><img src="{{asset('fronted/images/lang-icon.png')}}" class="mr-2"></span> 
+                                <span><img src="{{asset('fronted/images/lang-icon.png')}}" class="mr-2"></span>
                                 <p class="sr-p-title">Languages :</p>
                                 <p>
 
@@ -63,9 +63,9 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            
+
                             <div class="d-flex">
-                            <span><img src="{{asset('fronted/images/suitcase-icon.png')}}" class="mr-2"></span> 
+                                <span><img src="{{asset('fronted/images/suitcase-icon.png')}}" class="mr-2"></span>
                                 <p class="sr-p-title">Experience :</p>
                                 <p>@if($lawyerData->experience) {{ucfirst($lawyerData->experience )}} @else {{"0"}} @endif</p>
                             </div>
@@ -109,9 +109,17 @@
 
         <div class="sa-application col-md-12 sr-pro-review">
             <h3 class="sa-color2">Top Reviews</h3>
+            @if(isset($user_login))
+            @if($user_login->user_type == '2')
             <div>
-                <a href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
+                <a type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
             </div>
+            @else
+            <script>
+                window.location.href = "{{url('/login')}}";
+            </script>
+            @endif
+            @endif
 
         </div>
 
@@ -200,7 +208,7 @@
     <div class="row mb-5">
         <div class="col-md-12">
             <div>
-                <h2 class="sr-t">50,000 People Choose  Every Day</h2>
+                <h2 class="sr-t">50,000 People Choose Every Day</h2>
             </div>
             <div class="row mt-5 sr-c ">
                 <div class="col-md-4 text-center">

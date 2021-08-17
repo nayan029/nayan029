@@ -71,7 +71,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-8 sr-border sr-res-card">
             <div class="row">
-              <div class="col-md-12">
+              <!-- <div class="col-md-12">
                 <label for="inputName" class="form-label sa-color2 sa-label">Area of law</label><span style="color: red;">*</span>
                 <select class="form-select sa-form-font border-radius-5px" id="location" name="location">
                   <option value="">Select Location</option>
@@ -80,7 +80,7 @@
                   @endforeach
                 </select>
               </div>
-              <span id="location_error" style="color: red;"></span>
+              <span id="location_error" style="color: red;"></span> -->
 
               <div class="col-md-12 mt-1">
                 <div class="sa-pb">
@@ -327,7 +327,7 @@
           data: {
             name: iname,
             phone: phone,
-            city: city,
+            // city: city,
             email: email,
             issue_id: issueid,
             subissueid: subissueid,

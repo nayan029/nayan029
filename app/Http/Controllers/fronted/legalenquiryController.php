@@ -56,7 +56,7 @@ class legalenquiryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'phone' => 'required',
-            'city' => 'required',
+            // 'city' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -68,7 +68,7 @@ class legalenquiryController extends Controller
             // $input = $request->all();
             $input['issue_id'] = $request->issue_id;
             $input['subissue_id'] = $request->subissueid;
-            $input['location'] = $request->city;
+            // $input['location'] = $request->city;
             $input['name'] = $request->name;
             $input['mobile'] = $request->phone;
             $input['email'] = $request->email;

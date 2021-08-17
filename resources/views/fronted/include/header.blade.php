@@ -32,10 +32,13 @@ $login = Auth::user();
 						<li class="nav-item " id="home">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/">Home</a>
 						</li>
-
+						@if(isset($login['step']) && $login->user_type == '3')
+						@if($login['step'] == '0' || $login['step'] == '1' || $login['step'] == '2')
 						<li class="nav-item" id="practice">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv Login</a>
 						</li>
+						@endif
+						@endif
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
 							<div class="inner-menu">
