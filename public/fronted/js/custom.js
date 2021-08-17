@@ -70,7 +70,42 @@ $(document).click(function (e) {
 });
 
 
-
-
-
 // --------------------
+
+
+$("#searchli").on('click', function(){
+
+    $(this).toggleClass('active');
+
+});
+
+
+$("#searchli").click(function (e) {
+    e.stopPropagation();
+    $("#search-div").fadeToggle();
+});
+
+$(document).click(function (e) {
+    if (!$(e.target).closest('#search-div').length)
+    {
+        $('#search-div').fadeOut();
+    }
+});
+
+// --------------------------------------------------
+// search and filter hide show script
+ $("#searchli").on('click', function(){
+  $("#filter-div").hide();
+  $("#search-div").show();
+
+});
+
+
+ 
+ $("#filterli").on('click', function(){
+  $("#search-div").hide();
+  $("#filter-div").show();
+
+});
+
+ //-----------------------------------------------

@@ -5735,3 +5735,39 @@ ul.navbar-nav .nav-link{
  .img-cen{
     padding-bottom: 35px;
  }
+.search-div {
+
+    background: #fff;
+
+    border-radius: 4px;
+
+    position: absolute;
+
+    right: -30px;
+
+    margin-top: 10px;
+
+    width: 280px;
+
+    padding: 26px;
+
+    padding-bottom: 16px;
+
+}
+
+
+
+.search-div h4 {
+
+    color: #323232;
+
+    font-family: 'Poppins-SemiBold';
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+
+}
+.sr-enquiry {
+    padding: 13px 8px!important;
+}

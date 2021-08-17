@@ -63,7 +63,7 @@
                 <h5 class="sa-color2">Consult Best Advocates</h5>
                 <br />
                 <!-- <p>Hiring an experienced divorce lawyer is the best way you get peace of mind when dealing with matrimonial
-                    cases, child custody, alimony, and mutual divorce or contested divorce proceedings. Use LawRato to consult a
+                    cases, child custody, alimony, and mutual divorce or contested divorce proceedings. Use  to consult a
                     top rated divorce lawyer for marriage issues in India to file or defend your mutual divorce petition,
                     contested divorce, alimony, domestic violence (DV), interim maintenance, 125 CrPC, dowry harassment u/s
                     498a, women cell complaints or any other related matters. </p>

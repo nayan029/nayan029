@@ -9,7 +9,7 @@
 		</div>
 	  </div>
 	  <div class="container">
-	  <h5 class="text-center mt-4">Get expert legal advice and assistance on Indian Kanoon pertaining to both Civil and Criminal law including divorce, property, consumer disputes as well as labour disputes in India. Majority of us don’t even know laws prevalent in India due to which we are unable able to protect our rights. LawRato helps you against legal issues related to Indian Law.</h5>
+	  <h5 class="text-center mt-4">Get expert legal advice and assistance on Indian Kanoon pertaining to both Civil and Criminal law including divorce, property, consumer disputes as well as labour disputes in India. Majority of us don’t even know laws prevalent in India due to which we are unable able to protect our rights.  helps you against legal issues related to Indian Law.</h5>
 	  </div>
 	</div>
 	<div class="middle-box mt-5">

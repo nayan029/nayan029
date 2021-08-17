@@ -2,7 +2,7 @@
       <div class="sa-enroll-details">
       <div class="container">
         <div class="sa-application">
-            <h5 class="sa-color2 mb-4">LawRato in Media</h5>
+            <h5 class="sa-color2 mb-4"> in Media</h5>
         </div>
      
         <div class="row">
@@ -64,7 +64,7 @@
                 <div class="mitem3">
                     <div class="sr-card">
                       <h5 class="sr-title2">
-                       MY STARTUP IDEA: LawRato.com founder on his eureka moment</h5>
+                       MY STARTUP IDEA: .com founder on his eureka moment</h5>
                     </div>
                     <div class="mitem3-body">
                       <div class="row">
@@ -141,7 +141,7 @@
        <div class="row mb-5">
          <div class="col-md-12">
           <div>
-            <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
           </div>
            <div class="row mt-5 sr-c ">
              <div class="col-md-4 text-center">

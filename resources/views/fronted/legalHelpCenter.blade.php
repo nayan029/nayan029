@@ -14,7 +14,7 @@
                 <div class="mitem3">
                     <div class="sr-card">
                       <a href="#" class="color2 text-right"><h5 class="sr-title1 d-flex "> Family Law &nbsp; &nbsp; >> </h5></a>
-						Family is an aspect that is pivotal in the life of every human being. Every family has some or the other issue and turbulence may arise, be it division of your ancestral property or divorce queries or dowry issues. We are LawRato provide you with a One Stop Solution to all you family problems. We have an answer to all your problems. We cover a wide range of topics from divorce, maintenance, dowry, ancestral property, gift deed, child custody, restitution of conjugal rights and a lot more.
+						Family is an aspect that is pivotal in the life of every human being. Every family has some or the other issue and turbulence may arise, be it division of your ancestral property or divorce queries or dowry issues. We are  provide you with a One Stop Solution to all you family problems. We have an answer to all your problems. We cover a wide range of topics from divorce, maintenance, dowry, ancestral property, gift deed, child custody, restitution of conjugal rights and a lot more.
 						
 						<a href="#" class="color2 text-right"><h6 class="d-flex mt-5 "> Divorce Law Help Center &nbsp; &nbsp; >> </h6></a>
 						 
@@ -25,11 +25,11 @@
 						The practice of dowry is illegal only on paper but its practical implementation is far from satisfactory. Most in-laws treat their daughter-in-law as the goose that lays the proverbial golden eggs, which on serving its purpose, is tortured, mentally and physically, or worse, abetted to commit suicide. This dowry law help centre shall make you aware about all the facets of dowry and violations of the legal procedures related to the same.
 						
 						 <a href="#" class="color2 text-right"><h5 class="sr-title1 d-flex mt-5"> Criminal Law &nbsp; &nbsp; >> </h5></a>
-						Acts of crime affects both rich and poor in a similar fashion. The difference lies in the manner justice is served and for the latter justice is usually denied. Everyone should be aware of the various penalties and remedies available for crimes committed. We here at LawRato provide you with a quick insight into the diverse forms of crime and ways to get relief for the same. We have covered a broad range of offences like rape, domestic violence, cyber crimes, cheque bounce, murder and many more
+						Acts of crime affects both rich and poor in a similar fashion. The difference lies in the manner justice is served and for the latter justice is usually denied. Everyone should be aware of the various penalties and remedies available for crimes committed. We here at  provide you with a quick insight into the diverse forms of crime and ways to get relief for the same. We have covered a broad range of offences like rape, domestic violence, cyber crimes, cheque bounce, murder and many more
 						
 						<a href="#" class="color2 text-right"><h6 class="d-flex mt-5 "> Cyber Crime Help Center &nbsp; &nbsp; >> </h6></a>
 						 
-						In the age of Internet cyber crime has become a common term and one no longer needs to break into banks to commit theft but can do sufficient damage sitting within the comforts of his home and pressing few buttons. With the advent of social networking sites, sensitive personal information, like your bank account details are just a click away from being hacked. We, at LawRato help you to deal with the problems of cyber crime by providing you the best lawyers specializing in this field, who would help you seek an appropriate legal remedy.
+						In the age of Internet cyber crime has become a common term and one no longer needs to break into banks to commit theft but can do sufficient damage sitting within the comforts of his home and pressing few buttons. With the advent of social networking sites, sensitive personal information, like your bank account details are just a click away from being hacked. We, at  help you to deal with the problems of cyber crime by providing you the best lawyers specializing in this field, who would help you seek an appropriate legal remedy.
 						
 						<a href="#" class="color2 text-right"><h6 class="d-flex mt-5 "> Criminal Bail Help Center &nbsp; &nbsp; >> </h6></a>
 						 
@@ -67,7 +67,7 @@
        <div class="row mb-5">
          <div class="col-md-12">
           <div>
-            <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
           </div>
            <div class="row mt-5 sr-c ">
              <div class="col-md-4 text-center">

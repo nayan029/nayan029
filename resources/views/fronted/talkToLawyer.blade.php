@@ -32,7 +32,7 @@
               </div>
               <div class="col-md-12">
               	<p class=" mt-3">
-                  I agree to<a href="term_of_use.html" class="sa-color2 ">  LawRato's terms of use</a>
+                  I agree to<a href="term_of_use.html" class="sa-color2 ">  's terms of use</a>
               </p>
               	
               </div>
@@ -54,7 +54,7 @@
                   <img src="{{asset('fronted/images/svg/Icons-16.svg')}}" width="35px" class="mr-2">
                 <span>What are others saying?</span></h5>
               </div>
-              <p class="mb-20">“I got a call from LawRato’s case manager within minutes and they connected me to a top lawyer instantly. It was never so easy to find the right lawyer"</p>
+              <p class="mb-20">“I got a call from ’s case manager within minutes and they connected me to a top lawyer instantly. It was never so easy to find the right lawyer"</p>
               <div class="ml-auto">
                 <h6 class="font-weight-bold">- Ajay R</h6>
                       </div>
@@ -89,7 +89,7 @@
               <p>It's important to understand that a good lawyer doesn't guarantee that you'll win your case. However, having a good lawyer will give you the best chances for a favorable outcome and the comfort of knowing that you had the best legal representation. The first step in hiring a lawyer is choosing one in the practice area that is related to your legal matter because this will ensure that the lawyer is well versed in cases similar to yours.</p>  
             </div>
             <div class="mb-4 sr-l-space">
-              <p>LawRato.com makes it easier for you to get legal advice from Top Rated Lawyers across the country. Discuss your legal issue over phone, email, schedule an office meeting, or consult with any of the listed Lawyers at your home / office. We are ready to help you, as per your convenience.</p>  
+              <p>.com makes it easier for you to get legal advice from Top Rated Lawyers across the country. Discuss your legal issue over phone, email, schedule an office meeting, or consult with any of the listed Lawyers at your home / office. We are ready to help you, as per your convenience.</p>  
             </div>
            
             
@@ -103,7 +103,7 @@
             </div>
             <div class="mb-4 sr-l-space">
               <h6 class="mt-3 sa-color2">What happens after I choose “Talk to a Lawyer"?</h6>
-              <p>A LawRato representative will get in touch with you, understand your need and will identify which lawyers in our network can assist you.</p>  
+              <p>A  representative will get in touch with you, understand your need and will identify which lawyers in our network can assist you.</p>  
             </div>
             <div class="mb-4 sr-l-space">
               <h6 class="mt-3 sa-color2">When I use “Talk to a Lawyer" service, is that information private?</h6>
@@ -122,7 +122,7 @@
        <div class="row mb-5">
          <div class="col-md-12">
           <div>
-            <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
           </div>
            <div class="row mt-5 sr-c ">
              <div class="col-md-4 text-center">

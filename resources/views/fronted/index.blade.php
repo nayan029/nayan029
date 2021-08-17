@@ -213,7 +213,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=22">
 
 					<div class="fbox">
 						<p>Bail Law</p>
@@ -223,7 +223,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=19">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
 					<div class="fbox">
 						<p>Family Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
@@ -232,7 +232,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=23">
 
 					<div class="fbox">
 						<p>Sexual abuse Law</p>
@@ -242,7 +242,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=24">
 
 					<div class="fbox">
 						<p>Court Marriage Law</p>
@@ -252,7 +252,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=2">
 
 
 					<div class="fbox">
@@ -263,7 +263,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=25">
 
 					<div class="fbox">
 						<p>Banking Affords Law</p>
@@ -273,10 +273,10 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=11">
+				<a href="{{URL::to('/')}}/search/lawyer/?category=26">
 
 					<div class="fbox">
-						<p>Divorce Law</p>
+						<p>Property Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
 						<small>243 cases solved</small>
 					</div>

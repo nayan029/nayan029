@@ -80,7 +80,7 @@
               </div>
               <div class="col-md-12">
               	<p class="sr-err mt-3">
-                  I agree to<a href="term_of_use.html" class="sa-color2 ">  LawRato's terms of use</a>
+                  I agree to<a href="term_of_use.html" class="sa-color2 ">  's terms of use</a>
               </p>
               	
               </div>
@@ -97,18 +97,18 @@
 			<div class="row sr-border mt-4 ">
 				<h5 class="sa-color2 mb-3">Free Legal Advice from Top Rated Lawyers</h5>
 				<p>
-				Need instant solution to your legal problem? You can do it with LawRato’s free legal advice service. You can post your query related to any legal matter online and get it answered instantly by top advocates in India for free.
+				Need instant solution to your legal problem? You can do it with ’s free legal advice service. You can post your query related to any legal matter online and get it answered instantly by top advocates in India for free.
 				</p>
 				<br/>
 				<p>
-				LawRato.com lists Top Rated Legal Experts in the country to help you get practical Legal Advice & help. We have experts across criminal defence, property dispute, family issues, corporate law, IPR & 20 other areas of expertise. Our listed Lawyers have practice across 700 cities, and 3000 courts across India, to help provide you the required advice & representation for your legal issues.
+				.com lists Top Rated Legal Experts in the country to help you get practical Legal Advice & help. We have experts across criminal defence, property dispute, family issues, corporate law, IPR & 20 other areas of expertise. Our listed Lawyers have practice across 700 cities, and 3000 courts across India, to help provide you the required advice & representation for your legal issues.
 				</p>
 				<br/>
 				<p>
-				The internet is not a lawyer and neither are you. Googling your legal queries might not be a viable solution for your case. With LawRato's free legal advice service you can talk to a real lawyer about your legal issue for free and get a practical solution instantly.
+				The internet is not a lawyer and neither are you. Googling your legal queries might not be a viable solution for your case. With 's free legal advice service you can talk to a real lawyer about your legal issue for free and get a practical solution instantly.
 				</p><br/>
 				<p>
-				We believe that the right information helps you make better decisions. At LawRato.com, we provide you with detailed information on Lawyers, their areas of expertise, and their experience so that you can make the choices that are right for you. Find your legal solution using the FREE LEGAL ADVICE service through the website, where lacs of people have already found the right guidance for their needs.
+				We believe that the right information helps you make better decisions. At .com, we provide you with detailed information on Lawyers, their areas of expertise, and their experience so that you can make the choices that are right for you. Find your legal solution using the FREE LEGAL ADVICE service through the website, where lacs of people have already found the right guidance for their needs.
 				</p>
 			
             </div>
@@ -202,7 +202,7 @@
        <div class="row mb-5">
          <div class="col-md-12">
           <div>
-            <h2 class="sr-t">50,000 People Choose LawRato Every Day</h2>
+            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
           </div>
            <div class="row mt-5 sr-c ">
              <div class="col-md-4 text-center">
@@ -226,7 +226,7 @@
               <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
                <p>Contact and get legal assistance from our lawyer</p>
                <p> network for your specific matter</p>
-               <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>
+               <a href="{{URL::to('/')}}/legal-enquiry"  class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</a>
                
              </div>
            </div>
