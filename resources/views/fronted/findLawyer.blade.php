@@ -19,9 +19,9 @@
                     </select>
                     <select class="form-select sa-form-font border-radius-5px mb-3" id="court" name="court">
                         <option value="">Select Courts</option>
-                        <option value="1">Lorem ipsum </option>
-                        <option value="2">Lorem ipsum</option>
-                        <option value="3">Lorem ipsum</option>
+                        @foreach($court as $data)
+                        <option @if(app('request')->input('court') == $data->id){{"selected"}} @endif  value="{{$data->id}}">{{ucfirst($data->name)}} </option>
+                        @endforeach
                     </select>
                     <select class="form-select sa-form-font border-radius-5px mb-3" id="experience" name="experience">
                         <option value="">Select Experience</option>
