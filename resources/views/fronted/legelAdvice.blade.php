@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <select class="form-select sa-form-font border-radius-5px" onchange="functest(this.value)" id="cattid">
-                            <option selected="">Select city where you need a lawyer</option>
+                            <option selected="">Select category </option>
                             <?php foreach ($advicecategory as $data)  { ?>
                                 <option  <?php if ($category_name==$data->slug) {
                                     echo "selected";

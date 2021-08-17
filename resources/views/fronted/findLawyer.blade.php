@@ -34,7 +34,7 @@
                     <select class="form-select sa-form-font border-radius-5px mb-3" id="language" name="language">
                         <option value="">Select Language</option>
                         <option @if(app('request')->input('language') == 'english'){{"selected"}} @endif    value="english">English</option>
-                        <option @if(app('request')->input('language') == 'gujarati'){{"selected"}} @endif  value="gujarati">Gujrati</option>
+                        <!-- <option @if(app('request')->input('language') == 'gujarati'){{"selected"}} @endif  value="gujarati">Gujrati</option> -->
                         <option @if(app('request')->input('language') == 'hindi'){{"selected"}} @endif  value="hindi">Hindi </option>
                     </select>
                     <!-- <select class="form-select sa-form-font border-radius-5px mb-3" id="gender" name="gender">
@@ -60,7 +60,7 @@
 
             </div>
             <div class="col-md-9" id="databox">
-                <h5 class="sa-color2">Consult Best Divorce Lawyers / Advocates in India</h5>
+                <h5 class="sa-color2">Consult Best Advocates</h5>
                 <br />
                 <!-- <p>Hiring an experienced divorce lawyer is the best way you get peace of mind when dealing with matrimonial
                     cases, child custody, alimony, and mutual divorce or contested divorce proceedings. Use LawRato to consult a
