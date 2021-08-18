@@ -113,7 +113,7 @@
           </div>
         </div> -->
 
-    <div class="row mt-30">
+    <!-- <div class="row mt-30">
       <div class="col-md-6">
 
         <div class="mitem3">
@@ -168,7 +168,7 @@
         <a href="" class="btn btn-outline-primary">See All Family / Matrimonial Legal Services</a>
 
       </div>
-    </div>
+    </div> -->
 
     <div class="row mb-5">
       <div class="col-md-12">

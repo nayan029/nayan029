@@ -375,10 +375,10 @@ class HomeController extends Controller
     }
     public function advocateProfile($id)
     {
-        $auth = Auth::user();
-        if ($auth) {
-            $this->data['user_login'] = $auth;
-        }
+        // $auth = Auth::user();
+        // if ($auth) {
+        //     $this->data['user_login'] = $auth;
+        // }
         $this->data['title'] = "Advocate Profile";
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
@@ -391,12 +391,9 @@ class HomeController extends Controller
     {
         // return $request->all();
         $name = $request->name;
-        $city = $request->city;
-        $court = $request->court;
-        $category = $request->category;
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
-        $this->data['user_data'] = User::getRecordByName($name, $city, $category, $court);
+        $this->data['user_data'] = User::getRecordByName($name);
         return view('fronted.findLawyer', $this->data);
     }
     public function termsOfUse()
@@ -405,7 +402,15 @@ class HomeController extends Controller
     }
     public function editProfile()
     {
-        return view('fronted.editprofile', $this->data);
-        
+        $auth = Auth::user();
+        if ($auth) {
+            $this->data['user_login'] = $auth;
+            $this->data['court'] = court::getAllRecord();
+            $this->data['category'] = adviceCategory::getquestioncategorylist();
+            $this->data['title'] = "Edit Profile";
+            return view('fronted.editprofile', $this->data);
+        } else {
+            return view('fronted.lawyer_login',$this->data);
+        }
     }
 }

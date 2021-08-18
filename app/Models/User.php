@@ -205,32 +205,28 @@ class User extends Authenticatable
 
         return $query;
     }
-    public static function getRecordByName($name, $city, $category,$court)
+    public static function getRecordByName($name)
     {
-        // return $category;
+       
         $TEMP = "users.status in (1)";
 
         if ($name) {
             $TEMP .= "AND (CONCAT(users.lname,' ',users.fathername) LIKE '%" . $name . "%')";
         }
-        if ($city) {
-            $TEMP .= "AND users.location like '$city'";
+        if ($name) {
+            $TEMP .= "OR legal_advice_qa_category.category_name like '$name'";
         }
-        if ($category) {
-            $TEMP .= " AND lawyer_enrollment_category.categoryid = '$category' ";
-        }
-        if ($court) {
-            $TEMP .= "AND users.court like '$court'";
-        }
-        // return $name;
-        $query = User::select('users.*')
+       
+        $query = User::select('users.*','legal_advice_qa_category.category_name')
         ->leftjoin('lawyer_enrollment_category', function ($join) {
             $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
             $join->whereNull('users.deleted_at');
         })
+        ->leftjoin('legal_advice_qa_category', function ($join) {
+            $join->on('legal_advice_qa_category.id', '=', 'lawyer_enrollment_category.categoryid');
+        })
             ->where('users.user_type', '=', '3')
             ->whereRaw($TEMP)->groupBy('users.id')->orderBy("users.id", 'desc')
-            // ->whereRaw($TEMP)->orderBy("users.id", 'desc')
             ->get();
         return $query;
     }

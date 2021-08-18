@@ -70,9 +70,9 @@
                                         } ?>
                     </div>
                     <div class="col-md-12">
-                        <p class="">
+                        <!-- <p class="">
                             Get<a href="" class="sa-color2 "> free legal advice </a>from top rated lawyers for matters pertaining to Divorce.
-                        </p>
+                        </p> -->
                     </div>
                     <div class="pagination">
                         {{ $getquerys->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
