@@ -35,9 +35,13 @@ $login = Auth::user();
 						@if(isset($login['step']) && $login->user_type == '3')
 						@if($login['step'] == '0' || $login['step'] == '1' || $login['step'] == '2')
 						<li class="nav-item" id="practice">
-							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv Login</a>
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>
 						</li>
 						@endif
+						@else
+						<li class="nav-item" id="practice">
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>
+						</li>
 						@endif
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>

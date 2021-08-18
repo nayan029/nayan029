@@ -348,15 +348,19 @@ class HomeController extends Controller
     public function enrollment()
     {
         $auth = Auth::user();
-        if ($auth) {
-            $this->data['test'] = $auth = Auth::user();
-            $this->data['title'] = "Enrollment";
-            $this->data['step'] = User::getsteps($auth->id);
-            $this->data['category'] = adviceCategory::categorylistenrollment();
-            $this->data['lawyerDataNew'] = User::getrecordbyid($auth->id);
-            $this->data['catdata'] = lawyerenrollmentcatgeory::getusercategorys($auth->id);
-            $this->data['location'] = location::getAllRecord();
-            return view('fronted.lawyerenrollment', $this->data);
+        if (isset($auth)) {
+            if ($auth->user_type == 3) {
+                if ($auth) {
+                    $this->data['test'] = $auth = Auth::user();
+                    $this->data['title'] = "Enrollment";
+                    $this->data['step'] = User::getsteps($auth->id);
+                    $this->data['category'] = adviceCategory::categorylistenrollment();
+                    $this->data['lawyerDataNew'] = User::getrecordbyid($auth->id);
+                    $this->data['catdata'] = lawyerenrollmentcatgeory::getusercategorys($auth->id);
+                    $this->data['location'] = location::getAllRecord();
+                    return view('fronted.lawyerenrollment', $this->data);
+                }
+            }
         } else {
             return view('fronted.lawyer_login', $this->data);
         }
@@ -371,14 +375,16 @@ class HomeController extends Controller
     }
     public function advocateProfile($id)
     {
-        // $auth = Auth::user();
-        // $this->data['user_login'] = $auth;
+        $auth = Auth::user();
+        if ($auth) {
+            $this->data['user_login'] = $auth;
+        }
         $this->data['title'] = "Advocate Profile";
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         $this->data['lawyerData'] =  User::getrecordbyid($id);
         $this->data['allreviews'] = reviewrating::getAllRecord();
-        $this->data['lawyer_review'] = reviewrating::getrecordbylawyerid($id);
+        $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit($id);
         return view('fronted.advocateProfile', $this->data);
     }
     public function searchLawyer(Request $request)
@@ -390,7 +396,7 @@ class HomeController extends Controller
         $category = $request->category;
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
-        $this->data['user_data'] = User::getRecordByName($name, $city,$category,$court);
+        $this->data['user_data'] = User::getRecordByName($name, $city, $category, $court);
         return view('fronted.findLawyer', $this->data);
     }
     public function termsOfUse()

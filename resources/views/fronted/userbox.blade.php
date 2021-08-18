@@ -1,5 +1,5 @@
 <!-- <h5 class="sa-color2">Consult Best Divorce Lawyers / Advocates in India</h5> -->
-<h5 class="sa-color2">Consult Best Divorce / Advocates</h5>
+<h5 class="sa-color2">Consult Best Divorce Advocates</h5>
 <br />
 @if(count($user_data)>0)
 @foreach($user_data as $data)

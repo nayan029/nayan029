@@ -8,6 +8,7 @@ use App\Models\admin\lawyerenrollmentcatgeory;
 use Illuminate\Http\Request;
 use App\Models\admin\lawyerlanguages;
 use App\Models\admin\location;
+use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ class lawyerProfileController extends Controller
     {
         $auth = Auth::user();
         $id = $auth->id;
+        $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit($id); 
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         $this->data['lawyerData'] = User::getrecordbyid($id);

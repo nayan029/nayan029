@@ -60,7 +60,7 @@
 
             </div>
             <div class="col-md-9" id="databox">
-                <h5 class="sa-color2">Consult Best Divorce / Advocates</h5>
+                <h5 class="sa-color2">Consult Best Divorce Advocates</h5>
                 <br />
                 <!-- <p>Hiring an experienced divorce lawyer is the best way you get peace of mind when dealing with matrimonial
                     cases, child custody, alimony, and mutual divorce or contested divorce proceedings. Use  to consult a

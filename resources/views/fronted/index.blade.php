@@ -206,9 +206,9 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
-						<p>Divorce Law</p>
+						<p>Divorce </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
-						<small>243 cases solved</small>
+						
 					</div>
 				</a>
 			</div>
@@ -216,18 +216,17 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=22">
 
 					<div class="fbox">
-						<p>Bail Law</p>
+						<p>Bail </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
-						<small>243 cases solved</small>
+						
 					</div>
 				</a>
 			</div>
 			<div class="col-md-3 col-lg-3 col-6">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
 					<div class="fbox">
-						<p>Family Law</p>
+						<p>Challan </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
-						<small>243 cases solved</small>
 					</div>
 				</a>
 			</div>
@@ -235,9 +234,8 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=23">
 
 					<div class="fbox">
-						<p>Sexual abuse Law</p>
+						<p>Sexual abuse </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
-						<small>243 cases solved</small>
 					</div>
 				</a>
 			</div>
@@ -245,9 +243,8 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=24">
 
 					<div class="fbox">
-						<p>Court Marriage Law</p>
+						<p>Court Marriage </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
-						<small>243 cases solved</small>
 					</div>
 				</a>
 			</div>
@@ -256,9 +253,8 @@
 
 
 					<div class="fbox">
-						<p>Consumer Court Law</p>
+						<p>Consumer Court </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
-						<small>243 cases solved</small>
 					</div>
 				</a>
 			</div>
@@ -266,9 +262,8 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=25">
 
 					<div class="fbox">
-						<p>Banking Affords Law</p>
+						<p>Banking Frods </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
-						<small>243 cases solved</small>
 					</div>
 				</a>
 			</div>
@@ -278,7 +273,6 @@
 					<div class="fbox">
 						<p>Property Law</p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
-						<small>243 cases solved</small>
 					</div>
 				</a>
 			</div>

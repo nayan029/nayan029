@@ -124,7 +124,7 @@
         </div>
 
 
-        <div class="mitem3  mt-30">
+        <!-- <div class="mitem3  mt-30">
             <div class="row">
                 <div class="sr-card col-md-2">
                     <h5 class="user-pic">
@@ -196,8 +196,79 @@
             </div>
         </div>
         <div class="col-md-12 pl-0">
-            <a href="#" class="btn btn-outline-primary">View ALL</a>
+            <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
 
+        </div> -->
+        <div class="container">
+
+            @foreach($lawyer_review as $data)
+            <div class="mitem3  mt-30">
+                <div class="row">
+                    <div class="sr-card col-md-2">
+                        <h5 class="user-pic">
+                            M</h5>
+                    </div>
+
+                    <div class="sr-card col-md-10">
+                        <div class="col-md-12 pl-0 pt-3 pb-1">
+                            <p class="m-0">{{$data->user_name}} -<span class="pl-1 pr-4"><i class="sa-color2">Verified Client </i></span>
+                                @if($data->rating =='1')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                @endif
+                                @if($data->rating =='2')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+
+                                @endif
+                                @if($data->rating =='3')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+
+                                @endif
+                                @if($data->rating =='4')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+
+                                @endif
+                                @if($data->rating =='5')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                @endif
+                                <!-- <span class="fa fa-star "></span>  
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star"></span> -->
+                            </p>
+                        </div>
+                        <p class="mb-20">{{$data->review}}</p>
+
+                        <span class="pro-dt">{{date('d-m-Y', strtotime($data->created_at))}}</span>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+
+            <div class="col-md-12 pl-0">
+                <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
+
+            </div>
         </div>
 
     </div>

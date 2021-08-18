@@ -51,7 +51,8 @@
                     <p class="supp-details"><span><a href="mailto:">{{$getsettings->support_email}}</a></span><br><span><a href="tel:">{{$getsettings->support_phone}}</a></span></p>
                 </div> -->
                 <div class="text-center img-cen">
-                    <img src="{{URL::to('/')}}/fronted/images/contactus-img.png" alt="image" class="cont-img">
+                    <img src="{{URL::to('/')}}/fronted/images/con1.png" alt="image" class="cont-img" >
+                    <img src="{{URL::to('/')}}/fronted/images/contact5.png" alt="image" class="cont-img" style="display:none;">
                 </div>
                 <!-- <div class="connect-details">
                     <p>Connect with us</p>

@@ -114,6 +114,7 @@
         <div class="sa-application col-md-12 sr-pro-review">
             <h3 class="sa-color2">Top Reviews</h3>
             @if(isset($user_login))
+            <!-- {{$user_login}} -->
             @if($user_login->user_type == '2')
             <div>
                 <a type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
