@@ -21,7 +21,7 @@ class adviceCategory extends Authenticatable
     public static function categorylist()
     {
         // $query = Category::orderBy('id', 'desc')->get();
-        $query =  adviceCategory::where('status', 1)->orderBy('id', 'ASC')->paginate(5);
+        $query =  adviceCategory::where('status', 1)->orderBy('id', 'ASC')->paginate(10);
         return $query;
     }
     public static function categorylistenrollment()

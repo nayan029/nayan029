@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small> Advice Category Management</small></h1>
+                    <h1 class="m-0 text-dark"><small>Manage Legal Query</small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
-                        <li class="breadcrumb-item">Advice Category Management</li>
+                        <li class="breadcrumb-item">Manage Legal Query</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

@@ -17,7 +17,7 @@
 					<div class="line"><span></span><span></span></div>
 					<p>Inception</p>
 				</div>
-				<img src="{{asset('fronted/images/Rectangle149.png')}}">
+				<img src="{{asset('fronted/images/aboutus.jpg')}}">
 			</div>
 		</div>
 	</div>

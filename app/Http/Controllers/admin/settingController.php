@@ -32,17 +32,17 @@ class settingController extends Controller
     {
         // return $request->all();die;
         $validator = Validator::make($request->all(), [
-            'marketing_name' => 'required',
-            'marketing_email' => 'required',
-            'marketing_phone' => 'required',
+            // 'marketing_name' => 'required',
+            // 'marketing_email' => 'required',
+            // 'marketing_phone' => 'required',
             
-            'accountant_phone' => 'required',
-            'accountant_name' => 'required',
-            'accountant_email' => 'required',
+            // 'accountant_phone' => 'required',
+            // 'accountant_name' => 'required',
+            // 'accountant_email' => 'required',
             
-            'hr_name' => 'required',
-            'hr_email' => 'required',
-            'hr_phone' => 'required',
+            // 'hr_name' => 'required',
+            // 'hr_email' => 'required',
+            // 'hr_phone' => 'required',
 
             'opning_day'=> 'required',
             'opning_hours'=> 'required',

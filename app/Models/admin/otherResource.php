@@ -30,7 +30,7 @@ class otherResource extends Authenticatable
   
     public static function getRecordById($id)
     {
-        $query = otherResource::where('category_fk', $id)->get();
+        $query = otherResource::where('id', $id)->first();
         return $query;
     }
 }

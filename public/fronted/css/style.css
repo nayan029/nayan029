@@ -5356,7 +5356,9 @@ ol.sr-ol li p.sr-white {
 
     display: block;
 
-    margin-bottom: 7px;
+   /* margin-bottom: 7px;*/
+
+    margin-bottom: 5px;
 
 }
 
@@ -5471,7 +5473,7 @@ ol.sr-ol li p.sr-white {
 
     color: #f7a642;
 
-    font-size: 17px!important;
+    font-size: 16px!important;
 
 }
 
@@ -5749,10 +5751,7 @@ ul.navbar-nav .nav-link{
 
     width: 280px;
 
-    padding: 26px;
-
-    padding-bottom: 16px;
-
+    padding: 20px;
 }
 
 
@@ -5763,10 +5762,14 @@ ul.navbar-nav .nav-link{
 
     font-family: 'Poppins-SemiBold';
 
-    font-size: 20px;
+    font-size: 14px;
+     /*font-size: 20px;*/
 
     margin-bottom: 10px;
 
+}
+.search-div .filter-group button {
+    padding: 5px 10px;
 }
 .sr-enquiry {
     padding: 13px 8px!important;
@@ -5801,6 +5804,9 @@ ul.navbar-nav .nav-link{
 .sr-pillmain .nav{
     margin-bottom:30px!important;
 }
+ .navbar-light .navbar-nav .nav-link:hover{
+    color:#eca835;
+ }
 /*edit prfile*/
 .avatar-upload {
     position: relative;
@@ -5863,3 +5869,6 @@ ul.navbar-nav .nav-link{
     background-position: center;
 }
 /*end edit profile*/
+.sr-rotate{
+    transform: rotate(333deg);
+}

@@ -207,7 +207,7 @@
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
 						<p>Divorce </p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
 						
 					</div>
 				</a>
@@ -217,7 +217,7 @@
 
 					<div class="fbox">
 						<p>Bail </p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/Group38.png" class="sr-rotate">
 						
 					</div>
 				</a>
@@ -226,7 +226,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
 					<div class="fbox">
 						<p>Challan </p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
 					</div>
 				</a>
 			</div>
@@ -272,7 +272,7 @@
 
 					<div class="fbox">
 						<p>Property Law</p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
 					</div>
 				</a>
 			</div>

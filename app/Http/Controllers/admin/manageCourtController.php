@@ -112,10 +112,11 @@ class manageCourtController extends Controller
         $delete = court::where('id', $id)->update(['deleted_by' => $auth->id, 'status' => 0, 'deleted_at' => date('Y-m-d H:i:s')]);
         if ($delete) {
             Session::flash('success', 'court deleted successfully.');
-            return redirect('/admin/adviceQuerys');
+            return redirect('admin/court-managment');
+            // return redirect()->back();
         } else {
             Session::flash('error', 'Sorry, something went wrong. Please try again');
-            return redirect('/admin/adviceQuerys');
+            return redirect()->back();
         }
         return $delete;
     }

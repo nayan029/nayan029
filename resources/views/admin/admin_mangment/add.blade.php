@@ -100,9 +100,15 @@
     $(document).ready(function () {
         
         //$('#admin_menu').addClass('nav-link active');
-        $('#admin_menu').addClass('nav-item active');
-        $('#master_menu').addClass('nav-link active');
-        $('#master_open').addClass('menu-open active');
+        // $('#admin_menu').addClass('nav-item active');
+        // $('#master_menu').addClass('nav-link active');
+        // $('#master_open').addClass('menu-open active');
+
+        $('#category_menu').addClass('nav-item active');
+        $('#categorymaster_menu').addClass('nav-link active');
+        $('#categorymaster_open').addClass('menu-open active');
+
+
         $('#manage_admin').addClass('active mm-active');
     });
 </script>

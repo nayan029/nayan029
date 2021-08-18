@@ -166,9 +166,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/enquiry/feedback', 'App\Http\Controllers\fronted\enquiryController@feedback');
 
     Route::resource('/admin/court-managment', 'App\Http\Controllers\admin\manageCourtController');
-
-
-
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------

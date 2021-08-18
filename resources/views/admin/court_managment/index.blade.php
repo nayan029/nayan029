@@ -119,7 +119,7 @@
                         <!-- edit modal -->
                         <div class="modal fade" id="exampleModaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document" id="append">
-                                    
+
                             </div>
                         </div>
                         <!-- edit modal -->
@@ -134,6 +134,9 @@
 @include('admin/include/footer')
 <script>
     $(document).ready(function() {
+        $('#court_menu').addClass('nav-item active');
+        $('#categorymaster_menu').addClass('nav-link active');
+        $('#categorymaster_open').addClass('menu-open active');
         $('#court').addClass('active mm-active');
     });
 </script>
@@ -162,7 +165,6 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
-
                 $.ajax({
                     url: "<?php echo URL::to('/'); ?>/admin/court-managment/" + id,
                     type: "DELETE",
@@ -172,9 +174,9 @@
                     },
                     success: function(response) {
                         if (response) {
-                            // location.reload();
-                            window.location.href = "";
-
+                            location.reload();
+                            // window.location.reload();
+                            // window.location.href = "";
                         }
                     }
                 });

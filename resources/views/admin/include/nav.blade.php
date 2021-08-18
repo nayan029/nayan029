@@ -113,13 +113,13 @@
             </li>
 
             <li class="nav-item has-treeview" id="master_open">
-              <a href="#" class="nav-link" id="master_menu">
+              <!-- <a href="#" class="nav-link" id="master_menu">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                  Master
+                  Master Settings
                   <i class="right fas fa-angle-left"></i>
                 </p>
-              </a>
+              </a> -->
               <!-- <ul class="nav nav-treeview">
                 <li id="category_menu" class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/manageCategory" class="nav-link" id="manage_category">
@@ -129,19 +129,58 @@
                 </li>
               </ul> -->
               <ul class="nav nav-treeview">
-                <li id="category_menu" class="nav-item">
+                <!-- <li id="category_menu" class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/manage-location" class="nav-link" id="manage_location">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Manage Location</p>
                   </a>
-                </li>
+                </li> -->
               </ul>
+
+
+              <!-- <ul class="nav nav-treeview">
+                <li id="customer_menu" class="nav-item">
+                  <a href="<?php echo URL::to('/'); ?>/admin/customer_managment" class="nav-link" id="manage_customer">
+                    <i class="far fa-user nav-icon"></i>
+                    <p>Manage Customer</p>
+                  </a>
+                </li>
+              </ul> -->
+              <ul class="nav nav-treeview">
+
+              </ul>
+            </li>
+            </li>
+
+            <li class="nav-item has-treeview" id="categorymaster_open">
+              <a href="#" class="nav-link" id="categorymaster_menu">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                  Master
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
               <ul class="nav nav-treeview">
                 <li id="setting_menu" class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/settings" class="nav-link" id="settings">
-                    <!-- <i class="far fa-circle nav-icon"></i> -->
                     <i class="fas fa-cogs nav-icon"></i>
                     <p>Contact Settings</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" id="court_menu">
+                  <a href="<?php echo URL::to('/'); ?>/admin/court-managment" class="nav-link" id="court">
+                    <i class="fas fa-users nav-icon"></i>
+                    <p> Court Managment</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li id="category_menu" class="nav-item">
+                  <a href="<?php echo URL::to('/'); ?>/admin/manageCategory" class="nav-link" id="manage_category">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Category</p>
                   </a>
                 </li>
               </ul>
@@ -153,37 +192,7 @@
                   </a>
                 </li>
               </ul>
-              <ul class="nav nav-treeview">
-                <li id="customer_menu" class="nav-item">
-                  <a href="<?php echo URL::to('/'); ?>/admin/customer_managment" class="nav-link" id="manage_customer">
-                    <i class="far fa-user nav-icon"></i>
-                    <p>Manage Customer</p>
-                  </a>
-                </li>
-              </ul>
-              <ul class="nav nav-treeview">
 
-              </ul>
-            </li>
-            </li>
-
-            <li class="nav-item has-treeview" id="categorymaster_open">
-              <a href="#" class="nav-link" id="categorymaster_menu">
-                <i class="nav-icon fas fa-list"></i>
-                <p>
-                  Category Master
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-
-              <ul class="nav nav-treeview">
-                <li id="category_menu" class="nav-item">
-                  <a href="<?php echo URL::to('/'); ?>/admin/manageCategory" class="nav-link" id="manage_category">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Manage Category</p>
-                  </a>
-                </li>
-              </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/legal-issue" class="nav-link" id="legal_issue">
@@ -197,13 +206,18 @@
                   <a href="<?php echo URL::to('/'); ?>/admin/adviceCategory" class="nav-link" id="advice_cat">
                     <!-- <i class="far fa-circle nav-icon"></i> -->
                     <i class="fas fa-th nav-icon"></i>
-                    <p>Advice Category</p>
+                    <p>Legal Query Category</p>
                   </a>
                 </li>
               </ul>
 
             </li>
-
+            <li id="customer_menu" class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/customer_managment" class="nav-link" id="manage_customer">
+                <i class="far fa-user nav-icon"></i>
+                <p>Manage Customer</p>
+              </a>
+            </li>
             <li id="lawyer_menu" class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/manage-lawyer" class="nav-link" id="manage_lawyer">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
@@ -237,16 +251,15 @@
               <a href="<?php echo URL::to('/'); ?>/admin/adviceQuerys" class="nav-link" id="advice_query">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
                 <i class="fas fa-question nav-icon"></i>
-                <p>Legel Querys</p>
+                <p>Legal Querys</p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/guides-articles" class="nav-link" id="guide_article">
-                <!-- <i class="far fa-circle nav-icon"></i> -->
                 <i class="fas fa-newspaper nav-icon"></i>
                 <p>Guides & Articles</p>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/other-resoureces" class="nav-link" id="other_resources">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
@@ -292,12 +305,12 @@
                 <p> Enquiry</p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/court-managment" class="nav-link" id="court">
                 <i class="fas fa-users nav-icon"></i>
                 <p> Court Managment</p>
               </a>
-            </li>
+            </li> -->
           </ul>
           </li>
           </ul>

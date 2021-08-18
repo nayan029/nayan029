@@ -127,9 +127,9 @@
 <script>
     $(document).ready(function () {
         
-        $('#customer_menu').addClass('nav-item active');
-        $('#master_menu').addClass('nav-link active');
-        $('#master_open').addClass('menu-open active');
+        // $('#customer_menu').addClass('nav-item active');
+        // $('#master_menu').addClass('nav-link active');
+        // $('#master_open').addClass('menu-open active');
         $('#manage_customer').addClass('active mm-active');
     });
 </script>
