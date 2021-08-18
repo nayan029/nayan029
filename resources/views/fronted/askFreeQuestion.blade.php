@@ -63,22 +63,22 @@
             <div class="col-md-12 mt-1">
               <div class="sa-pb">
                 <label for="inputName" class="form-label sa-color2 sa-label">Name</label><span style="color:red;"> *</span>
-                <input type="text" class="form-control sa-form-font half-border-radius" id="name" placeholder="Enter your name" name="name">
-                <span id="name_error" style="color: red;"></span>
+                <input type="text" class="form-control sa-form-font half-border-radius" id="aname" placeholder="Enter your name" name="name">
+                <span id="aname_error" style="color: red;"></span>
 
               </div>
               <div class="sa-pb">
                 <label for="inputName" class="form-label sa-color2 sa-label">Contact no.</label><span style="color:red;"> *</span>
-                <input type="number" class="form-control sa-form-font half-border-radius" id="mobile" placeholder="Enter your Contact No." name="mobile">
-                <span id="mobile_error" style="color: red;"></span>
+                <input type="number" class="form-control sa-form-font half-border-radius" id="amobile" placeholder="Enter your Contact No." name="mobile">
+                <span id="amobile_error" style="color: red;"></span>
 
                 <p class="sr-err mt-2">
                   You will be notified by SMS when you recieve a response.</p>
               </div>
               <div class="sa-pb mb-4">
                 <label for="inputName" class="form-label sa-color2 sa-label">Email</label><span style="color:red;"> *</span>
-                <input type="email" class="form-control sa-form-font half-border-radius" id="email" placeholder="Enter your Email" name="email">
-                <span id="email_error" style="color: red;"></span>
+                <input type="email" class="form-control sa-form-font half-border-radius" id="aemail" placeholder="Enter your Email" name="email">
+                <span id="aemail_error" style="color: red;"></span>
                 <p class="sr-err mt-2">
                   You will be emailed all responses on this email id.</p>
                 <p class="sr-err mt-3">
@@ -205,34 +205,34 @@
 <script>
   $('#main_id').submit(function(e) {
 
-    var name = $('#name').val();
+    var aname = $('#aname').val();
     var lawarea = $('#lawarea').val();
     // var city = $('#city').val();
     var subject = $('#subject').val();
     var short_description = $('#short_description').val();
-    var mobile = $('#mobile').val();
-    var email = $('#email').val();
+    var amobile = $('#amobile').val();
+    var aemail = $('#aemail').val();
     // alert (language)
 
     var cnt = 0;
     var f = 0;
 
-    $('#name_error').html("");
+    $('#aname_error').html("");
     $('#lawarea_error').html();
     // $('#city_error').html("");
     $('#subject_error').html("");
     $('#short_description_error').html("");
-    $('#email_error').html();
-    $('#mobile_error').html();
+    $('#aemail_error').html();
+    $('#aobile_error').html();
 
 
 
-    if (name.trim() == '') {
-      $('#name_error').html("Please enter name");
+    if (aname.trim() == '') {
+      $('#aname_error').html("Please enter name");
       cnt = 1;
       f++;
       if (f == 1) {
-        $('#name').focus();
+        $('#aname').focus();
       }
     }
     if (lawarea.trim() == '') {
@@ -270,29 +270,29 @@
         $('#short_description').focus();
       }
     }
-    if (email.trim() == '') {
-      $('#email_error').html("Please enter email");
+    if (aemail.trim() == '') {
+      $('#aemail_error').html("Please enter email");
       cnt = 1;
       f++;
       if (f == 1) {
-        $('#email').focus();
+        $('#aemail').focus();
       }
     }
 
-    if (mobile.trim() == '') {
-      $('#mobile_error').html("Please enter Contact no");
+    if (amobile.trim() == '') {
+      $('#amobile_error').html("Please enter Contact no");
       cnt = 1;
       f++;
       if (f == 1) {
-        $('#mobile').focus();
+        $('#amobile').focus();
       }
     }
-    if (mobile.length < 10) {
-      $('#mobile_error').html("Please enter Valid Contact no ");
+    if (amobile.length < 10) {
+      $('#amobile_error').html("Please enter Valid Contact no ");
       cnt = 1;
       f++;
       if (f == 1) {
-        $('#mobile').focus();
+        $('#amobile').focus();
       }
     }
 
