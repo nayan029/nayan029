@@ -403,4 +403,9 @@ class HomeController extends Controller
     {
         return view('fronted.terms_of_use', $this->data);
     }
+    public function editProfile()
+    {
+        return view('fronted.editprofile', $this->data);
+        
+    }
 }

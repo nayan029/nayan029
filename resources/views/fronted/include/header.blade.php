@@ -236,7 +236,7 @@ $login = Auth::user();
 									<li><a href="<?php echo URL::to('/') ?>/labour-service-legal-services">Labour and Service</a></li>
 									<li><a href="<?php echo URL::to('/') ?>/copyright-patent-trademark-legal-services">Trademark & Copyright</a></li>
 									<li><a href="<?php echo URL::to('/') ?>/corporate-legal-services">Corporate</a></li>
-									<li><a href="<?php echo URL::to('/') ?>/startup-legal-services">Startup</a></li>
+									<!-- <li><a href="<?php echo URL::to('/') ?>/startup-legal-services">Startup</a></li> -->
 									<li><a href="<?php echo URL::to('/') ?>/supreme-court-legal-services">Supreme Court</a></li>
 									<li><a href="<?php echo URL::to('/') ?>/immigration-legal-services">Immigration</a></li>
 								</ul>

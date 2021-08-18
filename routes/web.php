@@ -276,6 +276,9 @@ Route::get('/experts/reviews/{id}', 'App\Http\Controllers\fronted\reviewControll
 
 Route::resource('/enquiry-form', 'App\Http\Controllers\fronted\enquiryController');
 
+Route::get('/lawyer/edit-profile', [FrontedHomeController::class, 'editProfile']);
+
+
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
 

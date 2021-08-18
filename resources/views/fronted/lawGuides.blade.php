@@ -107,7 +107,7 @@
        <div class="row mb-5">
          <div class="col-md-12">
           <div>
-            <h2 class="sr-t">50,000 People Choose  Every Day</h2>
+            <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
           </div>
            <div class="row mt-5 sr-c ">
              <div class="col-md-4 text-center">
@@ -128,7 +128,7 @@
              </div>
              <div class="col-md-4 text-center">
 
-              <h6 class="sr-sub-t">CONTACT A LAWYER</h6>
+              <h6 class="sr-sub-t">HIRE A LAWYER</h6>
                <p>Contact and get legal assistance from our lawyer</p>
                <p> network for your specific matter</p>
                <button type="submit" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</button>

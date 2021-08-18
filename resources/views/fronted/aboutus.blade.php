@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-6 col1">
 				<div class="text">
-					<h4>At <span class="span-gr">Legal Buddy</span>, you are in good hands. We <span class="span-gr">ensure</span> to give you the <span class="span-gr">best service</span></h4>
+					<h4>At <span class="span-gr">Legal Bench</span>, you are in good hands. We <span class="span-gr">ensure</span> to give you the <span class="span-gr">best service</span></h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a, tincidunt tellus in at sit. Aliquam a, tincidunt tellus in at sit.</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a, tincidunt tellus in at sit.</p>
 
@@ -65,7 +65,7 @@
 			</div>
 			<div class="col-md-6 col2">
 				<div class="title">
-					<h3>Why Legal Buddy?</h3>
+					<h3>WhyLegal Bench?</h3>
 				</div>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum.</p>
@@ -79,7 +79,7 @@
 			<h6 class="after-text">TEAM</h6>
 		</div>
 		<div class="title text-center">
-			<h3>Management behind Legal Buddy</h3>
+			<h3>Management behind Legal Bench</h3>
 		</div>
 		<div class="row">
 			<div class="col-md-4">

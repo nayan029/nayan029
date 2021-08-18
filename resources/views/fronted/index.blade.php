@@ -262,7 +262,7 @@
 				<a href="{{URL::to('/')}}/search/lawyer/?category=25">
 
 					<div class="fbox">
-						<p>Banking Frods </p>
+						<p>Banking Fraud </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new3.png">
 					</div>
 				</a>
