@@ -104,14 +104,14 @@
 
 
         if (email.trim() == '') {
-            $('#email_error').html("Please enter Email");
+            $('#email_error').html("Please enter email");
             $('#email').focus();
             cnt = 1;
         }
 
         if (email) {
             if (!ValidateEmail(email)) {
-                $('#email_error').html("Please enter Valid Email");
+                $('#email_error').html("Please enter valid email");
                 cnt = 1;
 
             }

@@ -236,7 +236,7 @@
       }
     }
     if (lawarea.trim() == '') {
-      $('#lawarea_error').html("Please Select Area Of Law");
+      $('#lawarea_error').html("Please select area of law");
       cnt = 1;
       f++;
       if (f == 1) {
@@ -280,7 +280,7 @@
     // }
 
     if (amobile.trim() == '') {
-      $('#amobile_error').html("Please enter Contact no");
+      $('#amobile_error').html("Please enter contact number");
       cnt = 1;
       f++;
       if (f == 1) {
@@ -288,7 +288,7 @@
       }
     }
     if (amobile.length < 10) {
-      $('#amobile_error').html("Please enter Valid Contact no ");
+      $('#amobile_error').html("Please enter valid contact number");
       cnt = 1;
       f++;
       if (f == 1) {

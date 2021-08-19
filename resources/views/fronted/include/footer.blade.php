@@ -96,7 +96,7 @@
     // 	}
     // }
     if (name.trim() == '') {
-      $('#name_error').html("Please enter Name");
+      $('#name_error').html("Please enter name");
       cnt = 1;
       f++;
       if (f == 1) {
@@ -123,7 +123,7 @@
     }
 
     if (mobile.trim() == '') {
-      $('#mobile_error').html("Please enter Mobile No");
+      $('#mobile_error').html("Please enter mobile number");
       cnt = 1;
       f++;
       if (f == 1) {
@@ -131,7 +131,7 @@
       }
     }
     if (mobile.length > 12) {
-      $('#mobile_error').html("Please enter Valid Mobile ");
+      $('#mobile_error').html("Please enter valid mobile ");
       cnt = 1;
       f++;
       if (f == 1) {

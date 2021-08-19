@@ -9,13 +9,13 @@
                     <form id="main_id" method="post" action="<?php echo URL::to('/contact-us/store'); ?>" onsubmit="return validation();">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control border-radius-5px" id="name" aria-describedby="nameHelp" placeholder="Name" autocomplete="off">
-                            <span id="name_error" style="color: red;"></span>
+                            <input type="text" name="name" class="form-control border-radius-5px" id="cname" aria-describedby="nameHelp" placeholder="Name" autocomplete="off">
+                            <span id="cname_error" style="color: red;"></span>
 
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control border-radius-5px" id="email" aria-describedby="emailHelp" placeholder="Email" autocomplete="off">
-                            <span id="email_error" style="color: red;"></span>
+                            <input type="email" name="email" class="form-control border-radius-5px" id="cemail" aria-describedby="emailHelp" placeholder="Email" autocomplete="off">
+                            <span id="cemail_error" style="color: red;"></span>
 
                         </div>
                         <div class="form-group">
@@ -112,37 +112,37 @@
         // $('#submitBtn1').prop('disabled', true);
         var temp = 0;
         var f = 0;
-        var name = $("#name").val();
-        var email = $("#email").val();
+        var cname = $("#cname").val();
+        var cemail = $("#cemail").val();
         var message_contact = $("#message-contact").val();
 
 
-        if (name.trim() == '') {
-            $('#name_error').html("Please enter name");
+        if (cname.trim() == '') {
+            $('#cname_error').html("Please enter name");
             // cnt = 1;
             temp++;
 
         }
 
-        function ValidateEmail(email) {
+        function ValidateEmail(cemail) {
             var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-            return expr.test(email);
+            return expr.test(cemail);
         };
-        if (email) {
-            if (!ValidateEmail(email)) {
-                $('#email_error').html("Please enter Valid Email ");
+        if (cemail) {
+            if (!ValidateEmail(cemail)) {
+                $('#cemail_error').html("Please enter valid email ");
                 temp++;
                 cnt = 1;
                 f++;
                 if (f == 1) {
-                    $('#email').focus();
+                    $('#cemail').focus();
                 }
             }
         }
 
-        if (email == "") {
+        if (cemail == "") {
 
-            $('#email_error').html("Please enter email");
+            $('#cemail_error').html("Please enter email");
 
             temp++;
 

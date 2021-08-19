@@ -224,7 +224,7 @@
     }
 
     if (image.trim() == '') {
-      $('#image_error').html("Please select Pictures");
+      $('#image_error').html("Please select pictures");
       cnt = 1;
     }
     if (image) {

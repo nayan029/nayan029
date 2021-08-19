@@ -197,7 +197,7 @@
 					var jsonData = JSON.parse(msg);
 					// console.log(jsonData)
 					if (msg == 1) {
-						$('#email_error').html("This Email is Already exist.");
+						$('#email_error').html("This email is already exist.");
 						response = true;
 					} else {
 						$("#email_error").html("");
@@ -218,7 +218,7 @@
 			return expr.test(email);
 		};
 		if (uniqueEmailCheck(email) == true) {
-			$('#email_error').html("This Email is Already exist.");
+			$('#email_error').html("This email is already exist.");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -227,7 +227,7 @@
 		}
 
 		if (name.trim() == '') {
-			$('#name_error').html("Please enter Name");
+			$('#name_error').html("Please enter name");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -235,7 +235,7 @@
 			}
 		}
 		if (username.trim() == '') {
-			$('#username_error').html("Please enter Username");
+			$('#username_error').html("Please enter username");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -244,7 +244,7 @@
 		}
 
 		if (email.trim() == '') {
-			$('#email_error').html("Please enter Email");
+			$('#email_error').html("Please enter email");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -253,7 +253,7 @@
 		}
 
 		if (!ValidateEmail(email)) {
-			$('#email_error').html("Please enter Valid Email");
+			$('#email_error').html("Please enter valid email");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -262,7 +262,7 @@
 		}
 
 		if (password.trim() == '') {
-			$('#password_error').html("Please enter Password");
+			$('#password_error').html("Please enter password");
 			cnt = 1;
 			f++;
 			if (f == 1) {

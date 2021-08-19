@@ -71,6 +71,7 @@ class HomeController extends Controller
     public function about_us(Request $request)
     {
         $this->data['title'] = "About Us";
+        $this->data['category'] = adviceCategory::getquestioncategorylist();
         return view('fronted.aboutus', $this->data);
     }
     public function contact_us(Request $request)
@@ -398,6 +399,7 @@ class HomeController extends Controller
     {
         // return $request->all();
         $name = $request->name;
+        $this->data['title'] = "Search By";
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
         $this->data['user_data'] = User::getRecordByName($name);

@@ -202,6 +202,12 @@
                                         <input type="number" name="mobile" class="form-control sa-form-font half-border-radius" id="emobile" placeholder="Enter your Mobile No">
                                         <span id="emobile_error" style="color: red;"></span>
                                     </div>
+                                    
+                                    <div class="col-md-12 col-lg-6 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Experience </label><span style="color: red;"> *</span>
+                                        <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="20">
+                                        <span id="experience_error" style="color: red;"></span>
+                                    </div>
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
 
@@ -222,11 +228,6 @@
                                             </div>
                                         </div>
                                         <span id="language_error" style="color: red;"></span>
-                                    </div>
-                                    <div class="col-md-12 col-lg-6 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Experience </label><span style="color: red;"> *</span>
-                                        <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="20">
-                                        <span id="experience_error" style="color: red;"></span>
                                     </div>
                                     <!-- <div class="col-lg-4 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Gender</label><span style="color:red;"> *</span>
@@ -688,7 +689,7 @@
         // }
         // if(element.attr("language") == "check") error.appendTo("#language_error ")
         if (ename.trim() == '') {
-            $('#ename_error').html("Please enter Firstname");
+            $('#ename_error').html("Please enter firstname");
             cnt = 1;
             f++;
             if (f == 1) {
@@ -710,7 +711,7 @@
         //   // alert("please select one option"); 
         // }
         if (dob.trim() == '') {
-            $('#dob_error').html("Please enter Date Of Birth");
+            $('#dob_error').html("Please enter date of birth");
             cnt = 1;
             f++;
             if (f == 1) {
@@ -719,7 +720,7 @@
         }
 
         if (fathername.trim() == '') {
-            $('#fathername_error').html("Please enter Lastname");
+            $('#fathername_error').html("Please enter lastname");
             cnt = 1;
             f++;
             if (f == 1) {
@@ -737,7 +738,7 @@
         // }
 
         if (frollno.trim() == '') {
-            $('#frollno_error').html("Please enter Degree Name");
+            $('#frollno_error').html("Please enter degree name");
             cnt = 1;
             f++;
             if (f == 1) {
@@ -828,7 +829,7 @@
         }
 
         if (emobile.trim() == '') {
-            $('#emobile_error').html("Please enter Mobile No");
+            $('#emobile_error').html("Please enter mobile no");
             cnt = 1;
             f++;
             if (f == 1) {
@@ -836,7 +837,7 @@
             }
         }
         if (emobile.length > 12) {
-            $('#emobile_error').html("Please enter Valid Mobile ");
+            $('#emobile_error').html("Please enter valid mobile ");
             cnt = 1;
             f++;
             if (f == 1) {
@@ -900,7 +901,7 @@
         $('#signatureimage_error').html("");
 
         if (signatureimage.trim() == '') {
-            $('#signatureimage_error').html("Please select Pictures");
+            $('#signatureimage_error').html("Please select pictures");
             cnt = 1;
         }
         if (signatureimage) {
@@ -927,7 +928,7 @@
 <script>
     function validation() {
         if (!this.form.checkbox.checked) {
-            alert('Please Check any one checkbox');
+            alert('Please check any one checkbox');
             return false;
         }
         // alert('y')

@@ -121,7 +121,7 @@ toastr.error('<?php echo Session::get('error') ?>', '', {timeOut: 5000});
 		
 
 		if (email.trim() == '') {
-			$('#email_error').html("Please enter Email");
+			$('#email_error').html("Please enter email");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -130,7 +130,7 @@ toastr.error('<?php echo Session::get('error') ?>', '', {timeOut: 5000});
 		}
 
 		if (!ValidateEmail(email)) {
-			$('#email_error').html("Please enter Valid Email");
+			$('#email_error').html("Please enter valid email");
 			cnt = 1;
 			f++;
 			if (f == 1) {
@@ -139,7 +139,7 @@ toastr.error('<?php echo Session::get('error') ?>', '', {timeOut: 5000});
 		}
 
 		if (password.trim() == '') {
-			$('#password_error').html("Please enter Password");
+			$('#password_error').html("Please enter password");
 			cnt = 1;
 			f++;
 			if (f == 1) {

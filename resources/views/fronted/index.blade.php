@@ -18,7 +18,7 @@
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
 							<div class="text">
 								<h6>We have picked the most efficient law conversion courses for you</h6>
-								<a class="btn btn-primary" href="#" role="button">Learn More</a>
+								<a class="btn btn-primary" href="{{URL::to('/')}}/about-us" role="button">Learn More</a>
 							</div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/willoughby-zachry-law-02-1.png);">
 							<div class="text">
 								<h6>We have picked the most efficient law conversion courses for you</h6>
-								<a class="btn btn-primary" href="#" role="button">Learn More</a>
+								<a class="btn btn-primary" href="{{URL::to('/')}}/about-us" role="button">Learn More</a>
 							</div>
 						</div>
 					</div>
@@ -56,7 +56,7 @@
 						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
 							<div class="text">
 								<h6>We have picked the most efficient law conversion courses for you</h6>
-								<a class="btn btn-primary" href="#" role="button">Learn More</a>
+								<a class="btn btn-primary" href="{{URL::to('/')}}/about-us" role="button">Learn More</a>
 							</div>
 						</div>
 					</div>
@@ -783,8 +783,8 @@
 						<form method="POST" action="{{URl::to('/')}}/quick-answer" onsubmit="return validation();">
 							@csrf
 							<div class="form-group">
-								<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" name="email" autocomplete="off">
-								<span id="email_error" style="color: red;"></span>
+								<input type="email" class="form-control" id="cemail" aria-describedby="emailHelp" placeholder="Email" name="email" autocomplete="off">
+								<span id="cemail_error" style="color: red;"></span>
 							</div>
 							<div class="form-group">
 								<div class="with-label">
@@ -870,7 +870,7 @@
 		var temp = 0;
 		var f = 0;
 		var category = $("#category").val();
-		var email = $("#email").val();
+		var cemail = $("#cemail").val();
 		var message_contact = $("#message").val();
 
 
@@ -881,25 +881,25 @@
 
 		}
 
-		function ValidateEmail(email) {
+		function ValidateEmail(cemail) {
 			var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-			return expr.test(email);
+			return expr.test(cemail);
 		};
-		if (email) {
-			if (!ValidateEmail(email)) {
-				$('#email_error').html("Please enter Valid Email ");
+		if (cemail) {
+			if (!ValidateEmail(cemail)) {
+				$('#cemail_error').html("Please enter valid email ");
 				temp++;
 				cnt = 1;
 				f++;
 				if (f == 1) {
-					$('#email').focus();
+					$('#cemail').focus();
 				}
 			}
 		}
 
-		if (email == "") {
+		if (cemail == "") {
 
-			$('#email_error').html("Please enter email");
+			$('#cemail_error').html("Please enter email");
 
 			temp++;
 
