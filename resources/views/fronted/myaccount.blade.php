@@ -30,7 +30,7 @@
             </div>
 
             <div class="sa-application">
-              <a href="#">
+              <a href="{{URL::to('/')}}/account/all-questions">
                 <!-- {{count($my_questions)}} -->
                 <h5 class="sa-color2 mb-3">My Questions ({{count($my_questions)}})</h5>
               </a>
@@ -64,7 +64,7 @@
             <br />
             Talk to a real lawyer about your legal issue.
           </p>
-          <a href="legal_enquiry.html">
+          <a href="{{URL::to('/')}}/legal-enquiry">
             <button type="submit" class="btn btn-outline-primary min-w120 ">Find a Lawyer Now</button></a>
         </div>
 
@@ -94,7 +94,7 @@
             <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
             <p>Post your question for free and get response from</p>
             <p>experienced lawyers within 48 hours</p>
-            <a href="{{ URL::to('/') }}/free-legal-advice">
+            <a href="{{ URL::to('/') }}/ask-a-free-question">
               <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free
                 Question</button></a>
           </div>
@@ -103,7 +103,7 @@
             <h6 class="sr-sub-t">HIRE A LAWYER</h6>
             <p>Contact and get legal assistance from our lawyer</p>
             <p> network for your specific matter</p>
-            <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</button>
+            <a href="{{URL::to('/')}}/legal-enquiry"  class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
 
           </div>
         </div>

@@ -244,6 +244,7 @@ Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileControl
 
 //-----------------------------------------user account---------------------------------------------
 Route::get('/my-account', [FrontedHomeController::class, 'myAccount']);
+Route::get('/account/all-questions',[FrontedHomeController::class,'allQuestions']);
 //-----------------------------------------user account---------------------------------------------
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');

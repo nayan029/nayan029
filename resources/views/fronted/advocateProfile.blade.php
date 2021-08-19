@@ -1,4 +1,5 @@
 @include('fronted/include/header')
+@php $auth = Auth::user(); @endphp
 <div class="sa-enroll-details">
     <div class="container">
         <!-- <div class="mitem3"> -->
@@ -113,30 +114,21 @@
 
         <div class="sa-application col-md-12 sr-pro-review">
             <h3 class="sa-color2">Top Reviews</h3>
-            @if(isset($user_login))
-            <!-- {{$user_login}} -->
-            @if($user_login->user_type == '2')
+
             <div>
+                @if(isset($auth))
+                @if($auth->user_type == 2)
                 <a type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
+                @else
+                <a href="{{URL::to('/')}}/lawyer/login" class="btn btn-outline-primary min-w120s">Write A Review</a>
+                @endif
+                @else
+                <a href="{{URL::to('/')}}/lawyer/login" class="btn btn-outline-primary min-w120s">Write A Review</a>
+                @endif
             </div>
-            @else
-            <script>
-                window.location.href = "{{url('/login')}}";
-            </script>
-            @endif
-            @endif
 
         </div>
-        <!-- modal to write review -->
 
-        <!-- Button trigger modal -->
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Launch demo modal
-        </button> -->
-
-        <!-- Modal -->
-        @if(isset($user_login))
-        @if($user_login->user_type == '2')
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -156,8 +148,8 @@
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="lawyer_id" name="lawyer_id" readonly value="{{$lawyerData->id}}">
-                                <input type="hidden" class="form-control" id="user_id" name="user_id" readonly value="{{$user_login->id}}">
-                                <input type="hidden" class="form-control" id="user_name" name="user_name" readonly value="{{$user_login->name}}">
+                                <input type="hidden" class="form-control" id="user_id" name="user_id" readonly value="@if(isset($auth)) {{$auth->id}} @endif">
+                                <input type="hidden" class="form-control" id="user_name" name="user_name" readonly value="@if(isset($auth)) {{$auth->name}} @endif">
                             </div>
                             <div class="form-group">
                                 <label style="color: black;" for="exampleInputPassword1">Rating</label><span style="color: red;"> *</span>
@@ -200,12 +192,7 @@
                 </div>
             </div>
         </div>
-        @else
-        <script>
-            window.location.href = "{{url('/login')}}";
-        </script>
-        @endif
-        @endif
+
     </div>
     <!-- modal to write review -->
     <div class="container">

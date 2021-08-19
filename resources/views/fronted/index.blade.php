@@ -235,7 +235,7 @@
 
 					<div class="fbox">
 						<p>Sexual abuse </p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/hammer1.png">
 					</div>
 				</a>
 			</div>
@@ -244,7 +244,7 @@
 
 					<div class="fbox">
 						<p>Court Marriage </p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/ring1.png">
 					</div>
 				</a>
 			</div>
@@ -254,7 +254,7 @@
 
 					<div class="fbox">
 						<p>Consumer Court </p>
-						<img src="<?php echo URL::to('/'); ?>/fronted/images/new2.png">
+						<img src="<?php echo URL::to('/'); ?>/fronted/images/lady.png">
 					</div>
 				</a>
 			</div>

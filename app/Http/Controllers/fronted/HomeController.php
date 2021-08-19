@@ -349,8 +349,8 @@ class HomeController extends Controller
     {
         $auth = Auth::user();
         if (isset($auth)) {
-            if ($auth->user_type == 3) {
-                if ($auth) {
+            if ($auth) {
+                if ($auth->user_type == 3) {
                     $this->data['test'] = $auth = Auth::user();
                     $this->data['title'] = "Enrollment";
                     $this->data['step'] = User::getsteps($auth->id);
@@ -359,6 +359,8 @@ class HomeController extends Controller
                     $this->data['catdata'] = lawyerenrollmentcatgeory::getusercategorys($auth->id);
                     $this->data['location'] = location::getAllRecord();
                     return view('fronted.lawyerenrollment', $this->data);
+                } else {
+                    return view('fronted.lawyer_login', $this->data);
                 }
             }
         } else {
@@ -373,12 +375,13 @@ class HomeController extends Controller
         $this->data['title'] = "My Account";
         return view('fronted.myaccount', $this->data);
     }
+    public function allQuestions()
+    {
+        return view('fronted.userquestionslist', $this->data);
+    }
     public function advocateProfile($id)
     {
-        // $auth = Auth::user();
-        // if ($auth) {
-        //     $this->data['user_login'] = $auth;
-        // }
+        
         $this->data['title'] = "Advocate Profile";
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
@@ -410,7 +413,7 @@ class HomeController extends Controller
             $this->data['title'] = "Edit Profile";
             return view('fronted.editprofile', $this->data);
         } else {
-            return view('fronted.lawyer_login',$this->data);
+            return view('fronted.lawyer_login', $this->data);
         }
     }
 }

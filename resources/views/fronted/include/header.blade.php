@@ -39,9 +39,9 @@ $login = Auth::user();
 						</li>
 						@endif
 						@else
-						<li class="nav-item" id="practice">
+						<!-- <li class="nav-item" id="practice">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>
-						</li>
+						</li> -->
 						@endif
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
