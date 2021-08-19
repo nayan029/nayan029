@@ -202,7 +202,7 @@
                                         <input type="number" name="mobile" class="form-control sa-form-font half-border-radius" id="emobile" placeholder="Enter your Mobile No">
                                         <span id="emobile_error" style="color: red;"></span>
                                     </div>
-                                    
+
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Experience </label><span style="color: red;"> *</span>
                                         <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="20">
@@ -267,26 +267,6 @@
                             <span id="about_error" style="color:red"></span>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1" class="sa-color2">Court</label><span style="color: red;"> *</span>
-                            <div class="row sr-pad1">
-                                @foreach ($court as $data)
-                                <div class="col-md-3">
-                                    <div class="pm-check " id="courtcheck">
-                                        <input class="form-check-input court" name="court[]" type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->name; ?>">
-                                        <span class="real-checkbox"></span>
-                                        <label class="form-check-label" for="<?php echo $data->name; ?>">
-                                            <?php echo $data->name; ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                @endforeach
-
-
-                            </div>
-                            <span id="court_error" style="color:red"></span>
-                        </div>
-
 
                         <div class="sa-application">
                             <p class="sa-color2">Specialization <span style="color: red;"> *</span></p>
@@ -313,6 +293,30 @@
 
 
                         </div>
+                        <div class="sa-application mt-2">
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Court</label><span style="color: red;"> *</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row sr-pad1">
+                                @foreach ($court as $data)
+                                <div class="col-md-3">
+                                    <div class="pm-check " id="courtcheck">
+                                        <input class="form-check-input court" name="court[]" type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->name; ?>">
+                                        <span class="real-checkbox"></span>
+                                        <label class="form-check-label" for="<?php echo $data->name; ?>">
+                                            <?php echo $data->name; ?>
+                                        </label>
+                                    </div>
+                                </div>
+                                @endforeach
+
+
+                            </div>
+                            <span id="court_error" style="color:red"></span>
+                        </div>
+
+
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="sa-form-next">
