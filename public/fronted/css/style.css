@@ -5872,3 +5872,84 @@ ul.navbar-nav .nav-link{
 .sr-rotate{
     transform: rotate(333deg);
 }
+/*17-8-2021*/
+.datepicker-dropdown {
+    border: 1px solid #c1c1c1!important;
+    -webkit-box-shadow: 0 3px 6px #ccc;
+    box-shadow: none!important;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    position: absolute;
+    z-index: 1;
+}
+.datepicker-panel>ul>li {
+    background-color: #000!important;
+    cursor: pointer;
+    float: left;
+    height: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 30px;
+}
+.datepicker-panel>ul>li.disabled, .datepicker-panel>ul>li.disabled:hover {
+    background-color: #000!important;
+    color: #ccc!important;
+    cursor: default!important;
+}.datepicker-panel>ul>li.highlighted {
+    background-color: #eca835;
+}
+.datepicker-panel>ul>li:hover {
+    background-color: #1b1b1b!important;
+    color:#ffffff!important;
+}
+.datepicker-top-left:after, .datepicker-top-right:after {
+    border-bottom-color: #000;
+    top: -4px;
+}
+.datepicker-panel>ul>li[data-view="month current"],
+.datepicker-panel>ul>li[data-view="year current"],
+.datepicker-panel>ul>li[data-view="years current"] {
+    width: 150px!important;
+    color: #eca835!important;
+        background: #000!important;
+    font-weight: 600!important;
+    font-size: 15px;
+    height: 40px!important;
+    padding-top: 10px!important;
+}
+
+.datepicker-panel>ul>li[data-view="month next"],
+ .datepicker-panel>ul>li[data-view="month prev"],
+  .datepicker-panel>ul>li[data-view="year next"],
+   .datepicker-panel>ul>li[data-view="year prev"],
+    .datepicker-panel>ul>li[data-view="years next"],
+     .datepicker-panel>ul>li[data-view="years prev"], .datepicker-panel>ul>li[data-view=next] {
+    font-size: 27px!important;
+    background: black!important;
+    color: #eca835!important;
+    height: 40px!important;
+    padding-top: 10px!important;
+
+}
+.datepicker-top-left:after, .datepicker-top-right:after {
+    border-bottom-color: #000!important;
+    top: -4px;
+}
+
+
+.datepicker-top-left:before, .datepicker-top-right:before {
+    border-bottom-color: #c1c1c1!important;
+}
+.datepicker-panel>ul>li.picked, .datepicker-panel>ul>li.picked:hover {
+   
+    background: #eca835!important;
+    color: #ffffff!important;
+}
+.datepicker-panel>ul>li.highlighted{
+    background: #000;
+    color:orange;
+}
+
+/*end 17-8-2021*/

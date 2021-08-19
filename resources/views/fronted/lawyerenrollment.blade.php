@@ -1,5 +1,8 @@
 @include('fronted/include/header')
-<link rel="stylesheet" href="{{URL::to('/')}}/fronted/css/datepicker.css">
+<!-- <link rel="stylesheet" href="{{URL::to('/')}}/fronted/css/datepicker.css"> -->
+ <!-- datepicker cdn -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- ***************** -->
 <div class="sa-enroll-details">
     <div class="container">
         <div class="sa-pills-design">
@@ -46,8 +49,8 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">First Name</label><span style="color: red;"> *</span>
-                                        <input type="text" value="@if(isset($test->name)){{$test->name}}@endif" name="lname" class="form-control sa-form-font half-border-radius" id="name" placeholder="Enter your first name">
-                                        <span id="name_error" style="color: red;"></span>
+                                        <input type="text" value="@if(isset($test->name)){{$test->name}}@endif" name="lname" class="form-control sa-form-font half-border-radius" id="ename" placeholder="Enter your first name">
+                                        <span id="ename_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Last Name</label><span style="color: red;"> </span>
@@ -63,7 +66,7 @@
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">DOB</label><span style="color: red;"> *</span>
                                         <!-- <input type="date" name="dob" class="form-control sa-form-font half-border-radius" id="dob"> -->
-                                        <input type="text" name="ldob" id="dob" class="form-control date sa-form-font half-border-radius sr-cal" placeholder="dd/mm/yyy" autocomplete="off" readonly>
+                                        <input type="text" name="ldob" id="inputDate" class="form-control date sa-form-font half-border-radius sr-cal" placeholder="dd/mm/yyy" autocomplete="off" readonly>
                                         <span id="dob_error" style="color: red;"></span>
 
                                     </div>
@@ -78,7 +81,8 @@
                                     <div class="col-md-4 col-lg-2 sa-bgs sa-pb">
 
                                         <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
-                                        <img id="blah" src="{{asset('fronted/images/new-images/bgs-01.png')}}" alt="your image" id="blah" />
+                                        <!-- <img id="blah" src="{{asset('fronted/images/new-images/bgs-01.png')}}" alt="your image" id="blah" /> -->
+                                        <img id="blah" src="{{asset('fronted/images/user.png')}}" alt="your image" id="blah" />
                                     </div>
 
                                 </div>
@@ -190,7 +194,8 @@
                                         </select>
                                         <span id="location_error" style="color: red;"></span>
                                     </div> -->
-                                    <div class="col-lg-6 col-md-12 sa-pb">
+
+                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">Court </label><span style="color: red;"> *</span>
                                         <select name="court" id="court" class="form-control sa-form-font half-border-radius">
                                             <option value="">Select Location</option>
@@ -199,10 +204,15 @@
                                             @endforeach
                                         </select>
                                         <span id="court_error" style="color: red;"></span>
+                                    </div> -->
+                                    
+                                    <div class="col-md-12 col-lg-6 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Mobile No</label><span style="color: red;"> *</span>
+                                        <input type="number" name="mobile" class="form-control sa-form-font half-border-radius" id="emobile" placeholder="Enter your Mobile No">
+                                        <span id="emobile_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
-                                        <!-- <input class="form-check-input" name="language[]" type="checkbox" value="" id=""> -->
 
                                         <div class="sa-lang-check">
                                             <div class="pm-check ">
@@ -219,29 +229,8 @@
                                                     Hindi
                                                 </label>
                                             </div>
-                                            <!-- <div class="pm-check ">
-                                                <input class="form-check-input language" name="language[]" type="checkbox" value="gujarati" id="three">
-                                                <span class="real-checkbox"></span>
-                                                <label class="form-check-label  sa-label" for="three">
-                                                    Gujrati
-                                                </label>
-                                            </div> -->
                                         </div>
                                         <span id="language_error" style="color: red;"></span>
-
-                                        <!-- <select name="language" class="form-select sa-form-font border-radius-5px" id="language">
-                                            <option value="">Select your nationality</option>
-                                            <option value="india">India</option>
-                                            <option value="usa">USA</option>
-                                            <option value="ijaraial">Ijaraial</option>
-                                        </select> -->
-
-                                        <span id="language_error" style="color: red;"></span>
-                                    </div>
-                                    <div class="col-md-12 col-lg-6 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Mobile No</label><span style="color: red;"> *</span>
-                                        <input type="number" name="mobile" class="form-control sa-form-font half-border-radius" id="mobile" placeholder="Enter your Mobile No">
-                                        <span id="mobile_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Experience </label><span style="color: red;"> *</span>
@@ -520,7 +509,7 @@
 
 @include('fronted/include/footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
+<!-- <script>
     $("#dob").datepicker({
         autoUpdateInput: false,
         autoclose: true,
@@ -529,7 +518,20 @@
         format: 'dd-mm-yyyy',
 
     });
+</script> -->
+   <!-- datepicker script -->
+   <script>
+    $("#inputDate").datepicker({
+        //  autoUpdateInput: false,
+        autoclose: true,
+        // todayHighlight: true,
+        endDate: new Date(),
+
+        format: 'dd-mm-yyyy',
+
+    });
 </script>
+<!-- End datepicker script -->
 
 <script>
     function readURL(input) {
@@ -577,7 +579,7 @@
     $('#main_id').submit(function(e) {
 
         var type = 2;
-        var name = $('#name').val();
+        var ename = $('#ename').val();
         var dob = $('#dob').val();
         var fathername = $('#fathername').val();
         var image = $('#profileimage').val();
@@ -597,7 +599,7 @@
         // var tyear = $('#tyear').val();
         // var tinsti = $('#tinsti').val();
         // var location = $('#location').val();
-        var court = $('#court').val();
+        // var court = $('#court').val();
 
 
         // var nationality = $('#nationality').val();
@@ -605,15 +607,15 @@
 
         var language = $('input[name=language]:checked').val();
 
-        var mobile = $('#mobile').val();
+        var emobile = $('#emobile').val();
         // alert (language)
 
         var cnt = 0;
         var f = 0;
 
-        $('#name_error').html("");
+        $('#ename_error').html("");
         // $('#location_error').html();
-        $('#court_error').html();
+        // $('#court_error').html();
         $('#dob_error').html("");
         $('#fathername_error').html("");
         $('#experience_error').html("");
@@ -636,7 +638,7 @@
         $('#language_error').html("");
         $('#nicno_error').html();
 
-        $('#mobile_error').html();
+        $('#emobile_error').html();
 
         // if (image.trim() == '') {
         //     $('#image_error').html("Please select Pictures");
@@ -668,12 +670,12 @@
         //     }
         // }
         // if(element.attr("language") == "check") error.appendTo("#language_error ")
-        if (name.trim() == '') {
-            $('#name_error').html("Please enter Firstname");
+        if (ename.trim() == '') {
+            $('#ename_error').html("Please enter Firstname");
             cnt = 1;
             f++;
             if (f == 1) {
-                $('#name').focus();
+                $('#ename').focus();
             }
         }
         // if (location.trim() == '') {
@@ -685,14 +687,14 @@
         //     }
         // }
 
-        if (court.trim() == '') {
-            $('#court_error').html("Please select court");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#court').focus();
-            }
-        }
+        // if (court.trim() == '') {
+        //     $('#court_error').html("Please select court");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#court').focus();
+        //     }
+        // }
 
         if (dob.trim() == '') {
             $('#dob_error').html("Please enter Date Of Birth");
@@ -812,20 +814,20 @@
             }
         }
 
-        if (mobile.trim() == '') {
-            $('#mobile_error').html("Please enter Mobile No");
+        if (emobile.trim() == '') {
+            $('#emobile_error').html("Please enter Mobile No");
             cnt = 1;
             f++;
             if (f == 1) {
-                $('#mobile').focus();
+                $('#emobile').focus();
             }
         }
-        if (mobile.length > 12) {
-            $('#mobile_error').html("Please enter Valid Mobile ");
+        if (emobile.length > 12) {
+            $('#emobile_error').html("Please enter Valid Mobile ");
             cnt = 1;
             f++;
             if (f == 1) {
-                $('#mobile').focus();
+                $('#emobile').focus();
             }
         }
         if (experience.trim() == '') {
