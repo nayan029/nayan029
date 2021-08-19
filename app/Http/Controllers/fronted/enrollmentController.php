@@ -7,6 +7,7 @@ use App\Models\admin\adviceCategory;
 use App\Models\admin\adviceQuerys;
 use App\Models\admin\blogs;
 use App\Models\admin\guides;
+use App\Models\admin\lawyercourt;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use App\Models\admin\lawyerlanguages;
 use App\Models\admin\setting;
@@ -26,7 +27,7 @@ class enrollmentController extends Controller
     public function index(Request $request)
     {
         $auth = Auth::user();
-        // return $request->all(); die();  
+        // return $request->all(); die();
         // $stepcount = $auth->step;
         $input = $request->all();
 
@@ -75,6 +76,19 @@ class enrollmentController extends Controller
             $inputuser->update($input);
         }
 
+        if ($request->court) {
+            $delete = DB::table('lawyer_enrollment_court')->where('userid', $auth->id)->delete();
+            foreach ($request->court as $courtdata) {
+                $array = array('userid' => $auth->id, 'courtid' => $courtdata, 'created_at' => date('Y:m:d h:i:s'));
+
+                $inser_id = new lawyercourt($array);
+                $inser_id->save();
+
+                $step['step'] = '2';
+                $inputuser = User::find($auth->id);
+                $inputuser->update($step);
+            }
+        }
 
 
         if ($request->category) {

@@ -1,8 +1,8 @@
 @include('fronted/include/header')
 <!-- <link rel="stylesheet" href="{{URL::to('/')}}/fronted/css/datepicker.css"> -->
- <!-- datepicker cdn -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <!-- ***************** -->
+<!-- datepicker cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- ***************** -->
 <div class="sa-enroll-details">
     <div class="container">
         <div class="sa-pills-design">
@@ -195,17 +195,8 @@
                                         <span id="location_error" style="color: red;"></span>
                                     </div> -->
 
-                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate" class="form-label sa-color2 sa-label">Court </label><span style="color: red;"> *</span>
-                                        <select name="court" id="court" class="form-control sa-form-font half-border-radius">
-                                            <option value="">Select Location</option>
-                                            @foreach ($court as $data)
-                                            <option value="{{$data->name}}">{{ucfirst($data->name)}}</option>
-                                            @endforeach
-                                        </select>
-                                        <span id="court_error" style="color: red;"></span>
-                                    </div> -->
-                                    
+
+
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Mobile No</label><span style="color: red;"> *</span>
                                         <input type="number" name="mobile" class="form-control sa-form-font half-border-radius" id="emobile" placeholder="Enter your Mobile No">
@@ -274,6 +265,28 @@
                             <textarea name="about" maxlength="250" class="form-control" id="about_data" rows="3"></textarea>
                             <span id="about_error" style="color:red"></span>
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Court</label><span style="color: red;"> *</span>
+                            <div class="row sr-pad1">
+                                @foreach ($court as $data)
+                                <div class="col-md-3">
+                                    <div class="pm-check " id="courtcheck">
+                                        <input class="form-check-input court" name="court[]" type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->name; ?>">
+                                        <span class="real-checkbox"></span>
+                                        <label class="form-check-label" for="<?php echo $data->name; ?>">
+                                            <?php echo $data->name; ?>
+                                        </label>
+                                    </div>
+                                </div>
+                                @endforeach
+
+
+                            </div>
+                            <span id="court_error" style="color:red"></span>
+                        </div>
+
+
                         <div class="sa-application">
                             <p class="sa-color2">Specialization <span style="color: red;"> *</span></p>
                         </div>
@@ -283,7 +296,7 @@
                             ?>
                                 <div class="col-md-3">
 
-                                    <div class="pm-check ">
+                                    <div class="pm-check " id="catcheck">
                                         <input class="form-check-input" name="category[]" type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->category_name; ?>">
                                         <span class="real-checkbox"></span>
                                         <label class="form-check-label" for="<?php echo $data->category_name; ?>">
@@ -294,6 +307,8 @@
                             <?php
                             }
                             ?>
+                            <span id="category_error" style="color:red"></span>
+
 
 
                         </div>
@@ -519,8 +534,8 @@
 
     });
 </script> -->
-   <!-- datepicker script -->
-   <script>
+<!-- datepicker script -->
+<script>
     $("#inputDate").datepicker({
         //  autoUpdateInput: false,
         autoclose: true,
@@ -580,7 +595,7 @@
 
         var type = 2;
         var ename = $('#ename').val();
-        var dob = $('#dob').val();
+        var dob = $('#inputDate').val();
         var fathername = $('#fathername').val();
         var image = $('#profileimage').val();
         var experience = $('#experience').val();
@@ -594,6 +609,8 @@
         var syear = $('#syear').val();
         var sinsti = $('#sinsti').val();
         var language = $('.language').val();
+
+
         //  alert(language)
         // var trollno = $('#trollno').val();
         // var tyear = $('#tyear').val();
@@ -687,21 +704,17 @@
         //     }
         // }
 
-        // if (court.trim() == '') {
-        //     $('#court_error').html("Please select court");
-        //     cnt = 1;
-        //     f++;
-        //     if (f == 1) {
-        //         $('#court').focus();
-        //     }
-        // }
 
+        // if ((court == null)) {
+        //   $("#court_error").html("Please select one option");
+        //   // alert("please select one option"); 
+        // }
         if (dob.trim() == '') {
             $('#dob_error').html("Please enter Date Of Birth");
             cnt = 1;
             f++;
             if (f == 1) {
-                $('#dob').focus();
+                $('#inputDate').focus();
             }
         }
 
@@ -923,11 +936,16 @@
 <script>
     $('#main_idtwo').submit(function(e) {
         var about = $('#about_data').val();
-        // var category = $('#category').val();
-        // alert (about)                    
+        var court = $(".court").val();
+        var length = $("#courtcheck input[type=checkbox]:checked").length;
+        var category = $("#catcheck input[type=checkbox]:checked").length;
+
+
         var cnt = 0;
         var f = 0;
+
         $('#about_error').html("");
+        $('#court_error').html("");
         $('#category_error').html("");
 
         if (about.trim() == '') {
@@ -937,6 +955,16 @@
             if (f == 1) {
                 $('#about').focus();
             }
+        }
+        if (length < 1) {
+            $("#court_error").html("Please select court");
+        } else {
+            $("#court_error").html("");
+        }
+        if (category < 1) {
+            $("#category_error").html("Please select category");
+        } else {
+            $("#category_error").html("");
         }
 
         if (cnt == 1) {
