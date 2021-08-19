@@ -33,9 +33,9 @@
 					</div>
 					<div class="bottom">
 						<ul class="social">
-							<li><a href="#" target="_blank"><i class="ti-twitter-alt"></i></a></li>
-							<li><a href="{{URL::to('/')}}/lawyer/facebook" target="_blank"><i class="ti-facebook"></i></a></li>
-							<li><a href="#" target="_blank"><i class="ti-linkedin"></i></a></li>
+						<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
+							<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
+							<li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
 						</ul>
 
 					</div>
@@ -44,11 +44,11 @@
 					<div class="top">
 						<div class="inner">
 							<h4>Create an Account</h4>
-							<ul class="social-icon">
+							<!-- <ul class="social-icon">
 								<li><a href="{{URL::to('/')}}/lawyer/facebook" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-entypo-social_facebook.png"></a></li>
 								<li><a href="#" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-icomoon-free_google-plus2.png"></a></li>
 								<li><a href="#" target="_blank"><img src="<?php echo URL::to('/'); ?>/fronted/images/icon/w-in.png"></a></li>
-							</ul>
+							</ul> -->
 							<div class="round-line"><span></span></div>
 
 							<div class="form">

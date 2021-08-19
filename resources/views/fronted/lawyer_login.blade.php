@@ -31,9 +31,9 @@
 					</div>
 					<div class="bottom">
 						<ul class="social">
-							<li><a href="#" target="_blank"><i class="ti-twitter-alt"></i></a></li>
-							<li><a href="#" target="_blank"><i class="ti-facebook"></i></a></li>		
-							<li><a href="#" target="_blank"><i class="ti-linkedin"></i></a></li>
+						<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
+							<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
+							<li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
 						</ul>
 
 					</div>
@@ -43,12 +43,12 @@
 						<div class="inner">
 							<a href="<?php echo URL::to('/'); ?>/">
 							<img src="{{asset('fronted/images/logo.png')}}" alt="big-logo" class="big-logo"></a>
-							<ul class="social-icon">
+							<!-- <ul class="social-icon">
 								<li><a href="#" target="_blank"><img src="{{asset('fronted/images/icon/entypo-social_facebook.png')}}"></a></li>
 								<li><a href="#" target="_blank"><img src="{{asset('fronted/images/icon/icomoon-free_google-plus2.png')}}"></a></li>
 								<li><a href="#" target="_blank"><img src="{{asset('fronted/images/icon/Group.png')}}"></a></li>
 							</ul>
-							<p>or use your email account</p>
+							<p>or use your email account</p> -->
 							<div class="form">
 								<form method="POST" action="<?php echo URL::to('/'); ?>/lawyer/login" id="main_id">
 									@csrf
