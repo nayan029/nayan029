@@ -18,9 +18,9 @@ class reviewrating extends Authenticatable
         $query = reviewrating::where('lawyer_id', $lawyerid)->orderBy('id', 'desc')->get();
         return $query;
     }
-    public static function getrecordbylawyeridlimit($lawyerid)
+    public static function getrecordbylawyeridlimit()
     {
-        $query = reviewrating::where('lawyer_id', $lawyerid)->orderBy('id', 'desc')->limit(5)->get();
+        $query = reviewrating::orderBy('id', 'desc')->limit(5)->get();
         return $query;
     }
     public static function getAllRecord()

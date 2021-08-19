@@ -86,7 +86,8 @@ class reviewController extends Controller
     public function allReviews($id)
     {
         $this->data['city'] = location::getAllRecord();
-        $this->data['allreviews'] = reviewrating::getrecordbylawyerid($id);
+        // $this->data['allreviews'] = reviewrating::getrecordbylawyerid($id);
+        $this->data['allreviews'] = reviewrating::getAllRecord();
         return view('fronted.allReviews', $this->data);
     }
 }

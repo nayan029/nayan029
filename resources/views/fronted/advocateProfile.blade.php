@@ -120,10 +120,10 @@
                 @if($auth->user_type == 2)
                 <a type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
                 @else
-                <a href="{{URL::to('/')}}/lawyer/login" class="btn btn-outline-primary min-w120s">Write A Review</a>
+                <!-- <a href="{{URL::to('/')}}/login" class="btn btn-outline-primary min-w120s">Write A Review</a> -->
                 @endif
                 @else
-                <a href="{{URL::to('/')}}/lawyer/login" class="btn btn-outline-primary min-w120s">Write A Review</a>
+                <a href="{{URL::to('/')}}/login" class="btn btn-outline-primary min-w120s">Write A Review</a>
                 @endif
             </div>
 
@@ -259,12 +259,14 @@
             </div>
         </div>
         @endforeach
-
-
+        @php $c = count($allreviews); @endphp
+        @if(isset($c))
+        @if($c>5)
         <div class="col-md-12 pl-0">
             <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
-
         </div>
+        @endif
+        @endif
     </div>
 
 </div>

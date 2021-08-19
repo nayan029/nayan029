@@ -39,12 +39,12 @@
             <div class="mitem3">
               <div class="row">
                 <div class="col-md-3">
-                  <a href="#">
+                  <a href="{{URL::to('/')}}/account/all-questions">
                     <img src="{{asset('fronted/images//pt1.png')}}">
                   </a>
                 </div>
                 <div class="col-md-8 mt-3 pl-0">
-                  <a href="#">
+                  <a href="{{URL::to('/')}}/account/all-questions">
                     <p class="fs-20">View your questions/answers</p>
                   </a>
                 </div>

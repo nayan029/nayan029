@@ -377,6 +377,9 @@ class HomeController extends Controller
     }
     public function allQuestions()
     {
+        $auth = Auth::user();
+        $uid = $auth->id;
+        $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
         return view('fronted.userquestionslist', $this->data);
     }
     public function advocateProfile($id)
@@ -387,7 +390,8 @@ class HomeController extends Controller
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         $this->data['lawyerData'] =  User::getrecordbyid($id);
         $this->data['allreviews'] = reviewrating::getAllRecord();
-        $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit($id);
+        // $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit($id);
+        $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit();
         return view('fronted.advocateProfile', $this->data);
     }
     public function searchLawyer(Request $request)
