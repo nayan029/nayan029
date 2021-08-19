@@ -47,7 +47,7 @@ class askFreeQuestionController extends Controller
             'short_description' => 'required',
             'name' => 'required',
             'mobile' => 'required',
-            'email' => 'required',
+            // 'email' => 'required',
 
         ]);
 

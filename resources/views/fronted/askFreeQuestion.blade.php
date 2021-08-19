@@ -76,7 +76,7 @@
                   You will be notified by SMS when you recieve a response.</p>
               </div>
               <div class="sa-pb mb-4">
-                <label for="inputName" class="form-label sa-color2 sa-label">Email</label><span style="color:red;"> *</span>
+                <label for="inputName" class="form-label sa-color2 sa-label">Email</label>
                 <input type="email" class="form-control sa-form-font half-border-radius" id="aemail" placeholder="Enter your Email" name="email">
                 <span id="aemail_error" style="color: red;"></span>
                 <p class="sr-err mt-2">
@@ -211,7 +211,7 @@
     var subject = $('#subject').val();
     var short_description = $('#short_description').val();
     var amobile = $('#amobile').val();
-    var aemail = $('#aemail').val();
+    // var aemail = $('#aemail').val();
     // alert (language)
 
     var cnt = 0;
@@ -222,7 +222,7 @@
     // $('#city_error').html("");
     $('#subject_error').html("");
     $('#short_description_error').html("");
-    $('#aemail_error').html();
+    // $('#aemail_error').html();
     $('#aobile_error').html();
 
 
@@ -270,14 +270,14 @@
         $('#short_description').focus();
       }
     }
-    if (aemail.trim() == '') {
-      $('#aemail_error').html("Please enter email");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#aemail').focus();
-      }
-    }
+    // if (aemail.trim() == '') {
+    //   $('#aemail_error').html("Please enter email");
+    //   cnt = 1;
+    //   f++;
+    //   if (f == 1) {
+    //     $('#aemail').focus();
+    //   }
+    // }
 
     if (amobile.trim() == '') {
       $('#amobile_error').html("Please enter Contact no");
