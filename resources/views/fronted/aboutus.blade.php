@@ -166,7 +166,7 @@
 			<div class="row">
 				<div class="offset-md-4 col-md-7 col2">
 					<h1>Your Time is valuable</h1>
-					<h4>Get answers quick</h4>
+					<!-- <h4>Get answers quick</h4> -->
 					<div class="form">
 						<form method="POST" action="{{URl::to('/')}}/quick-answer" onsubmit="return validation();">
 							@csrf

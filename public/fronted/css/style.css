@@ -5340,8 +5340,8 @@ ol.sr-ol li p.sr-white {
 .inner-menu ul {
 
     padding: 0;
-
-    margin-right: 30px;
+    margin-right:27px;
+    /* margin-right: 30px; */
     width: 22%;
 
     
@@ -5953,3 +5953,34 @@ ul.navbar-nav .nav-link{
 }
 
 /*end 17-8-2021*/
+button.owl-prev {}
+
+.divorce-owl .owl-nav {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    left: 0;
+    width: 100%;
+}
+
+.divorce-owl .owl-nav button.owl-prev {
+    left: -44px;
+}
+
+.divorce-owl .owl-nav button {
+    position: absolute;
+    background: #272727 !important;
+    height: 30px;
+    width: 30px;
+    border-radius: 6px;
+    font-size: 30px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divorce-owl .owl-nav button.owl-next {
+    right: -44px;
+}
+
+.divorce-owl .owl-nav span {position: relative;top: -2px;}

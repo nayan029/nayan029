@@ -252,7 +252,7 @@
                             <span class="fa fa-star"></span> -->
                         </p>
                     </div>
-                    <p class="mb-20">{{$data->review}}</p>
+                    <p class="mb-20">{{substr($data->review, 0, 100)}}</p>
 
                     <span class="pro-dt">{{date('d-m-Y', strtotime($data->created_at))}}</span>
                 </div>

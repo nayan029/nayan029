@@ -39,9 +39,9 @@ $login = Auth::user();
 						</li>
 						@endif
 						@else
-						<!-- <li class="nav-item" id="practice">
+						<li class="nav-item" id="practice">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>
-						</li> -->
+						</li>
 						@endif
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
@@ -121,11 +121,11 @@ $login = Auth::user();
 									<li>
 										<a href="<?php echo URL::to('/'); ?>/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Questions</a>
 									</li>
-									<li class="ul-title">Need Instant Advice</li>
+									<!-- <li class="ul-title">Need Instant Advice</li>
 									<li class="li-border"></li>
 									<li>
 										<a href="<?php echo URL::to('/'); ?>/free-legal-advice-phone" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk To Lawyer</a>
-									</li>
+									</li> -->
 								</ul>
 								<!-- <ul>
 									<li class="ul-title">Need Instant Advice</li>
@@ -241,7 +241,7 @@ $login = Auth::user();
 									<li><a href="<?php echo URL::to('/') ?>/immigration-legal-services">Immigration</a></li>
 								</ul>
 
-								<ul>
+								<!-- <ul>
 									<li class="ul-title">Need Instant Advice</li>
 									<li class="li-border"></li>
 									<li>
@@ -251,7 +251,7 @@ $login = Auth::user();
 
 										<a href="<?php echo URL::to('/'); ?>/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Start Here</a>
 									</li>
-								</ul>
+								</ul> -->
 
 
 
@@ -399,7 +399,7 @@ $login = Auth::user();
 								<h4>Search By</h4>
 								<div class="filter-group d-flex">
 									<input type="text" name="name">
-									<img src="{{asset('fronted/images/svg/feather_search-active.svg')}} ">	
+									<img src="{{asset('fronted/images/svg/feather_search-active.svg')}} ">
 									<button type="submit" class="btn btn-outline-primary ml-1">Search</button>
 								</div>
 							</form>
@@ -413,11 +413,11 @@ $login = Auth::user();
 							</button>
 							<div class="dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 								<?php if (isset($login) && $login->user_type == '3') { ?>
-									<a href="<?php echo URL::to('/') ?>/lawyer-profile" class="dropdown-item"><i class="icon fa fa-user"></i><?php if (isset($login)) {
-																																					echo ucfirst($login->name . " " . $login->username);
-																																				} else {
-																																					echo "";
-																																				} ?>
+									<a href="<?php echo URL::to('/') ?>/lawyer/edit-profile" class="dropdown-item"><i class="icon fa fa-user"></i><?php if (isset($login)) {
+																																						echo ucfirst($login->name . " " . $login->username);
+																																					} else {
+																																						echo "";
+																																					} ?>
 									</a>
 
 									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>

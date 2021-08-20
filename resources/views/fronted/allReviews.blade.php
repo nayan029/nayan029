@@ -1,4 +1,4 @@
-@include('fronted/include/header');
+@include('fronted/include/header')
 <div class="sa-enroll-details">
     <div class="container">
         <div class="sa-application">
@@ -55,7 +55,7 @@
                         <span class="fa fa-star"></span> -->
                     </div>
                     <div class="col-md-12">
-                        <p>{{$data->review}}
+                        <p>{{substr($data->review, 0, 100)}}
                             <br />
                             {{$data->user_name}} on {{date('d-m-Y', strtotime($data->created_at))}}
                         </p>

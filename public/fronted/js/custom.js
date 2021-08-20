@@ -18,6 +18,9 @@ $('.aiming-owl').owlCarousel({
 
     dots:true,
 
+    autoplay:true,
+    autoplayTimeout:4000,
+
     nav:false,
 
     smartSpeed:800,
@@ -39,6 +42,47 @@ $('.aiming-owl').owlCarousel({
         1000:{
 
             items:1
+
+        }
+
+    }
+
+})
+
+$('.divorce-owl').owlCarousel({
+
+    loop:true,
+
+    margin:15,
+
+    dots:true,
+
+    autoplay:true,
+    autoplayTimeout:4000,
+
+    nav:true,
+    navigation: true,
+//   navigationText: ["<img src='myprevimage.png'>","<img src='mynextimage.png'>"]
+
+    smartSpeed:800,
+
+    responsive:{
+
+        0:{
+
+            items:1
+
+        },
+
+        600:{
+
+            items:3
+
+        },
+
+        1000:{
+
+            items:4
 
         }
 

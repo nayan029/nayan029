@@ -277,6 +277,8 @@ Route::resource('/enquiry-form', 'App\Http\Controllers\fronted\enquiryController
 Route::get('/lawyer/edit-profile', [FrontedHomeController::class, 'editProfile']);
 Route::post('/lawyer/edit-profile/{id}', 'App\Http\Controllers\fronted\lawyerProfileController@update');
 
+Route::post('/lawyer/change_password/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'lawyerchangePassword']);
+
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

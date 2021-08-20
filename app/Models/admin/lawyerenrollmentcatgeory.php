@@ -36,6 +36,11 @@ class lawyerenrollmentcatgeory extends Authenticatable
         $query = lawyerenrollmentcatgeory::where('userid', $id)->orderBy('id', 'desc')->first();
         return $query;
     }
+    public static function getDataById($id)
+    {
+        $query = lawyerenrollmentcatgeory::where('userid', $id);
+        return $query;
+    }
     public static function getcategory($category)
     {
         $query = lawyerenrollmentcatgeory::where('categoryid', $category)->first();

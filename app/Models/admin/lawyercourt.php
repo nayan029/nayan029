@@ -16,7 +16,7 @@ class lawyercourt extends Authenticatable
 
     public static function getrecordbyid($id)
     {
-        $query = lawyercourt::where('userid', $id)->orderBy('id', 'desc')->get();
+        $query = lawyercourt::where('userid', $id);
         return $query;
     }
     public static function categorylist($name)
@@ -29,21 +29,6 @@ class lawyercourt extends Authenticatable
         // 	$query= $query->whereRaw($temp);
         // }
         $query = $query->paginate(10);
-        return $query;
-    }
-    public static function getcategorysById($id)
-    {
-        $query = lawyercourt::where('userid', $id)->orderBy('id', 'desc')->first();
-        return $query;
-    }
-    public static function getcategory($category)
-    {
-        $query = lawyercourt::where('categoryid', $category)->first();
-        return $query;
-    }
-    public static function getusercategorys($id)
-    {
-        $query = lawyercourt::where('userid', $id)->get();
         return $query;
     }
     public static function getrecordenrollmentbyid($id)

@@ -216,37 +216,30 @@ class ForgotPasswordController extends Controller
         }
     }
 
-    public function verify_lawyer_email(Request $request,$id)
+    public function verify_lawyer_email(Request $request, $id)
     {
         Auth::logout();
-	    $userid = Crypt::decrypt($id);
-		$userdata = User::where('id',$userid)->first();
-		if($userdata)
-		{
-			if($userdata->email_verify == 0)
-			{
-				$update_array = array('email_verify'=>1);
-				$update =  User::where('id',$userid)->update($update_array);
-				Session::flash('success', 'Verified Successfully');
-				if($userdata->user_type == 2)
-				{
-					return redirect('/customer/login');
-				}
-				if($userdata->user_type == 3)
-				{
-        		     Session::flash('success', 'Successfully Verify Email');
-					return redirect('/lawyer/login');
-
-				}
-			}
-			else {
-			    return redirect('/expired');
-			}
-		}
-		else{
-			 Session::flash('error', 'Your account was not found');
-			 return redirect('/');
-		}
+        $userid = Crypt::decrypt($id);
+        $userdata = User::where('id', $userid)->first();
+        if ($userdata) {
+            if ($userdata->email_verify == 0) {
+                $update_array = array('email_verify' => 1);
+                $update =  User::where('id', $userid)->update($update_array);
+                Session::flash('success', 'Verified Successfully');
+                if ($userdata->user_type == 2) {
+                    return redirect('/customer/login');
+                }
+                if ($userdata->user_type == 3) {
+                    Session::flash('success', 'Successfully Verify Email');
+                    return redirect('/lawyer/login');
+                }
+            } else {
+                return redirect('/expired');
+            }
+        } else {
+            Session::flash('error', 'Your account was not found');
+            return redirect('/');
+        }
     }
 
 
@@ -397,6 +390,49 @@ class ForgotPasswordController extends Controller
             }
         }
     }
+
+    /* change password lawyer edit */
+
+    public function lawyerchangePassword(Request $request, $otpen)
+    {
+        // return $request->all();
+        $auth = Auth::user();
+        $password = User::getrecordbyid($auth->id);
+
+        if (Hash::check($request->oldpassword, $password->password)) {
+
+            $validator = Validator::make($request->all(), [
+                'newpassword' => 'required|same:confirmpassword|min:8',
+                'confirmpassword' => 'required '
+            ]);
+            if ($validator->fails()) {
+                return redirect("/lawyer/edit-profile")
+                    ->withErrors($validator, 'reset_password')
+                    ->withInput();
+            } else {
+
+                $update_array = array('password' => Hash::make($request->newpassword));
+
+                $where = array('id' => $auth->id);
+                $update =  User::where($where)->update($update_array);
+
+                if ($update) {
+                    Session::flash('success', 'Password changed successfully.');
+                    return redirect('/lawyer/edit-profile');
+                } else {
+                    Session::flash('error', 'Sorry, something went wrong. Please try again');
+                    return redirect()->back();
+                }
+            }
+        } else {
+            Session::flash('error', 'Sorry, Old password does not match.');
+            return redirect('errorlst');
+        }
+    }
+    /* change password lawyer edit */
+
+
+
 
     /* lawyer reset password */
 

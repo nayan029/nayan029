@@ -10,6 +10,7 @@ use App\Models\admin\Category;
 use App\Models\admin\court;
 use App\Models\admin\freeQuestions;
 use App\Models\admin\guides;
+use App\Models\admin\lawyercourt;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use App\Models\admin\lawyerlanguages;
 use App\Models\admin\legalservices;
@@ -385,7 +386,7 @@ class HomeController extends Controller
     }
     public function advocateProfile($id)
     {
-        
+
         $this->data['title'] = "Advocate Profile";
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
@@ -416,6 +417,9 @@ class HomeController extends Controller
             $this->data['user_login'] = $auth;
             $this->data['court'] = court::getAllRecord();
             $this->data['category'] = adviceCategory::getquestioncategorylist();
+            $this->data['user_category'] = lawyerenrollmentcatgeory::getDataById($auth->id)->pluck('categoryid')->toArray();
+            $this->data['user_court'] = lawyercourt::getrecordbyid($auth->id)->pluck('courtid')->toArray();
+            $this->data['user_language'] = lawyerlanguages::getrecordbyid($auth->id)->pluck('language')->toArray();
             $this->data['title'] = "Edit Profile";
             return view('fronted.editprofile', $this->data);
         } else {

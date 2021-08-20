@@ -5,6 +5,7 @@
 			<h6 class="after-text">JUSTICE</h6>
 		</div>
 		<div class="aiming-owl owl-carousel owl-theme">
+			
 			<div class="item">
 				<div class="aiming-item">
 					<div class="row">
@@ -15,7 +16,7 @@
 								<a href="{{URL::to('/')}}/ask-a-free-question" class="btn btn-outline-primary min-w152">Ask a Question</a>
 							</div>
 						</div>
-						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/court-hammer-removebg.png);">
+						<div class="col-md-7 col2" style="background-image: url(<?php echo URL::to('/'); ?>/fronted/images/58da5f275f58be1227aec934.png);">
 							<div class="text">
 								<h6>We have picked the most efficient law conversion courses for you</h6>
 								<a class="btn btn-primary" href="{{URL::to('/')}}/about-us" role="button">Learn More</a>
@@ -199,10 +200,11 @@
 	</div>
 </section> -->
 <!-- whats trending section end -->
-<section class="fourbox">
+<section class="fourbox">	
 	<div class="container">
-		<div class="row">
-			<div class="col-md-3 col-lg-3 col-6">
+	<div class="divorce-owl owl-carousel owl-theme">
+			
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
@@ -212,7 +214,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=22">
 
 					<div class="fbox">
@@ -222,7 +224,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=10">
 					<div class="fbox">
 						<p>Challan </p>
@@ -230,7 +232,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=23">
 
 					<div class="fbox">
@@ -239,7 +241,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=24">
 
 					<div class="fbox">
@@ -248,7 +250,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=2">
 
 
@@ -258,7 +260,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=25">
 
 					<div class="fbox">
@@ -267,7 +269,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-3 col-lg-3 col-6">
+			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=26">
 
 					<div class="fbox">
@@ -396,9 +398,9 @@
 						@endif
 						<div class="text">
 							@if($data->profileimage)
-							<!-- <img src="{{ URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}"> -->
+							<img src="{{ URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
 							@else
-							<!-- <img class="main" src="{{URL::to('/')}}/fronted/images/team2.png"> -->
+							<img class="main" src="{{URL::to('/')}}/fronted/images/team2.png">
 							@endif
 							<div class="inner">
 								<h5>{{$data->name." ".$data->username}} </h5>
@@ -778,7 +780,7 @@
 			<div class="row">
 				<div class="offset-md-4 col-md-7 col2">
 					<h1>Your Time is valuable</h1>
-					<h4>Get answers quick</h4>
+					<!-- <h4>Get answers quick</h4> -->
 					<div class="form">
 						<form method="POST" action="{{URl::to('/')}}/quick-answer" onsubmit="return validation();">
 							@csrf

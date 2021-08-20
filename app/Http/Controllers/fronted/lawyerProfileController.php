@@ -4,6 +4,7 @@ namespace App\Http\Controllers\fronted;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\court;
+use App\Models\admin\lawyercourt;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use Illuminate\Http\Request;
 use App\Models\admin\lawyerlanguages;
@@ -12,6 +13,7 @@ use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,9 +47,9 @@ class lawyerProfileController extends Controller
         // return $request->all();
         $validator = Validator::make($request->all(), [
             'experience' => 'required',
-            'location' => 'required',
             'court' => 'required',
             'language' => 'required',
+            'category' => 'required',
             'about' => 'required'
         ]);
         if ($validator->fails()) {
@@ -59,16 +61,65 @@ class lawyerProfileController extends Controller
             $auth = Auth::user();
             $input = $request->all();
             $input['experience'] = $request->experience;
-            $input['location'] = $request->location;
+            // $input['location'] = $request->location;
+
+
+            if ($request->about) {
+                $about = $request->about;
+
+                $inputuser = User::find($auth->id);
+                $inputuser->update($input);
+            }
+
+            if ($request->court) {
+                $delete = DB::table('lawyer_enrollment_court')->where('userid', $auth->id)->delete();
+                foreach ($request->court as $courtdata) {
+                    $array = array('userid' => $auth->id, 'courtid' => $courtdata, 'created_at' => date('Y:m:d h:i:s'), 'updated_at' => date('Y:m:d h:i:s'));
+
+                    $inser_id = new lawyercourt($array);
+                    $inser_id->save();
+
+                    // $inputuser = User::find($auth->id);
+                    // $inputuser->update($step);
+                }
+            }
+
+
+            if ($request->category) {
+                $delete = DB::table('lawyer_enrollment_category')->where('userid', $auth->id)->delete();
+                foreach ($request->category as $categorydata) {
+                    $array = array('userid' => $auth->id, 'categoryid' => $categorydata, 'created_at' => date('Y:m:d h:i:s'), 'updated_at' => date('Y:m:d h:i:s'));
+
+                    $inser_id = new lawyerenrollmentcatgeory($array);
+                    $inser_id->save();
+
+                    // $step['step'] = '2';
+                    // $inputuser = User::find($auth->id);
+                    // $inputuser->update($step);
+                }
+            }
+
+            if ($request->language) {
+                $delete = DB::table('lawyer_languages')->where('userid', $auth->id)->delete();
+                foreach ($request->language as $data) {
+                    $array = array('userid' => $auth->id, 'language' => $data, 'created_at' => date('Y:m:d h:i:s'), 'updated_at' => date('Y:m:d h:i:s'));
+
+                    $inser_id = new lawyerlanguages($array);
+                    $inser_id->save();
+
+                    // $step['step'] = '1';
+                    // $inputuser = User::find($auth->id);
+                    // $inputuser->update($step);
+                }
+            }
 
             $input['updated_by'] = $auth->id;
             $input['updated_at'] = date('Y-m-d H:i:s');
 
+            $updateform = User::find($id);
+            $updateform->update($input);
 
-            $blogs = User::find($id);
-            $blogs->update($input);
-
-            if ($blogs) {
+            if ($updateform) {
                 Session::flash('success', 'Profile updated successfully.');
                 return redirect('/lawyer/edit-profile');
             } else {
