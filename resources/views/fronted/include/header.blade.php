@@ -47,7 +47,7 @@ $login = Auth::user();
 							<a class="nav-link" href="#">Legal Query</a>
 							<div class="inner-menu">
 								<ul>
-									<li class="ul-title">Answered Questions</li>
+									<li class="ul-title">Research Papers</li>
 									<li class="li-border"></li>
 									<?php
 									$listAdviceQuery = DB::table('legel_advice_querys')->where('deleted_at', NULL)->limit(5)->get();
@@ -58,7 +58,6 @@ $login = Auth::user();
 										$catname = $query[0]->category_name;
 									?>
 
-										<!-- <li><a href="<?php echo URL::to('/'); ?>/{{$cat}}-legal-advice">{{$keyQuery->question}}</a></li> -->
 										<li><a href="<?php echo URL::to('/'); ?>/{{$cat}}-legal-advice">{{ucfirst($catname)}} Queries</a></li>
 
 									<?php } ?>
@@ -70,7 +69,7 @@ $login = Auth::user();
 
 								</ul>
 								<ul>
-									<li class="ul-title">Guides & Articles</li>
+									<li class="ul-title">Notes</li>
 									<li class="li-border"></li>
 									<?php
 									$listLegalGuides = DB::table('legal_guides')->where('deleted_at', NULL)->limit(5)->get();
@@ -99,7 +98,7 @@ $login = Auth::user();
 								<!-- this is test legal service -->
 
 								<ul>
-									<li class="ul-title">Other Resources</li>
+									<li class="ul-title">Bare Acts</li>
 									<li class="li-border"></li>
 									<?php
 									$getquerysdatas = DB::table('category')->where('deleted_at', NULL)->limit(6)->get();
@@ -115,9 +114,9 @@ $login = Auth::user();
 									<li><a href="<?php echo URL::to('/') ?>/career">Career</a></li> -->
 								</ul>
 								<ul>
-									<li class="ul-title">Get Free Legal Advice</li>
+									<!-- <li class="ul-title">Get Free Legal Advice</li>
 									<li class="li-border"></li>
-									<li><a href="">Get expert legal advice from multiple lawyers within a few hours</a></li>
+									<li><a href="">Get expert legal advice from multiple lawyers within a few hours</a></li> -->
 									<li>
 										<a href="<?php echo URL::to('/'); ?>/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Questions</a>
 									</li>

@@ -254,12 +254,12 @@
                 <p>Legal Querys</p>
               </a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/guides-articles" class="nav-link" id="guide_article">
                 <i class="fas fa-newspaper nav-icon"></i>
                 <p>Guides & Articles</p>
               </a>
-            </li> -->
+            </li>
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/other-resoureces" class="nav-link" id="other_resources">
                 <!-- <i class="far fa-circle nav-icon"></i> -->

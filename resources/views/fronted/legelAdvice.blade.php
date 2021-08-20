@@ -13,7 +13,7 @@
 
         </div>
         <div class="row">
-            <div class="col-md-7 ">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <select class="form-select sa-form-font border-radius-5px" onchange="functest(this.value)" id="cattid">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-md-5 pl-4">
+            <!-- <div class=" col-md-5 pl-4">
                 <div class="mitem text-center">
                     <div class="sr-card ">
                         <img src="{{asset('fronted/images/user.png')}}">
@@ -94,12 +94,11 @@
                 </div>
 
 
-            </div>
+            </div> -->
         </div>
-        <div class="row mb-5">
+        <!-- <div class="row mb-5">
             <div class="col-md-12">
                 <div>
-                    <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
                 </div>
                 <div class="row mt-5 sr-c ">
                     <div class="col-md-4 text-center">
@@ -126,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @include('fronted/include/footer')

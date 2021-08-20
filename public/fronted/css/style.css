@@ -5619,7 +5619,7 @@ ol.sr-ol li p.sr-white {
 }
 
 .team-box .text h5{
-        color: #1b1b1b;
+        color: var(--primary-color);
     font-weight: 600!important;
 }
 ul.navbar-nav .nav-link{
