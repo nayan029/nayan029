@@ -159,6 +159,39 @@
 	</div>
 </section> -->
 
+<div class="container">
+<div class="row mb-4 mt-30">
+      <div class="col-md-12">
+        <h5 class="sa-color2 mb-2 fs-24 mb-5">Legal Help in 3 easy steps.</h5>
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="row figure-row">
+              <div class="col-md-4">
+                <img src="{{asset('fronted/images/service-icon.png')}}" class="mb-3">
+                <p class="sr-title2 mb-0">Choose Your Service</p>
+                <p>Packages include advice sessions, document reviews, & start-to-finish support.</p>
+
+              </div>
+              <div class="col-md-4">
+                <img src="{{asset('fronted/images/shop-icon.png')}}" class="mb-3">
+                <p class="sr-title2 mb-0">Book Online</p>
+                <p>Packages include advice sessions, document reviews & start-to-finish support.</p>
+
+              </div>
+              <div class="col-md-4">
+                <img src="{{asset('fronted/images/guarantee-icon.png')}}" class="mb-3">
+                <p class="sr-title2 mb-0">Service Delivery</p>
+                <p>Assigned lawyer will provide you the required services and your case manager will ensure end-to-end support.</p>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
 <section class="your-time">
 	<div class="container">
 		<div class="inner">

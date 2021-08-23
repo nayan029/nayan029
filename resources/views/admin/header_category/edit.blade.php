@@ -11,7 +11,7 @@
           <form id="main_id1" method="POST" action="<?php echo URL::to('/') ?>/admin/adviceCategory/{{$data->id}}">
               @method('PUT')
               @csrf
-              <!-- <div class="form-group">
+              <div class="form-group">
                   <div class="col-sm-12">
                       <label for="exampleInputEmail1">Type</label><span style="color: red;">*</span>
                       <select name="type" id="type1" class="form-control">
@@ -21,7 +21,7 @@
                       </select>
                       <span style="color:red;" id="type_error1"></span>
                   </div>
-              </div> -->
+              </div>
               <div class="form-group">
                   <div class="col-sm-12">
                       <label for="exampleInputEmail1">Category</label><span style="color: red;">*</span>
@@ -49,7 +49,7 @@
       /*Validation*/
       function checkvalidation() {
           var name = $('#name1').val();
-        //   var type = $('#type1').val();
+          var type = $('#type1').val();
           var id = '{{$data->id}}';
 
           $.ajax({
@@ -57,7 +57,7 @@
               type: "POST",
               data: {
                   name: name,
-                //   type : type,
+                  type : type,
                   id: id,
                   _token: "<?php echo csrf_token(); ?>"
               },
@@ -78,17 +78,17 @@
           $('#submitform').prop('disabled', true);
           var name = $('#name1').val();
           var discription = $('#discription1').val();
-        //   var type = $('#type1').val();
+          var type = $('#type1').val();
 
           var cnt = 0;
           $('#name1_error').html("");
           $('#discription1_error').html("");
-        //   $('#type_error1').html("");
+          $('#type_error1').html("");
 
-        //   if (type.trim() == '') {
-        //     $('#type_error1').html("Please Select Type");
-        //     cnt = 1;
-        // }
+          if (type.trim() == '') {
+            $('#type_error1').html("Please Select Type");
+            cnt = 1;
+        }
           if (name.trim() == '') {
               $('#name1_error').html("Please enter Category");
               cnt = 1;

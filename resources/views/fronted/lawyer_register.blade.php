@@ -23,7 +23,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 col1">
-				
+
 					<div class="mid">
 						<div class="sa-small-logocenter">
 							<a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo sa-small-logo"></a>
@@ -33,7 +33,7 @@
 					</div>
 					<div class="bottom">
 						<ul class="social">
-						<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
+							<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
 							<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
 							<li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
 						</ul>
@@ -125,11 +125,16 @@
 						</p>
 					</div>
 				</div>
-				<div class="modal-footer">
-
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+				<div class="container text-center mb-2">
+					<button type="button" class="btn btn-dark" data-dismiss="modal">Submit</button>
 				</div>
+
+
+				<!-- <div class="modal-footer"> -->
+
+				<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+				<!-- </div> -->
 			</div>
 		</div>
 	</div>

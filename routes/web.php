@@ -166,6 +166,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/enquiry/feedback', 'App\Http\Controllers\fronted\enquiryController@feedback');
 
     Route::resource('/admin/court-managment', 'App\Http\Controllers\admin\manageCourtController');
+
+    Route::resource('/admin/add-category', 'App\Http\Controllers\admin\headerCategory');
+
+    // category query
+
+    Route::resource('/admin/query-category', 'App\Http\Controllers\admin\queryCategoryController');
+
+    // Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');
+    // Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
+
+    //category query
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------
@@ -244,7 +255,7 @@ Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileControl
 
 //-----------------------------------------user account---------------------------------------------
 Route::get('/my-account', [FrontedHomeController::class, 'myAccount']);
-Route::get('/account/all-questions',[FrontedHomeController::class,'allQuestions']);
+Route::get('/account/all-questions', [FrontedHomeController::class, 'allQuestions']);
 //-----------------------------------------user account---------------------------------------------
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');

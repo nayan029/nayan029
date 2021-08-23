@@ -204,7 +204,14 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/adviceCategory" class="nav-link" id="advice_cat">
-                    <!-- <i class="far fa-circle nav-icon"></i> -->
+                    <i class="fas fa-th nav-icon"></i>
+                    <p>Lawyer Category</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo URL::to('/'); ?>/admin/query-category" class="nav-link" id="lawyer_cat">
                     <i class="fas fa-th nav-icon"></i>
                     <p>Legal Query Category</p>
                   </a>

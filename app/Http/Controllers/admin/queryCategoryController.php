@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 use function PHPSTORM_META\type;
 
-class adviceCategoryController extends Controller
+class queryCategoryController extends Controller
 {
     function __construct()
     {
@@ -23,18 +23,18 @@ class adviceCategoryController extends Controller
     }
     public function index()
     {
-        $this->data['title'] = "advice Category";
+        $this->data['title'] = "Query Category";
         $auth = Auth::user();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['categorylist'] = adviceCategory::categorylist();
-        return view('admin.advice_category.index', $this->data);
+        return view('admin.header_category.index', $this->data);
     }
     public function store(Request $request)
     {
         // return $request->all(); die;
         $validator = Validator::make($request->all(), [
-            // 'type' => 'required',
+            'type' => 'required',
             'name' => 'required',
             'discription' => 'required',
         ]);
@@ -48,7 +48,7 @@ class adviceCategoryController extends Controller
             $auth = Auth::user();
             $input = $request->all();
 
-            $input['type'] = "question";
+            $input['type'] = $request->type;
             $input['category_name'] = $request->name;
             $input['description'] = $request->discription;
             $input['status'] = '1';
@@ -82,7 +82,7 @@ class adviceCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            // 'type'=>'required',
+            'type' => 'required',
             'name' => 'required',
             'discription' => 'required',
         ]);
@@ -95,7 +95,7 @@ class adviceCategoryController extends Controller
         } else {
             $auth = Auth::user();
             $input = $request->all();
-            // $input['type'] = $request->type;
+            $input['type'] = $request->type;
             $input['category_name'] = $request->name;
             $input['description'] = $request->discription;
             $input['updated_at'] = date('Y-m-d H:i:s');

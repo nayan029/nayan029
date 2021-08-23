@@ -272,23 +272,26 @@
                             <p class="sa-color2">Specialization <span style="color: red;"> *</span></p>
                         </div>
                         <div class="row sr-pad1">
-                            <?php
-                            foreach ($category as $data) {
-                            ?>
-                                <div class="col-md-3">
 
-                                    <div class="pm-check " id="catcheck">
-                                        <input class="form-check-input" name="category[]" type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->category_name; ?>">
-                                        <span class="real-checkbox"></span>
-                                        <label class="form-check-label" for="<?php echo $data->category_name; ?>">
+                            <div class="col-md-3">
+
+                                <div class="pm-check " id="catcheck">
+                                    <!-- <input class="form-check-input" name="category[]" type="radio" value="<?php echo $data->id; ?>" id="<?php echo $data->category_name; ?>">
+                                        <label class="form-radio-label" for="<?php echo $data->category_name; ?>">
                                             <?php echo $data->category_name; ?>
-                                        </label>
-                                    </div>
+                                        </label> -->
+
+                                    <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
+                                        <option value="">Select Specialization</option>
+                                        @foreach ($category as $data)
+                                        <option value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            <?php
-                            }
-                            ?>
-                            <span id="category_error" style="color:red"></span>
+
+                                <span id="category_error" style="color:red"></span>
+                            </div>
+
 
 
 
@@ -943,7 +946,8 @@
         var about = $('#about_data').val();
         var court = $(".court").val();
         var length = $("#courtcheck input[type=checkbox]:checked").length;
-        var category = $("#catcheck input[type=checkbox]:checked").length;
+        // var category = $("#catcheck input[type=checkbox]:checked").length;
+        var specialization = $("#specialization").val();
 
 
         var cnt = 0;
@@ -966,8 +970,14 @@
         } else {
             $("#court_error").html("");
         }
-        if (category < 1) {
-            $("#category_error").html("Please select category");
+        // if (category < 1) {
+        //     $("#category_error").html("Please select category");
+        // } else {
+        //     $("#category_error").html("");
+        // }
+
+        if (specialization.trim()=='') {
+            $("#category_error").html("Please select specialization");
         } else {
             $("#category_error").html("");
         }

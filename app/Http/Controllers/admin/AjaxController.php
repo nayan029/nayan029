@@ -75,7 +75,7 @@ class AjaxController extends Controller
 	}
 	public function getexitemail(Request $request)
 	{
-		$exitdata = User::checkexitemail($request->email, $request->type);
+		return $exitdata = User::checkexitemail($request->email, $request->type);
 		if ($exitdata) {
 			echo 1;
 		} else {

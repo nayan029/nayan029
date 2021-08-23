@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small>Manage Lawyer Category</small></h1>
+                    <h1 class="m-0 text-dark"><small>Legal Query Category</small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
-                        <li class="breadcrumb-item">Manage Lawyer Category</li>
+                        <li class="breadcrumb-item">Lawyer Category</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -42,17 +42,17 @@
                                         <div class="container">
                                             <form id="main_id" method="POST" action="<?php echo URL::to('/') ?>/admin/adviceCategory">
                                                 @csrf
-                                                <!-- <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <label for="exampleInputEmail1">Type</label><span style="color: red;">*</span>
                                                         <select name="type" id="type" class="form-control">
                                                             <option value="">Select Type</option>
                                                             <option value="question">Question & Answers</option>
                                                             <option value="guides">Guides</option>
-                                                        </select>   
+                                                        </select>
                                                         <span style="color:red;" id="type_error"></span>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <label for="exampleInputEmail1">Category</label><span style="color: red;">*</span>
@@ -85,7 +85,7 @@
                                     <tr>
                                         <th>Sr No</th>
                                         <th>Category Name</th>
-                                        <!-- <th>Type</th> -->
+                                        <th>Type</th>
                                         <th>Create Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -93,16 +93,16 @@
                                 <tbody>
                                     <?php
                                     // $i = 1;
-                                    $i = ($categorylist->currentpage()-1)* $categorylist->perpage() + 1;
-                                    
+                                    $i = ($categorylist->currentpage() - 1) * $categorylist->perpage() + 1;
+
                                     foreach ($categorylist as $data) {
 
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td> <?php echo ucfirst($data->category_name);?> </td>
-                                            <!-- <td> <?php echo ucfirst($data->type);?>  </td> -->
-                                            
+                                            <td> <?php echo ucfirst($data->category_name); ?> </td>
+                                            <td> <?php echo ucfirst($data->type); ?> </td>
+
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                             </td>
@@ -114,17 +114,17 @@
                                     <?php
                                         $i++;
                                     }
-                                
+
                                     ?>
-                                    
+
                                 </tbody>
-                                
+
                             </table>
                             <br>
                             <div class="row">
                                 <div class="col-md-12">
                                     <nav aria-label="Page navigation example">
-                                    {{ $categorylist->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
+                                        {{ $categorylist->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
 
                                     </nav>
                                 </div>
@@ -148,17 +148,17 @@
 </div>
 @include('admin/include/footer')
 <script>
-    $(document).ready(function () {
-        
+    $(document).ready(function() {
+
         $('#category_menu').addClass('nav-item active');
         $('#categorymaster_menu').addClass('nav-link active');
         $('#categorymaster_open').addClass('menu-open active');
-        $('#advice_cat').addClass('active mm-active');
+        $('#lawyer_cat').addClass('active mm-active');
     });
 </script>
 
 <script>
-$('#advice_cat').addClass('active mm-active');
+    $('#lawyer_cat').addClass('active mm-active');
 
 
 
@@ -168,7 +168,6 @@ $('#advice_cat').addClass('active mm-active');
             type: "GET",
             success: function(response) {
                 $('#append').html(response);
-                // $('#exampleModaledit').modal('show');
             }
         });
 
@@ -215,7 +214,7 @@ $('#advice_cat').addClass('active mm-active');
             url: "<?php echo URL::to('/'); ?>/admin/getexitadvicecategory",
             type: "POST",
             data: {
-                // type:type,
+                type: type,
                 name: name,
                 _token: "<?php echo csrf_token(); ?>"
             },
@@ -235,21 +234,21 @@ $('#advice_cat').addClass('active mm-active');
         $('#submitform').prop('disabled', true);
         var name = $('#name').val();
         var discription = $('#discription').val();
-        // var type = $('#type').val();
+        var type = $('#type').val();
 
         var cnt = 0;
         $('#name_error').html("");
         $('#discription_error').html("");
-        // $('#type_error').html("");
+        $('#type_error').html("");
 
         if (name.trim() == '') {
             $('#name_error').html("Please enter Category");
             cnt = 1;
         }
-        // if (type.trim() == '') {
-        //     $('#type_error').html("Please Select Type");
-        //     cnt = 1;
-        // }
+        if (type.trim() == '') {
+            $('#type_error').html("Please Select Type");
+            cnt = 1;
+        }
         if (response == 1) {
             $('#name_error').html("This Category is Already Exit");
             cnt = 1;
