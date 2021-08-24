@@ -5,7 +5,7 @@
 			<h6 class="after-text">JUSTICE</h6>
 		</div>
 		<div class="aiming-owl owl-carousel owl-theme">
-			
+
 			<div class="item">
 				<div class="aiming-item">
 					<div class="row">
@@ -200,17 +200,17 @@
 	</div>
 </section> -->
 <!-- whats trending section end -->
-<section class="fourbox">	
+<section class="fourbox">
 	<div class="container">
-	<div class="divorce-owl owl-carousel owl-theme">
-			
+		<div class="divorce-owl owl-carousel owl-theme">
+
 			<div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
 						<p>Divorce </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
-						
+
 					</div>
 				</a>
 			</div>
@@ -220,7 +220,7 @@
 					<div class="fbox">
 						<p>Bail </p>
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/Group38.png" class="sr-rotate">
-						
+
 					</div>
 				</a>
 			</div>
@@ -390,7 +390,8 @@
 			@foreach($getlawyer as $data)
 			<div class="team-col">
 				<div class="team-box">
-					<a href="advocate/{{$data->id}}">
+					<a href="advocate/{{$data->id}}" class="hoverid" onmouseover="change({{$data->id}})">
+						<input type="text" name="id" id="id_{{$data->id}}" class="testone" data-hid="{{$data->id}}" value="{{$data->id}}">
 						@if($data->profileimage)
 						<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
 						@else
@@ -1006,4 +1007,37 @@
 
 
 	// })
+</script>
+<script>
+	function change(id) {
+		console.log(id);
+
+		$.ajax({
+			'type': 'POST',
+			'url': '{{URL::to("/")}}/fronted/getcategoryname',
+			'data': id,
+			'success': function(data) {
+				console.log(data);
+				$('#products').replaceWith(response);
+			}
+		});
+
+
+	}
+	// $(".hoverid").hover(function() {
+
+	// 	var abc = $(this).data("hid");
+	// 	console.log(abc);
+	// 	var val = $('.testone').val();
+	// 	console.log(val);
+
+	// 	$.ajax({
+	// 		// 'type': 'POST',
+	// 		// 'url': 'handlers/route_request.php',
+	// 		// 'dataType': 'html',
+	// 		'success': function(data) {
+	// 			// console.log(data);
+	// 		}
+	// 	});
+	// });
 </script>

@@ -60,6 +60,7 @@ class HomeController extends Controller
         $this->data['getcarrertips'] = trends::getCareerTips();
         $this->data['getlegalservices'] = legalservices::getallservices();
         $this->data['advicecategory'] = adviceCategory::getquestioncategorylistlimit();
+        // $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         // $this->data['getquerysdata'] = otherResource::getAllDataf($name);
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();

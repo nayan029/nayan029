@@ -149,4 +149,8 @@ class AjaxController extends Controller
 
 		echo $html;
 	}
+	public function getcategoryname()
+	{
+		return "true";
+	}
 }

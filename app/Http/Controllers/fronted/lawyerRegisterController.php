@@ -31,6 +31,7 @@ class lawyerRegisterController extends Controller
     }
     public function store(Request $request)
     {
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'username' => 'required',
@@ -39,7 +40,7 @@ class lawyerRegisterController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect("lawyer/register")
+            return redirect("/lawyer/register")
                 ->withErrors($validator, 'lawyer_error')
                 ->withInput();
         } else {
@@ -76,12 +77,12 @@ class lawyerRegisterController extends Controller
             $html = str_replace('{{DESCRIPTION}}', $emailtemplate->description, $html);
             $html = str_replace('{{LOGO}}', $logo, $html);
 
-           return $mail = MailHelper::mail_send_client($html, $request->email, $subject);
+            $mail = MailHelper::mail_send_client($html, $request->email, $subject);
             /*verify-email*/
-
             if ($inputuser) {
+                // return "true";
                 Session::flash('success', 'Successfully Registered</br> Please Varify Your Email id');
-               return redirect('/lawyer/login');
+                return redirect('/lawyer/login');
             } else {
                 Session::flash('error', 'Sorry, something went wrong. Please try again');
                 return redirect()->back();

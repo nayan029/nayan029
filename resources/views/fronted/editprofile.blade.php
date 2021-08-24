@@ -111,21 +111,21 @@
                                         <label for="inputName" class="form-label sa-color2 sa-label" title="Basic example" multiple="multiple" name="example-basic">Specialization</label>
                                         <div class="row sr-pad1">
 
-                                            @foreach ($category as $data)
 
                                             <div class="col-md-4">
 
                                                 <div class="pm-check " id="catcheck">
-                                                    <input class="form-check-input" @if(in_array($data->id, $user_category)) {{"checked"}} @endif name="category[]" type="checkbox" value="{{$data->id}}" id="{{$data->category_name}}">
 
-                                                    <span class="real-checkbox"></span>
-                                                    <label class="form-check-label" for="<?php echo $data->category_name; ?>">
-                                                        <?php echo $data->category_name; ?>
-                                                    </label>
+
+                                                    <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
+                                                        <option value="">Select Specialization</option>
+                                                        @foreach ($category as $data)
+                                                        <option @if(in_array($data->id, $user_category)) {{"selected"}} @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
+                                                <span id="specialization_error" style="color: red;"></span>
                                             </div>
-                                            @endforeach
-                                            <span id="specializatio_error" style="color: red;"></span>
 
 
 
@@ -244,19 +244,23 @@
         var about = $('#about_data').val();
         // var length = $("#courtcheck input[type=checkbox]:checked").length;
         // var category = $("#catcheck input[type=checkbox]:checked").length;
-        // alert(about)
-
+        
+        
         var experience = $('#experience').val();
         var language = $('#language').val();
         var location = $('#location').val();
         var court = $('#court').val();
+        var specialization = $("#specialization").val();
 
+        // alert(specialization)
+        
         var cnt = 0;
         var f = 0;
 
         $('#court_error').html();
         $('#experience_error').html("");
         $('#about_error').html("");
+        $('#specialization_error').html("");
 
 
         // if (image.trim() == '') {
@@ -280,7 +284,16 @@
         //         cnt = 1;
         //     }
         // }
-
+        if (specialization.trim() == '') {
+            $("#specialization_error").html("Please select specialization");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#specialization').focus();
+            }
+        } else {
+            $("#specialization_error").html("");
+        }
         if (experience.trim() == '') {
             $('#experience_error').html("Please enter experience");
             cnt = 1;

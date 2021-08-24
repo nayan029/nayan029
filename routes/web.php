@@ -290,6 +290,7 @@ Route::post('/lawyer/edit-profile/{id}', 'App\Http\Controllers\fronted\lawyerPro
 
 Route::post('/lawyer/change_password/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'lawyerchangePassword']);
 
+Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxController@getcategoryname');
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
@@ -298,7 +299,7 @@ Route::post('/lawyer/change_password/{id}', [App\Http\Controllers\admin\ForgotPa
 //----------------------------------------------------------------------Lawyer side---------------------------------------------------------
 Route::get('lawyer/register', 'App\Http\Controllers\fronted\lawyerRegisterController@index');
 Route::post('lawyer/register', 'App\Http\Controllers\fronted\lawyerRegisterController@store');
-Route::get('lawyer/login', 'App\Http\Controllers\fronted\lawyerRegisterController@login');
+Route::get('/lawyer/login', 'App\Http\Controllers\fronted\lawyerRegisterController@login');
 Route::post('lawyer/login', 'App\Http\Controllers\fronted\lawyerLoginController@login');
 
 Route::get('/lawyer/facebook', 'App\Http\Controllers\fronted\SocialAuthFacebookController@redirect');

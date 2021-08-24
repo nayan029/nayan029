@@ -51,7 +51,7 @@ $('.aiming-owl').owlCarousel({
 
 $('.divorce-owl').owlCarousel({
 
-    loop:true,
+    loop:false,
 
     margin:15,
 

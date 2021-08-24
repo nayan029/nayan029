@@ -5984,7 +5984,7 @@ button.owl-prev {}
 }
 
 .divorce-owl .owl-nav span {position: relative;top: -2px;}
-.divorce-owl .owl-nav button.owl-prev:hover {
+.divorce-owl .owl-nav button:hover {
     background: var(--primary-color) !important;
 }
 label.form-radio-label {

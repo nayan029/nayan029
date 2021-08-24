@@ -71,14 +71,14 @@ class MailHelper
 			return $mail->ErrorInfo;
 		}
 	}
-	public static function mail_send_client($email_message, $semail, $subject,$attachment = array()) 
+	public static function mail_send_client($email_message, $semail, $subject, $attachment = array())
 	{
-		
-        $mail = new PHPMailer(true);
+
+		$mail = new PHPMailer(true);
 		try {
 			//Server settings
-			
-		/*	$mail->SMTPDebug = SMTP::DEBUG_SERVER;        */         // Enable verbose debug output
+
+			/*	$mail->SMTPDebug = SMTP::DEBUG_SERVER;        */         // Enable verbose debug output
 			$mail->isSMTP();                                            // Send using SMTP
 			$mail->Host       = 'smtp.sendgrid.net';                    // Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -91,25 +91,23 @@ class MailHelper
 			$mail->setFrom('nayan.vhits@gmail.com', 'LegalBench');
 			/*$mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
 			$mail->addAddress('ellen@example.com');               // Name is optional*/
-			
+
 			$mail->addAddress($semail);
-			
+
 			$mail->addReplyTo('nayan.vhits@gmail.com', 'LegalBench');
 			/*$mail->addCC('cc@example.com');
 			$mail->addBCC('bcc@example.com');*/
 
-			
-			
+
+
 			// Attachments
-			if(count($attachment) > 0)
-			{
-				foreach($attachment as $attachmentdata)
-				{
-					$base_path = base_path('public/uploads/attachment/'.$attachmentdata->attachment);
+			if (count($attachment) > 0) {
+				foreach ($attachment as $attachmentdata) {
+					$base_path = base_path('public/uploads/attachment/' . $attachmentdata->attachment);
 					$mail->addAttachment($base_path);         // Add attachments
 				}
 			}
-			
+
 			//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
 			// Content
@@ -120,8 +118,8 @@ class MailHelper
 
 			$mail->send();
 			/*echo 'Message has been sent';*/
-			} catch (Exception $e) {
-				/*echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";*/
-			}
-    }
+		} catch (Exception $e) {
+			/*	echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"; */
+		}
+	}
 }
