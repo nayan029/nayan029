@@ -113,8 +113,8 @@
                                                     <td> @if($userdata->location) {{ucfirst($userdata->location)}} @else {{"N/A"}} @endif</td>
                                                 </tr>
                                                 <tr>
-                                                <th scope="row" style="color: #007bff;"> Experience  ::</th>
-                                                <td> @if($userdata->experience) {{ucfirst($userdata->experience )}} @else {{"N/A"}} @endif</td>
+                                                    <th scope="row" style="color: #007bff;"> Experience ::</th>
+                                                    <td> @if($userdata->experience) {{ucfirst($userdata->experience )}} @else {{"N/A"}} @endif</td>
 
                                                 </tr>
                                                 <tr>

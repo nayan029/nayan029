@@ -8,6 +8,8 @@ use App\Models\admin\adviceCategory;
 use App\Models\admin\Category;
 use App\Models\admin\sitesetting;
 use App\Models\User;
+use App\Models\admin\MainLegalQueryType;
+use App\Models\admin\MainLegalQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -27,87 +29,103 @@ class queryCategoryController extends Controller
         $auth = Auth::user();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
-        $this->data['categorylist'] = adviceCategory::categorylist();
+        // $this->data['categorylist'] = adviceCategory::categorylist();
+        $this->data['MainLegalQueryList'] = MainLegalQuery::getAllData();
         return view('admin.header_category.index', $this->data);
+    }
+    public function addLegalQuery(Request $request)
+    {
+        $auth = Auth::user();
+        $this->data['userdata'] = User::getrecordbyid($auth->id);
+        $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
+        
+        return view('admin.header_category.add', $this->data);
     }
     public function store(Request $request)
     {
         // return $request->all(); die;
         $validator = Validator::make($request->all(), [
+            'query_id' => 'required',
+            'title' => 'required',
             'type' => 'required',
-            'name' => 'required',
-            'discription' => 'required',
+            'description' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect("admin/adviceCategory")
-                ->withErrors($validator, 'category_error')
+            return redirect("admin/query-category")
+                ->withErrors($validator, 'profile_error')
                 ->withInput();
         } else {
 
             $auth = Auth::user();
             $input = $request->all();
 
-            $input['type'] = $request->type;
-            $input['category_name'] = $request->name;
-            $input['description'] = $request->discription;
-            $input['status'] = '1';
-            $type = $request->type;
-            $input['slug'] = SlugHelper::slug($request->name, 'legal_advice_qa_category', $type);
+            $input['legal_query_type_id'] = $request->query_id;
+            $input['title'] = $request->title;
+            $input['type_name'] = $request->type;
+            $input['description'] = $request->description;
             $input['created_at'] = date('Y-m-d H:i:s');
-            $input['created_by'] = $auth->id;
-
-            $inser_id = new adviceCategory($input);
+           
+            $inser_id = new MainLegalQuery($input);
             $inser_id->save();
             $inser_id = $inser_id->id;
 
 
             if ($inser_id) {
-                Session::flash('success', 'Advice category added successfully.');
-                return redirect('admin/adviceCategory');
+                Session::flash('success', 'Legal Query added successfully.');
+                return redirect('admin/query-category');
             } else {
                 Session::flash('error', 'Sorry, something went wrong. Please try again');
                 return redirect()->back();
             }
         }
     }
-    public function edit($id)
+    // public function edit($id)
+    // {
+    //     $this->data['data'] = adviceCategory::getrecordbyid($id);
+    //     return view('admin.advice_category.edit', $this->data);
+    // }
+    public function edit(Request $request, $id)
     {
-        $this->data['data'] = adviceCategory::getrecordbyid($id);
-        return view('admin.advice_category.edit', $this->data);
+        $auth = Auth::user();
+        $this->data['userdata'] = User::getrecordbyid($auth->id);
+        $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
+        $this->data['data'] = MainLegalQuery::where('id',$id)->where('status',1)->first();
+        return view('admin.header_category.edit', $this->data);
     }
 
 
-
-    public function update(Request $request, $id)
+    public function updateLegalQuery(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
+            
+            'title' => 'required',
             'type' => 'required',
-            'name' => 'required',
-            'discription' => 'required',
+        
         ]);
 
 
         if ($validator->fails()) {
-            return redirect("admin/adviceCategory")
-                ->withErrors($validator, 'category_error')
+            return redirect("admin/query-category")
+                ->withErrors($validator, 'profile_error')
                 ->withInput();
         } else {
             $auth = Auth::user();
             $input = $request->all();
-            $input['type'] = $request->type;
-            $input['category_name'] = $request->name;
-            $input['description'] = $request->discription;
-            $input['updated_at'] = date('Y-m-d H:i:s');
-            $input['updated_by'] = $auth->id;
 
-            $category = adviceCategory::find($id);
+            $input['legal_query_type_id'] = $request->query_id;
+            $input['title'] = $request->title;
+            $input['type_name'] = $request->type;
+            $input['description'] = $request->description;
+            $input['updated_at'] = date('Y-m-d H:i:s');
+           
+            $category = MainLegalQuery::find($id);
             $category->update($input);
 
 
             if ($category) {
-                Session::flash('success', 'Advice category updated successfully.');
-                return redirect('admin/adviceCategory');
+                Session::flash('success', 'Legal Query updated successfully.');
+                return redirect('admin/query-category');
             } else {
 
                 Session::flash('error', 'Sorry, something went wrong. Please try again');
@@ -119,9 +137,9 @@ class queryCategoryController extends Controller
     {
         /*Record Delete*/
         $auth = Auth::user();
-        $delete = adviceCategory::where('id', $id)->update(['status' => '0', 'deleted_by' => $auth->id, 'deleted_at' => date('Y-m-d H:i:s')]);
+        $delete = MainLegalQuery::where('id', $id)->update(['status' => '0', 'deleted_at' => date('Y-m-d H:i:s')]);
         if ($delete) {
-            Session::flash('success', 'Advice category deleted successfully.');
+            Session::flash('success', 'Legal Query deleted successfully.');
         } else {
             Session::flash('error', 'Sorry, something went wrong. Please try again');
         }

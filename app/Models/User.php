@@ -240,4 +240,10 @@ class User extends Authenticatable
         $query = User::where('email_verify', 1)->where('user_type', 2)->where('status', 1)->get();
         return $query;
     }
+    public static function checkexistemaillawyer($email)
+    {
+        $query = User::where('user_type', 3)->where('email_verify',0)->where('email',$email)->first();
+        return $query;
+    }
+    
 }

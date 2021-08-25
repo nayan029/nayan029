@@ -172,6 +172,8 @@ Route::group(['middleware' => ['auth']], function () {
     // category query
 
     Route::resource('/admin/query-category', 'App\Http\Controllers\admin\queryCategoryController');
+    Route::get('/admin/addLegalQuery', 'App\Http\Controllers\admin\queryCategoryController@addLegalQuery');
+    Route::post('/admin/updateLegalQuery/{id}', 'App\Http\Controllers\admin\queryCategoryController@updateLegalQuery');
 
     // Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');
     // Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
@@ -260,6 +262,7 @@ Route::get('/account/all-questions', [FrontedHomeController::class, 'allQuestion
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
 Route::post('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@getData');
+Route::get('/legalQueryDesc', 'App\Http\Controllers\fronted\HomeController@legalQueryDesc');
 
 Route::get('/{category}', [FrontedHomeController::class, 'divorce_legalAdvice']);
 Route::get('indian-kanoon/{category}', [FrontedHomeController::class, 'divorce_legalGuides']);
@@ -287,6 +290,7 @@ Route::resource('/enquiry-form', 'App\Http\Controllers\fronted\enquiryController
 
 Route::get('/lawyer/edit-profile', [FrontedHomeController::class, 'editProfile']);
 Route::post('/lawyer/edit-profile/{id}', 'App\Http\Controllers\fronted\lawyerProfileController@update');
+Route::post('/lawyer/edit-profile', 'App\Http\Controllers\fronted\lawyerProfileController@updateImage');
 
 Route::post('/lawyer/change_password/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'lawyerchangePassword']);
 
@@ -297,7 +301,7 @@ Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxControll
 
 
 //----------------------------------------------------------------------Lawyer side---------------------------------------------------------
-Route::get('lawyer/register', 'App\Http\Controllers\fronted\lawyerRegisterController@index');
+Route::get('/lawyer/register', 'App\Http\Controllers\fronted\lawyerRegisterController@index');
 Route::post('lawyer/register', 'App\Http\Controllers\fronted\lawyerRegisterController@store');
 Route::get('/lawyer/login', 'App\Http\Controllers\fronted\lawyerRegisterController@login');
 Route::post('lawyer/login', 'App\Http\Controllers\fronted\lawyerLoginController@login');

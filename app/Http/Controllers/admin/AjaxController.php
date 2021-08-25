@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\admin\adviceCategory;
 use App\Models\admin\Category;
+use App\Models\admin\lawyerenrollmentcatgeory;
 use App\Models\admin\legalissue;
 use App\Models\admin\location;
 use App\Models\User;
@@ -75,7 +76,7 @@ class AjaxController extends Controller
 	}
 	public function getexitemail(Request $request)
 	{
-		return $exitdata = User::checkexitemail($request->email, $request->type);
+		$exitdata = User::checkexitemail($request->email, $request->type);
 		if ($exitdata) {
 			echo 1;
 		} else {
@@ -139,18 +140,26 @@ class AjaxController extends Controller
 	{
 		// return $request->all();
 		$issue_id = $request->issue_id;
-		$query = legalissue::where('category_id',$issue_id)->where('status','1')->orderBy('id', 'DESC')->get();
+		$query = legalissue::where('category_id', $issue_id)->where('status', '1')->orderBy('id', 'DESC')->get();
 
-	   $html = "";	
-       foreach($query as $querydata)
-	   {
-			$html .= '   <div class="col-md-3 "><div class="mitem3 sr-radio-card "> <input type="radio" name="issue-regarding" id="subissueid" class="sr-radio-card-inputs" value="'.$querydata->issue_name.'"><i class="fa fa-check-square-o sr-radio-icon"></i> <p class="sr-title2 mb-3">'.$querydata->issue_name.' </p></div>	  </div>';
-	   }
+		$html = "";
+		foreach ($query as $querydata) {
+			$html .= '   <div class="col-md-3 "><div class="mitem3 sr-radio-card "> <input type="radio" name="issue-regarding" id="subissueid" class="sr-radio-card-inputs" value="' . $querydata->issue_name . '"><i class="fa fa-check-square-o sr-radio-icon"></i> <p class="sr-title2 mb-3">' . $querydata->issue_name . ' </p></div>	  </div>';
+		}
 
 		echo $html;
 	}
-	public function getcategoryname()
+	public function getcategoryname(Request $request)
 	{
-		return "true";
+		$id = $request->id;
+		$query = lawyerenrollmentcatgeory::select('lawyer_enrollment_category.*', 'legal_advice_qa_category.category_name as category_name')
+			->leftjoin('legal_advice_qa_category', function ($join) {
+				$join->on('lawyer_enrollment_category.categoryid', '=', 'legal_advice_qa_category.id');
+			})
+			->where('lawyer_enrollment_category.userid', $id)
+			->orderBy("lawyer_enrollment_category.id", 'desc')
+			->get();
+	
+		echo $query[0]->category_name;	
 	}
 }

@@ -22,6 +22,7 @@ use App\Models\admin\sitesetting;
 use App\Models\admin\trends;
 use App\Models\admin\webinar;
 use App\Models\User;
+use App\Models\admin\MainLegalQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use View;
@@ -60,7 +61,6 @@ class HomeController extends Controller
         $this->data['getcarrertips'] = trends::getCareerTips();
         $this->data['getlegalservices'] = legalservices::getallservices();
         $this->data['advicecategory'] = adviceCategory::getquestioncategorylistlimit();
-        // $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         // $this->data['getquerysdata'] = otherResource::getAllDataf($name);
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
@@ -426,5 +426,11 @@ class HomeController extends Controller
         } else {
             return view('fronted.lawyer_login', $this->data);
         }
+    }
+    public function legalQueryDesc(Request $request)
+    {
+        $id = $request->id;
+        $this->data['dataLegalQuery'] = MainLegalQuery::where('id',$id)->where('status','1')->first();
+        return view('fronted.legalQuery', $this->data);
     }
 }

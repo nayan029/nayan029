@@ -12,7 +12,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/query-category">Legal Query</a></li>
-                        <li class="breadcrumb-item">Edit Legal Query</li>
+                        <li class="breadcrumb-item">Add Legal Query</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,7 +24,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     <div class="card-body">
-                        <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/updateLegalQuery/{{$data->id}}" enctype="multipart/form-data">
+                        <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/query-category" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12">
@@ -36,7 +36,7 @@
                                             <?php foreach ($mainLegalQueryType as $value) {
                                             
                                              ?>
-                                            <option value="{{$value->id}}" @if(isset($data->legal_query_type_id) AND $data->legal_query_type_id == $value->id) selected @endif>{{ ucfirst($value->title)}}</option>
+                                            <option value="{{$value->id}}">{{ ucfirst($value->title)}}</option>
                                             <?php }?>
                                         </select>
                                         <span style="color:red;" id="query_error"><?php echo $errors->profile_error->first('query_id'); ?></span>
@@ -45,21 +45,21 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail">Title</label><span style="color: red;">*</span>
-                                        <input type="text" maxlength="250" class="form-control" id="title" name="title" value="{{$data->title}}" placeholder="Title">
+                                        <input type="text" maxlength="250" class="form-control" id="title" name="title" placeholder="Title">
                                         <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('title'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail">Type</label><span style="color: red;">*</span>
-                                        <input type="text" maxlength="250" class="form-control" id="type" name="type" value="{{$data->type_name}}" placeholder="Type">
+                                        <input type="text" maxlength="250" class="form-control" id="type" name="type" placeholder="Type">
                                         <span style="color:red;" id="type_error"><?php echo $errors->profile_error->first('type'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputContactNo">Description</label><span style="color: red;">*</span>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Description">{{$data->description}}
+                                        <textarea class="form-control" id="description" name="description" placeholder="Description">
                                             </textarea>
                                         <span style="color:red;" id="details_error"><?php echo $errors->profile_error->first('description'); ?></span>
                                     </div>

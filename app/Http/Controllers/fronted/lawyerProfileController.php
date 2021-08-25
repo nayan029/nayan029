@@ -61,6 +61,14 @@ class lawyerProfileController extends Controller
             $auth = Auth::user();
             $input = $request->all();
             $input['experience'] = $request->experience;
+
+            $input['frollno'] = $request->degreename;
+            $input['fyear'] = $request->year;
+            $input['finstitue'] = $request->institution;
+            $input['srollno'] = $request->sdegreename;
+            $input['syear'] = $request->syear;
+            $input['sinstitue'] = $request->sinstitution;
+
             // $input['location'] = $request->location;
 
 
@@ -128,5 +136,45 @@ class lawyerProfileController extends Controller
                 return redirect()->back();
             }
         }
+    }
+    public function updateImage(Request $request)
+    {
+
+        // return $request->all();
+        $file = $request->image;
+        print_r($file);
+        die();
+        // return "trur";
+        // if ($request->hasfile('image')) {
+        //     return "true";
+        //     $file = $request->file('profileimage');
+        //     $name = $file->getClientOriginalName();
+        //     $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+        //     $file->move(public_path() . '/uploads/lawyerprofile/', $name);
+
+        //     $input['profileimage'] = $name;
+
+        //     $inputusersignature = User::find($request->id);
+        //     $inputusersignature->update($input);
+        // }
+
+
+        // return response()->json(['error' => 'Image Update']);
+
+
+
+
+        // if ($request->image) {
+        //     $file = $request->image;
+        //     $name = $file->getClientOriginalName();
+        //     $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+        //     $file->move(public_path() . '/uploads/lawyerprofile/', $name);
+
+        //     $input['profileimage'] = $name;
+
+        //     $inputusersignature = User::find($request->id);
+        //     $inputusersignature->update($input);
+        // }
+
     }
 }

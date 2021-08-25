@@ -25,9 +25,12 @@
                     <div class="card">
                         <div class="card-header">
                             <!-- Button trigger modal -->
-                            <button type="button" class="sa-btn-add float-right p-2" data-toggle="modal" data-target="#exampleModal">
+                            <!-- <button type="button" class="sa-btn-add float-right p-2" data-toggle="modal" data-target="#exampleModal">
                                 Add
-                            </button>
+                            </button> -->
+                            <a href="<?php echo URL::to('/'); ?>/admin/addLegalQuery"><button type="button" class="sa-btn-add float-right p-2">
+                                    Add
+                            </button></a>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,7 +87,8 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No</th>
-                                        <th>Category Name</th>
+                                        <th>Legal Query Name</th>
+                                        <th>Title</th>
                                         <th>Type</th>
                                         <th>Create Date</th>
                                         <th>Action</th>
@@ -93,21 +97,30 @@
                                 <tbody>
                                     <?php
                                     // $i = 1;
-                                    $i = ($categorylist->currentpage() - 1) * $categorylist->perpage() + 1;
 
-                                    foreach ($categorylist as $data) {
+                                    $i = ($MainLegalQueryList->currentpage() - 1) * $MainLegalQueryList->perpage() + 1;
+
+                                    foreach ($MainLegalQueryList as $data) {
 
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td> <?php echo ucfirst($data->category_name); ?> </td>
-                                            <td> <?php echo ucfirst($data->type); ?> </td>
+                                            @php
 
+                                                $mainLegalQueryName = DB::table('main_legal_query_type')->where('id',$data->legal_query_type_id)->where('status','1')->first();
+
+                                            @endphp
+
+                                            <td> <?php echo ucfirst($mainLegalQueryName->title); ?> </td>
+                                            <td> <?php echo ucfirst($data->title); ?> </td>
+                                            <td> <?php echo ucfirst($data->type_name); ?> </td>
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                             </td>
                                             <td>
-                                                <a title="Edit" class="mr-2" href="javascript:void(0)" onclick="functionedit('{{$data->id}}')" data-toggle="modal" data-target="#exampleModaledit"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <!-- <a title="Edit" class="mr-2" href="javascript:void(0)" onclick="functionedit('{{$data->id}}')" data-toggle="modal" data-target="#exampleModaledit"><i class="fas fa-edit text-info font-16"></i></a>
+                                                 -->
+                                                <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/query-category/{{$data->id}}/edit"><i class="fas fa-edit mr-2"></i></a>
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{$data->id}}')"></i></a>
                                             </td>
                                         </tr>
@@ -124,7 +137,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <nav aria-label="Page navigation example">
-                                        {{ $categorylist->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
+                                        {{ $MainLegalQueryList->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
 
                                     </nav>
                                 </div>
@@ -186,7 +199,7 @@
             if (result.value) {
 
                 $.ajax({
-                    url: "<?php echo URL::to('/'); ?>/admin/adviceCategory/" + id,
+                    url: "<?php echo URL::to('/'); ?>/admin/query-category/" + id,
                     type: "DELETE",
                     data: {
                         id: id,

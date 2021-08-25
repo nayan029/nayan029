@@ -155,8 +155,45 @@
                                         </div>
 
                                     </div>
+                                    <div class="col-md-4 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Degree Name</label>
+                                        <input type="text" name="degreename" class="form-control sa-form-font half-border-radius" id="degreename" value='@if(isset($user_login->frollno)){{$user_login->frollno}}@else{{"N/A"}}@endif' placeholder="Degree Name" maxlength="100">
+                                        <span id="degree_error" style="color: red;"></span>
+                                        <br>
 
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
 
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Year</label>
+                                        <input type="text" name="year" class="form-control sa-form-font half-border-radius" id="year" value='@if(isset($user_login->fyear)){{$user_login->fyear}}@else{{"N/A"}}@endif' placeholder="Year" maxlength="4">
+                                        <span id="year_error" style="color: red;"></span>
+                                        <br>
+
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Institution</label>
+                                        <input type="text" name="institution" class="form-control sa-form-font half-border-radius" id="institution" value='@if(isset($user_login->finstitue)){{$user_login->finstitue}}@else{{"N/A"}}@endif' placeholder="Institution Name" maxlength="100">
+                                        <span id="institution_error" style="color: red;"></span>
+                                        <br>
+                                    </div>
+                                    @if(isset($user_login->srollno)|| isset($user_login->syear)|| isset($user_login->sinstitue))
+                                    <div class="col-md-4 sa-pb">
+                                        <!-- <label for="inputName" class="form-label sa-color2 sa-label">Degree Name</label> -->
+                                        <input type="text" name="sdegreename" class="form-control sa-form-font half-border-radius" id="sdegreename" value='@if(isset($user_login->srollno)){{$user_login->srollno}}@else{{"N/A"}}@endif' placeholder="Degree Name" maxlength="100">
+                                        <span id="sdegree_error" style="color: red;"></span>
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
+
+                                        <!-- <label for="inputName" class="form-label sa-color2 sa-label">Year</label> -->
+                                        <input type="text" name="syear" class="form-control sa-form-font half-border-radius" id="syear" value='@if(isset($user_login->syear)){{$user_login->syear}}@else{{"N/A"}}@endif' placeholder="Year" maxlength="4">
+                                        <span id="syear_error" style="color: red;"></span>
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
+                                        <!-- <label for="inputName" class="form-label sa-color2 sa-label">Institution</label> -->
+                                        <input type="text" name="sinstitution" class="form-control sa-form-font half-border-radius" id="sinstitution" value='@if(isset($user_login->sinstitue)){{$user_login->sinstitue}}@else{{"N/A"}}@endif' placeholder="Institution Name" maxlength="100">
+                                        <span id="sinstitution_error" style="color: red;"></span>
+                                    </div>
+                                    @endif
 
                                 </div>
 
@@ -224,6 +261,25 @@
 <script type="text/javascript">
     function readURL(input) {
         if (input.files && input.files[0]) {
+            // console.log(input.files[0].name);
+
+            var fileInput = document.getElementById('imageUpload');
+            var file = fileInput.files[0];
+            console.log(file);
+            // var image = input.files[0].name;
+            var id = '<?php echo Auth::user()->id; ?>';
+            $.ajax({
+                'type': 'POST',
+                'url': '{{URL::to("/")}}/lawyer/edit-profile',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id,
+                    "image": file
+                },
+                'success': function(data) {
+                    console.log('true');
+                }
+            });
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
@@ -234,6 +290,7 @@
         }
     }
     $("#imageUpload").change(function() {
+        console.log(this);
         readURL(this);
     });
 </script>
@@ -244,16 +301,25 @@
         var about = $('#about_data').val();
         // var length = $("#courtcheck input[type=checkbox]:checked").length;
         // var category = $("#catcheck input[type=checkbox]:checked").length;
-        
-        
+
+
         var experience = $('#experience').val();
         var language = $('#language').val();
         var location = $('#location').val();
         var court = $('#court').val();
         var specialization = $("#specialization").val();
 
+        var degreename = $('#degreename').val();
+        var year = $('#year').val();
+        var institution = $('#institution').val();
+
+
+        var sdegreename = $('#sdegreename').val();
+        var syear = $('#syear').val();
+        var sinstitution = $('#sinstitution').val();
+
         // alert(specialization)
-        
+
         var cnt = 0;
         var f = 0;
 
@@ -261,6 +327,14 @@
         $('#experience_error').html("");
         $('#about_error').html("");
         $('#specialization_error').html("");
+
+        $('#degree_error').html("");
+        $('#year_error').html("");
+        $('#institution_error').html("");
+
+        $('#sdegree_error').html("");
+        $('#syear_error').html("");
+        $('#sinstitution_error').html("");
 
 
         // if (image.trim() == '') {
@@ -309,6 +383,61 @@
             f++;
             if (f == 1) {
                 $('#about_data').focus();
+            }
+        }
+
+        if (degreename.trim() == '') {
+            $('#degree_error').html("Please enter degree name");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#degreename').focus();
+            }
+        }
+
+        if (year.trim() == '') {
+            $('#year_error').html("Please enter year");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#year').focus();
+            }
+        }
+
+        if (institution.trim() == '') {
+            $('#institution_error').html("Please enter institution name");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#institution').focus();
+            }
+        }
+
+
+        if (sdegreename.trim() == '') {
+            $('#sdegree_error').html("Please enter degree name");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#sdegreename').focus();
+            }
+        }
+
+        if (syear.trim() == '') {
+            $('#syear_error').html("Please enter year");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#syear').focus();
+            }
+        }
+
+        if (sinstitution.trim() == '') {
+            $('#sinstitution_error').html("Please enter institution name");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#sinstitution').focus();
             }
         }
 

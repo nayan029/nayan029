@@ -31,12 +31,9 @@ class lawyerRegisterController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request->all();
+
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'name' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -45,47 +42,94 @@ class lawyerRegisterController extends Controller
                 ->withInput();
         } else {
 
+
             $auth = Auth::user();
             $input = $request->all();
 
+            $checkmail = user::checkexistemaillawyer($request->email);
+            if ($checkmail) {
+                // return $checkmail;
+                $inputData = [
+                    'name' => $request->name,
+                    'username' => $request->username,
+                    'password' => Hash::make($request->password),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ];
+                $update = User::where('id', $checkmail->id)->update($inputData);
 
-            $userdata = User::orderBy('id', 'desc')->first();
+                $name =  $request->name;
+                $inser_id = $checkmail->id;
+                $email = $request->email;
+                /*send mail */
 
-            $input['created_at'] = date('Y-m-d H:i:s');
-            $input['email'] = $request->email;
-            $input['name'] = $request->name;
-            $input['username'] = $request->username;
-            $input['user_type'] = 3;
-            $input['status'] = 0;
-            $input['password'] = Hash::make($request->password);
+                /*verify-email*/
+                $emailtemplate = EmailTemplate::where('type', 1)->first();
+                $html = $emailtemplate->email;
+                // $sitesetting = sitesetting::getrecordbyid();"
+                $logo = '<img src="' . URL::to('/') . '/fronted/images/logo.png'  . '" alt="" style="margin-left: auto; margin-right: auto; display:block; margin-bottom: 10px;margin-top: 10px; height: 70px;">';
 
-            $inputuser = User::create($input);
+                $userid = CryptHelper::encryptstring($inser_id);
+                $link = '<a style="text-decoration: none;background: #2196F3;border: 1px solid #2196F3;color: #fff;padding: 7px 7px;border-radius: 5px;margin-bottom:30px;font-size: 15px;" href=' . URL::to('/') . '/lawyer/verify-email/' . $userid . '>Verify your Email</a>';
+                $subject = $emailtemplate->subject;
+                $html = str_replace('{{NAME}}', $name, $html);
+                $html = str_replace('{{LINK}}', $link, $html);
+                $html = str_replace('{{DESCRIPTION}}', $emailtemplate->description, $html);
+                $html = str_replace('{{LOGO}}', $logo, $html);
 
-            $inser_id = $inputuser->id;
+                $mail = MailHelper::mail_send_client($html, $request->email, $subject);
 
-            /*verify-email*/
-            $emailtemplate = EmailTemplate::where('type', 1)->first();
-            $html = $emailtemplate->email;
-            // $sitesetting = sitesetting::getrecordbyid();"
-            $logo = '<img src="' . URL::to('/') . '/fronted/images/logo.png'  . '" alt="" style="margin-left: auto; margin-right: auto; display:block; margin-bottom: 10px;margin-top: 10px; height: 70px;">';
 
-            $userid = CryptHelper::encryptstring($inser_id);
-            $link = '<a style="text-decoration: none;background: #2196F3;border: 1px solid #2196F3;color: #fff;padding: 7px 7px;border-radius: 5px;margin-bottom:30px;font-size: 15px;" href=' . URL::to('/') . '/lawyer/verify-email/' . $userid . '>Verify your Email</a>';
-            $subject = $emailtemplate->subject;
-            $html = str_replace('{{NAME}}', $request->name, $html);
-            $html = str_replace('{{LINK}}', $link, $html);
-            $html = str_replace('{{DESCRIPTION}}', $emailtemplate->description, $html);
-            $html = str_replace('{{LOGO}}', $logo, $html);
-
-            $mail = MailHelper::mail_send_client($html, $request->email, $subject);
-            /*verify-email*/
-            if ($inputuser) {
-                // return "true";
                 Session::flash('success', 'Successfully Registered</br> Please Varify Your Email id');
                 return redirect('/lawyer/login');
+
+                // if ($mail) {
+                //     Session::flash('success', 'Successfully Registered</br> Please Varify Your Email id');
+                //     return redirect('/lawyer/login');
+                // } else {
+                //         return "ff";
+                //     Session::flash('error', 'Sorry, something went wrong. Please try again');
+                //     return redirect()->back();
+                // }
+
+                /*send mail */
             } else {
-                Session::flash('error', 'Sorry, something went wrong. Please try again');
-                return redirect()->back();
+                $input['created_at'] = date('Y-m-d H:i:s');
+                $input['email'] = $request->email;
+                $input['name'] = $request->name;
+                $input['username'] = $request->username;
+                $input['user_type'] = 3;
+                $input['status'] = 0;
+                $input['password'] = Hash::make($request->password);
+
+                $inputuser = User::create($input);
+
+                $inser_id = $inputuser->id;
+
+                /*verify-email*/
+                $emailtemplate = EmailTemplate::where('type', 1)->first();
+                $html = $emailtemplate->email;
+                // $sitesetting = sitesetting::getrecordbyid();"
+                $logo = '<img src="' . URL::to('/') . '/fronted/images/logo.png'  . '" alt="" style="margin-left: auto; margin-right: auto; display:block; margin-bottom: 10px;margin-top: 10px; height: 70px;">';
+
+                $userid = CryptHelper::encryptstring($inser_id);
+                $link = '<a style="text-decoration: none;background: #2196F3;border: 1px solid #2196F3;color: #fff;padding: 7px 7px;border-radius: 5px;margin-bottom:30px;font-size: 15px;" href=' . URL::to('/') . '/lawyer/verify-email/' . $userid . '>Verify your Email</a>';
+                $subject = $emailtemplate->subject;
+                $html = str_replace('{{NAME}}', $request->name, $html);
+                $html = str_replace('{{LINK}}', $link, $html);
+                $html = str_replace('{{DESCRIPTION}}', $emailtemplate->description, $html);
+                $html = str_replace('{{LOGO}}', $logo, $html);
+
+                $mail = MailHelper::mail_send_client($html, $request->email, $subject);
+                /*verify-email*/
+
+                if ($inputuser) {
+                    Session::flash('success', 'Successfully Registered</br> Please Varify Your Email id');
+                    return redirect('/lawyer/login');
+                } else {
+
+                    Session::flash('error', 'Sorry, something went wrong. Please try again');
+                    return redirect()->back();
+                }
             }
         }
     }

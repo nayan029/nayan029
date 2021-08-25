@@ -3,7 +3,7 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>{{$sitesetting->title}} | {{$title}}</title>
+<title>{{@$sitesetting->title}} | {{@$title}}</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/uploads/logo/{{$sitesetting->backend_logo}}">

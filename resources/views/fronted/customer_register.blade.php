@@ -25,7 +25,7 @@
 				<div class="col-md-6 col1">
 					<!-- <a href="<?php echo URL::to('/'); ?>/"><img src="<?php echo URL::to('/'); ?>/fronted//images/small-logo.png" class="small-logo"></a> -->
 					<div class="mid">
-						<div class="sa-small-logocenter">
+					<div class="sa-small-logocenter">
 							<a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo sa-small-logo"></a>
 						</div>
 						<h3>Get your justice </h3>
@@ -82,7 +82,7 @@
 										</div>
 										<div class="col-md-12 form-group">
 											<div class="pm-check">
-												<input class="form-check-input" type="checkbox" name="checkbox" value="check" id="defaultCheck1">
+												<input class="form-check-input" type="checkbox" name="checkbox" value="check" id="defaultCheck1" >
 												<span class="real-checkbox"></span>
 												<label class="form-check-label" for="defaultCheck1">
 													I agree to legal bench terms of use.
@@ -125,16 +125,10 @@
 						</p>
 					</div>
 				</div>
-				<div class="container text-center mb-2">
-					<button type="button" class="btn btn-dark" data-dismiss="modal">Submit</button>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Accept</button>
+	
 				</div>
-
-
-				<!-- <div class="modal-footer"> -->
-
-				<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-
-				<!-- </div> -->
 			</div>
 		</div>
 	</div>
@@ -320,5 +314,4 @@
 		});
 	});
 </script>
-
 </html>

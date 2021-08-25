@@ -2,7 +2,7 @@
 <div class="sa-enroll-details">
   <div class="container">
     <!-- content 1 -->
-    <div id="Section1" style="display:block;">
+    <!-- <div id="Section1" style="display:block;">
       <form action=" " method="POST">
         @csrf
         <div class="sa-application">
@@ -32,10 +32,10 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> -->
     <!-- end content1 -->
     <!-- content 2 -->
-    <div id="Section2" style="display:none">
+    <!-- <div id="Section2" style="display:block">
       <form action=" {{ URL::to('/')}} /legal-enquiry " method="POST">
         <div id="errorissueregard" style="color: red;" class="text-center"></div>
         <div class="sa-application">
@@ -56,11 +56,11 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> -->
     <!-- end content2 -->
 
     <!-- content 3 -->
-    <div class="sr-sec3" id="Section3" style="display:none">
+    <div class="sr-sec3" id="Section3" style="display:block">
       <form method="POST">
         @csrf
         <div class="sa-application d-flex justify-content-center">
@@ -115,7 +115,7 @@
           <div class="col-md-8 p-0">
             <div class="row">
               <div class="col-md-12 ">
-                <a href="#" class="btn btn-outline-primary" id="prevbtn3">Prev</a>
+                <!-- <a href="#" class="btn btn-outline-primary" id="prevbtn3">Prev</a> -->
                 <a href="#" class="btn btn-outline-primary float-right" onclick="nextPrevthree(1)" id="nextbtn3">Submit</a>
 
               </div>
@@ -222,59 +222,59 @@
 </script>
 
 <script>
-  function nextPrev(n) {
-    issue = $("input[name='legal-issue1']:checked").val();
-    // alert(issue)
-    if ((n == 1) && (issue == null)) {
-      $("#errorissue").html("Please select one option");
-      // alert("please select one option"); 
-      $("#Section1").show();
+  // function nextPrev(n) {
+  //   issue = $("input[name='legal-issue1']:checked").val();
+  //   // alert(issue)
+  //   if ((n == 1) && (issue == null)) {
+  //     $("#errorissue").html("Please select one option");
+  //     // alert("please select one option"); 
+  //     $("#Section1").show();
 
-      // console.log(false);
-      return false;
-    } else {
-      $("#Section1").hide();
-      $("#Section2").show();
-      $("#Section3").hide();
-      $("#Section4").hide();
-      $("#subissuelist").empty();
-      $.ajax({
-        url: '{{ URL::to("/")}}/get-subissue',
-        type: 'POST',
-        data: {
-          issue_id: issue,
-          _token: '{{ csrf_token() }}'
-        },
-        success: function(data) {
-          // console.log(data);
-          $("#subissuelist").append(data);
-        }
-      });
+  //     // console.log(false);
+  //     return false;
+  //   } else {
+  //     $("#Section1").hide();
+  //     $("#Section2").show();
+  //     $("#Section3").hide();
+  //     $("#Section4").hide();
+  //     $("#subissuelist").empty();
+  //     $.ajax({
+  //       url: '{{ URL::to("/")}}/get-subissue',
+  //       type: 'POST',
+  //       data: {
+  //         issue_id: issue,
+  //         _token: '{{ csrf_token() }}'
+  //       },
+  //       success: function(data) {
+  //         // console.log(data);
+  //         $("#subissuelist").append(data);
+  //       }
+  //     });
 
-    }
-  }
+  //   }
+  // }  
 </script>
 <script>
-  function nextPrevtwo(n) {
-    issue = $("input[name='issue-regarding']:checked").val();
-    // alert(issue)
-    if ((n == 1) && (issue == null)) {
-      $("#errorissueregard").html("Please select one option");
-      $("#Section1").hide();
-      $("#Section2").show();
-      $("#Section3").hide();
-      $("#Section4").hide();
-      // console.log(false);
-      return false;
-    } else {
+  // function nextPrevtwo(n) {
+  //   issue = $("input[name='issue-regarding']:checked").val();
+  //   // alert(issue)
+  //   if ((n == 1) && (issue == null)) {
+  //     $("#errorissueregard").html("Please select one option");
+  //     $("#Section1").hide();
+  //     $("#Section2").show();
+  //     $("#Section3").hide();
+  //     $("#Section4").hide();
+  //     // console.log(false);
+  //     return false;
+  //   } else {
 
-      $("#Section1").hide();
-      $("#Section2").hide();
-      $("#Section3").show();
-      $("#Section4").hide();
+  //     $("#Section1").hide();
+  //     $("#Section2").hide();
+  //     $("#Section3").show();
+  //     $("#Section4").hide();
 
-    }
-  }
+  //   }
+  // }
 </script>
 <script>
   function nextPrevthree(n) {

@@ -391,7 +391,7 @@
 			<div class="team-col">
 				<div class="team-box">
 					<a href="advocate/{{$data->id}}" class="hoverid" onmouseover="change({{$data->id}})">
-						<input type="text" name="id" id="id_{{$data->id}}" class="testone" data-hid="{{$data->id}}" value="{{$data->id}}">
+						<input type="hidden" name="id" id="id_{{$data->id}}" class="testone" data-hid="{{$data->id}}" value="{{$data->id}}">
 						@if($data->profileimage)
 						<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
 						@else
@@ -404,7 +404,8 @@
 							<img class="main" src="{{URL::to('/')}}/fronted/images/team2.png">
 							@endif
 							<div class="inner">
-								<h5>{{$data->name." ".$data->username}} </h5>
+								<h5>{{$data->name." ".$data->username}}</h5>
+								<h6 style="color: var(--primary-color);"><span id="catname_{{$data->id}}"></span></h6>
 								<p></p>
 							</div>
 						</div>
@@ -571,13 +572,17 @@
 					<p>”Lorem ipsum dolor sit amet Lorem ipsum”</p>
 				</div>
 			</div>
+
 			<div class="col-lg-5 col-md-6 col2">
-				<div class="title">
-					<h3>Find the Right Lawyer For you</h3>
-					<h6>We promise you will get the justice you deserve</h6>
-				</div>
+				<a href="{{url('/search/lawyer?name=')}}">
+					<div class="title">
+						<h3>Find the Right Lawyer For you</h3>
+						<h6>We promise you will get the justice you deserve</h6>
+					</div>
+				</a>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum.</p>
 			</div>
+
 		</div>
 	</div>
 </section>
@@ -1010,15 +1015,25 @@
 </script>
 <script>
 	function change(id) {
-		console.log(id);
+		// console.log(id);
 
 		$.ajax({
 			'type': 'POST',
+			// 'csrf': '@csrf',
 			'url': '{{URL::to("/")}}/fronted/getcategoryname',
-			'data': id,
+			// 'data': id,
+			data: {
+				"_token": "{{ csrf_token() }}",
+				"id": id
+			},
 			'success': function(data) {
-				console.log(data);
-				$('#products').replaceWith(response);
+				// console.log(data);
+
+				$('#catname_' + id).text(data);
+				/*var $label = $("#catname");
+   				 var text = $label.text();
+   				 $label.text(text.replace("text", data));*/
+				// $('#products').replaceWith(response);
 			}
 		});
 
