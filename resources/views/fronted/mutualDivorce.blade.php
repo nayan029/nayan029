@@ -16,7 +16,11 @@
           // die();
         }
         ?>
-        <h2 class="sa-color1">{{$getquerys->service_title}}</h2>
+        <h2 class="sa-color1 d-flex">{{$getquerys->service_title}}
+        <div>
+          <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-primary sa-color3 poppins-light ml-4">Find A Lawyer</a>
+        </div>
+        </h2>
 
         <!-- <div class="col-md-12 pl-0 pt-3 pb-3">
           <span class="fa fa-star checked"></span>
@@ -26,9 +30,7 @@
           <span class="fa fa-star"></span>
           <span class="pl-4">4.8 | 241+ ratings</span>
         </div> -->
-        <div>
-          <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-primary sa-color3 poppins-light">Find A Lawyer</a>
-        </div>
+        
         <p class="fs-20 pt-3 pb-3">{{$getquerys->short_description}}</p>
         <p class="mt-3 mb-0 fs-20">Please fill up to get more information on process</p>
 

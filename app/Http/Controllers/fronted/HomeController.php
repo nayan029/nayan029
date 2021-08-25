@@ -415,14 +415,18 @@ class HomeController extends Controller
     {
         $auth = Auth::user();
         if ($auth) {
-            $this->data['user_login'] = $auth;
-            $this->data['court'] = court::getAllRecord();
-            $this->data['category'] = adviceCategory::getquestioncategorylist();
-            $this->data['user_category'] = lawyerenrollmentcatgeory::getDataById($auth->id)->pluck('categoryid')->toArray();
-            $this->data['user_court'] = lawyercourt::getrecordbyid($auth->id)->pluck('courtid')->toArray();
-            $this->data['user_language'] = lawyerlanguages::getrecordbyid($auth->id)->pluck('language')->toArray();
-            $this->data['title'] = "Edit Profile";
-            return view('fronted.editprofile', $this->data);
+            if ($auth->step == '3') {
+                $this->data['user_login'] = $auth;
+                $this->data['court'] = court::getAllRecord();
+                $this->data['category'] = adviceCategory::getquestioncategorylist();
+                $this->data['user_category'] = lawyerenrollmentcatgeory::getDataById($auth->id)->pluck('categoryid')->toArray();
+                $this->data['user_court'] = lawyercourt::getrecordbyid($auth->id)->pluck('courtid')->toArray();
+                $this->data['user_language'] = lawyerlanguages::getrecordbyid($auth->id)->pluck('language')->toArray();
+                $this->data['title'] = "Edit Profile";
+                return view('fronted.editprofile', $this->data);
+            } else {
+                return view('/');
+            }
         } else {
             return view('fronted.lawyer_login', $this->data);
         }
@@ -430,7 +434,7 @@ class HomeController extends Controller
     public function legalQueryDesc(Request $request)
     {
         $id = $request->id;
-        $this->data['dataLegalQuery'] = MainLegalQuery::where('id',$id)->where('status','1')->first();
+        $this->data['dataLegalQuery'] = MainLegalQuery::where('id', $id)->where('status', '1')->first();
         return view('fronted.legalQuery', $this->data);
     }
 }

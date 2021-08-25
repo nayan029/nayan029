@@ -127,8 +127,8 @@ $login = Auth::user();
 										<div class="row">
 											<div class="col-md-6">
 												<ul>
-													<li class="ul-title">Documentation</li>
-														<li class="li-border"></li>
+													<!-- <li class="ul-title">Documentation</li> -->
+														<!-- <li class="li-border"></li> -->
 													<?php
 													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->limit(6)->get();
 
@@ -154,8 +154,8 @@ $login = Auth::user();
 												
 											
 											<ul>
-												<li class="ul-title">Legal Notice</li>
-													<li class="li-border"></li>
+												<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
 												<?php
 												$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '2')->limit(6)->get();
 
@@ -181,8 +181,8 @@ $login = Auth::user();
 											
 
 											<ul>
-												<li class="ul-title">Legal Notice</li>
-													<li class="li-border"></li>
+												<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
 												<?php
 												$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '3')->limit(6)->get();
 
@@ -211,8 +211,8 @@ $login = Auth::user();
 										<div class="row mr-0">
 											<div class="col-md-6">
 												<ul>
-													<li class="ul-title">Legal Notice</li>
-													<li class="li-border"></li>
+													<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
 													<?php
 													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '4')->limit(6)->get();
 
@@ -232,8 +232,8 @@ $login = Auth::user();
 											</div>
 											<div class="col-md-6">
 												<ul>
-													<li class="ul-title">Legal Notice</li>
-													<li class="li-border"></li>
+													<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
 													<li><a href="<?php echo URL::to('/') ?>/labour-service-legal-services">Labour and Service</a></li>
 													<li><a href="<?php echo URL::to('/') ?>/copyright-patent-trademark-legal-services">Trademark & Copyright</a></li>
 													<li><a href="<?php echo URL::to('/') ?>/corporate-legal-services">Corporate</a></li>

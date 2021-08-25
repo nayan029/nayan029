@@ -140,7 +140,7 @@ class lawyerProfileController extends Controller
     public function updateImage(Request $request)
     {
 
-        // return $request->all();
+        return $request->all();
         $file = $request->image;
         print_r($file);
         die();

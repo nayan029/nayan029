@@ -7,7 +7,8 @@
                     <div class="col-md-12 d-flex">
                         <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <input id="imageUpload" type="file" name="sortpic" accept=".png, .jpg, .jpeg"  />
+
                                 <label for="imageUpload"></label>
                             </div>
                             <div class="avatar-preview">
@@ -259,39 +260,30 @@
 
 <!-- edit profile picture script -->
 <script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            // console.log(input.files[0].name);
 
-            var fileInput = document.getElementById('imageUpload');
-            var file = fileInput.files[0];
-            console.log(file);
-            // var image = input.files[0].name;
-            var id = '<?php echo Auth::user()->id; ?>';
-            $.ajax({
-                'type': 'POST',
-                'url': '{{URL::to("/")}}/lawyer/edit-profile',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "id": id,
-                    "image": file
-                },
-                'success': function(data) {
-                    console.log('true');
-                }
-            });
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-                $('#imagePreview').hide();
-                $('#imagePreview').fadeIn(650);
-            }
-            reader.readAsDataURL(input.files[0]);
+function readURL() {
+    var file_data = $('#imageUpload').prop('files')[0];   
+    var form_data = new FormData();                  
+    form_data.append('file', file_data);
+    form_data.append('_token','{{ csrf_token() }}');
+    alert(form_data);                             
+    $.ajax({
+        url: '{{URL::to("/")}}/lawyer/edit-profile', // <-- point to server-side PHP script 
+        dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                         
+        type: 'post',
+        success: function(php_script_response){
+            alert(php_script_response); // <-- display response from the PHP script, if any
         }
-    }
+     });
+}
+
     $("#imageUpload").change(function() {
-        console.log(this);
-        readURL(this);
+        // console.log(this);
+        readURL();
     });
 </script>
 <!-- end edit profile picture script -->
