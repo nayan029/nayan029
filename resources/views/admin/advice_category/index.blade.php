@@ -210,7 +210,7 @@ $('#advice_cat').addClass('active mm-active');
     /*Validation*/
     function checkvalidation() {
         var name = $('#name').val();
-        var type = $('#type').val();
+        // var type = $('#type').val();
         $.ajax({
             url: "<?php echo URL::to('/'); ?>/admin/getexitadvicecategory",
             type: "POST",

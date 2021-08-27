@@ -255,7 +255,7 @@
 
     </div>
 </div>
-
+<?php echo $id = Auth::user()->id; ?>
 @include('fronted/include/footer')
 
 <!-- edit profile picture script -->
@@ -266,6 +266,7 @@ function readURL() {
     var form_data = new FormData();                  
     form_data.append('file', file_data);
     form_data.append('_token','{{ csrf_token() }}');
+    form_data.append('id','<?php echo $id = '1'; ?>');
     alert(form_data);                             
     $.ajax({
         url: '{{URL::to("/")}}/lawyer/edit-profile', // <-- point to server-side PHP script 

@@ -30,12 +30,13 @@ class legalissueController extends Controller
         $this->data['title'] = "Issue Mangment";
         return view('admin.legal_issue.index', $this->data);
     }
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
+        return $id;
         // return $request->all(); die;
         $validator = Validator::make($request->all(), [
-            'type' => 'required',
-            'name' => 'required',
+            // 'service_id' => 'required',
+            'description' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -47,8 +48,9 @@ class legalissueController extends Controller
             $auth = Auth::user();
             $input = $request->all();
 
-            $input['category_id'] = $request->type;
-            $input['issue_name'] = $request->name;
+            $input['category_id'] = $id;
+            $input['issue_name'] = $request->description;
+
             $input['status'] = '1';
             $input['created_at'] = date('d-m-Y H:i:s');
             $input['created_by'] = $auth->id;
@@ -80,10 +82,10 @@ class legalissueController extends Controller
         $this->data['title'] = "Add Admin";
         return view('admin/admin_mangment/add', $this->data);
     }
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'type'=>'required',
+            'type' => 'required',
             'name' => 'required',
         ]);
 
@@ -125,5 +127,9 @@ class legalissueController extends Controller
             Session::flash('error', 'Sorry, something went wrong. Please try again');
         }
         return $delete;
+    }
+    public function test()
+    {
+        return "tre";
     }
 }

@@ -53,7 +53,7 @@ class AjaxController extends Controller
 	{
 		/*Record insert*/
 		$auth = Auth::user();
-		$data = adviceCategory::where('category_name', $request->name)->where('type', $request->type)->first();
+		$data = adviceCategory::where('category_name', $request->name)->first();
 
 		if ($data) {
 			echo 1;
@@ -67,7 +67,7 @@ class AjaxController extends Controller
 		$auth = Auth::user();
 		//	echo $request->id;
 		//die();
-		$data = adviceCategory::where('id', '!=', $request->id)->where('category_name', '=', $request->name)->where('type', '=', $request->type)->first();
+		$data = adviceCategory::where('id', '!=', $request->id)->where('category_name', '=', $request->name)->first();
 		if ($data) {
 			echo 1;
 		} else {

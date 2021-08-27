@@ -27,33 +27,40 @@
             <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/legal-services" enctype="multipart/form-data">
               @csrf
               <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <!-- text input -->
                   <div class="form-group">
                     <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
-                    <input type="text" maxlength="250" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter Name">
+                    <select class="form-control" name="name" id="name">
+                      <option value="">Select Service Name</option>
+                      @foreach($servicename as $data)
+                      <option value="{{$data->category_name}}">{{$data->category_name}}</option>
+                      @endforeach
+                    </select>
+                    <!-- <input type="text" maxlength="250" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter Name"> -->
                     <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
-                      <input type="text" class="form-control" id="service_title" name="service_title" aria-describedby="emailHelp" placeholder="Enter Title">
-                      <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
-                      <input type="text" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
-                      <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
-                    </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
+                    <input type="text" class="form-control" id="service_title" name="service_title" aria-describedby="emailHelp" placeholder="Enter Title">
+                    <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
                   </div>
                 </div>
-                <div class="col-sm-4">
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="exampleInputContactNo">Category </label><span style="color: red;">*</span>
+                    <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
+                    <input type="text" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
+                    <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
                     <Select class="form-control" id="category" name="category_id">
                       <!-- <option  value="">Select Category</option> -->
                       <?php foreach ($catagory as $data) {
@@ -66,13 +73,21 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-4">
+                  <label for="exampleInputContactNo">Image </label><span style="color: red;">*</span>
+                  <input type="file" class="form-control" id="image" name="image" placeholder="select image">
+                  <span style="color:red;" id="image_error"><?php echo $errors->profile_error->first('image'); ?></span>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-12">
                 <div class="form-group">
                   <label for="exampleInputEduction">Description</label><span style="color: red;">*</span>
                   <textarea class="form-control" id="description" name="description" aria-describedby="nameHelp" placeholder="User Description"></textarea>
                   <span style="color:red;" id="description_error"><?php echo $errors->customer_error->first('discription'); ?></span>
                 </div>
-              </div>
+              </div> -->
               <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
           </div>
           <div class="row">
@@ -92,7 +107,6 @@
 @include('admin/include/footer')
 <script>
   $('#legal_service').addClass('active mm-active');
-
 </script>
 
 <script>
@@ -107,7 +121,8 @@
     var name = $('#name').val();
     var short_description = $('#short_description').val();
     // var description = $('#description').val();
-    var description = CKEDITOR.instances.description.getData();
+    var image = $('#image').val();
+    // var description = CKEDITOR.instances.description.getData();
 
     var service_title = $('#service_title').val();
     // var category = $('#category').val();
@@ -118,7 +133,8 @@
     $('#short_description_error').html("");
     $('#description_error').html("");
     $('#title_error').html("");
-    // $('#category_error').html("");
+
+    $('#image_error').html("");
 
 
 
@@ -144,9 +160,24 @@
     //     $('#category').focus();
     //   }
     // }
+    if (image.trim() == '') {
+      $('#image_error').html("Please select Pictures");
+      cnt = 1;
+    }
+    if (image) {
+      var formData = new FormData();
+      var file = document.getElementById('image').files[0];
+      // var image = $('#image').val();
+      formData.append("Filedata", file);
+      var t = file.type.split('/').pop().toLowerCase();
+      if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+        $('#image_error').html("Only JPG, PNG and JPEG image are allowed");
+        cnt = 1;
+      }
+    }
 
     if (name.trim() == '') {
-      $('#name_error').html("Please enter Service Name ");
+      $('#name_error').html("Please select service name ");
       cnt = 1;
       f++;
       if (f == 1) {
@@ -162,14 +193,14 @@
       }
     }
 
-    if (description.trim() == '') {
-      $('#description_error').html("Please enter description");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#description').focus();
-      }
-    }
+    // if (description.trim() == '') {
+    //   $('#description_error').html("Please enter description");
+    //   cnt = 1;
+    //   f++;
+    //   if (f == 1) {
+    //     $('#description').focus();
+    //   }
+    // }
     if (cnt == 1) {
       return false;
     } else {

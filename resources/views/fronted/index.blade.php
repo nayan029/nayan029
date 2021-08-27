@@ -203,18 +203,22 @@
 <section class="fourbox">
 	<div class="container">
 		<div class="divorce-owl owl-carousel owl-theme">
-
+		@foreach ($allAids as $data)
 			<div class="item">
-				<a href="{{URL::to('/')}}/search/lawyer/?category=civil">
+				<a href="{{URL::to('/')}}/legal-services/{{$data->slug}}">
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
 					<div class="fbox">
-						<p>Divorce </p>
+						<p>{{ucfirst($data->service_name)}} </p>
+						@if($data->image)
+						<img src="<?php echo URL::to('/'); ?>/fronted/image/{{$data->image}}">
+						@else
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new4.png">
-
+						@endif
 					</div>
 				</a>
 			</div>
-			<div class="item">
+			@endforeach
+			<!-- <div class="item">
 				<a href="{{URL::to('/')}}/search/lawyer/?category=22">
 
 					<div class="fbox">
@@ -277,7 +281,7 @@
 						<img src="<?php echo URL::to('/'); ?>/fronted/images/new1.png">
 					</div>
 				</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </section>
@@ -405,7 +409,7 @@
 							@endif
 							<div class="inner">
 								<h5>{{$data->name." ".$data->username}}</h5>
-								<h6 style="color: var(--primary-color);"><span id="catname_{{$data->id}}"></span></h6>
+								<h6><span id="catname_{{$data->id}}"></span></h6>
 								<p></p>
 							</div>
 						</div>

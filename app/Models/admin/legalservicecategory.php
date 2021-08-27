@@ -23,17 +23,16 @@ class legalservicecategory extends Authenticatable
     {
         // $query = Category::orderBy('id', 'desc')->get();
         $query =  legalservicecategory::where('status', 1)->orderBy('id', 'desc');
-        $temp ="name like '%$name%' ";
-		if($name != "")
-		{
-			$query= $query->whereRaw($temp);
-		}
-		$query= $query->paginate(10);
+        $temp = "name like '%$name%' ";
+        if ($name != "") {
+            $query = $query->whereRaw($temp);
+        }
+        $query = $query->paginate(10);
         return $query;
     }
     public static function getallcategory()
     {
-        $query = legalservicecategory::where('deleted_at',NULL)->get();
+        $query = legalservicecategory::where('deleted_at', NULL)->get();
         return $query;
     }
 }

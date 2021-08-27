@@ -50,12 +50,12 @@ $login = Auth::user();
 									<li class="ul-title">Research Paper</li>
 									<li class="li-border"></li>
 									<?php
-									$listAdviceQuery = DB::table('main_legal_query')->where('legal_query_type_id','1')->where('status',1)->where('deleted_at', NULL)->limit(3)->get();
+									$listAdviceQuery = DB::table('main_legal_query')->where('legal_query_type_id', '1')->where('status', 1)->where('deleted_at', NULL)->limit(3)->get();
 									foreach ($listAdviceQuery as $keyQuery) {
-										
+
 									?>
 
-										<li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?=$keyQuery->id ?>">{{ucfirst($keyQuery->type_name)}}</a></li>
+										<li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $keyQuery->id ?>">{{ucfirst($keyQuery->type_name)}}</a></li>
 
 									<?php } ?>
 
@@ -69,11 +69,11 @@ $login = Auth::user();
 									<li class="ul-title">Notes</li>
 									<li class="li-border"></li>
 									<?php
-									$listLegalGuides = DB::table('main_legal_query')->where('legal_query_type_id','2')->where('status',1)->where('deleted_at', NULL)->limit(5)->get();
+									$listLegalGuides = DB::table('main_legal_query')->where('legal_query_type_id', '2')->where('status', 1)->where('deleted_at', NULL)->limit(5)->get();
 									foreach ($listLegalGuides as $keyGuides) {
 									?>
 										<li>
-											<a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?=$keyGuides->id ?>">{{ucfirst($keyGuides->type_name)}}</a>
+											<a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $keyGuides->id ?>">{{ucfirst($keyGuides->type_name)}}</a>
 										</li>
 									<?php } ?>
 
@@ -90,11 +90,11 @@ $login = Auth::user();
 									<li class="ul-title">Bare Acts</li>
 									<li class="li-border"></li>
 									<?php
-									$getquerysdatas = DB::table('main_legal_query')->where('legal_query_type_id','3')->where('status',1)->where('deleted_at', NULL)->limit(5)->get();
+									$getquerysdatas = DB::table('main_legal_query')->where('legal_query_type_id', '3')->where('status', 1)->where('deleted_at', NULL)->limit(5)->get();
 									foreach ($getquerysdatas as $value) {
-										
+
 									?>
-										<li><a href="<?php echo URL::to('/legalQueryDesc') ?>?id=<?=$value->id ?>">{{ucfirst($value->type_name)}}</a></li>
+										<li><a href="<?php echo URL::to('/legalQueryDesc') ?>?id=<?= $value->id ?>">{{ucfirst($value->type_name)}}</a></li>
 
 									<?php } ?>
 									<!-- <li><a href="<?php echo URL::to('/') ?>/indian-kanoon">Indian Kanoon</a></li>
@@ -106,7 +106,7 @@ $login = Auth::user();
 										<a href="<?php echo URL::to('/'); ?>/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
 									</li>
 								</ul>
-							
+
 								<!-- <ul>
 									<li class="ul-title">Need Instant Advice</li>
 									<li class="li-border"></li>
@@ -128,9 +128,9 @@ $login = Auth::user();
 											<div class="col-md-6">
 												<ul>
 													<!-- <li class="ul-title">Documentation</li> -->
-														<!-- <li class="li-border"></li> -->
+													<!-- <li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->limit(6)->get();
+													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(6)->get();
 
 
 													foreach ($listLegalGuides as $keyGuides) {
@@ -148,73 +148,44 @@ $login = Auth::user();
 													</li>
 
 												</ul>
-												
+
 											</div>
 											<div class="col-md-6">
-												
-											
-											<ul>
-												<!-- <li class="ul-title">Legal Notice</li>
-													<li class="li-border"></li> -->
-												<?php
-												$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '2')->limit(6)->get();
 
 
-												foreach ($listLegalGuides as $keyGuides) {
-													// echo 	$tt = $keyGuides->category_id;	die;
-													$tt = $keyGuides->category_id;
-													// echo $tt; die;
-													$query = DB::table('legal_advice_qa_category')->where('deleted_at', NULL)->where('id', $tt)->get();
-													$cat = @$query[0]->slug;
-												?>
-													<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
-												<?php } ?>
-
-												<li>
-													<a href="<?php echo URL::to('/'); ?>/property-legal-services" class="btn btn-outline-primary min-w120 mt-4">More services</a>
-
-											</ul>
-											</div>
-											<div class="col-md-6">
-												
-											
-											
-
-											<ul>
-												<!-- <li class="ul-title">Legal Notice</li>
-													<li class="li-border"></li> -->
-												<?php
-												$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '3')->limit(6)->get();
-
-
-												foreach ($listLegalGuides as $keyGuides) {
-													// echo 	$tt = $keyGuides->category_id;	die;
-													$tt = $keyGuides->category_id;
-													// echo $tt; die;
-													$query = DB::table('legal_advice_qa_category')->where('deleted_at', NULL)->where('id', $tt)->get();
-													$cat = $query[0]->slug;
-												?>
-													<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
-												<?php } ?>
-
-												<li>
-
-													<a href="<?php echo URL::to('/'); ?>/documentation-legal-services" class="btn btn-outline-primary min-w120 mt-4">More Services</a>
-												</li>
-
-											</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<h6 class="lititle text-center" style="margin-right: 15px">Legal Notice</h6>
-										<div class="row mr-0">
-											<div class="col-md-6">
 												<ul>
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '4')->limit(6)->get();
+													/*	$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '2')->limit(6)->get();
+
+
+													foreach ($listLegalGuides as $keyGuides) {
+														// echo 	$tt = $keyGuides->category_id;	die;
+														$tt = $keyGuides->category_id;
+														// echo $tt; die;
+														$query = DB::table('legal_advice_qa_category')->where('deleted_at', NULL)->where('id', $tt)->get();
+														$cat = @$query[0]->slug;
+													?>
+														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
+													<?php } */ ?>
+
+													<!-- <li>
+														<a href="<?php echo URL::to('/'); ?>/property-legal-services" class="btn btn-outline-primary min-w120 mt-4">More services</a>
+													</li> -->
+
+												</ul>
+											</div>
+											<div class="col-md-6">
+
+
+
+
+												<ul>
+													<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
+													<?php
+													/*	$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '2')->limit(6)->get();
 
 
 													foreach ($listLegalGuides as $keyGuides) {
@@ -225,35 +196,84 @@ $login = Auth::user();
 														$cat = $query[0]->slug;
 													?>
 														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
-													<?php  } ?>
-													<li>
+													<?php } */ ?>
+
+													<!-- <li>
+
+														<a href="<?php echo URL::to('/'); ?>/documentation-legal-services" class="btn btn-outline-primary min-w120 mt-4">More Services</a>
+													</li> -->
+
 												</ul>
-												
 											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<h6 class="lititle text-center" style="margin-right: 15px">Legal AID</h6>
+										<div class="row mr-0">
 											<div class="col-md-6">
 												<ul>
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
-													<li><a href="<?php echo URL::to('/') ?>/labour-service-legal-services">Labour and Service</a></li>
-													<li><a href="<?php echo URL::to('/') ?>/copyright-patent-trademark-legal-services">Trademark & Copyright</a></li>
-													<li><a href="<?php echo URL::to('/') ?>/corporate-legal-services">Corporate</a></li>
-													<!-- <li><a href="<?php echo URL::to('/') ?>/startup-legal-services">Startup</a></li> -->
-													<li><a href="<?php echo URL::to('/') ?>/supreme-court-legal-services">Supreme Court</a></li>
-													<li><a href="<?php echo URL::to('/') ?>/immigration-legal-services">Immigration</a></li>
+													<?php
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->limit(6)->get();
+													foreach ($listLegalGuides as $keyGuides) {
+														// echo $keyGuides->id;
+													?>
+															
+														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}} </a></li>
+													<?php  } ?>
+													<li>
+													<li>
+														<a href="<?php echo URL::to('/'); ?>/all-aids" class="btn btn-outline-primary min-w120 mt-4">More Legal Aid</a>
+													</li>
 												</ul>
-												
+
+
+
 											</div>
+											<div class="col-md-6">
+												<!-- <ul> -->
+												<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
+												<!-- <li><a href="<?php echo URL::to('/') ?>/labour-service-legal-services">Labour and Service</a></li>
+													<li><a href="<?php echo URL::to('/') ?>/copyright-patent-trademark-legal-services">Trademark & Copyright</a></li>
+													<li><a href="<?php echo URL::to('/') ?>/corporate-legal-services">Corporate</a></li> -->
+												<!-- <li><a href="<?php echo URL::to('/') ?>/startup-legal-services">Startup</a></li> -->
+												<!-- <li><a href="<?php echo URL::to('/') ?>/supreme-court-legal-services">Supreme Court</a></li>
+													<li><a href="<?php echo URL::to('/') ?>/immigration-legal-services">Immigration</a></li> -->
+												<!-- </ul> -->
+												<ul>
+													<!-- <li class="ul-title">Legal Notice</li>
+													<li class="li-border"></li> -->
+													<?php
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(10)->get();
+
+													foreach ($listLegalGuides as $keyGuides) {
+
+													?>
+														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
+													<?php  } ?>
+													<li>
+
+												</ul>
+
+
+											</div>
+
+
+
+
 										</div>
 										<div class="willoughby">
-										
-										<img src="<?php echo URL::to('/'); ?>/fronted/images/29225-ai.png">
+
+											<img src="<?php echo URL::to('/'); ?>/fronted/images/29225-ai.png">
 										</div>
 									</div>
 								</div>
-								
-								
 
-							
+
+
+
 
 
 

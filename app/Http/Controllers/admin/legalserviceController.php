@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Helpers\SlugHelper;
 use App\Http\Controllers\Controller;
+use App\Models\admin\adviceCategory;
+use App\Models\admin\legalissue;
 use App\Models\admin\legalservicecategory;
 use App\Models\admin\legalservices;
 use App\Models\admin\sitesetting;
@@ -46,7 +48,8 @@ class legalserviceController extends Controller
             'category_id' => 'required',
             'service_title' => 'required',
             'short_description' => 'required',
-            'description' => 'required',
+            'image' => 'required',
+            // 'description' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -62,7 +65,17 @@ class legalserviceController extends Controller
             $input['rating'] = "1";
             $input['service_title'] = $request->service_title;
             $input['short_discription'] = $request->short_description;
-            $input['discription'] = $request->description;
+            // $input['discription'] = $request->description;
+
+
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $name = $file->getClientOriginalName();
+                $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                $file->move(public_path() . '/fronted/image/', $name);
+                $input['image'] = $name;
+            }
+
             $input['status'] = 1;
             $name = $request->name;
             $input['slug'] = SlugHelper::serviceslug($request->name, 'legal_services', $name);
@@ -74,6 +87,25 @@ class legalserviceController extends Controller
 
 
             $user = legalservices::create($input);
+
+
+            /* issue add description */
+
+            // if ($request->description) {
+            //     $input = $request->all();
+
+            //     $input['category_id'] = $request->name;
+            //     $input['issue_name'] = $request->description;
+
+            //     $input['status'] = '1';
+            //     $input['created_at'] = date('d-m-Y H:i:s');
+            //     $input['created_by'] = $auth->id;
+
+            //     $inser_id = new legalissue($input);
+            //     $inser_id->save();
+            // }
+
+            /* issue add description */
 
             if ($user) {
                 Session::flash('success', 'Legal services added successfully.');
@@ -95,6 +127,7 @@ class legalserviceController extends Controller
     public function edit($id)
     {
         $auth = Auth::user();
+        $this->data['servicename'] = adviceCategory::getAllCategory();
         $this->data['catagory'] = legalservicecategory::getallcategory();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['title'] = "Edit Services";
@@ -124,12 +157,19 @@ class legalserviceController extends Controller
             $input['service_name'] = $request->service_name;
             $input['service_title'] = $request->service_title;
             $input['category_id'] = $request->category;
-            $input['updated_by'] = $auth->id;   
+            $input['updated_by'] = $auth->id;
 
             if ($request->service_name) {
                 $name = $request->service_name;
                 // $input['slug'] = SlugHelper::serviceslug($request->service_name, 'legal_services', $name);
-            }   
+            }
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $name = $file->getClientOriginalName();
+                $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                $file->move(public_path() . '/fronted/image/', $name);
+                $input['image'] = $name;
+            }
 
             $input['updated_at'] = date('Y-m-d H:i:s');
 
@@ -163,11 +203,22 @@ class legalserviceController extends Controller
     }
     public function addService(Request $request)
     {
+        $this->data['servicename'] = adviceCategory::getAllCategory();
         $this->data['catagory'] = legalservicecategory::getallcategory();
         $auth = Auth::user();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         // $this->data['getusers'] = User::getusers();
         $this->data['title'] = "Add Service";
         return view('admin/manage_legalservice/add', $this->data);
+    }
+    public function addDetils($id)
+    {
+        $auth = Auth::user();
+        $this->data['servicename'] = adviceCategory::getAllCategory();
+        $this->data['catagory'] = legalservicecategory::getallcategory();
+        $this->data['userdata'] = User::getrecordbyid($auth->id);
+        $this->data['service_name'] = legalservices::getrecordById($id);
+        $this->data['title'] = "Add Details";
+        return view('admin/manage_legalservice/adddetails', $this->data);
     }
 }

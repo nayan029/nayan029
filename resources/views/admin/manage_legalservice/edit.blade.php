@@ -25,14 +25,20 @@
                 <div class="card-header">
                     <div class="card-body">
                         <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/legal-services/{{$data->id}}" enctype="multipart/form-data">
-                        @method('PUT')    
-                        @csrf
+                            @method('PUT')
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <!-- text input -->
+                                    <!-- text input  -->
                                     <div class="form-group">
                                         <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
-                                        <input type="text"  value="{{$data->service_name}}" maxlength="250" class="form-control" id="name" name="service_name" aria-describedby="nameHelp" placeholder="Enter Name">
+                                        <select class="form-control" name="service_name" id="name">
+                                            <option value="">Select Service Name</option>
+                                            @foreach($servicename as $sname)
+                                            <option @if($data['service_name']==$sname['category_name']) {{"selected"}} @endif value="{{$sname->category_name}}">{{$sname->category_name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <!-- <input type="text" value="" maxlength="250" class="form-control" id="name" name="service_name" aria-describedby="nameHelp" placeholder="Enter Name"> -->
                                         <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
                                     </div>
                                 </div>
@@ -47,7 +53,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
-                                            <input type="text"  value="{{$data->short_description}}" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
+                                            <input type="text" value="{{$data->short_description}}" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
                                             <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
                                         </div>
                                     </div>
@@ -69,6 +75,24 @@
                                         </Select>
                                         <span id="category_error" style="color: red;"></span>
                                     </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail">image</label><span style="color: red;">*</span>
+                                        <input type="file" class="form-control" id="image" name="image" placeholder="Select image">
+                                        <span style="color:red;" id="image_error"></span>
+                                    </div>
+                                    <?php
+                                    if ($data->image) {
+                                    ?>
+                                        <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/fronted/image/{{$data->image}}" class="site-stg-img site-stg-img2 sr-image" id="blah" />
+                                    <?php } else {
+                                    ?>
+                                        <br>
+                                        <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" />
+                                    <?php } ?>
+
+
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -117,6 +141,7 @@
 
         var service_title = $('#service_title').val();
         // var category = $('#category').val();
+        var image = $('#image').val();
 
         var cnt = 0;
         var f = 0;
@@ -124,6 +149,9 @@
         $('#short_description_error').html("");
         $('#description_error').html("");
         $('#title_error').html("");
+
+        $('#image_error').html("");
+
         // $('#category_error').html("");
 
 
@@ -150,9 +178,19 @@
         //         $('#category').focus();
         //     }
         // }
-
+        if (image) {
+            var formData = new FormData();
+            var file = document.getElementById('image').files[0];
+            // var image = $('#image').val();
+            formData.append("Filedata", file);
+            var t = file.type.split('/').pop().toLowerCase();
+            if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+                $('#image_error').html("Only JPG, PNG and JPEG image are allowed");
+                cnt = 1;
+            }
+        }
         if (name.trim() == '') {
-            $('#name_error').html("Please enter Service Name ");
+            $('#name_error').html("Please select service name ");
             cnt = 1;
             f++;
             if (f == 1) {

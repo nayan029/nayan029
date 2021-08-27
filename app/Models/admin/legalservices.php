@@ -21,6 +21,7 @@ class legalservices extends Authenticatable
         'service_title',
         'short_description',
         'description',
+        'image',
         'status',
         'slug',
         'created_at',

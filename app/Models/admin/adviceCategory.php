@@ -53,4 +53,9 @@ class adviceCategory extends Authenticatable
         $query = adviceCategory::where('category_name', $name, 'type', $type)->get();
         return $query;
     }
+    public static function getAllCategory()
+    {
+        $query = adviceCategory::where('status',1)->where('type','question')->get();
+        return $query;
+    }
 }

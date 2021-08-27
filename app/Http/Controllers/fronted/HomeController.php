@@ -13,6 +13,8 @@ use App\Models\admin\guides;
 use App\Models\admin\lawyercourt;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use App\Models\admin\lawyerlanguages;
+use App\Models\admin\legalissue;
+use App\Models\admin\legalservicecategory;
 use App\Models\admin\legalservices;
 use App\Models\admin\location;
 use App\Models\admin\otherResource;
@@ -62,6 +64,7 @@ class HomeController extends Controller
         $this->data['getlegalservices'] = legalservices::getallservices();
         $this->data['advicecategory'] = adviceCategory::getquestioncategorylistlimit();
         // $this->data['getquerysdata'] = otherResource::getAllDataf($name);
+        $this->data['allAids'] = legalservices::getfamilyData();
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
 
@@ -152,6 +155,7 @@ class HomeController extends Controller
         $this->data['search_name'] = $search_name = $request->search_name;
         $this->data['getquerys'] = legalservices::familylist($part1);
         // $this->data['advicecategory'] = adviceCategory::getguidescategorylist();
+       return $this->data['advicecategory'] = legalissue::getDataBySlugName($name);
         return view('fronted.mutualDivorce', $this->data);
     }
 
@@ -223,6 +227,12 @@ class HomeController extends Controller
         $this->data['title'] = "Free Advice";
         $this->data['advicecategory'] = adviceCategory::getquestioncategorylist();
         return view('fronted.freeAdvice', $this->data);
+    }
+    public function allAid(Request $request)
+    {
+        $this->data['title'] = "LEGAL AID";
+        $this->data['advicecategory'] = legalservices::getfamilyData(); 
+        return view('fronted.allAids', $this->data);
     }
     public function freeGuides(Request $requestl)
     {

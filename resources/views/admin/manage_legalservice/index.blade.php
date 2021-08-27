@@ -55,8 +55,8 @@
                                     <?php
                                     $i = ($getservices->currentpage() - 1) * $getservices->perpage() + 1;
                                     foreach ($getservices as $data) {
-
-
+                                        // echo $data->id;
+                                        
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
@@ -64,21 +64,21 @@
                                             <td>{{$data->service_title}}</td>
                                             <td>{{$data->short_description}}</td>
                                             <!-- <td></td> -->
-                                           
+
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                             </td>
                                             <td>
                                                 <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/legal-services/{{$data->id}}/edit"><i class="fas fa-edit mr-2"></i></a>
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{$data->id}}')"></i></a>
-
+                                                <a title="Details" href="{{URL::to('/')}}/admin/addDeatails/{{$data->id}}" class="sa-icons active"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
-                                        <?php
+                                    <?php
                                         $i++;
                                     }
-                                        ?>
-                                        
+                                    ?>
+
                                     <?php if (count($getservices) == 0) {
                                         echo "<tr><td colspan='7'><center>No record available<center><td></tr>";
                                     } ?>
@@ -116,7 +116,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
-                window.location.href = "<?php echo URL::to('/admin/legalServiceDelete'); ?>/"+ id;
+                window.location.href = "<?php echo URL::to('/admin/legalServiceDelete'); ?>/" + id;
             } else {
                 return false;
             }
