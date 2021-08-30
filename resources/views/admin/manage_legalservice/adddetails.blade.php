@@ -21,60 +21,51 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default">
-                <div class="card-header">
                     <div class="card-body">
-                        <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/legal-issue" enctype="multipart/form-data">
+                        <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/insertSubService" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" value="{{ $id }}" name="service_id" >
                             <div class="row">
-                                <!-- <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
-                                        <select class="form-control" id="name" name="service_id">
-                                            <option value="">Select Service Name</option>
-                                            @foreach($servicename as $data)
-                                            <option @if($data->category_name==$service_name->service_name) {{"selected"}} @endif value="{{$data->id}}" data-name="{{$data->category_name}}">{{$data->category_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
-                                    </div>
-                                </div> -->
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputEduction">Description</label><span style="color: red;">*</span>
                                         <input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
-                                        <input type="hidden" class="form-control" id="description" placeholder="Enter Description" name="description">
-                                        <span style="color:red;" id="description_error"><?php echo $errors->customer_error->first('discription'); ?></span>
+                                        <span style="color:red;" id="description_error">{{ $errors->first('discription'); }}</span>
                                     </div>
-                                    <!-- <button type="button" onclick="validate()" class="sa-btn-submit p-2 float-right mr-2">Add</button> -->
                                 </div>
-                                <!-- <div class="container" id="tbl">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <tbody>
-                                            <tr>
-                                                <th>Sr No</th>
-                                                <th>Service Name</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div> -->
+                                 
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <a href="<?php echo URL::to('/') ?>/admin/legal-services"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>
                                         <button type="submit" class="sa-btn-submit p-2 float-right mr-2">Submit</button>
                                     </div>
                                 </div>
-
-
-
-
                             </div>
 
                         </form>
                     </div>
+                </div>
+                        <div class="card card-default">
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col-sm-12" id="tbl">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
+                                            @foreach($sub_service_list as $rows)
+                                            <tr>
+                                                <td>{{ $rows->description }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                        </div> 
+                        </div> 
                 </div>
             </div>
         </div>

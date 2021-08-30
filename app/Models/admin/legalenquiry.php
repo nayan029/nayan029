@@ -26,9 +26,12 @@ class legalenquiry extends Authenticatable
     }
     public static function enquirylist()
     {
-        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name')
+        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
+            })
+            ->leftjoin('service_sub_category', function ($join) {
+                $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
             })
             ->orderBy("legal_enquiry.id", 'desc')
             ->paginate(10);
@@ -36,9 +39,12 @@ class legalenquiry extends Authenticatable
     }
     public static function enquirylistedit($id)
     {
-        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name')
+        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
+            })
+            ->leftjoin('service_sub_category', function ($join) {
+                $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
             })
             ->orderBy("legal_enquiry.id", 'desc')
             ->where('legal_enquiry.id', $id)

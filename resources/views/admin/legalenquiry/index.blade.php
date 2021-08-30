@@ -48,14 +48,13 @@
                                 </thead>
                                 <tbody>
                                     @php
-
                                     $i = ($enquiry_data->currentpage()-1)* $enquiry_data->perpage() + 1;
                                     @endphp
                                     @foreach($enquiry_data as $data)
                                     <tr>
                                         <td>{{$i}}</td>
                                         <!-- <td>{{$data->issue_name}}</td> -->
-                                        <td>{{$data->subissue_id." - ".$data->issue_name}}</td>
+                                        <td>{{$data->subissue_name." - ".$data->issue_name}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
                                         <!-- <td>@if(isset($data->other_info)){{$data->other_info}}@else{{"N/A"}}@endif</td> -->

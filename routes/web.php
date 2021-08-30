@@ -125,6 +125,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/addService', 'App\Http\Controllers\admin\legalserviceController@addService');
     Route::any('/admin/legalServiceDelete/{id}', 'App\Http\Controllers\admin\legalserviceController@destroy');
     Route::get('/admin/addDeatails/{id}','App\Http\Controllers\admin\legalserviceController@addDetils');
+    Route::post('/admin/insertSubService','App\Http\Controllers\admin\legalserviceController@insertSubService');
 
     Route::resource('/admin/guides-articles', 'App\Http\Controllers\admin\guidesarticlesController');
     Route::get('/admin/addGuides', 'App\Http\Controllers\admin\guidesarticlesController@show');
@@ -212,7 +213,7 @@ Route::get('/legal-advice-details/{id}', [FrontedHomeController::class, 'legalAd
 Route::get('/indian-kanoon/legal-guides-details/{id}', [FrontedHomeController::class, 'legalGuidesDetails']);
 Route::get('/divorce-lawyers', [FrontedHomeController::class, 'divorceLawyers']);
 //----------------------------------legal issue----------------------------------------
-Route::get('/legal-enquiry', [FrontedHomeController::class, 'legalEnquiry']);
+Route::get('/legal-enquiry/{id}', [FrontedHomeController::class, 'legalEnquiry']);
 Route::post('/legal-enquiry', [legalenquiryController::class, 'test']);
 Route::post('/insert-quer', [legalenquiryController::class, 'store']);
 Route::post('/get-subissue', 'App\Http\Controllers\admin\AjaxController@getsubissue');

@@ -7,7 +7,7 @@
                     <div class="col-md-12 d-flex">
                         <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input id="imageUpload" type="file" name="sortpic" accept=".png, .jpg, .jpeg"  />
+                                <input id="imageUpload" type="file" name="sortpic" accept=".png, .jpg, .jpeg" />
 
                                 <label for="imageUpload"></label>
                             </div>
@@ -80,6 +80,9 @@
                                     </div>
 
 
+
+
+
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label>
 
@@ -132,6 +135,11 @@
 
                                         </div>
 
+                                    </div>
+                                    <div class="col-md-6 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Price</label>
+                                        <input type="number" name="price" class="form-control sa-form-font half-border-radius" id="price" value='@if(isset($user_login->price)){{$user_login->price}}@else{{"N/A"}}@endif' placeholder="Enter price">
+                                        <span id="price_error" style="color: red;"></span>
                                     </div>
 
                                     <div class="col-md-12 sa-pb">
@@ -255,32 +263,30 @@
 
     </div>
 </div>
-<?php echo $id = Auth::user()->id; ?>
 @include('fronted/include/footer')
 
 <!-- edit profile picture script -->
 <script type="text/javascript">
-
-function readURL() {
-    var file_data = $('#imageUpload').prop('files')[0];   
-    var form_data = new FormData();                  
-    form_data.append('file', file_data);
-    form_data.append('_token','{{ csrf_token() }}');
-    form_data.append('id','<?php echo $id = '1'; ?>');
-    alert(form_data);                             
-    $.ajax({
-        url: '{{URL::to("/")}}/lawyer/edit-profile', // <-- point to server-side PHP script 
-        dataType: 'text',  // <-- what to expect back from the PHP script, if anything
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,                         
-        type: 'post',
-        success: function(php_script_response){
-            alert(php_script_response); // <-- display response from the PHP script, if any
-        }
-     });
-}
+    function readURL() {
+        var file_data = $('#imageUpload').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        form_data.append('_token', '{{ csrf_token() }}');
+        form_data.append('id', '<?php echo $id = '1'; ?>');
+        alert(form_data);
+        $.ajax({
+            url: '{{URL::to("/")}}/lawyer/edit-profile', // <-- point to server-side PHP script 
+            dataType: 'text', // <-- what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function(php_script_response) {
+                alert(php_script_response); // <-- display response from the PHP script, if any
+            }
+        });
+    }
 
     $("#imageUpload").change(function() {
         // console.log(this);
@@ -301,6 +307,7 @@ function readURL() {
         var location = $('#location').val();
         var court = $('#court').val();
         var specialization = $("#specialization").val();
+        var price = $("#price").val();
 
         var degreename = $('#degreename').val();
         var year = $('#year').val();
@@ -320,6 +327,7 @@ function readURL() {
         $('#experience_error').html("");
         $('#about_error').html("");
         $('#specialization_error').html("");
+        $('#price_error').html("");
 
         $('#degree_error').html("");
         $('#year_error').html("");
@@ -376,6 +384,17 @@ function readURL() {
             f++;
             if (f == 1) {
                 $('#about_data').focus();
+            }
+        }
+
+
+
+        if (price.trim() == '') {
+            $('#price_error').html("Please enter price");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#price').focus();
             }
         }
 

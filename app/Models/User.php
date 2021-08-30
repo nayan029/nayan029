@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'username',
         'email',
+        'email_verify',
         'password',
         'mobile',
         'photo',
@@ -116,7 +117,7 @@ class User extends Authenticatable
     }
     public static function getcustdata($name)
     {
-        $query =  User::where('email_verify', 1)->where('user_type', 2)->orderBy('id', 'desc');
+        $query =  User::where('user_type', 2)->orderBy('id', 'desc');
         $temp = "name like '%$name%' ";
         if ($name != "") {
             $query = $query->whereRaw($temp);
@@ -127,7 +128,7 @@ class User extends Authenticatable
     /*lawyer */
     public static function getlawyertdata($name)
     {
-        $query =  User::where('email_verify', 1)->where('user_type', 3)->orderBy('id', 'desc');
+        $query =  User::where('user_type', 3)->orderBy('id', 'desc');
         $temp = "name like '%$name%' ";
         if ($name != "") {
             $query = $query->whereRaw($temp);

@@ -208,6 +208,11 @@
                                         <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="20">
                                         <span id="experience_error" style="color: red;"></span>
                                     </div>
+                                    <div class="col-md-12 col-lg-6 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Price</label><span style="color: red;"> *</span>
+                                        <input type="number" maxlength="11" name="basic_price" class="form-control sa-form-font half-border-radius" id="basic_price" placeholder="Enter price">
+                                        <span id="basic_price_error" style="color: red;"></span>
+                                    </div>
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
 
@@ -614,6 +619,7 @@
         var image = $('#profileimage').val();
         var experience = $('#experience').val();
         // var gender = $('#gender').val();
+        var basic_price = $('#basic_price').val();
 
         var frollno = $('#frollno').val();
         var fyear = $('#fyear').val();
@@ -650,6 +656,8 @@
         $('#dob_error').html("");
         $('#fathername_error').html("");
         $('#experience_error').html("");
+
+        $('#basic_price_error').html("");
         // $('#gender_error').html("");
 
 
@@ -707,6 +715,16 @@
             f++;
             if (f == 1) {
                 $('#ename').focus();
+            }
+        }
+
+
+        if (basic_price.trim() == '') {
+            $('#basic_price_error').html("Please enter price");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#basic_price').focus();
             }
         }
         // if (location.trim() == '') {

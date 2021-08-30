@@ -65,18 +65,27 @@ class legalenquiryController extends Controller
                 ->withInput();
         } else {
 
-            // $input = $request->all();
-            $input['issue_id'] = $request->issue_id;
-            $input['subissue_id'] = $request->subissueid;
-            // $input['location'] = $request->city;
-            $input['name'] = $request->name;
-            $input['mobile'] = $request->phone;
-            $input['email'] = $request->email;
-            $input['other_info'] = $request->otherinfo;
-            $input['created_at'] = date('Y-m-d H:i:s');
+
+            $insert_array = array('issue_id'=>request('service_id'),
+                                  'subissue_id'=>request('sub_service_id'),
+                                  'name'=>request('name'),
+                                  'mobile'=>request('phone'),
+                                  'email'=>request('email'),
+                                  'other_info'=>request('otherinfo'),
+                                  'created_at'=>date('Y-m-d H:i:s'),
+                                );
+            // // $input = $request->all();
+            // $input['issue_id'] = $request->issue_id;
+            // $input['subissue_id'] = $request->subissueid;
+            // // $input['location'] = $request->city;
+            // $input['name'] = $request->name;
+            // $input['mobile'] = $request->phone;
+            // $input['email'] = $request->email;
+            // $input['other_info'] = $request->otherinfo;
+            // $input['created_at'] = date('Y-m-d H:i:s');
 
 
-            $inser_id = new legalenquiry($input);
+            $inser_id = new legalenquiry($insert_array);
             $inser_id->save();
             $inser_id = $inser_id->id;
         }

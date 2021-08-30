@@ -37,15 +37,15 @@
                                 <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="exampleInputContactNo">Subissue Name</label>
-                                            <input type="text" maxlength="250" class="form-control" value="{{$data->subissue_id}}" id="short_description" name="short_description" readonly   >
+                                            <input type="text" maxlength="250" class="form-control" value="{{$data->subissue_name}}" id="short_description" name="short_description" readonly   >
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <!-- <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="exampleInputContactNo">Location</label>
                                             <input type="text" maxlength="250" class="form-control" value="{{$data->location}}" id="short_description" name="short_description"readonly>
                                         </div>
-                                    </div>   
+                                    </div>    -->
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="exampleInputContactNo">Name</label>

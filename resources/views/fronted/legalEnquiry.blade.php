@@ -86,25 +86,28 @@
                 <div class="sa-pb">
                   <label for="inputName" class="form-label sa-color2 sa-label">Name</label><span style="color: red;">*</span>
                   <input type="text" class="form-control sa-form-font half-border-radius" placeholder="Enter your name" id="iname" name="name" maxlength="250">
+                  
                 </div>
-                <span id="name_error" style="color: red;"></span>
+                <span id="iname_error" style="color:red;"></span>
                 <div class="sa-pb">
                   <label for="inputName" class="form-label sa-color2 sa-label">Contact no.</label><span style="color: red;">*</span>
                   <input type="number" class="form-control sa-form-font half-border-radius" placeholder="Enter your Contact No." name="mobile" id="imobile">
+                  
                 </div>
-                <span id="mobile_error" style="color: red;"></span>
+                <span id="imobile_error" style="color:red;"></span>
 
                 <div class="sa-pb mb-4">
-                  <label for="inputName" class="form-label sa-color2 sa-label">Email</label>
-                  <input type="email" class="form-control sa-form-font half-border-radius" placeholder="Enter your Email" id="email" name="email" maxlength="250">
+                  <label for="inputName" class="form-label sa-color2 sa-label">Email</label><span style="color: red;">*</span>
+                  <input type="email" class="form-control sa-form-font half-border-radius" placeholder="Enter your Email" id="iemail" name="email" maxlength="250">
+                  
                 </div>
-                <span id="email_error" style="color: red;"></span>
+                <span id="iemail_error" style="color:red;"></span>
 
                 <div>
                   <label for="inputName" class="form-label sa-color2 sa-label">Other Information</label>
                   <textarea class="form-control" placeholder="Question (Limit 1000 Characters)" rows="3" maxlength="1000" id="otherinfo" name="otherinfo"></textarea>
                 </div>
-                <span id="otherinfo_error" style="color: red;"></span>
+                <span id="otherinfo_error" style="color:red;"></span>
 
               </div>
             </div>
@@ -278,69 +281,52 @@
 </script>
 <script>
   function nextPrevthree(n) {
+    // alert ('te');
     var iname = $('#iname').val();
     var phone = $('#imobile').val();
-    var city = $('#location').val();
-    var email = $('#email').val();
-    // var issueid = $('#issueid').val();
-    var issueid = $('input[name="legal-issue1"]:checked').val();
-
-    var subissueid = $('#subissueid').val();
-    //  alert(issueid);
+    var email = $('#iemail').val();
     var otherinfo = $('#otherinfo').val();
-    // alert(city)
-    if (n == 1) {
-
-      if (city == "") {
-        $("#Section1").hide();
-        $("#Section2").hide();
-        $("#Section3").show();
-        $("#Section4").hide();
-        $("#errorname").html("Please select your city");
-        return false;
-      } else if (iname == "") {
-        $("#Section1").hide();
-        $("#Section2").hide();
-        $("#Section3").show();
-        $("#Section4").hide();
-        $("#errorname").html("Please enter your name");
-        return false;
-      } else if (phone == "") {
-        $("#Section1").hide();
-        $("#Section2").hide();
-        $("#Section3").show();
-        $("#Section4").hide();
-        $("#errorname").html("Please enter contact number");
-        return false;
-      } else if (isNaN(phone) || phone.length != 10) {
-        $("#Section1").hide();
-        $("#Section2").hide();
-        $("#Section3").show();
-        $("#Section4").hide();
-        $('#errorname').html('Please enter valid contact number');
-        return false;
-      } else {
-        console.log(issueid);
+    var i = 0;
+    $('#iname_error').html("");
+    $('#imobile_error').html("");
+    $('#iemail_error').html("");
+    if(iname == ""){
+      $('#iname_error').html("Name is Required");
+      i++;
+    }
+    if(phone == ""){
+      $('#imobile_error').html("Mobile is Required");
+      i++;
+    }
+    if(email == ""){
+      $('#iemail_error').html("Email is Required");
+      i++;
+    }
+    
+    var service_id = {{ $sub_category->service_id }};
+    // console.log(service_id);
+    var sub_service_id = {{ $sub_category->id }};
+    // console.log(sub_service_id);
+    
+    if (i == 0) {
         $.ajax({
           url: '{{ URL::to("/")}}/insert-quer',
           type: 'POST',
           data: {
             name: iname,
             phone: phone,
-            // city: city,
             email: email,
-            issue_id: issueid,
-            subissueid: subissueid,
             otherinfo: otherinfo,
+            service_id: service_id,
+            sub_service_id: sub_service_id,
             _token: '{{ csrf_token() }}'
           },
           success: function(data) {
             // console.log(data);
-            window.location.href = " thank-you";
+            window.location.href = '{{ URL::to("thank-you")}}';
 
           }
         });
-      }
     }
   }
 </script>

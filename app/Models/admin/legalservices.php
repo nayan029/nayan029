@@ -120,4 +120,10 @@ class legalservices extends Authenticatable
         $query = legalservices::where('slug', $name)->orderBy('id', 'desc')->first();   
         return $query;
     }
+    public static function getDataBySlugName($name)
+    {
+         return $getData = legalservices::where('slug', $name)
+             ->where('status', 1)
+             ->first();
+    }
 }

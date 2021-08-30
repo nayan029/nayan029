@@ -51,7 +51,7 @@ class lawyermanagmentController extends Controller
                 $statusname = "Inactivated";
                 $status = 0;
             }
-            $delete = User::where('id', $id)->update(['status' => $status]);
+            $delete = User::where('id', $id)->update(['status' => $status,'email_verify'=>$status]);
         }
         if ($delete) {
             if ($request->type == "delete") {
@@ -67,9 +67,9 @@ class lawyermanagmentController extends Controller
     public function lawyerProfile(Request $request, $id)
     {
         $auth = Auth::user();
-      $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id); 
+        $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
 
-    //   return  $this->data['userdata'] = User::getrecordbyid($id);  die;
+        //   return  $this->data['userdata'] = User::getrecordbyid($id);  die;
         $this->data['userdata'] = User::getrecordbyid($id);
         $this->data['title'] = "Lawyera Profile";
         return view('admin/lawyer_managment/lawyerProfile', $this->data);

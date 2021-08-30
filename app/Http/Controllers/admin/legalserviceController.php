@@ -13,6 +13,7 @@ use App\Models\admin\webinar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\admin\ServiceSubCategory;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -218,7 +219,29 @@ class legalserviceController extends Controller
         $this->data['catagory'] = legalservicecategory::getallcategory();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['service_name'] = legalservices::getrecordById($id);
+        $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($id);
         $this->data['title'] = "Add Details";
+        $this->data['id'] = $id;
         return view('admin/manage_legalservice/adddetails', $this->data);
     }
+
+    public function insertSubService(Request $request){
+        $this->validate($request, [
+            'description' => 'required',
+        ]);
+
+        $insert_array = array('service_id'=>request('service_id'),
+                                'description'=>request('description'));
+
+        $insert = ServiceSubCategory::insert($insert_array);
+        if ($insert) {
+            Session::flash('success', 'Legal services category insert successfully.');
+        } else {
+            Session::flash('error', 'Sorry, something went wrong. Please try again');
+        }
+
+        return redirect()->back();
+    }
+
+
 }

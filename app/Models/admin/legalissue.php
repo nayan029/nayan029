@@ -30,18 +30,6 @@ class legalissue extends Authenticatable
         return $query;
     }
 
-    public static function getDataBySlugName($name)
-    {
-        // return $name;
-        // $listLegalGuidesfirst = legalissue::select('legal_services.*', 'legal_services.slug as service_name')
-        //     ->leftjoin('legal_advice_qa_category', function ($join) {
-        //         $join->on('legal_services.service_name', '=', 'legal_advice_qa_category.category_name');
-        //     })
-        //     ->where('category_id', '1')
-        //     ->orderBy("legal_issue.id", 'desc')
-        //     ->get();
-        
-            
-    }
+    
    
 }

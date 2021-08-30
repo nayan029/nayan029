@@ -23,6 +23,7 @@ use App\Models\admin\setting;
 use App\Models\admin\sitesetting;
 use App\Models\admin\trends;
 use App\Models\admin\webinar;
+use App\Models\admin\ServiceSubCategory;
 use App\Models\User;
 use App\Models\admin\MainLegalQuery;
 use Illuminate\Http\Request;
@@ -155,7 +156,9 @@ class HomeController extends Controller
         $this->data['search_name'] = $search_name = $request->search_name;
         $this->data['getquerys'] = legalservices::familylist($part1);
         // $this->data['advicecategory'] = adviceCategory::getguidescategorylist();
-       return $this->data['advicecategory'] = legalissue::getDataBySlugName($name);
+        $this->data['advicecategory'] = $serviceData = legalservices::getDataBySlugName($name);
+        $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($serviceData->id);
+
         return view('fronted.mutualDivorce', $this->data);
     }
 
@@ -210,11 +213,16 @@ class HomeController extends Controller
         $this->data['title'] = "Divorce Lawyers";
         return view('fronted.divorceLawyers', $this->data);
     }
-    public function legalEnquiry(Request $request)
+    public function legalEnquiry(Request $request, $id)
     {
+        $auth = auth()->user();
+        if (!$auth) {
+            return redirect('lawyer/login');
+        }
         $this->data['title'] = "Legal Enquiry";
         $this->data['category'] = adviceCategory::getquestioncategorylist();
         $this->data['location'] = location::getAllRecord();
+        $this->data['sub_category'] = ServiceSubCategory::getById($id);
         return view('fronted.legalEnquiry', $this->data);
     }
     public function thankYou(Request $request)
@@ -231,7 +239,7 @@ class HomeController extends Controller
     public function allAid(Request $request)
     {
         $this->data['title'] = "LEGAL AID";
-        $this->data['advicecategory'] = legalservices::getfamilyData(); 
+        $this->data['advicecategory'] = legalservices::getfamilyData();
         return view('fronted.allAids', $this->data);
     }
     public function freeGuides(Request $requestl)

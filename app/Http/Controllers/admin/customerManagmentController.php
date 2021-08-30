@@ -50,7 +50,7 @@ class customerManagmentController extends Controller
                 $statusname = "Inactivated";
                 $status = 0;
             }
-            $delete = User::where('id', $id)->update(['status' => $status]);
+            $delete = User::where('id', $id)->update(['status' => $status,'email_verify'=>$status]);
         }
         if ($delete) {
             if ($request->type == "delete") {

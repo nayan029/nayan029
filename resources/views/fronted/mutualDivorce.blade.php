@@ -47,13 +47,14 @@
         <div class="row sr-border2 sr-res-card">
           <div class="col-md-12 mt-1">
             <div class="">
-              <p class="ls-1"><?php echo $getquerys->description; ?></p>
+              <p class="ls-1"></p>
 
             </div>
 
-            {{"nyana"}}
 
-
+            @foreach($sub_service_list as $subService)
+            <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}">{{ $subService->description }}</a> <br />
+            @endforeach
 
             <div class="mb-4 sr-l-space">
               <div class="row">
@@ -204,9 +205,9 @@
               <h6 class="sr-sub-t">HIRE A LAWYER</h6>
               <p>Contact and get legal assistance from our lawyer</p>
               <p> network for your specific matter</p>
-              <a href="#">
+              <!-- <a href="#">
                 <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Find a Lawyer</a>
-              </a>
+              </a> -->
 
 
             </div>
