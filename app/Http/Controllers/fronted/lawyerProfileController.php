@@ -140,25 +140,36 @@ class lawyerProfileController extends Controller
     public function updateImage(Request $request)
     {
 
-        //return $request->all();
+        $id = $request->id;
         //$file = $request->image;
         // $file = $request->file('file');
         // print_r($file->getClientOriginalName());        die();
         // return "trur";
         if ($request->hasfile('file')) {
-            return "true";
+            // return $id;
             $file = $request->file('file');
+
             $name = $file->getClientOriginalName();
             $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
             $file->move(public_path() . '/uploads/lawyerprofile/', $name);
 
-            $input['file'] = $name;
+            $input['profileimage'] = $name;
+            // return $id;
+            $inputusersignature = User::find($id);
+            
+            // return $inputusersignature;
 
-            $inputusersignature = User::find($request->id);
             $inputusersignature->update($input);
         }
 
+        if ($inputusersignature) {
+            Session::flash('success', 'Profile updated successfully.');
+            return redirect('/lawyer/edit-profile');
+        } else {
 
+            Session::flash('error', 'Sorry, something went wrong. Please try again');
+            return redirect()->back();
+        }
         // return response()->json(['error' => 'Image Update']);
 
 

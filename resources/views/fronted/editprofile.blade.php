@@ -264,7 +264,7 @@
     </div>
 </div>
 @include('fronted/include/footer')
-
+@php $auth = Auth::user(); @endphp
 <!-- edit profile picture script -->
 <script type="text/javascript">
     function readURL() {
@@ -272,8 +272,9 @@
         var form_data = new FormData();
         form_data.append('file', file_data);
         form_data.append('_token', '{{ csrf_token() }}');
-        form_data.append('id', '<?php echo $id = '1'; ?>');
-        alert(form_data);
+        form_data.append('id', '<?php echo $id = $auth['id'] ?>');
+        // alert(form_data);
+        // console.log(form_data)
         $.ajax({
             url: '{{URL::to("/")}}/lawyer/edit-profile', // <-- point to server-side PHP script 
             dataType: 'text', // <-- what to expect back from the PHP script, if anything
@@ -283,7 +284,8 @@
             data: form_data,
             type: 'post',
             success: function(php_script_response) {
-                alert(php_script_response); // <-- display response from the PHP script, if any
+                // alert(php_script_response); // <-- display response from the PHP script, if any
+                return window.location.href = '';
             }
         });
     }

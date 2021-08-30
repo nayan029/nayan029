@@ -246,7 +246,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(10)->get();
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(6)->get();
 
 													foreach ($listLegalGuides as $keyGuides) {
 
