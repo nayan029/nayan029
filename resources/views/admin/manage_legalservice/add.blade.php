@@ -28,19 +28,36 @@
               @csrf
               <div class="row">
                 <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
+                    <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
+                      <!-- <option  value="">Select Category</option> -->
+                      <option value="1">Legal Aid</option>
+                      <option value="2">Documentation</option>
+                      <!-- <?php foreach ($catagory as $data) {
+                            ?>
+                        <option value="{{$data->id}}">{{$data->category_name}}</option>
+                      <?php
+                            } ?> -->
+                    </Select>
+                    <span id="category_error" style="color: red;"></span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
                   <!-- text input -->
                   <div class="form-group">
                     <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
                     <select class="form-control" name="name" id="name">
                       <option value="">Select Service Name</option>
-                      @foreach($servicename as $data)
-                      <option value="{{$data->category_name}}">{{$data->category_name}}</option>
-                      @endforeach
+
                     </select>
-                    <!-- <input type="text" maxlength="250" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter Name"> -->
                     <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
                   </div>
                 </div>
+              </div>
+                
+              <div class="row">
+                
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
@@ -48,8 +65,6 @@
                     <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
@@ -57,22 +72,11 @@
                     <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
                   </div>
                 </div>
-
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
-                    <Select class="form-control" id="category" name="category_id">
-                      <!-- <option  value="">Select Category</option> -->
-                      <?php foreach ($catagory as $data) {
-                      ?><?php ?>
-                      <option value="{{$data->id}}">{{$data->category_name}}</option>
-                    <?php
-                      } ?>
-                    </Select>
-                    <span id="category_error" style="color: red;"></span>
-                  </div>
-                </div>
               </div>
+
+
+
+                
               <div class="row">
                 <div class="col-sm-4">
                   <label for="exampleInputContactNo">Image </label><span style="color: red;">*</span>
@@ -107,6 +111,21 @@
 @include('admin/include/footer')
 <script>
   $('#legal_service').addClass('active mm-active');
+
+  function getsubcategory(type) {
+    $.ajax({
+      url: "<?php echo URL::to('/'); ?>/admin/getcategory",
+      type: "POST",
+      data: {
+        type: type,
+        _token: "<?php echo csrf_token(); ?>"
+      },
+      success: function(response) {
+        $('#name').html(response);
+        // $('#stateindex').html(response);
+      }
+    });
+  }
 </script>
 
 <script>
@@ -201,6 +220,26 @@
     //     $('#description').focus();
     //   }
     // }
+    $.ajax({
+      url: "<?php echo URL::to('/'); ?>/admin/getexitservicename",
+      type: "POST",
+      data: {
+        name: name,
+        _token: "<?php echo csrf_token(); ?>"
+      },
+      success: function(response) {
+        if (response) {
+          if (response == 1) {
+            $('#name_error').html("This Category is Already Exit");
+            cnt = 1;
+          }
+        }
+
+
+      }
+    });
+
+
     if (cnt == 1) {
       return false;
     } else {
@@ -208,5 +247,7 @@
     }
 
   })
+
+
   CKEDITOR.replace('description');
 </script>

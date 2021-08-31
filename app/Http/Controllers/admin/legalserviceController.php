@@ -145,7 +145,7 @@ class legalserviceController extends Controller
             'service_title' => 'required',
             'short_description' => 'required',
             'category' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
         ]);
         if ($validator->fails()) {
             return redirect("/admin/legal-services")
@@ -225,13 +225,16 @@ class legalserviceController extends Controller
         return view('admin/manage_legalservice/adddetails', $this->data);
     }
 
-    public function insertSubService(Request $request){
+    public function insertSubService(Request $request)
+    {
         $this->validate($request, [
             'description' => 'required',
         ]);
 
-        $insert_array = array('service_id'=>request('service_id'),
-                                'description'=>request('description'));
+        $insert_array = array(
+            'service_id' => request('service_id'),
+            'description' => request('description')
+        );
 
         $insert = ServiceSubCategory::insert($insert_array);
         if ($insert) {
@@ -242,6 +245,4 @@ class legalserviceController extends Controller
 
         return redirect()->back();
     }
-
-
 }

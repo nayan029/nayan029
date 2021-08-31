@@ -130,14 +130,11 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Documentation</li> -->
 													<!-- <li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(6)->get();
+													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(7)->get();
 
 
 													foreach ($listLegalGuides as $keyGuides) {
-														// echo 	$tt = $keyGuides->category_id;	die;
-														$tt = $keyGuides->category_id;
-														$query = DB::table('legal_advice_qa_category')->where('id', $tt)->get();
-														$cat = $query[0]->slug;
+
 													?>
 														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
 													<?php } ?>
@@ -219,7 +216,7 @@ $login = Auth::user();
 													foreach ($listLegalGuides as $keyGuides) {
 														// echo $keyGuides->id;
 													?>
-															
+
 														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}} </a></li>
 													<?php  } ?>
 													<li>

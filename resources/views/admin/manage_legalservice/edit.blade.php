@@ -95,7 +95,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-sm-12">
+                            <!-- <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEduction">Description</label><span style="color: red;">*</span>
                                     <textarea class="form-control" id="description" name="description" aria-describedby="nameHelp" placeholder="User Description">
@@ -103,7 +103,7 @@
                                     </textarea>
                                     <span style="color:red;" id="description_error"><?php echo $errors->customer_error->first('discription'); ?></span>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
                     </div>
                     <div class="row">
@@ -137,7 +137,7 @@
         var name = $('#name').val();
         var short_description = $('#short_description').val();
         // var description = $('#description').val();
-        var description = CKEDITOR.instances.description.getData();
+        // var description = CKEDITOR.instances.description.getData();
 
         var service_title = $('#service_title').val();
         // var category = $('#category').val();
@@ -206,14 +206,14 @@
             }
         }
 
-        if (description.trim() == '') {
-            $('#description_error').html("Please enter description");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#description').focus();
-            }
-        }
+        // if (description.trim() == '') {
+        //     $('#description_error').html("Please enter description");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#description').focus();
+        //     }
+        // }
         if (cnt == 1) {
             return false;
         } else {

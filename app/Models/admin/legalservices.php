@@ -40,6 +40,7 @@ class legalservices extends Authenticatable
     public static function getservices($title)
     {
         $query =  legalservices::where('status', 1)->orderBy('id', 'desc');
+        
         $temp = "service_title like '%$title%' ";
         if ($title != "") {
             $query = $query->whereRaw($temp);

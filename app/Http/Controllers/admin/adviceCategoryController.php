@@ -34,7 +34,7 @@ class adviceCategoryController extends Controller
     {
         // return $request->all(); die;
         $validator = Validator::make($request->all(), [
-            // 'type' => 'required',
+            'type' => 'required',
             'name' => 'required',
             'discription' => 'required',
         ]);
@@ -48,7 +48,7 @@ class adviceCategoryController extends Controller
             $auth = Auth::user();
             $input = $request->all();
 
-            $input['type'] = "question";
+            $input['type'] = $request->type;
             $input['category_name'] = $request->name;
             $input['description'] = $request->discription;
             $input['status'] = '1';
@@ -82,7 +82,7 @@ class adviceCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            // 'type'=>'required',
+            'type' => 'required',
             'name' => 'required',
             'discription' => 'required',
         ]);
@@ -95,7 +95,7 @@ class adviceCategoryController extends Controller
         } else {
             $auth = Auth::user();
             $input = $request->all();
-            // $input['type'] = $request->type;
+            $input['type'] = $request->type;
             $input['category_name'] = $request->name;
             $input['description'] = $request->discription;
             $input['updated_at'] = date('Y-m-d H:i:s');

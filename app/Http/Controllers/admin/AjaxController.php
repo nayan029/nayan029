@@ -7,6 +7,7 @@ use App\Models\admin\adviceCategory;
 use App\Models\admin\Category;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use App\Models\admin\legalissue;
+use App\Models\admin\legalservices;
 use App\Models\admin\location;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -53,7 +54,7 @@ class AjaxController extends Controller
 	{
 		/*Record insert*/
 		$auth = Auth::user();
-		$data = adviceCategory::where('category_name', $request->name)->first();
+		$data = adviceCategory::where('category_name', $request->name)->where('type', $request->type)->first();
 
 		if ($data) {
 			echo 1;
@@ -67,7 +68,7 @@ class AjaxController extends Controller
 		$auth = Auth::user();
 		//	echo $request->id;
 		//die();
-		$data = adviceCategory::where('id', '!=', $request->id)->where('category_name', '=', $request->name)->first();
+		$data = adviceCategory::where('id', '!=', $request->id)->where('category_name', '=', $request->name)->where('type', $request->type)->first();
 		if ($data) {
 			echo 1;
 		} else {
@@ -159,7 +160,36 @@ class AjaxController extends Controller
 			->where('lawyer_enrollment_category.userid', $id)
 			->orderBy("lawyer_enrollment_category.id", 'desc')
 			->get();
-	
-		echo $query[0]->category_name;	
+
+		echo $query[0]->category_name;
+	}
+
+	public function getexitservicename(Request $request)
+	{
+		/*Record insert*/
+		$auth = Auth::user();
+		$data = legalservices::where('service_name', $request->name)->first();
+
+		if ($data) {
+			echo 1;
+		} else {
+			echo 0;
+		}
+	}
+
+	public function getServiceNameByType(Request $request)
+	{
+		$subcategory = adviceCategory::getDataByType($request->type);
+		$cat_array = '<option value="">Select Service Name</option>';
+		foreach ($subcategory as $val) {
+			$selected = "";
+			if ($request->state != "") {
+				if ($request->state == $val->id) {
+					$selected = "selected";
+				}
+			}
+			$cat_array .= '<option value="' . $val->category_name . '" ' . $selected . '>' . $val->category_name . '</option>';
+		}
+		echo $cat_array;
 	}
 }

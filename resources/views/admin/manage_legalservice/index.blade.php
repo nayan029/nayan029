@@ -55,7 +55,7 @@
                                     <?php
                                     $i = ($getservices->currentpage() - 1) * $getservices->perpage() + 1;
                                     foreach ($getservices as $data) {
-                                        // echo $data->id;
+                                        // echo $data;
                                         
                                     ?>
                                         <tr>

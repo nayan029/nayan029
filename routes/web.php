@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/admin/manageCategory', 'App\Http\Controllers\admin\manageCategoryController');
     Route::post('admin/getexitcategory', 'App\Http\Controllers\admin\AjaxController@getexitcategory');
+    Route::post('admin/getexitservicename', 'App\Http\Controllers\admin\AjaxController@getexitservicename');
     Route::post('admin/getexitcategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitcategoryedit');
 
     Route::resource('admin/trends', 'App\Http\Controllers\admin\trendsController');
@@ -111,6 +112,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/admin/adviceCategory', 'App\Http\Controllers\admin\adviceCategoryController');
     Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');
     Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
+    Route::post('/admin/getcategory','App\Http\Controllers\admin\AjaxController@getServiceNameByType');
 
     Route::resource('/admin/adviceQuerys', 'App\Http\Controllers\admin\adviceQuerysController');
     Route::get('/admin/addQuerys', 'App\Http\Controllers\admin\adviceQuerysController@addQuerys');

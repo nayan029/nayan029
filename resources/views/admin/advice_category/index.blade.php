@@ -42,17 +42,17 @@
                                         <div class="container">
                                             <form id="main_id" method="POST" action="<?php echo URL::to('/') ?>/admin/adviceCategory">
                                                 @csrf
-                                                <!-- <div class="form-group">
+                                                <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <label for="exampleInputEmail1">Type</label><span style="color: red;">*</span>
                                                         <select name="type" id="type" class="form-control">
-                                                            <option value="">Select Type</option>
-                                                            <option value="question">Question & Answers</option>
-                                                            <option value="guides">Guides</option>
+                                                            <!-- <option value="">Select Type</option> -->
+                                                            <option value="1">Legal Service</option>
+                                                            <option value="2">Documentation</option>
                                                         </select>   
                                                         <span style="color:red;" id="type_error"></span>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <label for="exampleInputEmail1">Category</label><span style="color: red;">*</span>
@@ -210,12 +210,12 @@ $('#advice_cat').addClass('active mm-active');
     /*Validation*/
     function checkvalidation() {
         var name = $('#name').val();
-        // var type = $('#type').val();
+        var type = $('#type').val();
         $.ajax({
             url: "<?php echo URL::to('/'); ?>/admin/getexitadvicecategory",
             type: "POST",
             data: {
-                // type:type,
+                type:type,
                 name: name,
                 _token: "<?php echo csrf_token(); ?>"
             },
