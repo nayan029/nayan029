@@ -17,9 +17,9 @@
         }
         ?>
         <h2 class="sa-color1 d-flex justify-content-between">{{$getquerys->service_title}}
-          <div>
+          <!-- <div>
             <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-primary sa-color3 poppins-light ml-4">Find A Lawyer</a>
-          </div>
+          </div> -->
         </h2>
 
         <!-- <div class="col-md-12 pl-0 pt-3 pb-3">
@@ -53,7 +53,7 @@
 
 
             @foreach($sub_service_list as $subService)
-            <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}">{{ $subService->description }}</a> <br />
+            <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}"><i class="fa fa-arrow-right"></i> {{ $subService->description }}</a> <br />
             @endforeach
 
             <div class="mb-4 sr-l-space">
