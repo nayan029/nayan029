@@ -61,8 +61,8 @@ class legalserviceController extends Controller
 
             $auth = Auth::user();
             $input = $request->all();
-            $input['service_name'] = $request->name;
             $input['category_id'] = $request->category_id;
+            $input['service_name'] = $request->name;
             $input['rating'] = "1";
             $input['service_title'] = $request->service_title;
             $input['short_discription'] = $request->short_description;
@@ -144,7 +144,7 @@ class legalserviceController extends Controller
             'service_name' => 'required',
             'service_title' => 'required',
             'short_description' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             // 'description' => 'required',
         ]);
         if ($validator->fails()) {

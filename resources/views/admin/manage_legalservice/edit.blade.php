@@ -28,54 +28,44 @@
                             @method('PUT')
                             @csrf
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <!-- text input  -->
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
-                                        <select class="form-control" name="service_name" id="name">
-                                            <option value="">Select Service Name</option>
-                                            @foreach($servicename as $sname)
-                                            <option @if($data['service_name']==$sname['category_name']) {{"selected"}} @endif value="{{$sname->category_name}}">{{$sname->category_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <!-- <input type="text" value="" maxlength="250" class="form-control" id="name" name="service_name" aria-describedby="nameHelp" placeholder="Enter Name"> -->
-                                        <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
-                                            <input type="text" value="{{$data->service_title}}" class="form-control" id="service_title" name="service_title" aria-describedby="emailHelp" placeholder="Enter Title">
-                                            <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
-                                            <input type="text" value="{{$data->short_description}}" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
-                                            <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputContactNo">Category </label><span style="color: red;">*</span>
-                                        <Select class="form-control" id="category" name="category">
-                                            <!-- <option value="">Select Category</option> -->
-
-                                            <?php foreach ($catagory as $d) { ?>
-                                                <option <?php if ($data->category_id == $d->id) {
-                                                            echo "selected";
-                                                        } ?> value="{{$d->id}}">{{$d->category_name}}</option>
-                                            <?php } ?>
-
-
+                                        <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
+                                        <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
+                                            <option value="1">Legal Aid</option>
+                                            <option value="2">Documentation</option>
 
                                         </Select>
                                         <span id="category_error" style="color: red;"></span>
                                     </div>
                                 </div>
+
+                                <div class="col-sm-6">
+                                    <!-- text input  -->
+                                    <div class="form-group">
+                                        <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
+                                        <select class="form-control" name="service_name" id="name">
+                                            <option value="">Select Service Name</option>
+                                            
+                                        </select>
+                                        <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
+                                        <input type="text" value="{{$data->service_title}}" class="form-control" id="service_title" name="service_title" aria-describedby="emailHelp" placeholder="Enter Title">
+                                        <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
+                                        <input type="text" value="{{$data->short_description}}" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
+                                        <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail">image</label><span style="color: red;">*</span>
@@ -123,6 +113,21 @@
 @include('admin/include/footer')
 <script>
     $('#legal_service').addClass('active mm-active');
+
+    function getsubcategory(type) {
+        $.ajax({
+            url: "<?php echo URL::to('/'); ?>/admin/getcategory",
+            type: "POST",
+            data: {
+                type: type,
+                _token: "<?php echo csrf_token(); ?>"
+            },
+            success: function(response) {
+                $('#name').html(response);
+                // $('#stateindex').html(response);
+            }
+        });
+    }
 </script>
 
 <script>

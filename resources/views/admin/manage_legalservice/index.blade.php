@@ -45,7 +45,7 @@
                                         <th>Sr No</th>
                                         <th>Service Name</th>
                                         <th>ServiceTitle</th>
-                                        <th>Short Description</th>
+                                        <!-- <th>Short Description</th> -->
                                         <!-- <th>Descriptions</th> -->
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -62,7 +62,7 @@
                                             <td>{{$i}}</td>
                                             <td>{{$data->service_name}}</td>
                                             <td>{{$data->service_title}}</td>
-                                            <td>{{$data->short_description}}</td>
+                                            <!-- <td>{{$data->short_description}}</td> -->
                                             <!-- <td></td> -->
 
                                             <td data-order="<?= strtotime($data->created_at); ?>">

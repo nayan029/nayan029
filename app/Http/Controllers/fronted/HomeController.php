@@ -215,10 +215,10 @@ class HomeController extends Controller
     }
     public function legalEnquiry(Request $request, $id)
     {
-        $auth = auth()->user();
+        /* $auth = auth()->user();
         if (!$auth) {
             return redirect('lawyer/login');
-        }
+        } */
         $this->data['title'] = "Legal Enquiry";
         $this->data['category'] = adviceCategory::getquestioncategorylist();
         $this->data['location'] = location::getAllRecord();
