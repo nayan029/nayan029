@@ -52,7 +52,7 @@
                                 <tbody>
                                     <?php
                                     // $i = 1;
-                                    $i = ($getlawyer->currentpage()-1)* $getlawyer->perpage() + 1;
+                                    $i = ($getlawyer->currentpage() - 1) * $getlawyer->perpage() + 1;
 
                                     foreach ($getlawyer as $data) {
                                         if ($data->status == 1) {
@@ -81,24 +81,24 @@
                                             <td> <?php
                                                     if (isset($data->profileimage)) {
                                                     ?>
-                                                    <img class="profile-user-img "  width="58px" src="<?php echo URL::to('/'); ?>/uploads/lawyerprofile/{{$data->profileimage}}" alt="User profile picture" style="height: 80px;">
+                                                    <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/uploads/lawyerprofile/{{$data->profileimage}}" alt="User profile picture" style="height: 80px;">
                                                 <?php } else {
                                                 ?>
                                                     <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" alt="image">
-                                                    <?php
+                                                <?php
                                                     } ?>
-                                                    </td>
+                                            </td>
                                             <td>{{$data->name}}</td>
                                             <td>{{$data->username}}</td>
                                             <td>{{$data->email}}</td>
-                                            
+
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                             </td>
                                             <td>{{$status}}</td>
                                             <td>
                                                 <a title="view" href="<?php echo URL::to('/'); ?>/admin/lawyerProfile/{{$data->id}}" class="sa-icons1 active"><i class="fas fa-eye mr-2"></i></a>
-                                                <!-- <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/adminEdit/{{$data->id}}"><i class="fas fa-edit mr-2"></i></a> -->
+                                                <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/manage-lawyer/{{$data->id}}/edit"><i class="fas fa-edit mr-2"></i></a>
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="functiondelete('{{ $data->id }}','delete','')"></i></a>
                                                 <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
                                                     <i class="far fa-thumbs-{{$thumbs}}"></i>
@@ -134,16 +134,14 @@
 </div>
 @include('admin/include/footer')
 <script>
-    $(document).ready(function () {
-        
+    $(document).ready(function() {
+
         $('#lawyer_menu').addClass('nav-item active');
         $('#manage_lawyer').addClass('active mm-active');
-        
+
     });
 </script>
 <script>
-    
-
     function functiondelete(id, type, th) {
 
         if (type == 'delete') {

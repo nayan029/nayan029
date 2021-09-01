@@ -85,7 +85,7 @@
                                     <tr>
                                         <th>Sr No</th>
                                         <th>Category Name</th>
-                                        <!-- <th>Type</th> -->
+                                        <th>Type</th>
                                         <th>Create Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -101,7 +101,7 @@
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td> <?php echo ucfirst($data->category_name);?> </td>
-                                            <!-- <td> <?php echo ucfirst($data->type);?>  </td> -->
+                                            <td> @if($data->type==1){{"Legal Service"}}@elseif($data->type==2){{"Documentation"}}@endif  </td>
                                             
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>

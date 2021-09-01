@@ -50,6 +50,7 @@ class User extends Authenticatable
         'experience',
         'gender',
         'court',
+        'price',
         'created_at',
         'created_by',
         'updated_at',

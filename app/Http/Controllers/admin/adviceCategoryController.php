@@ -23,7 +23,7 @@ class adviceCategoryController extends Controller
     }
     public function index()
     {
-        $this->data['title'] = "advice Category";
+        $this->data['title'] = "Lawyer Category";
         $auth = Auth::user();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
@@ -63,7 +63,7 @@ class adviceCategoryController extends Controller
 
 
             if ($inser_id) {
-                Session::flash('success', 'Advice category added successfully.');
+                Session::flash('success', 'Lawyer category added successfully');
                 return redirect('admin/adviceCategory');
             } else {
                 Session::flash('error', 'Sorry, something went wrong. Please try again');
@@ -106,7 +106,7 @@ class adviceCategoryController extends Controller
 
 
             if ($category) {
-                Session::flash('success', 'Advice category updated successfully.');
+                Session::flash('success', 'Lawyer category updated successfully.');
                 return redirect('admin/adviceCategory');
             } else {
 
@@ -121,7 +121,7 @@ class adviceCategoryController extends Controller
         $auth = Auth::user();
         $delete = adviceCategory::where('id', $id)->update(['status' => '0', 'deleted_by' => $auth->id, 'deleted_at' => date('Y-m-d H:i:s')]);
         if ($delete) {
-            Session::flash('success', 'Advice category deleted successfully.');
+            Session::flash('success', 'Lawyer category deleted successfully.');
         } else {
             Session::flash('error', 'Sorry, something went wrong. Please try again');
         }

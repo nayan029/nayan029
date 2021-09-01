@@ -242,6 +242,13 @@ class HomeController extends Controller
         $this->data['advicecategory'] = legalservices::getfamilyData();
         return view('fronted.allAids', $this->data);
     }
+    public function allDocs(Request $request)
+    {
+        $this->data['title'] = "LEGAL Documents";
+        $this->data['advicecategory'] = legalservices::getpropertyData();
+        return view('fronted.allAids', $this->data);
+    }
+
     public function freeGuides(Request $requestl)
     {
         // return "true"; die;

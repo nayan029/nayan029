@@ -30,8 +30,8 @@
             <div class="col-md-6">
               <ul class="footer-ul">
 
-				<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
-                
+                <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
+
               </ul>
             </div>
           <?php } ?>

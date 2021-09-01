@@ -29,6 +29,14 @@ class lawyermanagmentController extends Controller
         $this->data['title'] = "Lawyer Mangment";
         return view('admin/lawyer_managment/index', $this->data);
     }
+    public function edit()
+    {
+        // return "true";
+        $auth = Auth::user();
+        $this->data['userdata'] = User::getrecordbyid($auth->id);
+        $this->data['title'] = "Edit Lawyer";
+        return view('admin/lawyer_managment/edit', $this->data);
+    }
     public function show(Request $request)
     {
         $auth = Auth::user();

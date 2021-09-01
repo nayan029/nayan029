@@ -125,12 +125,12 @@ $login = Auth::user();
 									<div class="col-md-6 b-right">
 										<h6 class="lititle text-center mr-0">Documentation</h6>
 										<div class="row">
-											<div class="col-md-6">
-												<ul>
+											<div class="col-md-12">
+												<ul class="w-100">
 													<!-- <li class="ul-title">Documentation</li> -->
 													<!-- <li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(7)->get();
+													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(10)->get();
 
 
 													foreach ($listLegalGuides as $keyGuides) {
@@ -140,7 +140,8 @@ $login = Auth::user();
 													<?php } ?>
 
 													<li>
-														<a href="<?php echo URL::to('/'); ?>/divorce-legal-services" class="btn btn-outline-primary min-w120 mt-4">More services</a>
+														<!-- <a href="<?php echo URL::to('/'); ?>/divorce-legal-services" class="btn btn-outline-primary min-w120 mt-4">More services</a> -->
+														<a href="<?php echo URL::to('/'); ?>/all-docs" class="btn btn-outline-primary min-w120 mt-4">More services</a>
 
 													</li>
 
@@ -151,6 +152,7 @@ $login = Auth::user();
 
 
 												<ul>
+													
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
