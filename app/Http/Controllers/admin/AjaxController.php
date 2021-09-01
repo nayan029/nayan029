@@ -183,8 +183,8 @@ class AjaxController extends Controller
 		$cat_array = '<option value="">Select Service Name</option>';
 		foreach ($subcategory as $val) {
 			$selected = "";
-			if ($request->state != "") {
-				if ($request->state == $val->id) {
+			if ($request->service_name != "") {
+				if ($request->service_name == $val->category_name) {
 					$selected = "selected";
 				}
 			}

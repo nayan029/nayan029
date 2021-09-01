@@ -32,8 +32,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
                                         <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
-                                            <option value="1">Legal Aid</option>
-                                            <option value="2">Documentation</option>
+                                            <option @if($data->category_id=="1"){{"selected"}}@endif value="1">Legal Aid</option>
+                                            <option @if($data->category_id=="2"){{"selected"}}@endif value="2">Documentation</option>
 
                                         </Select>
                                         <span id="category_error" style="color: red;"></span>
@@ -46,7 +46,7 @@
                                         <label for="exampleInputFirstName">Service Name</label><span style="color: red;">*</span>
                                         <select class="form-control" name="service_name" id="name">
                                             <option value="">Select Service Name</option>
-                                            
+
                                         </select>
                                         <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
                                     </div>
@@ -101,6 +101,7 @@
                             <a href="<?php echo URL::to('/') ?>/admin/legal-services"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>
                             <button type="submit" class="sa-btn-submit p-2 float-right mr-2">Submit</button>
                         </div>
+
                     </div>
                     </form>
                 </div>
@@ -114,17 +115,20 @@
 <script>
     $('#legal_service').addClass('active mm-active');
 
+    getsubcategory('{{$data->category_id}}');
+
     function getsubcategory(type) {
+        var name = '{{ $data->service_name}}';
         $.ajax({
             url: "<?php echo URL::to('/'); ?>/admin/getcategory",
             type: "POST",
             data: {
+                service_name: name,
                 type: type,
                 _token: "<?php echo csrf_token(); ?>"
             },
             success: function(response) {
                 $('#name').html(response);
-                // $('#stateindex').html(response);
             }
         });
     }
