@@ -219,6 +219,7 @@ class HomeController extends Controller
         if (!$auth) {
             return redirect('lawyer/login');
         } */
+        $this->data['id'] = $id;
         $this->data['title'] = "Legal Enquiry";
         $this->data['category'] = adviceCategory::getquestioncategorylist();
         $this->data['location'] = location::getAllRecord();

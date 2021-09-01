@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small>Add Details</small></h1>
+                    <h1 class="m-0 text-dark"><small>Legal Services</small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/legal-services">Manage Service</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/legal-services">Legal Services</a></li>
                         <li class="breadcrumb-item">Add Details</li>
                     </ol>
                 </div><!-- /.col -->
@@ -22,9 +22,12 @@
         <div class="container-fluid">
             <div class="card card-default">
                     <div class="card-body">
+                        <h3><b>{{@$service_name->service_name}} service</b></h3>
+                        <br>
                         <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/insertSubService" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $id }}" name="service_id" >
+                            <input type="hidden" id="subcatId" name="subcatId" >
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -60,7 +63,14 @@
                                             @foreach($sub_service_list as $rows)
                                             <tr>
                                                 <td>{{ $rows->description }}</td>
+                                                <td>
+                                               
+                                                    <a title="Edit" href="javascript:void(0)" onclick="editLegalSubcat('{{ $rows->id }}','{{ $rows->description }}')"><i class="fas fa-edit mr-2"></i></a>
+                                                    <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{ $rows->id }}')"></i></a>
+                                                    
+                                                </td>
                                             </tr>
+                                            
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -199,4 +209,33 @@
     // function remove(ser_id) {
     //     $('#child_' + ser_id).remove();
     // }
+</script>
+
+<script>
+    function openPopup(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be delete record?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "<?php echo URL::to('/admin/deleteSubService'); ?>/" + id;
+            } else {
+                return false;
+            }
+        })
+    }
+</script>
+
+<script>
+    function editLegalSubcat(id,desc) 
+    {
+        
+        $('#subcatId').val(id);
+        $('#description').val(desc);
+        
+    }
 </script>

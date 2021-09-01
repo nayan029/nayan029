@@ -231,18 +231,46 @@ class legalserviceController extends Controller
             'description' => 'required',
         ]);
 
+        $id = $request->subcatId;
+
         $insert_array = array(
             'service_id' => request('service_id'),
             'description' => request('description')
         );
 
-        $insert = ServiceSubCategory::insert($insert_array);
-        if ($insert) {
-            Session::flash('success', 'Legal services category insert successfully.');
+        if(!empty($id))
+        {
+            $update = ServiceSubCategory::where('id',$id)->update($insert_array);
+            if ($update) {
+                Session::flash('success', 'Legal services description updated successfully.');
+            } else {
+                Session::flash('error', 'Sorry, something went wrong. Please try again');
+            }
+            return redirect()->back();
+        }
+        else
+        {
+            $insert = ServiceSubCategory::insert($insert_array);
+            if ($insert) {
+                Session::flash('success', 'Legal services description insert successfully.');
+            } else {
+                Session::flash('error', 'Sorry, something went wrong. Please try again');
+            }
+            return redirect()->back();
+        }
+
+        
+    }
+    public function deleteSubService(Request $request, $id)
+    {
+        $id  = $request->id;
+        $auth = Auth::user();
+        $delete = ServiceSubCategory::where('id', $id)->update(['deleted_by' => $auth->id, 'deleted_flag' => 'Y', 'deleted_at' => date('Y-m-d H:i:s')]);
+        if ($delete) {
+            Session::flash('success', 'Legal services category deleted successfully.');
         } else {
             Session::flash('error', 'Sorry, something went wrong. Please try again');
         }
-
         return redirect()->back();
     }
 }

@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/admin/adviceCategory', 'App\Http\Controllers\admin\adviceCategoryController');
     Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');
     Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
-    Route::post('/admin/getcategory', 'App\Http\Controllers\admin\AjaxController@getServiceNameByType');
+    Route::post('/admin/getcategory','App\Http\Controllers\admin\AjaxController@getServiceNameByType');
 
     Route::resource('/admin/adviceQuerys', 'App\Http\Controllers\admin\adviceQuerysController');
     Route::get('/admin/addQuerys', 'App\Http\Controllers\admin\adviceQuerysController@addQuerys');
@@ -126,8 +126,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/legal-services', 'App\Http\Controllers\admin\legalserviceController');
     Route::get('admin/addService', 'App\Http\Controllers\admin\legalserviceController@addService');
     Route::any('/admin/legalServiceDelete/{id}', 'App\Http\Controllers\admin\legalserviceController@destroy');
-    Route::get('/admin/addDeatails/{id}', 'App\Http\Controllers\admin\legalserviceController@addDetils');
-    Route::post('/admin/insertSubService', 'App\Http\Controllers\admin\legalserviceController@insertSubService');
+    Route::get('/admin/addDeatails/{id}','App\Http\Controllers\admin\legalserviceController@addDetils');
+    Route::post('/admin/insertSubService','App\Http\Controllers\admin\legalserviceController@insertSubService');
+
+    Route::any('/admin/deleteSubService/{id}', 'App\Http\Controllers\admin\legalserviceController@deleteSubService');
 
     Route::resource('/admin/guides-articles', 'App\Http\Controllers\admin\guidesarticlesController');
     Route::get('/admin/addGuides', 'App\Http\Controllers\admin\guidesarticlesController@show');
@@ -228,6 +230,7 @@ Route::get('/free-legal-guides', [FrontedHomeController::class, 'freeGuides']);
 
 Route::get('/all-aids', [FrontedHomeController::class, 'allAid']);
 Route::get('/all-docs', [FrontedHomeController::class, 'allDocs']);
+
 
 //-----------------------------------------ask free questions-----------------------------------------
 // Route::get('/ask-a-free-question', [FrontedHomeController::class, 'askFreeQuestion']);

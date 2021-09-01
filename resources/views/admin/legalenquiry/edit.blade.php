@@ -24,10 +24,39 @@
             <div class="card card-default">
                 <div class="card-header">
                     <div class="card-body">
+                        <h4>Legal Enquiry Detail</h4>
+                        <table id="example2" class="table table-bordered table-hover">
+                              
+                            <tr>
+                                <th>Issue Name</th>
+                                <td>{{$data->issue_name ? $data->issue_name : '-'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Subissue Name</th>
+                                <td>{{$data->subissue_name ? $data->subissue_name : '-'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{$data->name ? $data->name : '-'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{$data->email ? $data->email : '-'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Mobile</th>
+                                <td>{{$data->mobile ? $data->mobile : '-'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{$data->short_description ? $data->short_description : '-'}}</td>
+                            </tr>
+                                
+                        </table>
                         
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-sm-4">
-                                    <!-- text input -->
+                                    
                                     <div class="form-group">
                                         <label for="exampleInputFirstName">Issue Name</label>
                                         <input type="text" maxlength="30" class="form-control" value="{{$data->issue_name}}" id="title" name="title" aria-describedby="nameHelp" readonly>
@@ -40,12 +69,7 @@
                                             <input type="text" maxlength="250" class="form-control" value="{{$data->subissue_name}}" id="short_description" name="short_description" readonly   >
                                         </div>
                                     </div>
-                                    <!-- <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputContactNo">Location</label>
-                                            <input type="text" maxlength="250" class="form-control" value="{{$data->location}}" id="short_description" name="short_description"readonly>
-                                        </div>
-                                    </div>    -->
+                                    
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="exampleInputContactNo">Name</label>
@@ -72,8 +96,7 @@
                                     </textarea>
                                     </div>
                                 </div>
-                                <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <a href="<?php echo URL::to('/') ?>/admin/legal-enquiry"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>

@@ -1,6 +1,7 @@
 @include('fronted/include/header')
 <div class="sa-enroll-details">
   <div class="container">
+
     <!-- content 1 -->
     <!-- <div id="Section1" style="display:block;">
       <form action=" " method="POST">
@@ -64,7 +65,7 @@
       <form method="POST">
         @csrf
         <div class="sa-application d-flex justify-content-center">
-          <h5 class="sa-color2 mb-2">Get lawyer details by SMS and Email.</h5>
+          <h5 class="sa-color2 mb-2">{{@$sub_category->description}}</h5>
         </div>
 
         <div id="errorname" style="color:red" class="text-center"></div>
@@ -96,16 +97,16 @@
                 </div>
                 <span id="imobile_error" style="color:red;"></span>
 
-                <div class="sa-pb mb-4">
+                <!-- <div class="sa-pb mb-4">
                   <label for="inputName" class="form-label sa-color2 sa-label">Email</label><span style="color: red;">*</span>
                   <input type="email" class="form-control sa-form-font half-border-radius" placeholder="Enter your Email" id="iemail" name="email" maxlength="250">
                   
                 </div>
-                <span id="iemail_error" style="color:red;"></span>
+                <span id="iemail_error" style="color:red;"></span> -->
 
                 <div>
                   <label for="inputName" class="form-label sa-color2 sa-label">Other Information</label>
-                  <textarea class="form-control" placeholder="Question (Limit 1000 Characters)" rows="3" maxlength="1000" id="otherinfo" name="otherinfo"></textarea>
+                  <textarea class="form-control" placeholder="Your question" rows="3" maxlength="1000" id="otherinfo" name="otherinfo"></textarea>
                 </div>
                 <span id="otherinfo_error" style="color:red;"></span>
 

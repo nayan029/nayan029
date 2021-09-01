@@ -210,7 +210,7 @@
         <div>
           <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
         </div>
-        <div class="row mt-5 sr-c ">
+        <!-- <div class="row mt-5 sr-c ">
           <div class="col-md-4 text-center">
             <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
 
@@ -235,7 +235,7 @@
             <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4">Find a Lawyer</a>
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

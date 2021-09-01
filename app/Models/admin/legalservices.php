@@ -56,6 +56,7 @@ class legalservices extends Authenticatable
     }
     public static function getfamilyData()
     {
+        // return "true";
         $query = legalservices::where('category_id', 1)->orderBy('id', 'desc')->get();
         return $query;
     }

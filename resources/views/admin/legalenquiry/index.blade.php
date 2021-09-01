@@ -40,7 +40,8 @@
                                         <!-- <th>Issue Name</th> -->
                                         <th>SubIssue Name</th>
                                         <th>Name</th>
-                                        <th>Email Id</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
                                         <!-- <th>Message</th> -->
                                         <th>Create Date</th>
                                         <th>Action</th>
@@ -57,6 +58,7 @@
                                         <td>{{$data->subissue_name." - ".$data->issue_name}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
+                                        <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>
                                         <!-- <td>@if(isset($data->other_info)){{$data->other_info}}@else{{"N/A"}}@endif</td> -->
                                         <td>{{ date("d-M-Y h:i A", strtotime($data->created_at))}}</td>
                                         <td>
