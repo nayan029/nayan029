@@ -206,9 +206,8 @@
 
 
     <div class="row mb-5">
-      <div class="col-md-12">
+      <!-- <div class="col-md-12">
         <div>
-          <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
         </div>
         <div class="row mt-5 sr-c ">
           <div class="col-md-4 text-center">
@@ -236,7 +235,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

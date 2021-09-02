@@ -1,5 +1,6 @@
 <?php
 $login = Auth::user();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +44,9 @@ $login = Auth::user();
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>
 						</li>
 						@endif
+
+
+						@if(@$login->user_type != '3')
 						<li class="nav-item" id="advice">
 							<a class="nav-link" href="#">Legal Query</a>
 							<div class="inner-menu">
@@ -269,18 +273,10 @@ $login = Auth::user();
 										</div>
 									</div>
 								</div>
-
-
-
-
-
-
-
-
-
-
 							</div>
 						</li>
+						@endif
+
 						<li class="nav-item" id="about">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/about-us">About</a>
 						</li>
@@ -462,7 +458,7 @@ $login = Auth::user();
 								?>
 									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/lawyer/register"><i class="icon fa fa-user"></i>Lawyer Signup</a>
 									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/register"><i class="icon fa fa-user"></i>User Signup</a>
-									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/lawyer/login"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon">SignIn</a>
+									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/new/login"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon">SignIn</a>
 								<?php } ?>
 
 							</div>

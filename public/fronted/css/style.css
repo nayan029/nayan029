@@ -2078,7 +2078,7 @@ footer {
 
     object-fit: cover;
 
-    filter: blur(6px);
+    filter: blur(3px);
 
     transform: scale(1.1);
 
@@ -6034,4 +6034,23 @@ button.owl-prev {}
         max-height: 300px;
     width: 100%;
     object-fit: contain;
+}
+.themis-figurine-stands2 {
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    overflow: hidden;
+}
+
+.themis-figurine-stands2 .themis-figurine {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    filter: blur(6px);
+    transform: scale(1.1);
+}
+.themis-figurine-stands .themis-figurine, .themis-figurine-stands2 .themis-figurine {
+    opacity: 0.6;
 }

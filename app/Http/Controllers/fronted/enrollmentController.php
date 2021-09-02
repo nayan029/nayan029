@@ -72,6 +72,9 @@ class enrollmentController extends Controller
             $about = $request->about;
             $input['step'] = '2';
 
+            $input['basic_fees'] = $request->basic_fees;
+            $input['fees'] = $request->fees;
+            $input['full_legal_fees'] = $request->full_legal;
             $inputuser = User::find($auth->id);
             $inputuser->update($input);
         }

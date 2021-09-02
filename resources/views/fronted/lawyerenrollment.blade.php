@@ -272,6 +272,24 @@
                             <span id="about_error" style="color:red"></span>
                         </div>
 
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
+                            <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)">
+                            <span id="basicFees_error" style="color:red"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per fees)</label><span style="color: red;"> *</span>
+                            <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
+                            <span id="fees_error" style="color:red"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Full Legal Representation</label><span style="color: red;"> *</span>
+                            <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)">
+                            <span id="fullLegal_error" style="color:red"></span>
+                        </div>
+
 
                         <div class="sa-application">
                             <p class="sa-color2">Specialization <span style="color: red;"> *</span></p>
@@ -957,6 +975,16 @@
     })
 </script>
 <script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>
+<script>
     function validation() {
         if (!this.form.checkbox.checked) {
             alert('Please check any one checkbox');
@@ -973,6 +1001,9 @@
         // var category = $("#catcheck input[type=checkbox]:checked").length;
         var specialization = $("#specialization").val();
 
+        var basic_fees = $('#basic_fees').val();
+        var fees = $('#fees').val();
+        var full_legal = $('#full_legal').val();
 
         var cnt = 0;
         var f = 0;
@@ -980,6 +1011,9 @@
         $('#about_error').html("");
         $('#court_error').html("");
         $('#category_error').html("");
+        $('#basicFees_error').html("");
+        $('#fees_error').html("");
+        $('#fullLegal_error').html("");
 
         if (about.trim() == '') {
             $('#about_error').html("Please enter about");
@@ -1004,6 +1038,25 @@
             $("#category_error").html("Please select specialization");
         } else {
             $("#category_error").html("");
+        }
+
+        if(basic_fees.trim() == '') 
+        {
+            $("#basicFees_error").html("Please enter basic fees.");
+        } else {
+            $("#basicFees_error").html("");
+        }
+        if(fees.trim() == '') 
+        {
+            $("#fees_error").html("Please enter fees.");
+        } else {
+            $("#fees_error").html("");
+        }
+        if(full_legal.trim() == '') 
+        {
+            $("#fullLegal_error").html("Please enter full legal representation fees.");
+        } else {
+            $("#fullLegal_error").html("");
         }
 
         if (cnt == 1) {

@@ -216,16 +216,30 @@ class HomeController extends Controller
     public function legalEnquiry(Request $request, $id)
     {
         $auth = auth()->user();
-        print_r($auth);exit;
+        if($auth) 
+        {
+            if($auth->user_type == '2')
+            {
+                $this->data['id'] = $id;
+                $this->data['title'] = "Legal Enquiry";
+                $this->data['category'] = adviceCategory::getquestioncategorylist();
+                $this->data['location'] = location::getAllRecord();
+                $this->data['sub_category'] = ServiceSubCategory::getById($id);
+                return view('fronted.legalEnquiry', $this->data);
+            }
+            else
+            {
+                return redirect('lawyer/login');
+            }
+        }
+        else
+        {
+            return redirect('lawyer/login');
+        }
         // if (!$auth) {
         //     return redirect('lawyer/login');
         // } 
-        $this->data['id'] = $id;
-        $this->data['title'] = "Legal Enquiry";
-        $this->data['category'] = adviceCategory::getquestioncategorylist();
-        $this->data['location'] = location::getAllRecord();
-        $this->data['sub_category'] = ServiceSubCategory::getById($id);
-        return view('fronted.legalEnquiry', $this->data);
+        
     }
     public function thankYou(Request $request)
     {
@@ -463,5 +477,11 @@ class HomeController extends Controller
         $id = $request->id;
         $this->data['dataLegalQuery'] = MainLegalQuery::where('id', $id)->where('status', '1')->first();
         return view('fronted.legalQuery', $this->data);
+    }
+     public function loginNew()
+    {
+        $this->data['title'] = "Login";
+        
+        return view('fronted.login_new', $this->data);
     }
 }

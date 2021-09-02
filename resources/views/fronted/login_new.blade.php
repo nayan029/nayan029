@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Legal Bench | Lawyer Login</title>
+    <title>Legal Bench |Login</title>
     <meta charset="utf-8">
     <link rel="icon" href="<?php echo URL::to('/'); ?>/fronted/images/favicon.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="{{asset('fronted/css/bootstrap.min.css')}}">
@@ -14,69 +14,84 @@
     <link rel="stylesheet" href="{{asset('fronted/css/toastr.min.css')}}" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style type="text/css">
+    .signin-section .col1 .mid{
+        height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 30px;
+    width: 450px;
+    text-align: center;
+    margin: auto;
+    }
+    .signin-section .col1 .mid .btn-gradient{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sa-small-logocenter .sa-small-logo {
+    height: 60px;
+    object-fit: contain;
+}
 
+.sa-small-logocenter a {
+    display: block;
+}
+.sa-small-logocenter {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    z-index: 9;
+}
+.iconn {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: linear-gradient(
+90deg
+, #caa973 0%, rgba(249, 181, 61, 0.29) 99.99%, rgba(250, 179, 52, 0) 100%, #FAB334 100%);
+}
+</style>
 <body>
     <section class="signin-section">
         <div class="themis-figurine-stands">
             <img src="{{asset('fronted/images/themis-figurine-stands-white-wooden-table-stack-old-books-scales-law-lawyer-business-concept-image 1.png')}}" class="themis-figurine">
         </div>
+        <div class="themis-figurine-stands2">
+            <img src="{{asset('fronted/images/corporate-businessmen.jpg')}}" class="themis-figurine">
+        </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col1">
-                    <!-- <a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo"></a> -->
-                    <div class="mid">
-                        <div class="sa-small-logocenter">
+                <div class="sa-small-logocenter">
                             <a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo sa-small-logo"></a>
+                        </div>
+                <div class="col-md-6 col1">
+                    <div class="mid">
+                        <div class="iconn">
+                            <img src="{{asset('fronted/images/law.png')}}">
                         </div>
                         <h3>Get your justice </h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <a href="{{URL::to('/')}}/lawyer/login" class="btn btn-gradient mt-2" style="max-width: 230px;">Sign In As Lawyer</a>
                     </div>
-                    <div class="bottom">
-                        <ul class="social">
-                            <li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
-                            <li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
-                            <li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
-                        </ul>
-
-                    </div>
+                   
                 </div>
-                <div class="col-md-6 col2">
-                    <div class="top">
-                        <div class="inner">
-                            <a href="<?php echo URL::to('/'); ?>/">
-                                <img src="{{asset('fronted/images/logo.png')}}" alt="big-logo" class="big-logo"></a>
-                            <!-- <ul class="social-icon">
-								<li><a href="#" target="_blank"><img src="{{asset('fronted/images/icon/entypo-social_facebook.png')}}"></a></li>
-								<li><a href="#" target="_blank"><img src="{{asset('fronted/images/icon/icomoon-free_google-plus2.png')}}"></a></li>
-								<li><a href="#" target="_blank"><img src="{{asset('fronted/images/icon/Group.png')}}"></a></li>
-							</ul>
-							<p>or use your email account</p> -->
-                            <div class="form">
-                                <form method="POST" action="<?php echo URL::to('/'); ?>/lawyer/login" id="main_id">
-                                    @csrf
-                                    <div class="form-group mb-3">
-                                        <input type="email" class="form-control without-border border-radius-5px" id="email" name="email" aria-describedby="emailHelp" placeholder="Email" autocomplete="off">
-                                        <span id="email_error" style="color: red;"><?php echo $errors->email_error->first('email'); ?></span>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <input type="password" id="password" name="password" class="form-control without-border border-radius-5px" placeholder="Password">
-                                        <span id="password_error" style="color: red;"></span>
-
-                                    </div>
-                                    <div class="form-group mb-3 text-right">
-                                        <a href="<?php echo URL::to('/') ?>/lawyer/forgot-password" class="forgot-password">Forgot password?</a>
-                                    </div>
-                                    <div class="text-center pt-3">
-                                        <!-- <button type="button" class="btn btn-gradient">Sign In</button> -->
-                                        <button type="submit" class="btn btn-gradient">Sign In</button>
-                                    </div>
-                                </form>
-                            </div>
+                <div class="col-md-6 col1">
+                    <div class="mid">
+                        <div class="iconn">
+                            <img src="{{asset('fronted/images/user-icon.png')}}">
                         </div>
+                        <h3>Get your justice </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <a href="{{URL::to('/')}}/login" class="btn btn-gradient mt-2" style="max-width: 230px;">Sign In As User</a>
                     </div>
-                    <div class="bottom">
-                        <a href="<?php echo URL::to('/') ?>/lawyer/register">I Need to Signup</a>
-                    </div>
+                  
                 </div>
             </div>
         </div>

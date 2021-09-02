@@ -57,6 +57,7 @@
             @endforeach
            @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
 
+
             <div class="mb-4 sr-l-space">
               <div class="row">
                 <div class="col-md-6 mb-3">
@@ -176,8 +177,7 @@
 
       </div>
     </div> -->
-      </div>
-    
+
       <div class="row mb-5">
         <div class="col-md-12">
           <div>

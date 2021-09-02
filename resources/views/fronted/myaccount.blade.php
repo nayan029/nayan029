@@ -5,11 +5,11 @@
 
 
     <div class="row">
-      <div class="col-md-7 ">
+      <div class="col-md-12 ">
         <div class="row mt-2 ">
-          <div class="col-md-12 ">
+          <div class="col-md-12">
             <div class="sa-application">
-              <a href="#">
+              <a href="javascript:void(0)">
                 <h5 class="sa-color2 mb-3">My Bookings (0) </h5>
               </a>
             </div>
@@ -22,7 +22,7 @@
                   </a>
                 </div>
                 <div class="col-md-8 mt-3 pl-0">
-                  <a href="#">
+                  <a href="javascript:void(0)">
                     <p class="fs-20">View your bookings</p>
                   </a>
                 </div>
@@ -32,7 +32,7 @@
             <div class="sa-application">
               <a href="{{URL::to('/')}}/account/all-questions">
                 <!-- {{count($my_questions)}} -->
-                <h5 class="sa-color2 mb-3">My Questions ({{count($my_questions)}})</h5>
+                <h5 class="sa-color2 mb-3">My Enquiry ({{count($my_questions)}})</h5>
               </a>
             </div>
 
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-8 mt-3 pl-0">
                   <a href="{{URL::to('/')}}/account/all-questions">
-                    <p class="fs-20">View your questions/answers</p>
+                    <p class="fs-20">View your enquiry</p>
                   </a>
                 </div>
               </div>
@@ -54,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div class=" col-md-5 pl-4">
+      <!-- <div class=" col-md-5 pl-4">
         <div class="mitem text-center">
           <div class="sr-card ">
             <img src="{{asset('fronted/images/user.png')}}">
@@ -69,16 +69,16 @@
         </div>
 
 
-      </div>
+      </div> -->
     </div>
 
 
 
 
-    <div class="row mb-5">
+    <!-- <div class="row mb-5">
       <div class="col-md-12">
         <div>
-          <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
+          
         </div>
         <div class="row mt-5 sr-c ">
           <div class="col-md-4 text-center">
@@ -108,7 +108,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

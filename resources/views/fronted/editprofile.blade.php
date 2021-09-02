@@ -105,6 +105,11 @@
                                         <span id="language_error" style="color: red;"></span>
 
                                     </div>
+                                    <div class="col-md-6 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Price</label>
+                                        <input type="number" name="price" class="form-control sa-form-font half-border-radius" id="price" value='@if(isset($user_login->price)){{$user_login->price}}@else{{"N/A"}}@endif' placeholder="Enter price">
+                                        <span id="price_error" style="color: red;"></span>
+                                    </div>
                                     <div class="col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Practice areas</label>
                                         <textarea name="about" class="form-control sa-form-font half-border-radius" id="about_data" placeholder="Practice areas">{{$user_login->about}}</textarea>
@@ -136,11 +141,26 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Price</label>
-                                        <input type="number" name="price" class="form-control sa-form-font half-border-radius" id="price" value='@if(isset($user_login->price)){{$user_login->price}}@else{{"N/A"}}@endif' placeholder="Enter price">
-                                        <span id="price_error" style="color: red;"></span>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
+                                        <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->basic_fees)){{$user_login->basic_fees}}@else{{"N/A"}}@endif'>
+                                        <span id="basicFees_error" style="color:red"></span>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per fees)</label><span style="color: red;"> *</span>
+                                        <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->fees)){{$user_login->fees}}@else{{"N/A"}}@endif'>
+                                        <span id="fees_error" style="color:red"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1" class="sa-color2">Full Legal Representation</label><span style="color: red;"> *</span>
+                                        <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->full_legal_fees)){{$user_login->full_legal_fees}}@else{{"N/A"}}@endif'>
+                                        <span id="fullLegal_error" style="color:red"></span>
+                                    </div>
+
+                                    
 
                                     <div class="col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Courts</label>
@@ -309,6 +329,11 @@
         var location = $('#location').val();
         var court = $('#court').val();
         var specialization = $("#specialization").val();
+
+        var basic_fees = $('#basic_fees').val();
+        var fees = $('#fees').val();
+        var full_legal = $('#full_legal').val();
+
         var price = $("#price").val();
 
         var degreename = $('#degreename').val();
@@ -329,6 +354,11 @@
         $('#experience_error').html("");
         $('#about_error').html("");
         $('#specialization_error').html("");
+
+        $('#basicFees_error').html("");
+        $('#fees_error').html("");
+        $('#fullLegal_error').html("");
+        
         $('#price_error').html("");
 
         $('#degree_error').html("");
@@ -389,7 +419,24 @@
             }
         }
 
-
+        if(basic_fees.trim() == '') 
+        {
+            $("#basicFees_error").html("Please enter basic fees.");
+        } else {
+            $("#basicFees_error").html("");
+        }
+        if(fees.trim() == '') 
+        {
+            $("#fees_error").html("Please enter fees.");
+        } else {
+            $("#fees_error").html("");
+        }
+        if(full_legal.trim() == '') 
+        {
+            $("#fullLegal_error").html("Please enter full legal representation fees.");
+        } else {
+            $("#fullLegal_error").html("");
+        }
 
         if (price.trim() == '') {
             $('#price_error').html("Please enter price");

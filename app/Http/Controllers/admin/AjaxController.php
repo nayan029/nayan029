@@ -167,9 +167,9 @@ class AjaxController extends Controller
 	public function getexitservicename(Request $request)
 	{
 		/*Record insert*/
-		// $auth = Auth::user();	
+		$auth = Auth::user();
 		$data = legalservices::where('service_name', $request->name)->first();
-		// return $data;
+
 		if ($data) {
 			echo 1;
 		} else {

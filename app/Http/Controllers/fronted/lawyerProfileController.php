@@ -61,6 +61,11 @@ class lawyerProfileController extends Controller
             $auth = Auth::user();
             $input = $request->all();
             $input['experience'] = $request->experience;
+
+            $input['basic_fees'] = $request->basic_fees;
+            $input['fees'] = $request->fees;
+            $input['full_legal_fees'] = $request->full_legal;
+            
             $input['price'] = $request->price;
 
             $input['frollno'] = $request->degreename;

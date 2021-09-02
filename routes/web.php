@@ -206,6 +206,7 @@ Route::post('/customerreset_password/{id}', [ForgotPasswordController::class, 'c
 
 Route::get('/', [FrontedHomeController::class, 'index'])->middleware('checkEnrollmentType');
 Route::get('/about-us', [FrontedHomeController::class, 'about_us']);
+Route::get('/new/login', [FrontedHomeController::class, 'loginNew']);
 Route::get('/contact-us', [FrontedHomeController::class, 'contact_us']);
 Route::post('/contact-us/store', [FrontedContactEnquiryController::class, 'store']);
 Route::get('/free-legal-advice/answers', [FrontedHomeController::class, 'free_legalAdvice']);
