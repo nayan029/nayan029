@@ -40,7 +40,8 @@ class legalenquiryController extends Controller
     public function show($id)
     {
         // return "true";
-        $this->data['data'] = legalenquiry::enquirylistedit($id); 
+        $this->data['data'] = legalenquiry::enquirylistedit($id);
+        $this->data['getActivelawyer'] = User::getActivelawyertdata(); 
         return view('admin.legalenquiry.edit', $this->data);
 
     }

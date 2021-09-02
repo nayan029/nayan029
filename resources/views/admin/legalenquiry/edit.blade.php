@@ -53,55 +53,95 @@
                             </tr>
                                 
                         </table>
-                        
-                            <!-- <div class="row">
-                                <div class="col-sm-4">
-                                    
-                                    <div class="form-group">
-                                        <label for="exampleInputFirstName">Issue Name</label>
-                                        <input type="text" maxlength="30" class="form-control" value="{{$data->issue_name}}" id="title" name="title" aria-describedby="nameHelp" readonly>
-                                    </div>
-                                </div>
-                               
-                                <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputContactNo">Subissue Name</label>
-                                            <input type="text" maxlength="250" class="form-control" value="{{$data->subissue_name}}" id="short_description" name="short_description" readonly   >
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputContactNo">Name</label>
-                                            <input type="text" maxlength="250" class="form-control" value="{{$data->name}}" readonly>
-                                        </div>
-                                    </div>  
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputContactNo">Email</label>
-                                            <input type="text" maxlength="250" class="form-control" value="{{$data->email}}" id="short_description" readonly>
-                                        </div>
-                                    </div>  
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputContactNo">Mobile</label>
-                                            <input type="text" maxlength="250" class="form-control" value="{{$data->mobile}}" id="short_description" name="short_description" readonly>
-                                        </div>
-                                    </div>   
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="exampleInputEduction">Description</label>
-                                        <textarea class="form-control" id="description" name="description" aria-describedby="nameHelp" placeholder="User Description" readonly>
-                                        {{$data->other_info}}  
-                                    </textarea>
-                                    </div>
-                                </div>
-                            </div> -->
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a href="<?php echo URL::to('/') ?>/admin/legal-enquiry"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4>Lawyer Detail</h4>
+                        <div class="row">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Profile</th>
+                                        <th>First Name</th>
+                                       <!--  <th>Last Name</th> -->
+                                        <th>Email Id</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    // $i = 1;
+                                    $i = ($getActivelawyer->currentpage() - 1) * $getActivelawyer->perpage() + 1;
+
+                                    foreach ($getActivelawyer as $data) {
+                                        if ($data->status == 1) {
+                                            $class = 'success';
+                                            $status = 'Active';
+                                            $thumbs = 'down';
+                                            $statustxt = 'Make Inactive';
+                                        } else {
+                                            $class = 'danger';
+                                            $status = 'Inactive';
+                                            $thumbs = 'up';
+                                            $statustxt = 'Make Active';
+                                        }
+
+                                        if ($data->email_verify == 1) {
+                                            $class1 = 'success';
+                                            $status1 = 'Verified';
+                                        } else {
+                                            $class1 = 'danger';
+                                            $status1 = 'Not Verified';
+                                        }
+
+                                    ?>
+                                        <tr>
+                                            <td>{{$i}}</td>
+                                            <td> <?php
+                                                    if (isset($data->profileimage)) {
+                                                    ?>
+                                                    <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/uploads/lawyerprofile/{{$data->profileimage}}" alt="User profile picture" style="height: 80px;">
+                                                <?php } else {
+                                                ?>
+                                                    <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" alt="image">
+                                                <?php
+                                                    } ?>
+                                            </td>
+                                            <td>{{$data->name}} {{$data->username}}</td>
+                                            
+                                            <td>{{$data->email}}</td>
+                                            <td>{{$status}}</td>
+                                            <td>
+                                                -
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        $i++;
+                                    }
+                                    ?>
+                                    <?php if (count($getActivelawyer) == 0) {
+                                        echo "<tr><td colspan='7'><center>No record available<center><td></tr>";
+                                    } ?>
+                                </tbody>
+                            </table>
+                        </div>
                             <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="<?php echo URL::to('/') ?>/admin/legal-enquiry"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>
+                                <div class="col-md-12">
+                                    <nav aria-label="Page navigation example">
+                                        {{ $getActivelawyer->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
+                                    </nav>
                                 </div>
                             </div>
+
+
+
                     </div>
 
                 </div>

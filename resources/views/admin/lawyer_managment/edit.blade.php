@@ -56,7 +56,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="exampleInputEduction">Profile Pic</label><span style="color: red;">*</span>
-                                        <input type="file" class="form-control" id="image" name="image" aria-describedby="nameHelp" placeholder="User Profile">
+                                        <input type="file" class="form-control" id="image" name="profileimage" aria-describedby="nameHelp" placeholder="User Profile">
                                         <span style="color:red;" id="image_error"><?php echo $errors->customer_error->first('company_logo'); ?></span>
                                     </div>
                                 </div>
@@ -69,8 +69,8 @@
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <label for="exampleInputEduction">DOB </label><span style="color: red;">*</span>
-                                        <input type="date" class="form-control" id="dob" name="dob" value="@if(isset($lawyerdata->ldob)) {{ $lawyerdata->ldob}}@endif">
-                                        <span style="color:red;" id="dob_error"><?php echo $errors->customer_error->first('company_logo'); ?></span>
+                                        <input type="date" class="form-control" id="dob" name="ldob" value="{{$lawyerdata->ldob}}">
+                                        <span style="color:red;" id="dob_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -78,7 +78,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputFirstName">Experience</label><span style="color: red;">*</span>
                                         <input type="name" maxlength="20" class="form-control" id="experience" name="experience" value="@if(isset($lawyerdata->experience)) {{ $lawyerdata->experience}} @endif" placeholder="Enter experience ">
-                                        <span style="color:red;" id="experience_error"><?php echo $errors->name_error->first('name'); ?></span>
+                                        <span style="color:red;" id="experience_error"></span>
                                     </div>
                                 </div>
 
@@ -89,7 +89,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEduction">Practice areas</label><span style="color: red;">*</span>
                                         <textarea class="form-control" id="about_data" name="about" placeholder=" please enter practice area">@if(isset($lawyerdata->about)) {{ $lawyerdata->about}} @endif</textarea>
-                                        <span style="color:red;" id="about_error"><?php echo $errors->reset_password->first('password'); ?></span>
+                                        <span style="color:red;" id="about_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -101,7 +101,7 @@
                                             <option @if(in_array($data->id, $user_category)) {{"selected"}} @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
                                             @endforeach
                                         </select>
-                                        <span style="color:red;" id="specialization_error"><?php echo $errors->reset_password->first('specialization'); ?></span>
+                                        <span style="color:red;" id="specialization_error"></span>
                                     </div>
                                 </div>
 
@@ -117,7 +117,7 @@
                                         @if(isset($lawyerdata->srollno))
                                         <input type="text" class="form-control" id="sdegreename" name="sdegreename" value='@if(isset($lawyerdata->srollno)){{$lawyerdata->srollno}}@endif' placeholder="second year">
                                         @endif
-                                        <span style="color:red;" id="degree_error"><?php echo $errors->reset_password->first('degreename'); ?></span>
+                                        <span style="color:red;" id="degree_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -128,7 +128,7 @@
                                         @if(isset($lawyerdata->syear))
                                         <input type="text" class="form-control" id="syear" name="syear" value='@if(isset($lawyerdata->syear)){{$lawyerdata->syear}}@endif' placeholder="second year">
                                         @endif
-                                        <span style="color:red;" id="year_error"><?php echo $errors->reset_password->first('year'); ?></span>
+                                        <span style="color:red;" id="year_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -139,14 +139,14 @@
                                         @if(isset($lawyerdata->sinstitue))
                                         <input type="text" class="form-control" id="sinstitution" name="sinstitution" value='@if(isset($lawyerdata->sinstitue)){{$lawyerdata->sinstitue}}@endif' placeholder="first institute">
                                         @endif
-                                        <span style="color:red;" id="institution_error"><?php echo $errors->reset_password->first('institution'); ?></span>
+                                        <span style="color:red;" id="institution_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="exampleInputEduction">Price</label><span style="color: red;">*</span>
                                         <input type="text" class="form-control" id="price" name="price" value="@if(isset($lawyerdata->price)){{$lawyerdata->price}} @endif" placeholder="confirm password">
-                                        <span style="color:red;" id="price_error"><?php echo $errors->reset_password->first('price'); ?></span>
+                                        <span style="color:red;" id="price_error"></span>
                                     </div>
                                 </div>
 
@@ -208,7 +208,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
 
-                                    <a href="<?php echo URL::to('/') ?>/admin/manageAdmin"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>
+                                    <a href="<?php echo URL::to('/') ?>/admin/manage-lawyer"><button type="button" class="sa-btn-close p-2 float-right">Close</button></a>
 
                                     <button type="submit" class="sa-btn-submit p-2 float-right mr-2">Update</button>
                                 </div>

@@ -68,6 +68,7 @@ class lawyermanagmentController extends Controller
 
             $input['experience'] = $request->experience;
             $input['about'] = $request->about;
+            $input['ldob'] = $request->ldob;
             $input['frollno'] = $request->degreename;
             $input['fyear'] = $request->year;
             $input['finstitue'] = $request->institution;
@@ -114,29 +115,17 @@ class lawyermanagmentController extends Controller
                     $inser_id->save();
                 }
             }
+            
+            if ($request->hasfile('profileimage')) {
+                $file = $request->file('profileimage');
+                $name = $file->getClientOriginalName();
+                $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                $file->move(public_path() . '/uploads/lawyerprofile/', $name);
+                // $input['blog_image'] = $name;
+                // $input['step'] = '1';
+                $input['profileimage'] = $name;
+            }
 
-            // $id = $request->id;
-            //$file = $request->image;
-            // $file = $request->file('file');
-            // print_r($file->getClientOriginalName());        die();
-            // return "trur";
-            // if ($request->hasfile('file')) {
-            //     // return $id;
-            //     $file = $request->file('file');
-
-            //     $name = $file->getClientOriginalName();
-            //     $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
-            //     $file->move(public_path() . '/uploads/lawyerprofile/', $name);
-
-            //     $input['profileimage'] = $name;
-            //     // return $id;
-            //     $inputusersignature = User::find($id);
-
-            //     // return $inputusersignature;
-
-            //     $inputusersignature->update($input);
-            // }
-            // return $input;
             $input['updated_by'] = $auth->id;
             $input['updated_at'] = date('Y-m-d H:i:s');
 

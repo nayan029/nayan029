@@ -137,6 +137,13 @@ class User extends Authenticatable
         $query = $query->paginate(20);
         return $query;
     }
+    public static function getActivelawyertdata()
+    {
+        $query =  User::where('user_type', 3)->where('status','1')->orderBy('id', 'desc');
+        
+        $query = $query->paginate(20);
+        return $query;
+    }
     public static function lawyergetByemailWeb($id)
     {
         // $userType = collect([1, 2, 3]);

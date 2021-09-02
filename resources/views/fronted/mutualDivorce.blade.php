@@ -181,8 +181,8 @@
           <div>
             <!-- <h2 class="sr-t">50,000 People Choose Every Day</h2> -->
           </div>
-          <div class="row mt-5 sr-c ">
-            <!-- <div class="col-md-4 text-center">
+          <!-- <div class="row mt-5 sr-c ">
+            <div class="col-md-4 text-center">
               <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
 
               <p>Get the legal help & representation from over 10000 </p>
@@ -191,23 +191,23 @@
                 <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</button>
               </a>
 
-            </div> -->
-            <!-- <div class="col-md-4 text-center">
+            </div>
+            <div class="col-md-4 text-center">
               <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
               <p>Post your question for free and get response from</p>
               <p>experienced lawyers within 48 hours</p>
               <a href="{{URL::to('/')}}/ask-a-free-question">
                 <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</button>
               </a>
-            </div> -->
-            <!-- <div class="col-md-4 text-center">
+            </div>
+            <div class="col-md-4 text-center">
 
               <h6 class="sr-sub-t">HIRE A LAWYER</h6>
               <p>Contact and get legal assistance from our lawyer</p>
               <p> network for your specific matter</p>
-            
-            </div> -->
-          </div>
+
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
