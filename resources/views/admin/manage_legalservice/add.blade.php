@@ -31,14 +31,9 @@
                   <div class="form-group">
                     <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
                     <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
-                      <!-- <option  value="">Select Category</option> -->
+                      <option value="">Select Type</option>
                       <option value="1">Legal Aid</option>
-                      <option value="2">Documentation</option>
-                      <!-- <?php foreach ($catagory as $data) {
-                            ?>
-                        <option value="{{$data->id}}">{{$data->category_name}}</option>
-                      <?php
-                            } ?> -->
+                      <option value="2" onclick="showDescription()">Documentation</option>
                     </Select>
                     <span id="category_error" style="color: red;"></span>
                   </div>
@@ -55,9 +50,9 @@
                   </div>
                 </div>
               </div>
-                
+
               <div class="row">
-                
+
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
@@ -76,7 +71,7 @@
 
 
 
-                
+
               <div class="row">
                 <div class="col-sm-4">
                   <label for="exampleInputContactNo">Image </label><span style="color: red;">*</span>
@@ -85,14 +80,13 @@
                 </div>
               </div>
 
-              <!-- <div class="col-sm-12">
+              <div class="col-sm-12" style="display: none;" id="desc">
                 <div class="form-group">
                   <label for="exampleInputEduction">Description</label><span style="color: red;">*</span>
                   <textarea class="form-control" id="description" name="description" aria-describedby="nameHelp" placeholder="User Description"></textarea>
                   <span style="color:red;" id="description_error"><?php echo $errors->customer_error->first('discription'); ?></span>
                 </div>
-              </div> -->
-              <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
+              </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
@@ -113,6 +107,13 @@
   $('#legal_service').addClass('active mm-active');
 
   function getsubcategory(type) {
+    var desc = $('#desc').val();
+    if (type == '2') {
+      $('#desc').css('display', 'block');
+      CKEDITOR.replace('description');
+    } else {
+      $('#desc').css('display', 'none');
+    }
     $.ajax({
       url: "<?php echo URL::to('/'); ?>/admin/getcategory",
       type: "POST",
@@ -144,7 +145,7 @@
     // var description = CKEDITOR.instances.description.getData();
 
     var service_title = $('#service_title').val();
-    // var category = $('#category').val();
+    var category = $('#category').val();
 
     var cnt = 0;
     var f = 0;
@@ -171,14 +172,14 @@
       }
     }
 
-    // if (category.trim() == '') {
-    //   $('#category_error').html("Please select category");
-    //   cnt = 1;
-    //   f++;
-    //   if (f == 1) {
-    //     $('#category').focus();
-    //   }
-    // }
+    if (category.trim() == '') {
+      $('#category_error').html("Please select type");
+      cnt = 1;
+      f++;
+      if (f == 1) {
+        $('#category').focus();
+      }
+    }
     if (image.trim() == '') {
       $('#image_error').html("Please select Pictures");
       cnt = 1;
@@ -232,14 +233,17 @@
           if (response == 1) {
             $('#name_error').html("This Category is Already Exit");
             cnt = 1;
+            f++;
+            if (f == 1) {
+              $('#name').focus();
+            }
+
           }
         }
 
 
       }
     });
-
-
     if (cnt == 1) {
       return false;
     } else {
@@ -248,6 +252,7 @@
 
   })
 
-
-  CKEDITOR.replace('description');
+  function showDescription() {
+    alert('yes')
+  }
 </script>

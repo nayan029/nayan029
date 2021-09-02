@@ -43,9 +43,9 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No</th>
+                                        <th>Type</th>
                                         <th>Service Name</th>
                                         <th>ServiceTitle</th>
-                                        <!-- <th>Short Description</th> -->
                                         <!-- <th>Descriptions</th> -->
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -56,13 +56,21 @@
                                     $i = ($getservices->currentpage() - 1) * $getservices->perpage() + 1;
                                     foreach ($getservices as $data) {
                                         // echo $data;
-                                        
+
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
+                                            <td>
+                                                @if($data->category_id == '1')
+                                                {{"Legal Aid"}}
+                                                @elseif($data->category_id == '2')
+                                                {{"Documentation"}}
+                                                @endif
+
+                                            </td>
                                             <td>{{$data->service_name}}</td>
                                             <td>{{$data->service_title}}</td>
-                                            <!-- <td>{{$data->short_description}}</td> -->
+
                                             <!-- <td></td> -->
 
                                             <td data-order="<?= strtotime($data->created_at); ?>">
@@ -71,7 +79,9 @@
                                             <td>
                                                 <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/legal-services/{{$data->id}}/edit"><i class="fas fa-edit mr-2"></i></a>
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{$data->id}}')"></i></a>
+                                                @if($data->category_id == '1')
                                                 <a title="Details" href="{{URL::to('/')}}/admin/addDeatails/{{$data->id}}" class="sa-icons active"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     <?php

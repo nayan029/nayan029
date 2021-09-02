@@ -55,6 +55,7 @@
             @foreach($sub_service_list as $subService)
             <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}"><i class="fa fa-arrow-right"></i> {{ $subService->description }}</a> <br />
             @endforeach
+           @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
 
             <div class="mb-4 sr-l-space">
               <div class="row">
@@ -175,7 +176,8 @@
 
       </div>
     </div> -->
-
+      </div>
+    
       <div class="row mb-5">
         <div class="col-md-12">
           <div>
@@ -212,3 +214,4 @@
       </div>
     </div>
   </div>
+@include('fronted/include/footer')

@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span>
+                                        <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span> {{$data->category_id }}
                                         <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
                                             <option @if($data->category_id=="1"){{"selected"}}@endif value="1">Legal Aid</option>
                                             <option @if($data->category_id=="2"){{"selected"}}@endif value="2">Documentation</option>
@@ -85,7 +85,7 @@
 
                                 </div>
                             </div>
-                            <!-- <div class="col-sm-12">
+                            <div class="col-sm-12" style="display: none;" id="desc">
                                 <div class="form-group">
                                     <label for="exampleInputEduction">Description</label><span style="color: red;">*</span>
                                     <textarea class="form-control" id="description" name="description" aria-describedby="nameHelp" placeholder="User Description">
@@ -93,8 +93,7 @@
                                     </textarea>
                                     <span style="color:red;" id="description_error"><?php echo $errors->customer_error->first('discription'); ?></span>
                                 </div>
-                            </div> -->
-                            <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
+                            </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -118,6 +117,13 @@
     getsubcategory('{{$data->category_id}}');
 
     function getsubcategory(type) {
+        var desc = $('#desc').val();
+        if (type == '2') {
+            $('#desc').css('display', 'block');
+            CKEDITOR.replace('description');
+        } else {
+            $('#desc').css('display', 'none');
+        }
         var name = '{{ $data->service_name}}';
         $.ajax({
             url: "<?php echo URL::to('/'); ?>/admin/getcategory",

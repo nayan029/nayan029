@@ -66,7 +66,7 @@ class legalserviceController extends Controller
             $input['rating'] = "1";
             $input['service_title'] = $request->service_title;
             $input['short_discription'] = $request->short_description;
-            // $input['discription'] = $request->description;
+            $input['discription'] = $request->description;
 
 
             if ($request->hasfile('image')) {
@@ -157,7 +157,8 @@ class legalserviceController extends Controller
             $input = $request->all();
             $input['service_name'] = $request->service_name;
             $input['service_title'] = $request->service_title;
-            $input['category_id'] = $request->category;
+            $input['category_id'] = $request->category_id;
+            $input['discription'] = $request->description;
             $input['updated_by'] = $auth->id;
 
             if ($request->service_name) {
@@ -238,18 +239,15 @@ class legalserviceController extends Controller
             'description' => request('description')
         );
 
-        if(!empty($id))
-        {
-            $update = ServiceSubCategory::where('id',$id)->update($insert_array);
+        if (!empty($id)) {
+            $update = ServiceSubCategory::where('id', $id)->update($insert_array);
             if ($update) {
                 Session::flash('success', 'Legal services description updated successfully.');
             } else {
                 Session::flash('error', 'Sorry, something went wrong. Please try again');
             }
             return redirect()->back();
-        }
-        else
-        {
+        } else {
             $insert = ServiceSubCategory::insert($insert_array);
             if ($insert) {
                 Session::flash('success', 'Legal services description insert successfully.');
@@ -258,8 +256,6 @@ class legalserviceController extends Controller
             }
             return redirect()->back();
         }
-
-        
     }
     public function deleteSubService(Request $request, $id)
     {
