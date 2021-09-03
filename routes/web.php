@@ -179,10 +179,11 @@ Route::group(['middleware' => ['auth']], function () {
     // category query
 
     Route::resource('/admin/query-category', 'App\Http\Controllers\admin\queryCategoryController');
-    Route::get('/admin/query-category/{id}', 'App\Http\Controllers\admin\queryCategoryController@addDetils');
     Route::get('/admin/addLegalQuery', 'App\Http\Controllers\admin\queryCategoryController@addLegalQuery');
     Route::post('/admin/updateLegalQuery/{id}', 'App\Http\Controllers\admin\queryCategoryController@updateLegalQuery');
     Route::post('/admin/insertSubQuerys', 'App\Http\Controllers\admin\queryCategoryController@insertSubService');
+    Route::any('/admin/deleteSubQuery/{id}', 'App\Http\Controllers\admin\queryCategoryController@deleteSubQuery');
+
 
 
     // Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');

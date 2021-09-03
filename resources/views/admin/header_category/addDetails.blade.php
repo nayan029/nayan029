@@ -26,7 +26,7 @@
                     <br>
                     <form role="form" id="main_form" method="POST" action="<?php echo URL::to('/') ?>/admin/insertSubQuerys" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" value="{{ $id }}" name="service_id">
+                        <input type="hidden" value="{{ $id }}" name="query_id">
                         <input type="hidden" id="subcatId" name="subcatId">
                         <div class="row">
                             <div class="col-sm-12">
@@ -68,6 +68,18 @@
                                 </thead>
                                 <tbody>
 
+                                    @foreach($sub_query_list as $rows)
+                                    <tr>
+                                        <td>{{ $rows->description }}</td>
+                                        <td>
+
+                                            <a title="Edit" href="javascript:void(0)" onclick="editLegalSubcat('{{ $rows->id }}','{{ $rows->description }}')"><i class="fas fa-edit mr-2"></i></a>
+                                            <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{ $rows->id }}')"></i></a>
+
+                                        </td>
+                                    </tr>
+
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -156,7 +168,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
-                window.location.href = "<?php echo URL::to('/admin/deleteSubService'); ?>/" + id;
+                window.location.href = "<?php echo URL::to('/admin/deleteSubQuery'); ?>/" + id;
             } else {
                 return false;
             }

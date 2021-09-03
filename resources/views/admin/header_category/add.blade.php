@@ -34,10 +34,10 @@
                                         <select name="query_id" id="query_id" class="form-control">
                                             <!-- <option value="">Select Category</option> -->
                                             <?php foreach ($mainLegalQueryType as $value) {
-                                            
-                                             ?>
-                                            <option value="{{$value->id}}">{{ ucfirst($value->title)}}</option>
-                                            <?php }?>
+
+                                            ?>
+                                                <option value="{{$value->id}}">{{ ucfirst($value->title)}}</option>
+                                            <?php } ?>
                                         </select>
                                         <span style="color:red;" id="query_error"><?php echo $errors->profile_error->first('query_id'); ?></span>
                                     </div>
@@ -56,14 +56,14 @@
                                         <span style="color:red;" id="type_error"><?php echo $errors->profile_error->first('type'); ?></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
+                                <!-- <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputContactNo">Description</label><span style="color: red;">*</span>
                                         <textarea class="form-control" id="description" name="description" placeholder="Description">
                                             </textarea>
                                         <span style="color:red;" id="details_error"><?php echo $errors->profile_error->first('description'); ?></span>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                     </div>
                     <div class="row">
@@ -99,11 +99,11 @@
         var title = $('#title').val();
         var type = $('#type').val();
         var details = $('#details').val();
-        var description = CKEDITOR.instances.description.getData();
+        // var description = CKEDITOR.instances.description.getData();
 
         var cnt = 0;
         var f = 0;
-       
+
         $('#title_error').html("");
         $('#type_error').html("");
         $('#details_error').html("");
@@ -126,14 +126,14 @@
             }
         }
 
-        if (description.trim() == '') {
-            $('#details_error').html("Please enter description");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#description').focus();
-            }
-        }
+        // if (description.trim() == '') {
+        //     $('#details_error').html("Please enter description");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#description').focus();
+        //     }
+        // }
         if (cnt == 1) {
             return false;
         } else {
@@ -141,6 +141,5 @@
         }
 
     })
-CKEDITOR.replace( 'description' );
-
+    // CKEDITOR.replace('description');
 </script>

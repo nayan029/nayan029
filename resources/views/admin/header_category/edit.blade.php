@@ -56,14 +56,14 @@
                                         <span style="color:red;" id="type_error"><?php echo $errors->profile_error->first('type'); ?></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
+                                <!-- <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputContactNo">Description</label><span style="color: red;">*</span>
                                         <textarea class="form-control" id="description" name="description" placeholder="Description">{{$data->description}}
                                             </textarea>
                                         <span style="color:red;" id="details_error"><?php echo $errors->profile_error->first('description'); ?></span>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                     </div>
                     <div class="row">
@@ -98,7 +98,7 @@
 
         var title = $('#title').val();
         var type = $('#type').val();
-        var details = $('#details').val();
+        // var details = $('#details').val();
         var description = CKEDITOR.instances.description.getData();
 
         var cnt = 0;
@@ -126,14 +126,14 @@
             }
         }
 
-        if (description.trim() == '') {
-            $('#details_error').html("Please enter description");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#description').focus();
-            }
-        }
+        // if (description.trim() == '') {
+        //     $('#details_error').html("Please enter description");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#description').focus();
+        //     }
+        // }
         if (cnt == 1) {
             return false;
         } else {

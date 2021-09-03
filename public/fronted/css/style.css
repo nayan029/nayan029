@@ -6054,3 +6054,39 @@ button.owl-prev {}
 .themis-figurine-stands .themis-figurine, .themis-figurine-stands2 .themis-figurine {
     opacity: 0.6;
 }
+.experience-title {border-bottom: 1px solid;padding-bottom: 10px;margin-bottom: 10px;}
+.hindum-arriage-act {
+    border-bottom: 1px solid #404040;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    display: flex;
+}
+.hindum-arriage-act p {
+    margin: 0;
+    font-size: 14px;
+    flex: 1;
+}
+.hindum-arriage-act .fa-arrow-right, .hindum-arriage-act a{
+height: 21px;
+    width: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex: 0 0 21px;
+    color: #fff;
+    font-size: 10px;
+}
+.hindum-arriage-act .fa-arrow-right {
+    background: #464646;
+    margin-right: 15px;
+}
+.hindum-arriage-act a {
+    margin-left: 15px;
+    background: #eca835;
+}
+.hindum-arriage-act:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+}

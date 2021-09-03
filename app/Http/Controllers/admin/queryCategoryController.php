@@ -10,6 +10,7 @@ use App\Models\admin\sitesetting;
 use App\Models\User;
 use App\Models\admin\MainLegalQueryType;
 use App\Models\admin\MainLegalQuery;
+use App\Models\admin\querySubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -48,7 +49,6 @@ class queryCategoryController extends Controller
             'query_id' => 'required',
             'title' => 'required',
             'type' => 'required',
-            'description' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -63,7 +63,6 @@ class queryCategoryController extends Controller
             $input['legal_query_type_id'] = $request->query_id;
             $input['title'] = $request->title;
             $input['type_name'] = $request->type;
-            $input['description'] = $request->description;
             $input['created_at'] = date('Y-m-d H:i:s');
 
             $inser_id = new MainLegalQuery($input);
@@ -80,11 +79,6 @@ class queryCategoryController extends Controller
             }
         }
     }
-    // public function edit($id)
-    // {
-    //     $this->data['data'] = adviceCategory::getrecordbyid($id);
-    //     return view('admin.advice_category.edit', $this->data);
-    // }
     public function edit(Request $request, $id)
     {
         $auth = Auth::user();
@@ -116,7 +110,7 @@ class queryCategoryController extends Controller
             $input['legal_query_type_id'] = $request->query_id;
             $input['title'] = $request->title;
             $input['type_name'] = $request->type;
-            $input['description'] = $request->description;
+            // $input['description'] = $request->description;
             $input['updated_at'] = date('Y-m-d H:i:s');
 
             $category = MainLegalQuery::find($id);
@@ -124,7 +118,7 @@ class queryCategoryController extends Controller
 
 
             if ($category) {
-                Session::flash('success', 'Legal Query updated successfully.');
+                Session::flash('success', 'Legal Query updated successfully');
                 return redirect('admin/query-category');
             } else {
 
@@ -152,42 +146,64 @@ class queryCategoryController extends Controller
         $this->data['servicename'] = adviceCategory::getAllCategory();
         $this->data['query_name'] = MainLegalQuery::getrecordById($id);
         // $this->data['catagory'] = legalservicecategory::getallcategory();
-        // $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($id);
+        $this->data['sub_query_list'] = querySubCategory::getBYQueryById($id);
         $this->data['title'] = "Add Details";
         $this->data['id'] = $id;
-        return view('admin/header_category/adddetails', $this->data);
+        return view('admin/header_category/addDetails', $this->data);
 
         // return "truye";
     }
     public function insertSubService(Request $request)
     {
+        // return $request->all();
+        // die();
         $this->validate($request, [
             'description' => 'required',
+            'document' => 'required',
         ]);
 
         $id = $request->subcatId;
 
-        $insert_array = array(
-            'service_id' => request('service_id'),
-            'description' => request('description')
-        );
+        $input['query_id'] = $request->query_id;
+        $input['description'] = $request->description;
+
+        if ($request->hasfile('document')) {
+            $file = $request->file('document');
+            $name = $file->getClientOriginalName();
+            $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+            $file->move(public_path() . '/uploads/document/', $name);
+            $input['document'] = $name;
+        }
+
 
         if (!empty($id)) {
-            $update = ServiceSubCategory::where('id', $id)->update($insert_array);
+            $update = querySubCategory::where('id', $id)->update($input);
             if ($update) {
-                Session::flash('success', 'Legal services description updated successfully.');
+                Session::flash('success', 'Query Category description updated successfully.');
             } else {
-                Session::flash('error', 'Sorry, something went wrong. Please try again');
+                Session::flash('error', 'Sorry, something went wrong. Please try again ');
             }
             return redirect()->back();
         } else {
-            $insert = ServiceSubCategory::insert($insert_array);
+            $insert = querySubCategory::insert($input);
             if ($insert) {
-                Session::flash('success', 'Legal services description insert successfully.');
+                Session::flash('success', 'Query Category description insert successfully.');
             } else {
-                Session::flash('error', 'Sorry, something went wrong. Please try again');
+                Session::flash('error', 'Sorry, something went wrong. Please try again ');
             }
             return redirect()->back();
         }
+    }
+    public function deleteSubQuery(Request $request, $id)
+    {
+        $id  = $request->id;
+        $auth = Auth::user();
+        $delete = querySubCategory::where('id', $id)->update(['deleted_by' => $auth->id, 'status' => '0', 'deleted_at' => date('Y-m-d H:i:s')]);
+        if ($delete) {
+            Session::flash('success', 'Query category deleted successfully.');
+        } else {
+            Session::flash('error', 'Sorry, something went wrong. Please try again');
+        }
+        return redirect()->back();
     }
 }

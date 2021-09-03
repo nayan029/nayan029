@@ -1,10 +1,10 @@
 @include('fronted/include/header')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="header-title">
   <div class="inner">
     <div class="container">
       <div class="sa-application">
-            <h2 class="sa-color1">{{$dataLegalQuery->title}}</h2>
+        <h2 class="sa-color1">{{$dataLegalQuery->title}}</h2>
 
       </div>
     </div>
@@ -18,44 +18,19 @@
       <div class="col-md-12 ">
         <div class="row sr-border2 sr-res-card">
           <div class="col-md-12 mt-1">
-            <div class="">
-              <p class="ls-1"><h2>Description</h2>
-
-<p>{{strip_tags($dataLegalQuery->description)}}</p>
-
+            @foreach($description as $data)
+            <div class="hindum-arriage-act">
+              <i class="fa fa-arrow-right"></i>
+              <p>{{($data->description)}}</p>
+               <a download="{{$data->document}}" target="_blank" href="{{URL::to('/')}}/uploads/document/{{$data->document}}"><i class="fas fa-download"></i></a> 
             </div>
-
-
-
-
-
-            <div class="mb-4 sr-l-space">
-              <div class="row">
-                <div class="col-md-6 mb-3">
-
-                </div>
-                <div class="col-md-6 mb-3">
-
-                </div>
-                <div class="col-md-6 mb-3">
-
-                </div>
-                <div class="col-md-6 mb-3">
-
-                </div>
-
-
-              </div>
-
-            </div>
-
-
+            @endforeach
 
           </div>
         </div>
 
       </div>
-      
+
     </div>
 
 

@@ -26,6 +26,7 @@ use App\Models\admin\webinar;
 use App\Models\admin\ServiceSubCategory;
 use App\Models\User;
 use App\Models\admin\MainLegalQuery;
+use App\Models\admin\querySubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use View;
@@ -476,6 +477,7 @@ class HomeController extends Controller
     {
         $id = $request->id;
         $this->data['dataLegalQuery'] = MainLegalQuery::where('id', $id)->where('status', '1')->first();
+        $this->data['description'] = querySubCategory::getBYQueryById($id);
         return view('fronted.legalQuery', $this->data);
     }
      public function loginNew()
