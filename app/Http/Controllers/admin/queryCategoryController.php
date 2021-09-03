@@ -37,6 +37,7 @@ class queryCategoryController extends Controller
     public function addLegalQuery(Request $request)
     {
         $auth = Auth::user();
+        $this->data['title'] = "Add Query Category";
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
 
@@ -82,6 +83,7 @@ class queryCategoryController extends Controller
     public function edit(Request $request, $id)
     {
         $auth = Auth::user();
+        $this->data['title'] = "Edit Query Category";
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
         $this->data['data'] = MainLegalQuery::where('id', $id)->where('status', 1)->first();
