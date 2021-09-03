@@ -10,6 +10,7 @@ use App\Models\admin\court;
 use App\Models\admin\location;
 use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -72,14 +73,41 @@ class reviewController extends Controller
     }
     public function destroy(Request $request, $id)
     {
-        $delete = reviewrating::where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
+
+        /*Delete record*/
+        $auth = Auth::user();
+        if ($request->type == "delete") {
+            $delete = reviewrating::where('id', $id)->update(['deleted_by' => $auth->id, 'deleted_at' => date('Y-m-d H:i:s')]);
+        }
+        /*staus change*/ else {
+            $data = reviewrating::where('id', $id)->first();
+            $status = 1;
+            $statusname = "Activated";
+            if ($data->status == 1) {
+                $statusname = "Inactivated";
+                $status = 0;
+            }
+            $delete = reviewrating::where('id', $id)->update(['status' => $status]);
+        }
         if ($delete) {
-            Session::flash('success', 'Successfully Deleted');
-            return redirect()->back();
+            if ($request->type == "delete") {
+                Session::flash('success', 'Successfully Deleted');
+            } else {
+                Session::flash('success', 'Successfully ' . $statusname);
+            }
         } else {
             Session::flash('error', 'Sorry, something went wrong. Please try again');
-            return redirect()->back();
         }
+        return $delete;
+
+        // $delete = reviewrating::where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
+        // if ($delete) {
+        //     Session::flash('success', 'Successfully Deleted');
+        //     return redirect()->back();
+        // } else {
+        //     Session::flash('error', 'Sorry, something went wrong. Please try again');
+        //     return redirect()->back();
+        // }
         // return $delete;
 
     }

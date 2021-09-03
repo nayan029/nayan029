@@ -69,6 +69,7 @@ class HomeController extends Controller
         $this->data['allAids'] = legalservices::getfamilyData();
         $this->data['city'] = location::getAllRecord();
         $this->data['category'] = adviceCategory::getquestioncategorylist();
+        $this->data['verifyreviews'] = reviewrating::getVarifyRecords();
 
         $this->data['getlawyer'] = User::getLawyers();
 

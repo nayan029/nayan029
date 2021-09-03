@@ -14,7 +14,7 @@
               <select class="form-select sa-form-font border-radius-5px" id="lawarea" name="lawarea">
                 <option value="">Select Area of law</option>
                 @foreach($category as $data)
-                <option value="{{$data->category_name}}">{{$data->category_name}}</option>
+                <option value="{{$data->service_name}}">{{ucfirst($data->service_name)}}</option>
                 @endforeach
               </select>
               <span id="lawarea_error" style="color: red;"></span>
@@ -40,7 +40,7 @@
             <div class="col-md-12">
               <div class="sa-pb">
                 <label for="inputName" class="form-label sa-color2 sa-label">Subject</label><span style="color:red;"> *</span>
-                <input type="text" class="form-control sa-form-font half-border-radius" id="subject" name="subject" placeholder="Subject " maxlength="250"> 
+                <input type="text" class="form-control sa-form-font half-border-radius" id="subject" name="subject" placeholder="Subject " maxlength="250">
                 <span id="subject_error" style="color: red;"></span>
 
               </div>
@@ -156,7 +156,7 @@
         </div>
         <div class="mb-4 sr-l-space">
           <h6 class="mt-3 sa-color2">When can I expect a reply to my question?</h6>
-          <p>Lawyers on  have different and unique expertise. We work to serve your question to the right lawyer for a quick and useful response. You can expect to get a response in 24 working hours after posting your question. Lawyers on  are active and are passionate about helping you solve your legal problems, meaning you won’t have to wait very long to get answers.</p>
+          <p>Lawyers on have different and unique expertise. We work to serve your question to the right lawyer for a quick and useful response. You can expect to get a response in 24 working hours after posting your question. Lawyers on are active and are passionate about helping you solve your legal problems, meaning you won’t have to wait very long to get answers.</p>
         </div>
         <div class="mb-4 sr-l-space">
           <h6 class="mt-3 sa-color2">How can I find if my question was answered?</h6>
@@ -172,7 +172,7 @@
         <div>
           <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
         </div>
-        <div class="row mt-5 sr-c ">
+        <!-- <div class="row mt-5 sr-c ">
           <div class="col-md-4 text-center">
             <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
 
@@ -196,7 +196,7 @@
 
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

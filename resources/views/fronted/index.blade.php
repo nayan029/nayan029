@@ -203,7 +203,7 @@
 <section class="fourbox">
 	<div class="container">
 		<div class="divorce-owl owl-carousel owl-theme">
-		@foreach ($allAids as $data)
+			@foreach ($allAids as $data)
 			<div class="item">
 				<a href="{{URL::to('/')}}/legal-services/{{$data->slug}}">
 					<!-- <form method="GET" action="{{URL::to('/')}}/search/lawyer/"></form> -->
@@ -394,7 +394,8 @@
 			@foreach($getlawyer as $data)
 			<div class="team-col">
 				<div class="team-box">
-					<a href="advocate/{{$data->id}}" class="hoverid" onmouseover="change({{$data->id}})">
+					<!-- /* advocate/{{$data->id}} */ -->
+					<a href="#" class="hoverid" onmouseover="change({{$data->id}})">
 						<input type="hidden" name="id" id="id_{{$data->id}}" class="testone" data-hid="{{$data->id}}" value="{{$data->id}}">
 						@if($data->profileimage)
 						<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
@@ -489,77 +490,20 @@
 			<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h6>
 		</div>
 		<div class="masonry">
+			@foreach($verifyreviews as $data)
 			<div class="mitem">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh dui sit quam sit blandit tincidunt. Turpis vitae, mattis feugiat non. Eget leo justo, nibh felis suspendisse eget ultrices quisque. Nunc vestibulum placerat metus, varius at.</p>
+				<p>{{$data->review}}</p>
 				<hr>
 				<div class="bottom">
 					<img src="{{asset('fronted/images/Ellipse16.png')}}">
 					<div>
-						<h5>Allian Marie</h5>
-						<h6>Lorem ipsum dummy text</h6>
+						<h5>{{$data->user_name}}</h5>
+						<h6>{{date('d-m-Y', strtotime($data->created_at));}}</h6>
 					</div>
 				</div>
 			</div>
+			@endforeach
 
-			<div class="mitem">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum.</p>
-				<hr>
-				<div class="bottom">
-					<img src="{{asset('fronted/images/Ellipse16.png')}}">
-					<div>
-						<h5>Allian Marie</h5>
-						<h6>Lorem ipsum dummy text</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="mitem">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum ut. Quam nunc in vel pellentesque ac. Quam nunc in vel pellentesque ac. Quam nunc in vel pellentesque ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum ut</p>
-				<hr>
-				<div class="bottom">
-					<img src="{{asset('fronted/images/Ellipse16.png')}}">
-					<div>
-						<h5>Allian Marie</h5>
-						<h6>Lorem ipsum dummy text</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="mitem">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh dui sit quam sit blandit tincidunt. Turpis vitae, mattis feugiat non. Eget leo justo, nibh felis suspendisse eget ultrices quisque. Nunc vestibulum placerat metus, varius at.</p>
-				<hr>
-				<div class="bottom">
-					<img src="{{asset('fronted/images/Ellipse16.png')}}">
-					<div>
-						<h5>Allian Marie</h5>
-						<h6>Lorem ipsum dummy text</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="mitem">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum.</p>
-				<hr>
-				<div class="bottom">
-					<img src="{{asset('fronted/images/Ellipse16.png')}}">
-					<div>
-						<h5>Allian Marie</h5>
-						<h6>Lorem ipsum dummy text</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="mitem">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum ut. Quam nunc in vel pellentesque ac. Quam nunc in vel pellentesque ac. Quam nunc in vel pellentesque ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum ut</p>
-				<hr>
-				<div class="bottom">
-					<img src="{{asset('fronted/images/Ellipse16.png')}}">
-					<div>
-						<h5>Allian Marie</h5>
-						<h6>Lorem ipsum dummy text</h6>
-					</div>
-				</div>
-			</div>
 
 		</div>
 	</div>
@@ -578,12 +522,11 @@
 			</div>
 
 			<div class="col-lg-5 col-md-6 col2">
-				<a href="{{url('/search/lawyer?name=')}}">
-					<div class="title">
-						<h3>Find the Right Lawyer For you</h3>
-						<h6>We promise you will get the justice you deserve</h6>
-					</div>
-				</a>
+				<div class="title">
+					<h3>Find the Right Lawyer For you</h3>
+					<h6>We promise you will get the justice you deserve</h6>
+				</div>
+
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida facilisis nulla quis ipsum.</p>
 			</div>
 

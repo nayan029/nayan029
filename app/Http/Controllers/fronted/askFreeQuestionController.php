@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\admin\contactInquiry;
 use App\Models\admin\court;
 use App\Models\admin\freeQuestions;
+use App\Models\admin\legalservices;
 use App\Models\admin\location;
 use App\Models\admin\sitesetting;
 use App\Models\User;
@@ -33,7 +34,8 @@ class askFreeQuestionController extends Controller
     }
     public function index(Request $request)
     {
-        $this->data['category'] = adviceCategory::getquestioncategorylist();
+        // $this->data['category'] = adviceCategory::getquestioncategorylist();
+        $this->data['category'] = legalservices::getfamilyData();
         $this->data['city'] = location::getAllRecord();
         return view('fronted.askFreeQuestion', $this->data);
     }
@@ -56,7 +58,7 @@ class askFreeQuestionController extends Controller
                 ->withErrors($validator, 'ask-a-free-question')
                 ->withInput();
         } else {
-            
+
             $auth = Auth::user();
             if ($auth) {
                 $user_id = $auth->id;
@@ -70,7 +72,7 @@ class askFreeQuestionController extends Controller
             $input['name'] = $request->name;
             $input['mobile'] = $request->mobile;
             $input['email'] = $request->email;
-            
+
 
             $input['created_at'] = date('Y-m-d H:i:s');
 

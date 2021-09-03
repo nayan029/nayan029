@@ -161,7 +161,58 @@
     var number = /([0-9])/;
     var alphabets = /([a-zA-Z])/;
     var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+    
 
+    if (category.trim() == '') {
+      $('#category_error').html("Please select type");
+      cnt = 1;
+      f++;
+      if (f == 1) {
+        $('#category').focus();
+      }
+    }
+
+    
+    if (name.trim() == '') {
+      $('#name_error').html("Please select service name ");
+      cnt = 1;
+      f++;
+      if (f == 1) {
+        $('#name').focus();
+      }
+    }
+
+    if(name)
+    {
+      $.ajax({
+        async: false,
+        url: "<?php echo URL::to('/'); ?>/admin/getexitservicename",
+        type: "POST",
+        data: {
+          name: name,
+          _token: "<?php echo csrf_token(); ?>"
+        },
+        success: function(response) {
+          if (response) {
+            if (response == 1) {
+              $('#name_error').html("This Service is Already Exit");
+              cnt = 1;
+              f++;
+              console.log(f)
+              if (f>0) {
+                console.log('tahy');
+                $('#name').focus();
+                // return false;
+
+              }
+
+            }
+          }
+
+
+        }
+      });
+    }
 
     if (service_title.trim() == '') {
       $('#title_error').html("Please enter service title");
@@ -172,14 +223,15 @@
       }
     }
 
-    if (category.trim() == '') {
-      $('#category_error').html("Please select type");
+    if (short_description.trim() == '') {
+      $('#short_description_error').html("Please enter Short description");
       cnt = 1;
       f++;
       if (f == 1) {
-        $('#category').focus();
+        $('#short_description').focus();
       }
     }
+
     if (image.trim() == '') {
       $('#image_error').html("Please select Pictures");
       cnt = 1;
@@ -196,54 +248,6 @@
       }
     }
 
-    if (name.trim() == '') {
-      $('#name_error').html("Please select service name ");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#name').focus();
-      }
-    }
-    if (short_description.trim() == '') {
-      $('#short_description_error').html("Please enter Short description");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#short_description').focus();
-      }
-    }
-
-    // if (description.trim() == '') {
-    //   $('#description_error').html("Please enter description");
-    //   cnt = 1;
-    //   f++;
-    //   if (f == 1) {
-    //     $('#description').focus();
-    //   }
-    // }
-    $.ajax({
-      url: "<?php echo URL::to('/'); ?>/admin/getexitservicename",
-      type: "POST",
-      data: {
-        name: name,
-        _token: "<?php echo csrf_token(); ?>"
-      },
-      success: function(response) {
-        if (response) {
-          if (response == 1) {
-            $('#name_error').html("This Category is Already Exit");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-              $('#name').focus();
-            }
-
-          }
-        }
-
-
-      }
-    });
     if (cnt == 1) {
       return false;
     } else {
