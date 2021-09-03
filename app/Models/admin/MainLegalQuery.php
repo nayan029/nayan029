@@ -16,7 +16,27 @@ class MainLegalQuery extends Authenticatable
 
     public static function getAllData()
     {
-        $query = MainLegalQuery::where('status','1')->orderBy('id', 'desc')->paginate(10);
+        $query = MainLegalQuery::where('status', '1')->orderBy('id', 'desc')->paginate(10);
+        return $query;
+    }
+    public static function getallPapers()
+    {
+        $query = MainLegalQuery::where('legal_query_type_id', '1')->where('status', '1')->orderBy('id', 'desc')->get();
+        return $query;
+    }
+    public static function getallNotes()
+    {
+        $query = MainLegalQuery::where('legal_query_type_id', '2')->where('status', '1')->orderBy('id', 'desc')->get();
+        return $query;
+    }
+    public static function getallBareAct()
+    {
+        $query = MainLegalQuery::where('legal_query_type_id', '3')->where('status', '1')->orderBy('id', 'desc')->get();
+        return $query;
+    }
+    public static function getrecordById($id)
+    {
+        $query = MainLegalQuery::where('id', $id)->where('status', '1')->first();
         return $query;
     }
 }

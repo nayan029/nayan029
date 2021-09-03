@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/admin/adviceCategory', 'App\Http\Controllers\admin\adviceCategoryController');
     Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');
     Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
-    Route::post('/admin/getcategory','App\Http\Controllers\admin\AjaxController@getServiceNameByType');
+    Route::post('/admin/getcategory', 'App\Http\Controllers\admin\AjaxController@getServiceNameByType');
 
     Route::resource('/admin/adviceQuerys', 'App\Http\Controllers\admin\adviceQuerysController');
     Route::get('/admin/addQuerys', 'App\Http\Controllers\admin\adviceQuerysController@addQuerys');
@@ -126,8 +126,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/legal-services', 'App\Http\Controllers\admin\legalserviceController');
     Route::get('admin/addService', 'App\Http\Controllers\admin\legalserviceController@addService');
     Route::any('/admin/legalServiceDelete/{id}', 'App\Http\Controllers\admin\legalserviceController@destroy');
-    Route::get('/admin/addDeatails/{id}','App\Http\Controllers\admin\legalserviceController@addDetils');
-    Route::post('/admin/insertSubService','App\Http\Controllers\admin\legalserviceController@insertSubService');
+    Route::get('/admin/addDeatails/{id}', 'App\Http\Controllers\admin\legalserviceController@addDetils');
+
+    Route::post('/admin/insertSubService', 'App\Http\Controllers\admin\legalserviceController@insertSubService');
 
     Route::any('/admin/deleteSubService/{id}', 'App\Http\Controllers\admin\legalserviceController@deleteSubService');
 
@@ -178,8 +179,11 @@ Route::group(['middleware' => ['auth']], function () {
     // category query
 
     Route::resource('/admin/query-category', 'App\Http\Controllers\admin\queryCategoryController');
+    Route::get('/admin/query-category/{id}', 'App\Http\Controllers\admin\queryCategoryController@addDetils');
     Route::get('/admin/addLegalQuery', 'App\Http\Controllers\admin\queryCategoryController@addLegalQuery');
     Route::post('/admin/updateLegalQuery/{id}', 'App\Http\Controllers\admin\queryCategoryController@updateLegalQuery');
+    Route::post('/admin/insertSubQuerys', 'App\Http\Controllers\admin\queryCategoryController@insertSubService');
+
 
     // Route::post('admin/getexitadvicecategory', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategory');
     // Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
@@ -232,6 +236,9 @@ Route::get('/free-legal-guides', [FrontedHomeController::class, 'freeGuides']);
 Route::get('/all-aids', [FrontedHomeController::class, 'allAid']);
 Route::get('/all-docs', [FrontedHomeController::class, 'allDocs']);
 
+Route::get('/all-querys-paper', [FrontedHomeController::class, 'allResearchPapers']);
+Route::get('/all-querys-notes', [FrontedHomeController::class, 'allNotes']);
+Route::get('/all-querys-acts', [FrontedHomeController::class, 'allBarsAct']);
 
 //-----------------------------------------ask free questions-----------------------------------------
 // Route::get('/ask-a-free-question', [FrontedHomeController::class, 'askFreeQuestion']);

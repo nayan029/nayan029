@@ -38,7 +38,7 @@ class queryCategoryController extends Controller
         $auth = Auth::user();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
-        
+
         return view('admin.header_category.add', $this->data);
     }
     public function store(Request $request)
@@ -65,7 +65,7 @@ class queryCategoryController extends Controller
             $input['type_name'] = $request->type;
             $input['description'] = $request->description;
             $input['created_at'] = date('Y-m-d H:i:s');
-           
+
             $inser_id = new MainLegalQuery($input);
             $inser_id->save();
             $inser_id = $inser_id->id;
@@ -90,7 +90,7 @@ class queryCategoryController extends Controller
         $auth = Auth::user();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
-        $this->data['data'] = MainLegalQuery::where('id',$id)->where('status',1)->first();
+        $this->data['data'] = MainLegalQuery::where('id', $id)->where('status', 1)->first();
         return view('admin.header_category.edit', $this->data);
     }
 
@@ -98,10 +98,10 @@ class queryCategoryController extends Controller
     public function updateLegalQuery(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            
+
             'title' => 'required',
             'type' => 'required',
-        
+
         ]);
 
 
@@ -118,7 +118,7 @@ class queryCategoryController extends Controller
             $input['type_name'] = $request->type;
             $input['description'] = $request->description;
             $input['updated_at'] = date('Y-m-d H:i:s');
-           
+
             $category = MainLegalQuery::find($id);
             $category->update($input);
 
@@ -144,5 +144,50 @@ class queryCategoryController extends Controller
             Session::flash('error', 'Sorry, something went wrong. Please try again');
         }
         return $delete;
+    }
+    public function show($id)
+    {
+        $auth = Auth::user();
+        $this->data['userdata'] = User::getrecordbyid($auth->id);
+        $this->data['servicename'] = adviceCategory::getAllCategory();
+        $this->data['query_name'] = MainLegalQuery::getrecordById($id);
+        // $this->data['catagory'] = legalservicecategory::getallcategory();
+        // $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($id);
+        $this->data['title'] = "Add Details";
+        $this->data['id'] = $id;
+        return view('admin/header_category/adddetails', $this->data);
+
+        // return "truye";
+    }
+    public function insertSubService(Request $request)
+    {
+        $this->validate($request, [
+            'description' => 'required',
+        ]);
+
+        $id = $request->subcatId;
+
+        $insert_array = array(
+            'service_id' => request('service_id'),
+            'description' => request('description')
+        );
+
+        if (!empty($id)) {
+            $update = ServiceSubCategory::where('id', $id)->update($insert_array);
+            if ($update) {
+                Session::flash('success', 'Legal services description updated successfully.');
+            } else {
+                Session::flash('error', 'Sorry, something went wrong. Please try again');
+            }
+            return redirect()->back();
+        } else {
+            $insert = ServiceSubCategory::insert($insert_array);
+            if ($insert) {
+                Session::flash('success', 'Legal services description insert successfully.');
+            } else {
+                Session::flash('error', 'Sorry, something went wrong. Please try again');
+            }
+            return redirect()->back();
+        }
     }
 }

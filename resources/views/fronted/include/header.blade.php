@@ -64,7 +64,7 @@ $login = Auth::user();
 									<?php } ?>
 
 									<li>
-										<a href="<?php echo URL::to('/'); ?>/free-legal-advice" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
+										<a href="{{URL::to('/')}}/all-querys-paper" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
 
 									</li>
 
@@ -82,7 +82,7 @@ $login = Auth::user();
 									<?php } ?>
 
 									<li>
-										<a href="<?php echo URL::to('/'); ?>/free-legal-guides" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
+										<a href="{{URL::to('/')}}/all-querys-notes" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
 									</li>
 
 								</ul>
@@ -107,7 +107,7 @@ $login = Auth::user();
 									<li><a href="<?php echo URL::to('/') ?>/career">Career</a></li> -->
 
 									<li>
-										<a href="<?php echo URL::to('/'); ?>/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
+										<a href="{{URL::to('/')}}/all-querys-acts" class="btn btn-outline-primary min-w120 mt-4 ">Show All</a>
 									</li>
 								</ul>
 
@@ -156,7 +156,7 @@ $login = Auth::user();
 
 
 												<ul>
-													
+
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php

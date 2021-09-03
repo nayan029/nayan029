@@ -484,4 +484,23 @@ class HomeController extends Controller
         
         return view('fronted.login_new', $this->data);
     }
+    
+    public function allResearchPapers(Request $request)
+    {
+        $this->data['title'] = "Research Papers";
+        $this->data['allQuerys'] = MainLegalQuery::getallPapers();
+        return view('fronted.allResearchPapers', $this->data);
+    }
+    public function allNotes(Request $request)
+    {
+        $this->data['title'] = "Research Papers";
+        $this->data['allQuerys'] = MainLegalQuery::getallNotes();
+        return view('fronted.allResearchPapers', $this->data);
+    }
+    public function allBarsAct(Request $request)
+    {
+        $this->data['title'] = "Research Papers";
+        $this->data['allQuerys'] = MainLegalQuery::getallBareAct();
+        return view('fronted.allResearchPapers', $this->data);
+    }
 }

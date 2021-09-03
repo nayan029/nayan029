@@ -11,7 +11,7 @@
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
-                        <li class="breadcrumb-item">Lawyer Category</li>
+                        <li class="breadcrumb-item">Legal Query Category</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -122,6 +122,8 @@
                                                  -->
                                                 <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/query-category/{{$data->id}}/edit"><i class="fas fa-edit mr-2"></i></a>
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{$data->id}}')"></i></a>
+                                                <a title="Details" href="{{URL::to('/')}}/admin/query-category/{{$data->id}}" class="sa-icons active"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+
                                             </td>
                                         </tr>
                                     <?php

@@ -1,19 +1,19 @@
 @include('fronted/include/header')
 <div class="sa-enroll-details">
-  <div class="container">
-    <div class="sa-application">
-      <h3 class="sa-color2 mb-4">Free Legal Advice From Top Rated Lawyers</h3>
-    </div>
+    <div class="container">
+        <div class="sa-application">
+            <h3 class="sa-color2 mb-4">Free Legal Advice From Top Rated Lawyers</h3>
+        </div>
 
-    <div class="row">
-      <div class="col-md-12 ">
         <div class="row">
-          <!-- <div class="col-md-5 d-flex align-items-center">
+            <div class="col-md-12 ">
+                <div class="row">
+                    <!-- <div class="col-md-5 d-flex align-items-center">
             <input type="text" class="form-control sa-form-font half-border-radius mr-4" id="search" placeholder="Search Law Guides">
             <button type="submit" class="btn btn-outline-primary sr-btn-search"><i class="fa fa-search fs-24"></i></button>
           </div> -->
-          <div class="col-md-7 ">
-            <!-- <div class="row">
+                    <div class="col-md-7 ">
+                        <!-- <div class="row">
               <div class="col-md-6 pl-0 pr-0">
                 <a href="<?php echo URL::to('/') ?>/ask-a-free-question" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</a>
               </div>
@@ -21,23 +21,23 @@
                 <a href="<?php echo URL::to('/') ?>/legal-enquiry" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</a>
               </div>
             </div> -->
-          </div>
-        </div>
-        <div class="row sr-border mt-4 ">
-          <!-- <h5 class="sa-color2 mb-3"><b>Over 123046 legal queries answered by our top experts</b></h5> -->
-          <?php foreach ($advicecategory as $data) {
-          ?>
-            <div class="col-md-6">
-              <ul class="footer-ul">
+                    </div>
+                </div>
+                <div class="row sr-border mt-4 ">
+                    <!-- <h5 class="sa-color2 mb-3"><b>Over 123046 legal queries answered by our top experts</b></h5> -->
+                    <?php foreach ($allQuerys as $data) {
+                    ?>
+                        <div class="col-md-6">
+                            <ul class="footer-ul">
 
-                <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
+                                <li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $data->id ?>"><i class="fa fa-arrow-right"></i> {{ucfirst($data->title)}}</a></li>
 
-              </ul>
-            </div>
-          <?php } ?>
-          <div class="col-md-6">
-            <ul class="footer-ul">
-              <!-- <li><a href="#"><i class="fa fa-arrow-right"></i> Divorce</a></li>
+                            </ul>
+                        </div>
+                    <?php } ?>
+                    <div class="col-md-6">
+                        <ul class="footer-ul">
+                            <!-- <li><a href="#"><i class="fa fa-arrow-right"></i> Divorce</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Medical Negligence</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Landlord/Tenant</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Property</a></li>
@@ -47,12 +47,12 @@
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Landlord/Tenant</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Property</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Motor Accident</a></li> -->
-            </ul>
-          </div>
-        </div>
+                        </ul>
+                    </div>
+                </div>
 
 
-        <!-- <div class="row sr-border2 sr-res-card mt-5">
+                <!-- <div class="row sr-border2 sr-res-card mt-5">
           <h5 class="sa-color2 mb-3"><b>Talk to a Lawyer</b></h5>
           <p>Just fill in your details to immediately get the best matched lawyers for legal issues. Every lawyer profile has been verified, and you can contact them within minutes.</p>
           <div class="col-md-12 mt-1">
@@ -94,7 +94,7 @@
         </div> -->
 
 
-        <!-- <div class="row sr-border mt-4 ">
+                <!-- <div class="row sr-border mt-4 ">
           <h5 class="sa-color2 mb-3">Free Legal Advice from Top Rated Lawyers</h5>
           <p>
             Need instant solution to your legal problem? You can do it with ’s free legal advice service. You can post your query related to any legal matter online and get it answered instantly by top advocates in India for free.
@@ -112,8 +112,8 @@
           </p>
 
         </div> -->
-        <!-- <h5 class="sa-color2 mt-4 mb-3">Latest legal answers</h5> -->
-        <!-- <div class="col-md-12 p-0">
+                <!-- <h5 class="sa-color2 mt-4 mb-3">Latest legal answers</h5> -->
+                <!-- <div class="col-md-12 p-0">
           <div class="mitem3">
             <div class="sr-card">
               <h5 class="sr-title1 d-flex" style="color:orange;font-size:16px; font-weight:bold;">
@@ -127,7 +127,7 @@
             </div>
           </div>
         </div> -->
-        <!-- <div class="col-md-12 p-0">
+                <!-- <div class="col-md-12 p-0">
           <div class="mitem3">
             <div class="sr-card">
               <h5 class="sr-title1 d-flex" style="color:orange;font-size:16px; font-weight:bold;">
@@ -141,7 +141,7 @@
             </div>
           </div>
         </div> -->
-        <!-- <div class="col-md-12 p-0">
+                <!-- <div class="col-md-12 p-0">
           <div class="mitem3">
             <div class="sr-card">
               <h5 class="sr-title1 d-flex" style="color:orange;font-size:16px; font-weight:bold;">
@@ -169,7 +169,7 @@
             </div>
           </div>
         </div> -->
-        <!-- <div class="col-md-12 p-0">
+                <!-- <div class="col-md-12 p-0">
           <div class="mitem3">
             <div class="sr-card">
               <h5 class="sr-title1 d-flex" style="color:orange;font-size:16px; font-weight:bold;">
@@ -183,34 +183,34 @@
             </div>
           </div>
         </div> -->
-      </div>
-      <!-- <div class=" col-md-5 pl-4">
-        <div class="mitem text-center">
-          <div class="sr-card ">
-            <img src="{{asset('fronted/images/user.png')}}">
-            <h5 class="mt-4 sr-title">Googling your legal issue online?</h5>
-          </div>
-          <p>The internet is not a lawyer and neither are you.
-            <br />
-            Talk to a real lawyer about your legal issue.
-          </p>
-          <a href="<?php echo URL::to('/') ?>/legal-enquiry">
-            <button type="submit" class="btn btn-outline-primary min-w120 ">Find a Lawyer Now</button></a>
+            </div>
+            <!-- <div class=" col-md-5 pl-4">
+                <div class="mitem text-center">
+                    <div class="sr-card ">
+                        <img src="{{asset('fronted/images/user.png')}}">
+                        <h5 class="mt-4 sr-title">Googling your legal issue online?</h5>
+                    </div>
+                    <p>The internet is not a lawyer and neither are you.
+                        <br />
+                        Talk to a real lawyer about your legal issue.
+                    </p>
+                    <a href="<?php echo URL::to('/') ?>/legal-enquiry">
+                        <button type="submit" class="btn btn-outline-primary min-w120 ">Find a Lawyer Now</button></a>
+                </div>
+
+
+            </div> -->
         </div>
 
 
-      </div> -->
-    </div>
 
 
-
-
-    <div class="row mb-5">
-      <div class="col-md-12">
-        <div>
-          <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
-        </div>
-        <!-- <div class="row mt-5 sr-c ">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div>
+                    <!-- <h2 class="sr-t">50,000 People Choose  Every Day</h2> -->
+                </div>
+                <!-- <div class="row mt-5 sr-c ">
           <div class="col-md-4 text-center">
             <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
 
@@ -236,8 +236,8 @@
 
           </div>
         </div> -->
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 @include('fronted/include/footer')
