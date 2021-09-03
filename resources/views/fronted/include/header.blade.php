@@ -39,6 +39,8 @@ $login = Auth::user();
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>
 						</li>
 						@endif
+						@elseif(isset($login['step']) && $login->user_type == '2')
+
 						@else
 						<li class="nav-item" id="practice">
 							<a class="nav-link" href="<?php echo URL::to('/'); ?>/lawyer/enrollment">Adv.Login</a>

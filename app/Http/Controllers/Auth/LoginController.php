@@ -41,7 +41,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-   
+
     public function logout(Request $request)
     {
         $auth = Auth::user();
@@ -50,11 +50,11 @@ class LoginController extends Controller
                 Auth::logout();
                 Session::flash('success', 'Successfully Logged Out');
                 return redirect('/admin/login');
-            }elseif ($auth->user_type == 2) {
+            } elseif ($auth->user_type == 2) {
                 Auth::logout();
                 Session::flash('success', 'Successfully Logged Out');
                 return redirect('/login');
-            }elseif ($auth->user_type == 3) {
+            } elseif ($auth->user_type == 3) {
                 Auth::logout();
                 Session::flash('success', 'Successfully Logged Out');
                 return redirect('/lawyer/login');
@@ -67,7 +67,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $input = $request->all();
-        
+
         // $this->validate($request, [
         //     'email' => 'required|email',
         //     'password' => 'required',
@@ -81,15 +81,10 @@ class LoginController extends Controller
             return redirect("/admin/login")
                 ->withErrors($validator, 'users_error')
                 ->withInput();
-        } 
-        else 
-        {
-            if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password'], 'status' => 1, 'user_type' => 1))) 
-            {
+        } else {
+            if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password'], 'status' => 1, 'user_type' => 1))) {
                 return redirect('/admin/home')->with('success', 'Successfully Logged In');
-            } 
-            else 
-            {
+            } else {
                 Session::flash('error', 'Please enter a valid email and password');
                 return redirect()->back();
             }
@@ -99,7 +94,7 @@ class LoginController extends Controller
     {
         $request->validate(['email' => 'required|email']);
         if ($request) {
-            
+
             return view('reset');
         }
     }
