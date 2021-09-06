@@ -410,10 +410,14 @@ class HomeController extends Controller
     public function myAccount()
     {
         $auth = Auth::user();
-        $uid = $auth->id;
-        $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
-        $this->data['title'] = "My Account";
-        return view('fronted.myaccount', $this->data);
+        if (isset($auth)) {
+            $uid = $auth->id;
+            $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
+            $this->data['title'] = "My Account";
+            return view('fronted.myaccount', $this->data);
+        } else {
+            return view('fronted.customer_login', $this->data);
+        }
     }
     public function allQuestions()
     {

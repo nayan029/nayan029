@@ -124,7 +124,6 @@
                         <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" />
                       <?php } ?>
 
-                      <!-- </div> -->
 
                     </div>
                     <!-- <div class="form-group row">

@@ -8,6 +8,30 @@
       <div class="col-md-12 ">
         <div class="row mt-2 ">
           <div class="col-md-12">
+            <!-- user account -->
+            <div class="sa-application">
+              <a href="{{URL::to('/')}}/my-profile">
+                <!-- {{count($my_questions)}} -->
+                <h5 class="sa-color2 mb-3">My Profile </h5>
+              </a>
+            </div>
+
+            <div class="mitem3">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="{{URL::to('/')}}/my-profile">
+                    <img src="{{asset('fronted/images//user.png')}}">
+                  </a>
+                </div>
+                <div class="col-md-8 mt-3 pl-0">
+                  <a href="{{URL::to('/')}}/my-profile">
+                    <p class="fs-20">View your profile</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- user account -->
+
             <div class="sa-application">
               <a href="javascript:void(0)">
                 <h5 class="sa-color2 mb-3">My Bookings (0) </h5>

@@ -38,10 +38,11 @@ class reviewrating extends Authenticatable
     public static function getVarifyRecords()
     {
         $TEMP = "review_rating.status = '1'";
-        $query = reviewrating::select('review_rating.*', 'users.lname as lawyer_name')
+        $query = reviewrating::select('review_rating.*', 'users.lname as lawyer_name', 'users.profileimage as profileimage')
             ->leftjoin('users', function ($join) {
-                $join->on('review_rating.lawyer_id', '=', 'users.id');
+                $join->on('review_rating.user_id', '=', 'users.id');
             })
+
             ->whereRaw($TEMP)
             ->orderBy("review_rating.id", 'desc')
             ->limit('6')

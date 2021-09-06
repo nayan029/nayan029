@@ -495,7 +495,14 @@
 				<p>{{$data->review}}</p>
 				<hr>
 				<div class="bottom">
+					<!-- image -->
+					@if($data->profileimage)
+					<img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$data->profileimage}}" class="site-stg-img site-stg-img2 sr-image" id="blah" />
+					@else
 					<img src="{{asset('fronted/images/Ellipse16.png')}}">
+					@endif
+
+					<!-- image -->
 					<div>
 						<h5>{{$data->user_name}}</h5>
 						<h6>{{date('d-m-Y', strtotime($data->created_at));}}</h6>

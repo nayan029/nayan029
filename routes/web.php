@@ -277,6 +277,7 @@ Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileControl
 
 //-----------------------------------------user account---------------------------------------------
 Route::get('/my-account', [FrontedHomeController::class, 'myAccount']);
+Route::resource('/my-profile', 'App\Http\Controllers\fronted\userProfileController');
 Route::get('/account/all-questions', [FrontedHomeController::class, 'allQuestions']);
 //-----------------------------------------user account---------------------------------------------
 
