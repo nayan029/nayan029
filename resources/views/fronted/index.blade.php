@@ -499,7 +499,7 @@
 					@if($data->profileimage)
 					<img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$data->profileimage}}" class="site-stg-img site-stg-img2 sr-image" id="blah" />
 					@else
-					<img src="{{asset('fronted/images/Ellipse16.png')}}">
+					<img style="border: 1px solid #ccc;" width="58px" height="58px" src="{{asset('fronted/images/advocate-vibhor-agarwal.jpg')}}" class="site-stg-img site-stg-img2 sr-image">
 					@endif
 
 					<!-- image -->

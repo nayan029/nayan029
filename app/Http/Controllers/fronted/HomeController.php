@@ -475,6 +475,7 @@ class HomeController extends Controller
     public function legalQueryDesc(Request $request)
     {
         $id = $request->id;
+        $this->data['title'] = "Legal Query";
         $this->data['dataLegalQuery'] = MainLegalQuery::where('id', $id)->where('status', '1')->first();
         $this->data['description'] = querySubCategory::getBYQueryById($id);
         return view('fronted.legalQuery', $this->data);
@@ -494,13 +495,13 @@ class HomeController extends Controller
     }
     public function allNotes(Request $request)
     {
-        $this->data['title'] = "Research Papers";
+        $this->data['title'] = "Notes";
         $this->data['allQuerys'] = MainLegalQuery::getallNotes();
         return view('fronted.allResearchPapers', $this->data);
     }
     public function allBarsAct(Request $request)
     {
-        $this->data['title'] = "Research Papers";
+        $this->data['title'] = "Bare Acts";
         $this->data['allQuerys'] = MainLegalQuery::getallBareAct();
         return view('fronted.allResearchPapers', $this->data);
     }
