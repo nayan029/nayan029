@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -51,7 +51,7 @@
                                         <td>{{$i}}</td>
                                         <td>{{$data->lawarea}}</td>
                                         <td>{{$data->city}}</td>
-                                        <td>{{$data->subject}}</td>
+                                        <td> {{substr($data->subject,0, 40)}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->email}}</td>
                                         <td>{{$data->mobile}}</td>

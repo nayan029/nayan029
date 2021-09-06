@@ -24,8 +24,8 @@
                         </div>
                         <div class="col-md-12 d-flex justify-content-center">
                             <div class="text-center nametxt">
-                                <p class="sa-color2 mb-1">@if(isset($user_login->lname)){{$user_login->lname}}@else{{"N/A"}}@endif</p>
-                                <p class="mb-1">@if(isset($user_login->nicno)){{$user_login->nicno}}@else{{"N/A"}}@endif</p>
+                                <p class="sa-color2 mb-1">@if(isset($user_login->name)){{$user_login->name}}@else{{"N/A"}}@endif</p>
+                                <p class="mb-1">@if(isset($user_login->username)){{$user_login->username}}@else{{"N/A"}}@endif</p>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -73,6 +73,10 @@
 
                             <div class="tab-pane fade active show" id="pills-personal" role="tabpanel" aria-labelledby="pills-pro-personal-tab">
                                 <div class="row">
+                                    <div class="col-md-12 sa-pb">
+                                        <h5 class="experience-title">Personal Information</h5>
+                                    </div>
+
                                     <div class="col-md-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Experience</label>
                                         <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" value='@if(isset($user_login->experience)){{$user_login->experience}}@else{{"N/A"}}@endif' placeholder="Enter Experience">
@@ -105,85 +109,12 @@
                                         <span id="language_error" style="color: red;"></span>
 
                                     </div>
-                                    <div class="col-md-6 sa-pb">
+                                    <!-- <div class="col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Price</label>
                                         <input type="number" name="price" class="form-control sa-form-font half-border-radius" id="price" value='@if(isset($user_login->price)){{$user_login->price}}@else{{"N/A"}}@endif' placeholder="Enter price">
                                         <span id="price_error" style="color: red;"></span>
-                                    </div>
-                                    <div class="col-md-12 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Practice areas</label>
-                                        <textarea name="about" class="form-control sa-form-font half-border-radius" id="about_data" placeholder="Practice areas">{{$user_login->about}}</textarea>
-                                    </div>
-                                    <span id="about_error" style="color: red;"></span>
+                                    </div> -->
 
-                                    <div class="col-md-12 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label" title="Basic example" multiple="multiple" name="example-basic">Specialization</label>
-                                        <div class="row sr-pad1">
-
-
-                                            <div class="col-md-4">
-
-                                                <div class="pm-check " id="catcheck">
-
-
-                                                    <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
-                                                        <option value="">Select Specialization</option>
-                                                        @foreach ($category as $data)
-                                                        <option @if(in_array($data->id, $user_category)) {{"selected"}} @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <span id="specialization_error" style="color: red;"></span>
-                                            </div>
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
-                                        <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->basic_fees)){{$user_login->basic_fees}}@else{{"N/A"}}@endif'>
-                                        <span id="basicFees_error" style="color:red"></span>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per fees)</label><span style="color: red;"> *</span>
-                                        <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->fees)){{$user_login->fees}}@else{{"N/A"}}@endif'>
-                                        <span id="fees_error" style="color:red"></span>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1" class="sa-color2">Full Legal Representation</label><span style="color: red;"> *</span>
-                                        <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->full_legal_fees)){{$user_login->full_legal_fees}}@else{{"N/A"}}@endif'>
-                                        <span id="fullLegal_error" style="color:red"></span>
-                                    </div>
-
-                                    
-
-                                    <div class="col-md-12 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Courts</label>
-
-                                        <div class="form-group">
-                                            <div class="row sr-pad1">
-                                                @foreach ($court as $data)
-                                                <div class="col-md-4">
-                                                    <div class="pm-check " id="courtcheck">
-                                                        <input class="form-check-input court" @if(in_array($data->id, $user_court)) {{"checked"}} @endif name="court[]" type="checkbox" value="{{$data->id}}" id="{{ $data->name}}">
-                                                        <span class="real-checkbox"></span>
-                                                        <label class="form-check-label" for="{{$data->name}}">
-                                                            {{$data->name}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-
-                                            </div>
-                                            <span id="court_error" style="color:red"></span>
-                                        </div>
-
-                                    </div>
                                     <div class="col-md-4 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Degree Name</label>
                                         <input type="text" name="degreename" class="form-control sa-form-font half-border-radius" id="degreename" value='@if(isset($user_login->frollno)){{$user_login->frollno}}@else{{"N/A"}}@endif' placeholder="Degree Name" maxlength="100">
@@ -223,6 +154,95 @@
                                         <span id="sinstitution_error" style="color: red;"></span>
                                     </div>
                                     @endif
+                                    
+                                    <div class="col-md-12 sa-pb">
+                                        <h5 class=""></h5>
+                                    </div>
+                                    <div class="col-md-12 sa-pb">
+                                        <h5 class="experience-title">Specialization</h5>
+                                    </div>
+
+                                    <div class="col-md-12 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Practice areas</label>
+                                        <textarea name="about" class="form-control sa-form-font half-border-radius" id="about_data" placeholder="Practice areas">{{$user_login->about}}</textarea>
+                                    </div>
+                                    <span id="about_error" style="color: red;"></span>
+
+                                    <div class="col-md-12 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label" title="Basic example" multiple="multiple" name="example-basic">Specialization</label>
+                                        <div class="row sr-pad1">
+
+
+                                            <div class="col-md-4">
+
+                                                <div class="pm-check " id="catcheck">
+
+
+                                                    <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
+                                                        <option value="">Select Specialization</option>
+                                                        @foreach ($category as $data)
+                                                        <option @if(in_array($data->id, $user_category)) {{"selected"}} @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <span id="specialization_error" style="color: red;"></span>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
+                                            <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->basic_fees)){{$user_login->basic_fees}}@else{{"N/A"}}@endif'>
+                                            <span id="basicFees_error" style="color:red"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees (By per fees)</label><span style="color: red;"> *</span>
+                                            <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->fees)){{$user_login->fees}}@else{{"N/A"}}@endif'>
+                                            <span id="fees_error" style="color:red"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 sa-pb">
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1" class="sa-color2">Full Legal Representation</label><span style="color: red;"> *</span>
+                                            <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->full_legal_fees)){{$user_login->full_legal_fees}}@else{{"N/A"}}@endif'>
+                                            <span id="fullLegal_error" style="color:red"></span>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <div class="col-md-12 sa-pb">
+                                        <label for="inputName" class="form-label sa-color2 sa-label">Courts</label>
+
+                                        <div class="form-group">
+                                            <div class="row sr-pad1">
+                                                @foreach ($court as $data)
+                                                <div class="col-md-4">
+                                                    <div class="pm-check " id="courtcheck">
+                                                        <input class="form-check-input court" @if(in_array($data->id, $user_court)) {{"checked"}} @endif name="court[]" type="checkbox" value="{{$data->id}}" id="{{ $data->name}}">
+                                                        <span class="real-checkbox"></span>
+                                                        <label class="form-check-label" for="{{$data->name}}">
+                                                            {{$data->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+
+                                            </div>
+                                            <span id="court_error" style="color:red"></span>
+                                        </div>
+
+                                    </div>
+                                    
 
                                 </div>
 

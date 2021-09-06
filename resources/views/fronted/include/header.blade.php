@@ -225,7 +225,7 @@ $login = Auth::user();
 														// echo $keyGuides->id;
 													?>
 
-														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}} </a></li>
+														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}} Matters</a></li>
 													<?php  } ?>
 													<li>
 													<li>
@@ -256,7 +256,7 @@ $login = Auth::user();
 													foreach ($listLegalGuides as $keyGuides) {
 
 													?>
-														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
+														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}} Matters</a></li>
 													<?php  } ?>
 													<li>
 

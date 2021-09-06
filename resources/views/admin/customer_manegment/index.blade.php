@@ -52,7 +52,7 @@
                                 <tbody>
                                     <?php
                                     // $i = 1;
-                                    $i = ($getusers->currentpage()-1)* $getusers->perpage() + 1;
+                                    $i = ($getusers->currentpage() - 1) * $getusers->perpage() + 1;
 
                                     foreach ($getusers as $data) {
                                         if ($data->status == 1) {
@@ -77,7 +77,13 @@
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td><img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" alt="image"></td>
+                                            <td>
+                                                @if(isset($data->profileimage))
+                                                <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$data->profileimage}}" alt="image">
+                                                @else
+                                                <img style="border: 1px solid #ccc;" width="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" alt="image">
+                                                @endif
+                                            </td>
                                             <td>{{$data->name}}</td>
                                             <td>{{$data->username}}</td>
                                             <td>{{$data->email}}</td>
@@ -125,8 +131,8 @@
 </div>
 @include('admin/include/footer')
 <script>
-    $(document).ready(function () {
-        
+    $(document).ready(function() {
+
         // $('#customer_menu').addClass('nav-item active');
         // $('#master_menu').addClass('nav-link active');
         // $('#master_open').addClass('menu-open active');

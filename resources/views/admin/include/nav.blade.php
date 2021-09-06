@@ -254,13 +254,12 @@
 
 
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/adviceQuerys" class="nav-link" id="advice_query">
-                <!-- <i class="far fa-circle nav-icon"></i> -->
                 <i class="fas fa-question nav-icon"></i>
                 <p>Legal Querys</p>
               </a>
-            </li>
+            </li> -->
             <!-- <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/guides-articles" class="nav-link" id="guide_article">
                 <i class="fas fa-newspaper nav-icon"></i>
