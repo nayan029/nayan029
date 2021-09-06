@@ -42,7 +42,6 @@ Route::get('/verify_otp_view', [App\Http\Controllers\admin\ForgotPasswordControl
 Route::get('/reset_password_view/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'reset_password_view']);
 Route::post('/reset_password/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'reset_password']);
 //----------------------------Reset Password======================
-Route::get('/test', [LoginController::class, 'test']);
 Route::get('/admin/password/email', [LoginController::class, 'chekemail']);
 
 Auth::routes();

@@ -34,6 +34,11 @@ class enquiryController extends Controller
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         return view('admin.enquiry.index', $this->data);
     }
+    public function edit($id)
+    {
+        $this->data['data'] = enquiry::getrecordbyid($id);
+        return view('admin.enquiry.edit', $this->data);
+    }
     public function update(Request $request, $id)
     {
         // return $request->all();

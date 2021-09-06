@@ -11,7 +11,7 @@ class enquiry extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'enquiry';
-    protected $fillable = ['name', 'email', 'mobile','feedback', 'status','created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['name', 'email', 'mobile', 'feedback', 'status', 'created_at', 'updated_at', 'deleted_at'];
 
     public static function contactlistsearch($name)
     {
@@ -31,6 +31,11 @@ class enquiry extends Authenticatable
             $query = $query->whereRaw($temp);
         }
         $query = $query->paginate(10);
+        return $query;
+    }
+    public static function getRecordById($id)
+    {
+        $query = enquiry::where('id', $id)->where('deleted_at', NULL)->first();
         return $query;
     }
 }
