@@ -12,7 +12,7 @@ class MainLegalQuery extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'main_legal_query';
-    protected $fillable = ['id', 'legal_query_type_id', 'title', 'type_name', 'description', 'status', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id', 'legal_query_type_id', 'title', 'type_name', 'description', 'document', 'status', 'created_at', 'updated_at', 'deleted_at'];
 
     public static function getAllData()
     {

@@ -26,7 +26,7 @@ class queryCategoryController extends Controller
     }
     public function index()
     {
-        $this->data['title'] = "Query Category";
+        $this->data['title'] = "Legal Query";
         $auth = Auth::user();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
@@ -37,7 +37,7 @@ class queryCategoryController extends Controller
     public function addLegalQuery(Request $request)
     {
         $auth = Auth::user();
-        $this->data['title'] = "Add Query Category";
+        $this->data['title'] = "Add Legal Query";
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
 
@@ -49,7 +49,9 @@ class queryCategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'query_id' => 'required',
             'title' => 'required',
-            'type' => 'required',
+            // 'type' => 'required',
+            'description' => 'required',
+            'document' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -63,8 +65,18 @@ class queryCategoryController extends Controller
 
             $input['legal_query_type_id'] = $request->query_id;
             $input['title'] = $request->title;
-            $input['type_name'] = $request->type;
+            // $input['type_name'] = $request->type;
             $input['created_at'] = date('Y-m-d H:i:s');
+
+            $input['description'] = $request->description;
+
+            if ($request->hasfile('document')) {
+                $file = $request->file('document');
+                $name = $file->getClientOriginalName();
+                $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                $file->move(public_path() . '/uploads/document/', $name);
+                $input['document'] = $name;
+            }
 
             $inser_id = new MainLegalQuery($input);
             $inser_id->save();
@@ -83,7 +95,7 @@ class queryCategoryController extends Controller
     public function edit(Request $request, $id)
     {
         $auth = Auth::user();
-        $this->data['title'] = "Edit Query Category";
+        $this->data['title'] = "Edit Legal Query";
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['mainLegalQueryType'] = MainLegalQueryType::mainLegalTypeList();
         $this->data['data'] = MainLegalQuery::where('id', $id)->where('status', 1)->first();
@@ -93,11 +105,12 @@ class queryCategoryController extends Controller
 
     public function updateLegalQuery(Request $request, $id)
     {
+        // return $request->all();
         $validator = Validator::make($request->all(), [
 
             'title' => 'required',
-            'type' => 'required',
-
+            // 'type' => 'required',
+            'description' => 'required',
         ]);
 
 
@@ -111,8 +124,16 @@ class queryCategoryController extends Controller
 
             $input['legal_query_type_id'] = $request->query_id;
             $input['title'] = $request->title;
-            $input['type_name'] = $request->type;
-            // $input['description'] = $request->description;
+            // $input['type_name'] = $request->type;
+            $input['description'] = $request->description;
+
+            if ($request->hasfile('document')) {
+                $file = $request->file('document');
+                $name = $file->getClientOriginalName();
+                $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                $file->move(public_path() . '/uploads/document/', $name);
+                $input['document'] = $name;
+            }
             $input['updated_at'] = date('Y-m-d H:i:s');
 
             $category = MainLegalQuery::find($id);

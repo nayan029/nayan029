@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small>Legal Query Category</small></h1>
+                    <h1 class="m-0 text-dark"><small>Legal Query </small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
-                        <li class="breadcrumb-item">Legal Query Category</li>
+                        <li class="breadcrumb-item">Legal Query </li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,7 +30,7 @@
                             </button> -->
                             <a href="<?php echo URL::to('/'); ?>/admin/addLegalQuery"><button type="button" class="sa-btn-add float-right p-2">
                                     Add
-                            </button></a>
+                                </button></a>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +89,7 @@
                                         <th>Sr No</th>
                                         <th>Legal Query Name</th>
                                         <th>Title</th>
-                                        <th>Type</th>
+                                        <!-- <th>Type</th> -->
                                         <th>Create Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -107,13 +107,12 @@
                                             <td>{{$i}}</td>
                                             @php
 
-                                                $mainLegalQueryName = DB::table('main_legal_query_type')->where('id',$data->legal_query_type_id)->where('status','1')->first();
+                                            $mainLegalQueryName = DB::table('main_legal_query_type')->where('id',$data->legal_query_type_id)->where('status','1')->first();
 
                                             @endphp
 
                                             <td> <?php echo ucfirst($mainLegalQueryName->title); ?> </td>
                                             <td> <?php echo ucfirst($data->title); ?> </td>
-                                            <td> <?php echo ucfirst($data->type_name); ?> </td>
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                             </td>
@@ -122,7 +121,7 @@
                                                  -->
                                                 <a title="Edit" href="<?php echo URL::to('/'); ?>/admin/query-category/{{$data->id}}/edit"><i class="fas fa-edit mr-2"></i></a>
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="openPopup('{{$data->id}}')"></i></a>
-                                                <a title="Details" href="{{URL::to('/')}}/admin/query-category/{{$data->id}}" class="sa-icons active"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                                                <!-- <a title="Details" href="{{URL::to('/')}}/admin/query-category/{{$data->id}}" class="sa-icons active"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a> -->
 
                                             </td>
                                         </tr>
@@ -165,9 +164,6 @@
 <script>
     $(document).ready(function() {
 
-        $('#category_menu').addClass('nav-item active');
-        $('#categorymaster_menu').addClass('nav-link active');
-        $('#categorymaster_open').addClass('menu-open active');
         $('#lawyer_cat').addClass('active mm-active');
     });
 </script>

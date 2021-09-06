@@ -209,14 +209,6 @@
                   </a>
                 </li>
               </ul>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?php echo URL::to('/'); ?>/admin/query-category" class="nav-link" id="lawyer_cat">
-                    <i class="fas fa-th nav-icon"></i>
-                    <p>Legal Query Category</p>
-                  </a>
-                </li>
-              </ul>
 
             </li>
             <li id="customer_menu" class="nav-item">
@@ -286,6 +278,16 @@
                 <p>Legal Enquiry</p>
               </a>
             </li>
+            <!-- leagl query -->
+            <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/query-category" class="nav-link" id="lawyer_cat">
+                <i class="fas fa-th nav-icon"></i>
+                <p>Legal Query </p>
+              </a>
+            </li>
+            <!-- legal query -->
+
+
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/free-questions" class="nav-link" id="freequestions">
                 <i class="fas fa-question nav-icon"></i>

@@ -3,12 +3,19 @@
 <div class="header-title">
   <div class="inner">
     <div class="container">
-      <div class="sa-application">
+
+      <div class="sa-application" style="
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;">
         <h2 class="sa-color1">{{$dataLegalQuery->title}}</h2>
+        <a download="{{$dataLegalQuery->document}}" class="btn btn-primary" target="_blank" href="{{URL::to('/')}}/uploads/document/{{$dataLegalQuery->document}}"><i class="fas fa-download"></i> Download</a>
 
       </div>
+
     </div>
   </div>
+</div>
 </div>
 
 
@@ -18,13 +25,11 @@
       <div class="col-md-12 ">
         <div class="row sr-border2 sr-res-card">
           <div class="col-md-12 mt-1">
-            @foreach($description as $data)
             <div class="hindum-arriage-act">
-              <i class="fa fa-arrow-right"></i>
-              <p>{{($data->description)}}</p>
-               <a download="{{$data->document}}" target="_blank" href="{{URL::to('/')}}/uploads/document/{{$data->document}}"><i class="fas fa-download"></i></a> 
+              <!-- <i class="fa fa-arrow-right"></i> -->
+              <div class="ck-txt">{!!$dataLegalQuery->description!!}</div>
+              <!-- <a download="{{$dataLegalQuery->document}}" target="_blank" href="{{URL::to('/')}}/uploads/document/{{$dataLegalQuery->document}}"><i class="fas fa-download"></i></a> -->
             </div>
-            @endforeach
 
           </div>
         </div>

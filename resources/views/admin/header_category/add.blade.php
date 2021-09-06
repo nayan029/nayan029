@@ -49,21 +49,30 @@
                                         <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('title'); ?></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
+                                <!-- <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail">Type</label><span style="color: red;">*</span>
                                         <input type="text" maxlength="250" class="form-control" id="type" name="type" placeholder="Type">
                                         <span style="color:red;" id="type_error"><?php echo $errors->profile_error->first('type'); ?></span>
                                     </div>
-                                </div>
-                                <!-- <div class="col-sm-12">
+                                </div> -->
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputContactNo">Description</label><span style="color: red;">*</span>
                                         <textarea class="form-control" id="description" name="description" placeholder="Description">
                                             </textarea>
                                         <span style="color:red;" id="details_error"><?php echo $errors->profile_error->first('description'); ?></span>
                                     </div>
-                                </div> -->
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEduction">Document</label><span style="color: red;">*</span>
+                                        <input type="file" class="form-control" id="document" name="document">
+                                        <span style="color:red;" id="document_error">{{ $errors->first('discription'); }}</span>
+                                    </div>
+                                </div>
+
                             </div>
                     </div>
                     <div class="row">
@@ -82,9 +91,6 @@
 </div>
 @include('admin/include/footer')
 <script>
-    $('#category_menu').addClass('nav-item active');
-    $('#categorymaster_menu').addClass('nav-link active');
-    $('#categorymaster_open').addClass('menu-open active');
 
     $('#lawyer_cat').addClass('active mm-active');
 
@@ -97,9 +103,11 @@
     $('#main_form').submit(function(e) {
 
         var title = $('#title').val();
-        var type = $('#type').val();
+        // var type = $('#type').val();
         var details = $('#details').val();
-        // var description = CKEDITOR.instances.description.getData();
+        var description = CKEDITOR.instances.description.getData();
+        var documents = $('#document').val();
+
 
         var cnt = 0;
         var f = 0;
@@ -107,6 +115,8 @@
         $('#title_error').html("");
         $('#type_error').html("");
         $('#details_error').html("");
+        $('#document_error').html("");
+
 
 
         if (title.trim() == '') {
@@ -117,23 +127,37 @@
                 $('#title').focus();
             }
         }
-        if (type.trim() == '') {
-            $('#type_error').html("Please enter type");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#type').focus();
-            }
-        }
-
-        // if (description.trim() == '') {
-        //     $('#details_error').html("Please enter description");
+        // if (type.trim() == '') {
+        //     $('#type_error').html("Please enter type");
         //     cnt = 1;
         //     f++;
         //     if (f == 1) {
-        //         $('#description').focus();
+        //         $('#type').focus();
         //     }
         // }
+
+        if (description.trim() == '') {
+            $('#details_error').html("Please enter description");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#description').focus();
+            }
+        }
+        if (documents.trim() == '') {
+            $('#document_error').html("Please select document");
+            cnt = 1;
+        }
+        if (documents) {
+            var formData = new FormData();
+            var file = document.getElementById('document').files[0];
+            formData.append("Filedata", file);
+            var t = file.type.split('/').pop().toLowerCase();
+            if (t != "docx" && t != "pdf" && t != "doc") {
+                $('#document_error').html("Only PDF, DOC and DOCX document are allowed");
+                cnt = 1;
+            }
+        }
         if (cnt == 1) {
             return false;
         } else {
@@ -141,5 +165,5 @@
         }
 
     })
-    // CKEDITOR.replace('description');
+    CKEDITOR.replace('description');
 </script>
