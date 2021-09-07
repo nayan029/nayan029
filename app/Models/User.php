@@ -156,6 +156,7 @@ class User extends Authenticatable
             ->where('users.user_type', '=', '3')
             ->where('users.status', '1')
             ->where('users.email_verify', '=', '1')
+            ->groupBY('lawyer_enrollment_category.userid')
             ->orderBy("users.id", 'desc');
 
         // $query =  User::where('user_type', 3)->where('status','1')->orderBy('id', 'desc');

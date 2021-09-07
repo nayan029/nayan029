@@ -52,7 +52,7 @@ class legalenquiryController extends Controller
     public function store(Request $request)
     {
         // return $request->all();  die;
-
+        $loginDetail = Auth::user();
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'phone' => 'required',
@@ -66,14 +66,16 @@ class legalenquiryController extends Controller
         } else {
 
 
-            $insert_array = array('issue_id'=>request('service_id'),
-                                  'subissue_id'=>request('sub_service_id'),
-                                  'name'=>request('name'),
-                                  'mobile'=>request('phone'),
-                                  'email'=>request('email'),
-                                  'other_info'=>request('otherinfo'),
-                                  'created_at'=>date('Y-m-d H:i:s'),
-                                );
+            $insert_array = array(
+                'user_id' => $loginDetail->id,
+                'issue_id' => request('service_id'),
+                'subissue_id' => request('sub_service_id'),
+                'name' => request('name'),
+                'mobile' => request('phone'),
+                'email' => request('email'),
+                'other_info' => request('otherinfo'),
+                'created_at' => date('Y-m-d H:i:s'),
+            );
             // // $input = $request->all();
             // $input['issue_id'] = $request->issue_id;
             // $input['subissue_id'] = $request->subissueid;
@@ -89,13 +91,13 @@ class legalenquiryController extends Controller
             $inser_id->save();
             $inser_id = $inser_id->id;
         }
-
-        if ($inser_id) {
-            Session::flash('success', 'Successfully Inserted');
-            return redirect()->back();
-        } else {
-            Session::flash('error', 'Sorry, something went wrong. Please try again');
-            return redirect()->back();
-        }
+        exit;
+        // if ($inser_id) {
+        //     Session::flash('success', 'Successfully Inserted');
+        //     return redirect()->back();
+        // } else {
+        //     Session::flash('error', 'Sorry, something went wrong. Please try again');
+        //     return redirect()->back();
+        // }
     }
 }

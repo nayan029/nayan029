@@ -20,6 +20,7 @@
             @php $i = 1; @endphp
             @foreach($enquiry_data as $data)
             <tr>
+                <!-- {{$data->lawyer_id}} -->
                 <!-- <td class="sr-p-white text-white">@if(isset($data->name)){{$data->name}}@else{{"N/A"}}@endif</td> -->
                 <!-- <td class="sr-p-white text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif </td> -->
                 <td class="sr-p-white sr-b-right text-white">{{$i}}</td>

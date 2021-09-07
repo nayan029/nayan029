@@ -434,17 +434,18 @@ class HomeController extends Controller
     }
     public function enquiryView($id)
     {
+        // return $id;
         $auth = Auth::user();
         $uid = $auth->id;
-        $this->data['enquiryUserId'] = $enquiryUserId = legalenquiry::where('id',$id)->whereNull('deleted_at')->first();
+        $this->data['enquiryUserId'] = $enquiryUserId = legalenquiry::where('id', $id)->whereNull('deleted_at')->first();
         $this->data['title'] = "My Account";
-        $this->data['getActivelawyer'] = User::getActivelawyertdataview($enquiryUserId->user_id); 
+        $this->data['getActivelawyer'] = User::getActivelawyertdataview($enquiryUserId->lawyer_id);
 
 
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($enquiryUserId->lawyer_id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($enquiryUserId->lawyer_id);
         $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
-       
+
 
         return view('fronted.enquiry_view', $this->data);
     }
@@ -532,7 +533,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'fees' => 'required',
-            
+
         ]);
 
 
@@ -548,8 +549,8 @@ class HomeController extends Controller
                 'user_id' => $request->customer_id,
                 'status' => 1,
             );
-            
-           
+
+
             $userOrderData = Order::create($input);
 
             if ($userOrderData) {

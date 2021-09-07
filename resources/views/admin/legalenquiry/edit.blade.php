@@ -26,32 +26,32 @@
                     <div class="card-body">
                         <h4>Legal Enquiry Detail</h4>
                         <table id="example2" class="table table-bordered table-hover">
-                              
+
                             <tr>
                                 <th>Issue Name</th>
-                                <td>{{$data->issue_name ? $data->issue_name : '-'}}</td>
+                                <td>{{$enquirydata->issue_name ? $enquirydata->issue_name : '-'}} - {{$enquirydata->subissue_name ? $enquirydata->subissue_name : '-'}}</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <th>Subissue Name</th>
-                                <td>{{$data->subissue_name ? $data->subissue_name : '-'}}</td>
-                            </tr>
+                                <td>{{$enquirydata->subissue_name ? $enquirydata->subissue_name : '-'}}</td>
+                            </tr> -->
                             <tr>
                                 <th>Name</th>
-                                <td>{{$data->name ? $data->name : '-'}}</td>
+                                <td>{{$enquirydata->name ? $enquirydata->name : '-'}}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td>{{$data->email ? $data->email : '-'}}</td>
+                                <td>{{$enquirydata->email ? $enquirydata->email : '-'}}</td>
                             </tr>
                             <tr>
                                 <th>Mobile</th>
-                                <td>{{$data->mobile ? $data->mobile : '-'}}</td>
+                                <td>{{$enquirydata->mobile ? $enquirydata->mobile : '-'}}</td>
                             </tr>
                             <tr>
                                 <th>Description</th>
-                                <td>{{$data->short_description ? $data->short_description : '-'}}</td>
+
+                                <td>{{$enquirydata->other_info ? $enquirydata->other_info : '-'}}</td>
                             </tr>
-                                
                         </table>
                         <br>
                         <div class="row">
@@ -68,8 +68,8 @@
                                     <tr>
                                         <th>Sr No</th>
                                         <th>Profile</th>
-                                        <th>First Name</th>
-                                       <!--  <th>Last Name</th> -->
+                                        <th>Lawyer Name</th>
+                                        <!--  <th>Last Name</th> -->
                                         <th>Email</th>
                                         <th>Specialization Category</th>
                                         <th>Experience</th>
@@ -83,6 +83,7 @@
                                     $i = ($getActivelawyer->currentpage() - 1) * $getActivelawyer->perpage() + 1;
 
                                     foreach ($getActivelawyer as $data) {
+                                        $lid = $data->id;
                                         if ($data->status == 1) {
                                             $class = 'success';
                                             //$status = 'Active';
@@ -117,26 +118,44 @@
                                                     } ?>
                                             </td>
                                             <td>{{$data->name}} {{$data->username}}</td>
-                                            
                                             <td>{{$data->email}}</td>
                                             <td>{{$data->category_name}}</td>
                                             <td>{{$data->experience}}</td>
                                             <td>{{$data->mobile}}</td>
-                                            <td id="appendstatus{{$data->id}}"><?php 
-                                                if($data->assign_lawyer == "1") 
-                                                {?>
-                                                    <span class="label label-warning" onclick="change_status('<?=$data->id ?>','0','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
+                                            <td id="appendstatus{{$data->id}}">
+                                                <!-- <?php
+                                                        if ($data->assign_lawyer == "1") { ?>
+                                                    <span class="label label-warning" onclick="change_status('<?= $data->id ?>','0','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
                                                     #000080;" title="You can Disapprove this.">Assign</span> 
-                                               <?php }
-                                                else if($data->assign_lawyer == "0")
-                                                {
+                                                    <?php } else if ($data->assign_lawyer == "0") {
+                                                    ?>
+
+                                                    <span class="label label-info" onclick="change_status('<?= $data->id ?>','1','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
+                                                    #800000;" title="You can Assign this.">Disapprove</span>
+                                                    
+                                                    <?php  }
+                                                    ?>        -->
+
+                                                @php $lid = $enquirydata->lawyer_id @endphp
+
+
+
+                                                <?php
+                                                $did = $data->id;
+                                                if ($did == $lid) { ?>
+                                                    <span class="label label-warning" onclick="change_status('<?= $data->id ?>','0','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
+                                                    #000080;" title="You can Disapprove this.">Assign</span>
+                                                <?php } else if ($data->lawyer_id == NULL) {
                                                 ?>
 
-                                                    <span class="label label-info" onclick="change_status('<?=$data->id ?>','1','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
+                                                    <span class="label label-info" onclick="change_status('<?= $data->id ?>','1','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
                                                     #800000;" title="You can Assign this.">Disapprove</span>
-                                                   
-                                               <?php  }
-                                                ?>       
+
+                                                <?php  }
+                                                ?>
+
+
+
                                             </td>
                                         </tr>
                                     <?php
@@ -149,13 +168,13 @@
                                 </tbody>
                             </table>
                         </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <nav aria-label="Page navigation example">
-                                        {{ $getActivelawyer->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
-                                    </nav>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation example">
+                                    {{ $getActivelawyer->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
+                                </nav>
                             </div>
+                        </div>
 
 
 
@@ -169,18 +188,16 @@
 @include('admin/include/footer')
 <script>
     $('#legalenquiry').addClass('active mm-active');
-
 </script>
 
 <script>
-    function change_status(id,ass_status,enquiry_id)
-    {
-      if(status == 0){
-            var statusNew = 'Disapprove';
-      }else{
-
+    function change_status(id, ass_status, enquiry_id) {
+        if (status == 0) {
             var statusNew = 'Assign';
-      }
+        } else {
+
+            var statusNew = 'Disapprove';
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: "you want to " + statusNew + " this Lawyer?",
@@ -188,34 +205,35 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: "Yes, " + statusNew +" it!"
+            confirmButtonText: "Yes, " + statusNew + " it!"
         }).then((result) => {
-            if(result.value) 
-            {
-              $.ajax({
-                  async: false,
-                  global: false,
-                  type: "POST",
-                  data: {id:id,ass_status:ass_status,enquiry_id:enquiry_id, _token: "<?php echo csrf_token(); ?>"},
-                  url: "<?php echo URL::to('/'); ?>/admin/update_statuss",
-                  success:function(response){
-                         if(response == 1)
-                         {
-                              var statushtml = '<span class="label label-warning" onclick="change_status('+id+',0,'+enquiry_id+');" style="cursor: pointer; color: #000080;" title="You can Disapprove this.">Assign</span>';
-                             $('#appendstatus'+id).html(statushtml);
-                         }
-                         else{
-                            var statushtml = '<span class="label label-info" onclick="change_status('+id+',1,'+enquiry_id+');" style="cursor: pointer; color: #800000;" title="You can Assign this.">Disapprove</span>';
-                             $('#appendstatus'+id).html(statushtml);  
-                           
-                         }
-                     }
-                  });
-              } 
-              else 
-              {
+            if (result.value) {
+                $.ajax({
+                    async: false,
+                    global: false,
+                    type: "POST",
+                    data: {
+                        id: id,
+                        ass_status: ass_status,
+                        enquiry_id: enquiry_id,
+                        _token: "<?php echo csrf_token(); ?>"
+                    },
+                    url: "<?php echo URL::to('/'); ?>/admin/update_statuss",
+                    success: function(response) {
+                        if (response == 1) {
+                            var statushtml = '<span class="label label-warning" onclick="change_status(' + id + ',0,' + enquiry_id + ');" style="cursor: pointer; color: #000080;" title="You can Disapprove this.">Assign</span>';
+                            $('#appendstatus' + id).html(statushtml);
+                            location.reload();
+                        } else {
+                            var statushtml = '<span class="label label-info" onclick="change_status(' + id + ',1,' + enquiry_id + ');" style="cursor: pointer; color: #800000;" title="You can Assign this.">Disapprove</span>';
+                            $('#appendstatus' + id).html(statushtml);
+
+                        }
+                    }
+                });
+            } else {
                 return false;
-              }
-          })
+            }
+        })
     }
 </script>
