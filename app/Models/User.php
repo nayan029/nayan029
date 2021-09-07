@@ -59,7 +59,7 @@ class User extends Authenticatable
         'updated_at',
         'deleted_at',
         'deleted_by',
-
+        'assign_lawyer',
     ];
 
     /**
@@ -142,9 +142,50 @@ class User extends Authenticatable
     }
     public static function getActivelawyertdata()
     {
-        $query =  User::where('user_type', 3)->where('status','1')->orderBy('id', 'desc');
-        
-        $query = $query->paginate(20);
+        $query = User::select('users.*', 'legal_advice_qa_category.category_name')
+            ->leftjoin('lawyer_enrollment_category', function ($join) {
+
+                $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
+                $join->whereNull('users.deleted_at');
+            })
+            ->leftjoin('legal_advice_qa_category', function ($join) {
+
+                $join->on('legal_advice_qa_category.id', '=', 'lawyer_enrollment_category.categoryid');
+                $join->whereNull('users.deleted_at');
+            })
+            ->where('users.user_type', '=', '3')
+            ->where('users.status', '1')
+            ->where('users.email_verify', '=', '1')
+            ->orderBy("users.id", 'desc');
+
+        // $query =  User::where('user_type', 3)->where('status','1')->orderBy('id', 'desc');
+
+        $query = $query->paginate(10);
+        return $query;
+    }
+    public static function getActivelawyertdataview($id)
+    {
+        $query = User::select('users.*', 'legal_advice_qa_category.category_name')
+            ->leftjoin('lawyer_enrollment_category', function ($join) {
+
+                $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
+                $join->whereNull('users.deleted_at');
+            })
+            ->leftjoin('legal_advice_qa_category', function ($join) {
+
+                $join->on('legal_advice_qa_category.id', '=', 'lawyer_enrollment_category.categoryid');
+                $join->whereNull('users.deleted_at');
+            })
+            ->where('users.user_type', '=', '3')
+            ->where('users.status', '1')
+            //->where('users.email_verify','=','1')
+            //->where('users.id',$id)
+            ->where('users.assign_lawyer', '1')
+            ->first();
+
+
+        // $query =  User::where('user_type', 3)->where('status','1')->orderBy('id', 'desc');
+
         return $query;
     }
     public static function lawyergetByemailWeb($id)
@@ -179,7 +220,7 @@ class User extends Authenticatable
     }
     public static function getLawyers()
     {
-        $query =  User::where('email_verify', 1)->where('user_type', 3)->where('status',1)->orderBy('id', 'desc')->limit(5)->get();
+        $query =  User::where('email_verify', 1)->where('user_type', 3)->where('status', 1)->orderBy('id', 'desc')->limit(5)->get();
         return $query;
     }
     public static function getRecordByData($location, $cat, $court, $expi, $language, $gender, $rating, $short_by)
@@ -210,8 +251,8 @@ class User extends Authenticatable
                 $join->whereNull('users.deleted_at');
             })
             ->where('users.user_type', '=', '3')
-            ->where('step','=','3')
-            ->where('email_verify','=','1')
+            ->where('step', '=', '3')
+            ->where('email_verify', '=', '1')
             ->whereRaw($TEMP)->groupBy('users.id')->orderBy("users.id", 'desc')
             ->get();
 
@@ -219,7 +260,7 @@ class User extends Authenticatable
     }
     public static function getRecordByName($name)
     {
-       
+
         $TEMP = "users.status in (1)";
 
         if ($name) {
@@ -228,15 +269,15 @@ class User extends Authenticatable
         if ($name) {
             $TEMP .= "OR legal_advice_qa_category.category_name like '$name'";
         }
-       
-        $query = User::select('users.*','legal_advice_qa_category.category_name')
-        ->leftjoin('lawyer_enrollment_category', function ($join) {
-            $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
-            $join->whereNull('users.deleted_at');
-        })
-        ->leftjoin('legal_advice_qa_category', function ($join) {
-            $join->on('legal_advice_qa_category.id', '=', 'lawyer_enrollment_category.categoryid');
-        })
+
+        $query = User::select('users.*', 'legal_advice_qa_category.category_name')
+            ->leftjoin('lawyer_enrollment_category', function ($join) {
+                $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
+                $join->whereNull('users.deleted_at');
+            })
+            ->leftjoin('legal_advice_qa_category', function ($join) {
+                $join->on('legal_advice_qa_category.id', '=', 'lawyer_enrollment_category.categoryid');
+            })
             ->where('users.user_type', '=', '3')
             ->whereRaw($TEMP)->groupBy('users.id')->orderBy("users.id", 'desc')
             ->get();
@@ -254,8 +295,7 @@ class User extends Authenticatable
     }
     public static function checkexistemaillawyer($email)
     {
-        $query = User::where('user_type', 3)->where('email_verify',0)->where('email',$email)->first();
+        $query = User::where('user_type', 3)->where('email_verify', 0)->where('email', $email)->first();
         return $query;
     }
-    
 }
