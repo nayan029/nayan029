@@ -227,10 +227,10 @@ class HomeController extends Controller
                 $this->data['sub_category'] = ServiceSubCategory::getById($id);
                 return view('fronted.legalEnquiry', $this->data);
             } else {
-                return redirect('lawyer/login');
+                return redirect('/login');
             }
         } else {
-            return redirect('lawyer/login');
+            return redirect('/login');
         }
         // if (!$auth) {
         //     return redirect('lawyer/login');
@@ -450,6 +450,7 @@ class HomeController extends Controller
     }
     public function termsOfUse()
     {
+        $this->data['title'] = "Terms Of Use";
         return view('fronted.terms_of_use', $this->data);
     }
     public function editProfile()

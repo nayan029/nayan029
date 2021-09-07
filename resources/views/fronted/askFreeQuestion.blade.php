@@ -5,7 +5,7 @@
       <p class="sa-color2">Ask a Free Legal Question Online</p>
     </div>
     <div class="row">
-      <div class="col-md-7 sr-border sr-res-card">
+      <div class="col-md-12 sr-border sr-res-card">
         <form id="main_id" action="{{URL::to('/')}}/ask-a-free-question" method="POST">
           @csrf
           <div class="row">
@@ -104,14 +104,14 @@
             </div>
 
             <p class="sr-err mt-3">
-              By submitting your question, you agree to our<a href="{{URL::to('/')}}/page/terms-of-use" class="sa-color2 "> terms & conditions.</a></p>
+              By submitting your question, you agree to our<a target="_blank" href="{{URL::to('/')}}/page/terms-of-use" class="sa-color2 "> terms & conditions.</a></p>
 
           </div>
 
 
         </form>
       </div>
-      <div class=" col-md-5 pl-4">
+      <!-- <div class=" col-md-5 pl-4">
 
         <div class="mitem2">
           <div class="sr-card">
@@ -138,7 +138,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
     </div>
 
     <div class="row mt-4">
