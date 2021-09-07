@@ -164,8 +164,7 @@
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
-            console.log(result)
-            if (result.value==true) {
+            if (result.value) {
                 $.ajax({
                     url: "<?php echo URL::to('/'); ?>/admin/court-managment/" + id,
                     type: "DELETE",
@@ -176,7 +175,7 @@
                     success: function(response) {
                         if (response) {
                             location.reload();
-                            window.location.reload();
+                            // window.location.reload();
                             // window.location.href = "";
                         }
                     }

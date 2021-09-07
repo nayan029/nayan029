@@ -126,7 +126,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/addService', 'App\Http\Controllers\admin\legalserviceController@addService');
     Route::any('/admin/legalServiceDelete/{id}', 'App\Http\Controllers\admin\legalserviceController@destroy');
     Route::get('/admin/addDeatails/{id}', 'App\Http\Controllers\admin\legalserviceController@addDetils');
-
     Route::post('/admin/insertSubService', 'App\Http\Controllers\admin\legalserviceController@insertSubService');
 
     Route::any('/admin/deleteSubService/{id}', 'App\Http\Controllers\admin\legalserviceController@deleteSubService');
@@ -158,6 +157,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/legal-enquiry', 'App\Http\Controllers\admin\legalenquiryController@index');
     Route::get('/admin/legal-enquiry/{id}', 'App\Http\Controllers\admin\legalenquiryController@destroy');
     Route::get('/admin/legal-enquiry/{id}/edit', 'App\Http\Controllers\admin\legalenquiryController@show');
+    Route::post('/admin/update_statuss', 'App\Http\Controllers\admin\legalenquiryController@update_statuss');
 
     //----------------------------------------------ask free questions---------------------------
     Route::get('/admin/free-questions', 'App\Http\Controllers\admin\freeQuestionsController@index');
@@ -178,6 +178,7 @@ Route::group(['middleware' => ['auth']], function () {
     // category query
 
     Route::resource('/admin/query-category', 'App\Http\Controllers\admin\queryCategoryController');
+    Route::get('/admin/query-category/{id}', 'App\Http\Controllers\admin\queryCategoryController@addDetils');
     Route::get('/admin/addLegalQuery', 'App\Http\Controllers\admin\queryCategoryController@addLegalQuery');
     Route::post('/admin/updateLegalQuery/{id}', 'App\Http\Controllers\admin\queryCategoryController@updateLegalQuery');
     Route::post('/admin/insertSubQuerys', 'App\Http\Controllers\admin\queryCategoryController@insertSubService');
@@ -279,6 +280,7 @@ Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileControl
 Route::get('/my-account', [FrontedHomeController::class, 'myAccount']);
 Route::resource('/my-profile', 'App\Http\Controllers\fronted\userProfileController');
 Route::get('/account/all-questions', [FrontedHomeController::class, 'allQuestions']);
+Route::get('/enquiryView/{id}', [FrontedHomeController::class, 'enquiryView']);
 //-----------------------------------------user account---------------------------------------------
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
@@ -316,6 +318,8 @@ Route::post('/lawyer/edit-profile', 'App\Http\Controllers\fronted\lawyerProfileC
 Route::post('/lawyer/change_password/{id}', [App\Http\Controllers\admin\ForgotPasswordController::class, 'lawyerchangePassword']);
 
 Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxController@getcategoryname');
+
+Route::post('pay-fees', [FrontedHomeController::class, 'addOrderData']);
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

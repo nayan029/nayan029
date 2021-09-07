@@ -9,6 +9,7 @@ use App\Models\admin\blogs;
 use App\Models\admin\Category;
 use App\Models\admin\court;
 use App\Models\admin\freeQuestions;
+use App\Models\admin\legalenquiry;
 use App\Models\admin\guides;
 use App\Models\admin\lawyercourt;
 use App\Models\admin\lawyerenrollmentcatgeory;
@@ -23,12 +24,15 @@ use App\Models\admin\setting;
 use App\Models\admin\sitesetting;
 use App\Models\admin\trends;
 use App\Models\admin\webinar;
+use App\Models\admin\Order;
 use App\Models\admin\ServiceSubCategory;
 use App\Models\User;
 use App\Models\admin\MainLegalQuery;
 use App\Models\admin\querySubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use View;
 
 class HomeController extends Controller
@@ -413,6 +417,7 @@ class HomeController extends Controller
         if (isset($auth)) {
             $uid = $auth->id;
             $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
+            $this->data['total_enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
             $this->data['title'] = "My Account";
             return view('fronted.myaccount', $this->data);
         } else {
@@ -424,7 +429,24 @@ class HomeController extends Controller
         $auth = Auth::user();
         $uid = $auth->id;
         $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
+        $this->data['enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
         return view('fronted.userquestionslist', $this->data);
+    }
+    public function enquiryView($id)
+    {
+        $auth = Auth::user();
+        $uid = $auth->id;
+        $this->data['enquiryUserId'] = $enquiryUserId = legalenquiry::where('id',$id)->whereNull('deleted_at')->first();
+        $this->data['title'] = "My Account";
+        $this->data['getActivelawyer'] = User::getActivelawyertdataview($enquiryUserId->user_id); 
+
+
+        $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($enquiryUserId->lawyer_id);
+        $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($enquiryUserId->lawyer_id);
+        $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
+       
+
+        return view('fronted.enquiry_view', $this->data);
     }
     public function advocateProfile($id)
     {
@@ -505,5 +527,39 @@ class HomeController extends Controller
         $this->data['title'] = "Bare Acts";
         $this->data['allQuerys'] = MainLegalQuery::getallBareAct();
         return view('fronted.allResearchPapers', $this->data);
+    }
+    public function addOrderData(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'fees' => 'required',
+            
+        ]);
+
+
+        if ($validator->fails()) {
+            return redirect("/")
+                ->withErrors($validator, 'add_error')
+                ->withInput();
+        } else {
+            $input = array(
+                'created_at' => date('Y-m-d H:i:s'),
+                'amount' => $request->fees,
+                'lawyer_id' => $request->lawyer_id,
+                'user_id' => $request->customer_id,
+                'status' => 1,
+            );
+            
+           
+            $userOrderData = Order::create($input);
+
+            if ($userOrderData) {
+                Session::flash('success', 'Fees pay successfully.');
+                return redirect('/my-account');
+            } else {
+
+                Session::flash('error', 'Sorry, something went wrong. Please try again');
+                return redirect()->back();
+            }
+        }
     }
 }

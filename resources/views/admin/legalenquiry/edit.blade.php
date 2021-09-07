@@ -70,8 +70,10 @@
                                         <th>Profile</th>
                                         <th>First Name</th>
                                        <!--  <th>Last Name</th> -->
-                                        <th>Email Id</th>
-                                        <th>Status</th>
+                                        <th>Email</th>
+                                        <th>Specialization Category</th>
+                                        <th>Experience</th>
+                                        <th>Mobile</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -83,12 +85,12 @@
                                     foreach ($getActivelawyer as $data) {
                                         if ($data->status == 1) {
                                             $class = 'success';
-                                            $status = 'Active';
+                                            //$status = 'Active';
                                             $thumbs = 'down';
                                             $statustxt = 'Make Inactive';
                                         } else {
                                             $class = 'danger';
-                                            $status = 'Inactive';
+                                            //$status = 'Inactive';
                                             $thumbs = 'up';
                                             $statustxt = 'Make Active';
                                         }
@@ -117,9 +119,24 @@
                                             <td>{{$data->name}} {{$data->username}}</td>
                                             
                                             <td>{{$data->email}}</td>
-                                            <td>{{$status}}</td>
-                                            <td>
-                                                -
+                                            <td>{{$data->category_name}}</td>
+                                            <td>{{$data->experience}}</td>
+                                            <td>{{$data->mobile}}</td>
+                                            <td id="appendstatus{{$data->id}}"><?php 
+                                                if($data->assign_lawyer == "1") 
+                                                {?>
+                                                    <span class="label label-warning" onclick="change_status('<?=$data->id ?>','0','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
+                                                    #000080;" title="You can Disapprove this.">Assign</span> 
+                                               <?php }
+                                                else if($data->assign_lawyer == "0")
+                                                {
+                                                ?>
+
+                                                    <span class="label label-info" onclick="change_status('<?=$data->id ?>','1','<?= $enquiry_id ?>');" style="cursor: pointer; color: 
+                                                    #800000;" title="You can Assign this.">Disapprove</span>
+                                                   
+                                               <?php  }
+                                                ?>       
                                             </td>
                                         </tr>
                                     <?php
@@ -153,4 +170,52 @@
 <script>
     $('#legalenquiry').addClass('active mm-active');
 
+</script>
+
+<script>
+    function change_status(id,ass_status,enquiry_id)
+    {
+      if(status == 0){
+            var statusNew = 'Disapprove';
+      }else{
+
+            var statusNew = 'Assign';
+      }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "you want to " + statusNew + " this Lawyer?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: "Yes, " + statusNew +" it!"
+        }).then((result) => {
+            if(result.value) 
+            {
+              $.ajax({
+                  async: false,
+                  global: false,
+                  type: "POST",
+                  data: {id:id,ass_status:ass_status,enquiry_id:enquiry_id, _token: "<?php echo csrf_token(); ?>"},
+                  url: "<?php echo URL::to('/'); ?>/admin/update_statuss",
+                  success:function(response){
+                         if(response == 1)
+                         {
+                              var statushtml = '<span class="label label-warning" onclick="change_status('+id+',0,'+enquiry_id+');" style="cursor: pointer; color: #000080;" title="You can Disapprove this.">Assign</span>';
+                             $('#appendstatus'+id).html(statushtml);
+                         }
+                         else{
+                            var statushtml = '<span class="label label-info" onclick="change_status('+id+',1,'+enquiry_id+');" style="cursor: pointer; color: #800000;" title="You can Assign this.">Disapprove</span>';
+                             $('#appendstatus'+id).html(statushtml);  
+                           
+                         }
+                     }
+                  });
+              } 
+              else 
+              {
+                return false;
+              }
+          })
+    }
 </script>

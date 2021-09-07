@@ -2,7 +2,7 @@
 <div class="container">
     <div class="col-md-12">
         <div class="sa-application">
-            <p class="sa-color2">All Questions</p>
+            <p class="sa-color2">All Enquiry</p>
         </div>
     </div>
     <div class="col-md-12 pl-0 pr-0">
@@ -10,25 +10,33 @@
             <tr>
                 <!-- <td class="sa-color2">Name</td> -->
                 <!-- <td class="sa-color2">Mobile </td> -->
-                <td class="sa-color2 sr-b-right">Category </td>
-                <td class="sa-color2 sr-b-right">Subject </td>
-                <td class="sa-color2 sr-b-right">Description </td>
-                <td class="sa-color2 sr-b-right">Create Date </td>
+                <td class="sa-color2 sr-b-right">Sr No </td>
+                <td class="sa-color2 sr-b-right">SubIssue Name </td>
+                <td class="sa-color2 sr-b-right">Name </td>
+                <td class="sa-color2 sr-b-right">Email</td>
+                <td class="sa-color2 sr-b-right">Mobile</td>
+                <td class="sa-color2 sr-b-right">Action</td>
             </tr>
             @php $i = 1; @endphp
-            @foreach($my_questions as $data)
+            @foreach($enquiry_data as $data)
             <tr>
                 <!-- <td class="sr-p-white text-white">@if(isset($data->name)){{$data->name}}@else{{"N/A"}}@endif</td> -->
                 <!-- <td class="sr-p-white text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif </td> -->
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawarea)){{$data->lawarea}}@else{{"N/A"}}@endif </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->subject)){{ substr($data->subject, 0, 50); }}@else{{"N/A"}}@endif </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->short_description)){{ substr($data->short_description, 0, 50); }}@else{{"N/A"}}@endif </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)){{date("d-m-Y", strtotime($data->created_at)); }}@else{{"N/A"}}@endif
-                    <a title="view" href="" data-toggle="modal" data-target="#seeDetails{{$i}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a>
+                <td class="sr-p-white sr-b-right text-white">{{$i}}</td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{"N/A"}}@endif - @if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->name)){{$data->name}}@else{{"N/A"}}@endif </td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif </td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif
+                    
+                </td>
+                <td>
+                    <!-- <a title="view" href="" data-toggle="modal" data-target="#seeDetails{{$i}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->
+
+                    <a title="view" href="<?php echo URL::to('/'); ?>/enquiryView/{{$data->id}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a>
                 </td>
             </tr>
             <!-- Modal -->
-            <div class="modal fade" id="seeDetails{{$i}}" tabindex="-1" role="dialog" aria-labelledby="seeDetails{{$i}}" aria-hidden="true">
+            <!-- <div class="modal fade" id="seeDetails{{$i}}" tabindex="-1" role="dialog" aria-labelledby="seeDetails{{$i}}" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -43,12 +51,11 @@
                         
                         <div class="modal-footer">
                             <h6 class="m-0 text-dark"><small>Created By-{{$data->name}}</small></h6>
-                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button> -->
+                           
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- modal -->
             @php $i++; @endphp
             @endforeach

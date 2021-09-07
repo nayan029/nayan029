@@ -40,10 +40,22 @@ class legalenquiryController extends Controller
     public function show($id)
     {
         // return "true";
+        $this->data['enquiry_id'] = $id; 
         $this->data['data'] = legalenquiry::enquirylistedit($id);
         $this->data['getActivelawyer'] = User::getActivelawyertdata(); 
         return view('admin.legalenquiry.edit', $this->data);
 
+    }
+    public function update_statuss(Request $request)
+    {
+        $id = $request->id;
+        $ass_status = $request->ass_status;
+        $enquiry_id = $request->enquiry_id;
+        $sql = User::where("id", $id)->update(array("assign_lawyer" => $ass_status));
+
+        $sqlData = legalenquiry::where("id", $enquiry_id)->update(array("lawyer_id" => $id));
+
+        return $ass_status;        
     }
    
     public function destroy(Request $request, $id)
