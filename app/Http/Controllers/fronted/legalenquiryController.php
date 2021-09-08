@@ -53,6 +53,7 @@ class legalenquiryController extends Controller
     {
         // return $request->all();  die;
         $loginDetail = Auth::user();
+        $uemail = $loginDetail->email;
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'phone' => 'required',
@@ -72,7 +73,7 @@ class legalenquiryController extends Controller
                 'subissue_id' => request('sub_service_id'),
                 'name' => request('name'),
                 'mobile' => request('phone'),
-                'email' => request('email'),
+                'email' => $uemail,
                 'status' => '1',
                 'other_info' => request('otherinfo'),
                 'created_at' => date('Y-m-d H:i:s'),

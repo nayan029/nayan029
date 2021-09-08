@@ -11,10 +11,11 @@
                 <!-- <td class="sa-color2">Name</td> -->
                 <!-- <td class="sa-color2">Mobile </td> -->
                 <td class="sa-color2 sr-b-right">Sr No </td>
-                <td class="sa-color2 sr-b-right">SubIssue Name </td>
-                <td class="sa-color2 sr-b-right">Name </td>
-                <td class="sa-color2 sr-b-right">Email</td>
+                <td class="sa-color2 sr-b-right">Issue Name </td>
+                <!-- <td class="sa-color2 sr-b-right">Name </td> -->
+                <!-- <td class="sa-color2 sr-b-right">Email</td> -->
                 <td class="sa-color2 sr-b-right">Mobile</td>
+                <td class="sa-color2 sr-b-right">Created Date</td>
                 <td class="sa-color2 sr-b-right">Action</td>
             </tr>
             @php $i = 1; @endphp
@@ -25,10 +26,11 @@
                 <!-- <td class="sr-p-white text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif </td> -->
                 <td class="sr-p-white sr-b-right text-white">{{$i}}</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{"N/A"}}@endif - @if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->name)){{$data->name}}@else{{"N/A"}}@endif </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif </td>
+                <!-- <td class="sr-p-white sr-b-right text-white">@if(isset($data->name)){{$data->name}}@else{{"N/A"}}@endif </td> -->
+                <!-- <td class="sr-p-white sr-b-right text-white">@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif </td> -->
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif
-                    
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>
+
                 </td>
                 <td>
                     <!-- <a title="view" href="" data-toggle="modal" data-target="#seeDetails{{$i}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->

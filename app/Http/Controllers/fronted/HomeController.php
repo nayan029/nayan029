@@ -446,10 +446,15 @@ class HomeController extends Controller
 
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($enquiryUserId->lawyer_id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($enquiryUserId->lawyer_id);
-        $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
 
+        if (isset($enquiryUserId->lawyer_id)) {
 
-        return view('fronted.enquiry_view', $this->data);
+            $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
+            return view('fronted.enquiry_view', $this->data);
+        } else {
+            Session::flash('error', 'Sorry, you have no lawyer assigne. Please try again');
+            return redirect()->back();
+        }
     }
     public function advocateProfile($id)
     {
@@ -533,15 +538,13 @@ class HomeController extends Controller
     }
     public function addOrderData(Request $request)
     {
-        $data['auth'] = auth()->user();
-        $data['response'] = $request->all();
-        $data['last_id'] = bookingTemp::getData();
 
+
+        $this->data['auth'] = auth()->user();
+        $this->data['response'] = $request->all();
         /*  booking temp data  */
 
-
-
-        $id = $request->id;
+        // $id = $request->id;
         $validator = Validator::make($request->all(), [
             'fees' => 'required',
         ]);
@@ -559,20 +562,24 @@ class HomeController extends Controller
                 'user_id' => $request->customer_id,
                 'status' => 1,
             );
+            // **status update when fees pay**
 
             // $status['status'] = '2';
             // $enquiry = legalenquiry::find($id);
             // $enquiry->update($status);
 
+            // **status update when fees pay** 
+
+
 
             $userOrderData = bookingTemp::create($input);
-          return  $id = $userOrderData->id;
-            return view('');
+            $insertId = $userOrderData->id;
+            return redirect('/fees/final-pay?id=' . $insertId . '&price=' . $request->fees);
+            // return redirect('/fees/final-pay-fees', $this->data);
 
-            /* booking temp data */
+
         }
 
-        // return view('fronted.payumoney', $data);
 
 
         // PAYU MONEY
@@ -601,7 +608,7 @@ class HomeController extends Controller
         //     $enquiry->update($status);
 
 
-            // $userOrderData = Order::create($input);
+        // $userOrderData = Order::create($input);
 
         //     if ($userOrderData) {
         //         Session::flash('success', 'Fees pay successfully.');
@@ -612,5 +619,14 @@ class HomeController extends Controller
         //         return redirect()->back();
         //     }
         // }
+    }
+
+    public function payumoney(Request $request)
+    {
+        $data['auth'] = auth()->user();
+        $data['last_id'] = $request->input('id');
+        $data['price'] = $request->input('price');
+
+        return view('fronted.payumoney', $data);
     }
 }

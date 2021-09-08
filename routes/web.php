@@ -320,6 +320,7 @@ Route::post('/lawyer/change_password/{id}', [App\Http\Controllers\admin\ForgotPa
 Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxController@getcategoryname');
 
 Route::post('pay-fees', [FrontedHomeController::class, 'addOrderData']);
+Route::get('fees/final-pay', [FrontedHomeController::class, 'payumoney']);
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

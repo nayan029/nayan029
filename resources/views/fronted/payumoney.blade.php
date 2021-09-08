@@ -1,9 +1,6 @@
 <?php
 /* Test Credentials key*/
-$auth = auth()->user();
-echo "<pre>";
-print_r($last_id);
-die();
+
  
 $MERCHANT_KEY = "gtKFFx";
 $SALT = "eCwWELxi";
@@ -27,9 +24,9 @@ $posted = array();
 $posted = array(
     'key' => $MERCHANT_KEY,
     'txnid' => $txnid,
-    'amount' => $response['fees'],
-    'firstname' =>"vishal",
-    'email' =>"vishal@gmail.com",
+    'amount' => $price,
+    'firstname' =>$auth['name'],
+    'email' =>$auth['email'],
     'productinfo' => 'Pay',
     'surl' => URL::to('/').'/subscribe-response?user=' . $auth['id'],
     'furl' => URL::to('/').'/subscribe-cancel',
@@ -79,11 +76,11 @@ if (empty($posted['hash']) && sizeof($posted) > 0) {
             <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" /><br />
             <input type="hidden" name="hash" value="<?php echo $hash ?>"/><br />
             <input type="hidden" name="txnid" value="<?php echo $txnid ?>" /><br />
-            <input type="hidden" name="amount" value="<?php echo $response['fees']; ?>" /><br />
-            <input type="hidden" name="firstname" id="firstname" value="vishal" /><br />
-            <input type="hidden" name="email" id="email" value="vis@gmail.com" /><br />
+            <input type="hidden" name="amount" value="<?php echo $price; ?>" /><br />
+            <input type="hidden" name="firstname" id="firstname" value="{{$auth['name']}}" /><br />
+            <input type="hidden" name="email" id="email" value="{{$auth['email']}}" /><br />
            <input type="hidden" name="productinfo" value="Pay"><br />
-            <input type="hidden" name="surl" value="<?php echo URL::to('/');?>/subscribe-response?user=<?php echo $auth['id'];?>&amount=<?php echo $response['fees'] ;?>&id=3" /><br />
+            <input type="hidden" name="surl" value="<?php echo URL::to('/');?>/subscribe-response?user=<?php echo $auth['id'];?>&amount=<?php echo $price;?>&id=<?php echo $last_id;?>" /><br />
             <input type="hidden" name="furl" value="<?php echo URL::to('/');?>/subscribe-cancel?id=<?php echo $auth['id'];?>" /><br />
 			
             <input type="hidden" name="service_provider" value="payu_paisa" size="64" /><br />
