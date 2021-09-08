@@ -75,6 +75,7 @@
                                 <div class="col-md-12">
                                     <nav aria-label="Page navigation example">
 
+                                        {{ $enquiry_data->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
 
                                     </nav>
                                 </div>

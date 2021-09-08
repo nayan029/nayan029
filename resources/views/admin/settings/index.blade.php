@@ -105,14 +105,14 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="exampleInputFirstName">Opning Days</label><span style="color: red;">*</span>
+                                        <label for="exampleInputFirstName">Opening Days</label><span style="color: red;">*</span>
                                         <input type="text" class="form-control" id="opning_day" name="opning_day" value="{{$getsettings->opning_day}}" aria-describedby="nameHelp" placeholder="Enter Opning Days">
                                         <span style="color:red;" id="opning_day_error"><?php echo $errors->profile_error->first('name'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail">Opning Hours</label><span style="color: red;">*</span>
+                                        <label for="exampleInputEmail">Opening Hours</label><span style="color: red;">*</span>
                                         <input type="text" class="form-control" id="opning_hours" name="opning_hours" value="{{$getsettings->opning_hours}}" aria-describedby="emailHelp" placeholder="Enter Opning Hours">
                                         <span style="color:red;" id="opning_hours_error"><?php echo $errors->profile_error->first('email'); ?></span>
                                     </div>

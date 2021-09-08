@@ -33,7 +33,7 @@
                     <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
                       <option value="">Select Type</option>
                       <option value="1">Legal Aid</option>
-                      <option value="2" onclick="showDescription()">Documentation</option>
+                      <option value="2">Documentation</option>
                     </Select>
                     <span id="category_error" style="color: red;"></span>
                   </div>
@@ -107,13 +107,7 @@
   $('#legal_service').addClass('active mm-active');
 
   function getsubcategory(type) {
-    var desc = $('#desc').val();
-    if (type == '2') {
-      $('#desc').css('display', 'block');
-      CKEDITOR.replace('description');
-    } else {
-      $('#desc').css('display', 'none');
-    }
+
     $.ajax({
       url: "<?php echo URL::to('/'); ?>/admin/getcategory",
       type: "POST",
@@ -123,7 +117,12 @@
       },
       success: function(response) {
         $('#name').html(response);
-        // $('#stateindex').html(response);
+        if (type == '2') {
+          $('#desc').css('display', 'block');
+          CKEDITOR.replace('description');
+        } else {
+          $('#desc').css('display', 'none');
+        }
       }
     });
   }
@@ -161,7 +160,7 @@
     var number = /([0-9])/;
     var alphabets = /([a-zA-Z])/;
     var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
-    
+
 
     if (category.trim() == '') {
       $('#category_error').html("Please select type");
@@ -172,7 +171,7 @@
       }
     }
 
-    
+
     if (name.trim() == '') {
       $('#name_error').html("Please select service name ");
       cnt = 1;
@@ -182,8 +181,7 @@
       }
     }
 
-    if(name)
-    {
+    if (name) {
       $.ajax({
         async: false,
         url: "<?php echo URL::to('/'); ?>/admin/getexitservicename",
@@ -199,7 +197,7 @@
               cnt = 1;
               f++;
               console.log(f)
-              if (f>0) {
+              if (f > 0) {
                 console.log('tahy');
                 $('#name').focus();
                 // return false;

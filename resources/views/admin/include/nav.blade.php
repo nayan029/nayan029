@@ -205,7 +205,7 @@
                 <li class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/adviceCategory" class="nav-link" id="advice_cat">
                     <i class="fas fa-th nav-icon"></i>
-                    <p>Lawyer Category</p>
+                    <p>Legal Service Category</p>
                   </a>
                 </li>
               </ul>
