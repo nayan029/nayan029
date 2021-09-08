@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\adviceCategory;
 use App\Models\admin\adviceQuerys;
 use App\Models\admin\blogs;
+use App\Models\admin\bookingTemp;
 use App\Models\admin\Category;
 use App\Models\admin\court;
 use App\Models\admin\freeQuestions;
@@ -418,6 +419,7 @@ class HomeController extends Controller
             $uid = $auth->id;
             $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
             $this->data['total_enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
+            $this->data['total_booking'] = legalenquiry::totalCart($uid);
             $this->data['title'] = "My Account";
             return view('fronted.myaccount', $this->data);
         } else {
@@ -531,9 +533,17 @@ class HomeController extends Controller
     }
     public function addOrderData(Request $request)
     {
+        $data['auth'] = auth()->user();
+        $data['response'] = $request->all();
+        $data['last_id'] = bookingTemp::getData();
+
+        /*  booking temp data  */
+
+
+
+        $id = $request->id;
         $validator = Validator::make($request->all(), [
             'fees' => 'required',
-
         ]);
 
 
@@ -550,17 +560,57 @@ class HomeController extends Controller
                 'status' => 1,
             );
 
+            // $status['status'] = '2';
+            // $enquiry = legalenquiry::find($id);
+            // $enquiry->update($status);
 
-            $userOrderData = Order::create($input);
 
-            if ($userOrderData) {
-                Session::flash('success', 'Fees pay successfully.');
-                return redirect('/my-account');
-            } else {
+            $userOrderData = bookingTemp::create($input);
+          return  $id = $userOrderData->id;
+            return view('');
 
-                Session::flash('error', 'Sorry, something went wrong. Please try again');
-                return redirect()->back();
-            }
+            /* booking temp data */
         }
+
+        // return view('fronted.payumoney', $data);
+
+
+        // PAYU MONEY
+
+        // $id = $request->id;
+        // $validator = Validator::make($request->all(), [
+        //     'fees' => 'required',
+        // ]);
+
+
+        // if ($validator->fails()) {
+        //     return redirect("/")
+        //         ->withErrors($validator, 'add_error')
+        //         ->withInput();
+        // } else {
+        //     $input = array(
+        //         'created_at' => date('Y-m-d H:i:s'),
+        //         'amount' => $request->fees,
+        //         'lawyer_id' => $request->lawyer_id,
+        //         'user_id' => $request->customer_id,
+        //         'status' => 1,
+        //     );
+        //     $status['status'] = '2';
+
+        //     $enquiry = legalenquiry::find($id);
+        //     $enquiry->update($status);
+
+
+            // $userOrderData = Order::create($input);
+
+        //     if ($userOrderData) {
+        //         Session::flash('success', 'Fees pay successfully.');
+        //         return redirect('/my-account');
+        //     } else {
+
+        //         Session::flash('error', 'Sorry, something went wrong. Please try again');
+        //         return redirect()->back();
+        //     }
+        // }
     }
 }

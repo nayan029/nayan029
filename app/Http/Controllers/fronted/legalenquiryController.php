@@ -73,6 +73,7 @@ class legalenquiryController extends Controller
                 'name' => request('name'),
                 'mobile' => request('phone'),
                 'email' => request('email'),
+                'status' => '1',
                 'other_info' => request('otherinfo'),
                 'created_at' => date('Y-m-d H:i:s'),
             );

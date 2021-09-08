@@ -34,7 +34,7 @@
 
             <div class="sa-application">
               <a href="javascript:void(0)">
-                <h5 class="sa-color2 mb-3">My Bookings (0) </h5>
+                <h5 class="sa-color2 mb-3">My Bookings ({{count($total_booking)}}) </h5>
               </a>
             </div>
 
