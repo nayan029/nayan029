@@ -314,44 +314,50 @@ $login = Auth::user();
 						</li>  -->
 					</ul>
 				</div>
+
 				<ul class="filter-search" id="filter-search">
+					@if(isset($login['step']) && $login->user_type == '3')
+
+					@else
 					<li class="active">
 						<a href="#" id="filterli">
 							<img class="default" src="{{asset('fronted/images/svg/filter.svg')}}">
 							<img class="active" src="{{asset('fronted/images/svg/filter-active.svg')}}">
 						</a>
+
 						<div class="filter-div " id="filter-div" style="display: none;">
-							<form method="GET" action="{{URL::to('/')}}/search/lawyer/">
+							<form method="GET" action="#">
 								<h4>Filter By</h4>
 								<div class="filter-group">
 									<input type="text" name="name">
 									<img src="{{asset('fronted/images/svg/feather_search-active.svg')}} ">
 								</div>
+
 								<div class="accordion accordion-design" id="accordionExample">
 									<div class="card">
-										<div class="card-header" id="headingOne">
+										<!-- <div class="card-header" id="headingOne">
 											<h2 class="mb-0">
 												<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 													Court
 												</button>
 											</h2>
-										</div>
+										</div> -->
 
-										<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-											<div class="card-body">
-												<!-- <div class="chandh">
+										<!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+											<div class="card-body"> -->
+										<!-- <div class="chandh">
 													<span>Chandhigarh</span>
 													<i class="ti-minus"></i>
 												</div> -->
 
-												<div class="mini-search">
+										<!-- <div class="mini-search">
 													<select name="court" class="filter-group select2 sr-drop" id="">
 														<option value="">Select court</option>
 														@foreach($court as $data)
 														<option value="{{$data->id}}">{{$data->name}}</option>
 														@endforeach
-													</select>
-													<!-- <div class="filter-gr">
+													</select> -->
+										<!-- <div class="filter-gr">
 														<input type="text" name="city" class="">
 														<button class="btn">
 															<img src="{{asset('fronted/images/svg/feather_search-active.svg')}}"></button>
@@ -361,9 +367,9 @@ $login = Auth::user();
 														<li value="{{$data->name}}">{{$data->name}}</li>
 														@endforeach
 													</ul> -->
-												</div>
-											</div>
-										</div>
+										<!-- </div> -->
+										<!-- </div>
+										</div> -->
 									</div>
 									<div class="card">
 										<!-- <div class="card-header" id="headingTwo">
@@ -379,6 +385,8 @@ $login = Auth::user();
 											</div>
 										</div>
 									</div>
+
+
 									<div class="card">
 										<div class="card-header" id="headingThree">
 											<h2 class="mb-0">
@@ -390,7 +398,7 @@ $login = Auth::user();
 										<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 											<div class="card-body">
 												@php
-												$qcategory = DB::table('legal_advice_qa_category')->where('status', 1)->where('type','question')->orderBy('id', 'ASC')->get();
+												$qcategory = DB::table('legal_advice_qa_category')->where('status', 1)->where('type','1')->orderBy('id', 'ASC')->get();
 												@endphp
 												<select name="category" class="filter-group select2 sr-drop" id="">
 													<option value="">Select Category</option>
@@ -402,19 +410,26 @@ $login = Auth::user();
 										</div>
 									</div>
 								</div>
+
 								<div class="bottom text-center">
 									<button type="submit" class="btn btn-outline-primary">Save</button>
 								</div>
 							</form>
 						</div>
+
 					</li>
+					@endif
+					@if(isset($login['step']) && $login->user_type == '3')
+
+					@else
 					<li>
 						<a href="#" id="searchli">
 							<img class="default" src="{{asset('fronted/images/svg/feather_search.svg')}}">
 							<img class="active" src="{{asset('fronted/images/svg/feather_search-active.svg')}}">
 						</a>
 						<div class="search-div " id="search-div" style="display: none;">
-							<form method="GET" action="{{URL::to('/')}}/search/lawyer/">
+							<!-- {{URL::to('/')}}/search/lawyer/ -->
+							<form method="GET" action="#">
 								<h4>Search By</h4>
 								<div class="filter-group d-flex">
 									<input type="text" name="name">
@@ -424,6 +439,7 @@ $login = Auth::user();
 							</form>
 						</div>
 					</li>
+					@endif
 
 					<li>
 						<div class="dropdown profile-dropdown">

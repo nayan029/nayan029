@@ -399,6 +399,9 @@ class HomeController extends Controller
                     $this->data['test'] = $auth = Auth::user();
                     $this->data['title'] = "Enrollment";
                     $this->data['step'] = User::getsteps($auth->id);
+                    // $this->data['category'] = legalservices::getfamilyData();
+                    // $this->data['allAids'] = legalservices::getfamilyData();
+
                     $this->data['category'] = adviceCategory::categorylistenrollment();
                     $this->data['lawyerDataNew'] = User::getrecordbyid($auth->id);
                     $this->data['catdata'] = lawyerenrollmentcatgeory::getusercategorys($auth->id);
@@ -487,17 +490,20 @@ class HomeController extends Controller
     {
         $auth = Auth::user();
         if ($auth) {
-            if ($auth->step == '3') {
-                $this->data['user_login'] = $auth;
-                $this->data['court'] = court::getAllRecord();
-                $this->data['category'] = adviceCategory::getquestioncategorylist();
-                $this->data['user_category'] = lawyerenrollmentcatgeory::getDataById($auth->id)->pluck('categoryid')->toArray();
-                $this->data['user_court'] = lawyercourt::getrecordbyid($auth->id)->pluck('courtid')->toArray();
-                $this->data['user_language'] = lawyerlanguages::getrecordbyid($auth->id)->pluck('language')->toArray();
-                $this->data['title'] = "Edit Profile";
-                return view('fronted.editprofile', $this->data);
-            } else {
-                return view('/');
+            if ($auth->user_type == 3) {
+                if ($auth->step == 3) {
+                    $this->data['user_login'] = $auth;
+                    $this->data['court'] = court::getAllRecord();
+                    $this->data['category'] = adviceCategory::getquestioncategorylist();
+                    $this->data['user_category'] = lawyerenrollmentcatgeory::getDataById($auth->id)->pluck('categoryid')->toArray();
+                    $this->data['user_court'] = lawyercourt::getrecordbyid($auth->id)->pluck('courtid')->toArray();
+                    $this->data['user_language'] = lawyerlanguages::getrecordbyid($auth->id)->pluck('language')->toArray();
+                    $this->data['title'] = "Edit Profile";
+                    return view('fronted.editprofile', $this->data);
+                } else {
+                    Session::flash('error', 'Sorry,  Please fill enrollment form');
+                    return redirect('/');
+                }
             }
         } else {
             return view('fronted.lawyer_login', $this->data);

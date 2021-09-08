@@ -279,7 +279,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per fees)</label><span style="color: red;"> *</span>
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per days)</label><span style="color: red;"> *</span>
                             <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fees_error" style="color:red"></span>
                         </div>
