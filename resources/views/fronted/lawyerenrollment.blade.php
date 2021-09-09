@@ -6,6 +6,9 @@
 <div class="sa-enroll-details">
     <div class="container">
         <div class="sa-pills-design">
+
+
+
             <ul class="nav nav-pills " id="pills-tab" role="tablist">
                 <li class="nav-item ">
 
@@ -21,13 +24,13 @@
                                         } 
                                         */
                     ?>
-                    <a class="nav-link @if($step['step'] == 0) {{'active'}} @else {{''}} @endif" id="pills-personal-tab">Personal Information</a>
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#pills-personal" role="tab" aria-controls="home" aria-selected="true">Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if($step['step'] == 1) {{'active'}} @else {{''}} @endif">Specialization</a>
+                    <a class="nav-link " id="home-tab" data-toggle="tab" href="#pills-special" role="tab" aria-controls="home" aria-selected="true">Specialization</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if($step['step'] == 2) {{'active'}} @else {{''}} @endif">Oath and Signature</a>
+                    <a class="nav-link " id="home-tab" data-toggle="tab" href="#pills-sign" role="tab" aria-controls="home" aria-selected="true">Oath and Signature</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link <?php if ($step['step'] == 3) {
@@ -37,7 +40,7 @@
             </ul>
         </div>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade  @if($step['step'] == 0) {{'active show'}} @else {{''}} @endif" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
+            <div class="tab-pane fade active show" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
                 <div class="sa-personal">
                     <div class="sa-application">
                         <!-- <p class="sa-color2">Application for enrolment</p>   -->
@@ -262,7 +265,7 @@
             </div>
             </form>
             <!-- tab2 -->
-            <div class="tab-pane fade  @if($step['step'] == 1) {{'active show'}} @else {{''}} @endif" id="pills-special" role="tabpanel" aria-labelledby="pills-special-tab">
+            <div class="tab-pane fade  " id="pills-special" role="tabpanel" aria-labelledby="pills-special-tab">
                 <form id="main_idtwo" action="<?php echo URL::to('/'); ?>/lawyer/enrollment" method="POST">
                     @csrf
                     <div class="sa-personal">
@@ -356,7 +359,7 @@
             </div>
             <!-- end tab2 -->
             <!-- tab3 -->
-            <div class="tab-pane fade  @if($step['step'] == 2) {{'active show'}} @else {{''}} @endif" id="pills-sign" role="tabpanel" aria-labelledby="pills-sign-tab">
+            <div class="tab-pane fade " id="pills-sign" role="tabpanel" aria-labelledby="pills-sign-tab">
                 <form id="signature_frm" action="<?php echo URL::to('/'); ?>/lawyer/enrollment" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="container">
@@ -1040,20 +1043,17 @@
             $("#category_error").html("");
         }
 
-        if(basic_fees.trim() == '') 
-        {
+        if (basic_fees.trim() == '') {
             $("#basicFees_error").html("Please enter basic fees.");
         } else {
             $("#basicFees_error").html("");
         }
-        if(fees.trim() == '') 
-        {
+        if (fees.trim() == '') {
             $("#fees_error").html("Please enter fees.");
         } else {
             $("#fees_error").html("");
         }
-        if(full_legal.trim() == '') 
-        {
+        if (full_legal.trim() == '') {
             $("#fullLegal_error").html("Please enter full legal representation fees.");
         } else {
             $("#fullLegal_error").html("");

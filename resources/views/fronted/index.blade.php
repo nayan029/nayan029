@@ -969,44 +969,18 @@
 </script>
 <script>
 	function change(id) {
-		// console.log(id);
-
 		$.ajax({
 			'type': 'POST',
-			// 'csrf': '@csrf',
 			'url': '{{URL::to("/")}}/fronted/getcategoryname',
-			// 'data': id,
 			data: {
 				"_token": "{{ csrf_token() }}",
 				"id": id
 			},
 			'success': function(data) {
-				// console.log(data);
-
 				$('#catname_' + id).text(data);
-				/*var $label = $("#catname");
-   				 var text = $label.text();
-   				 $label.text(text.replace("text", data));*/
-				// $('#products').replaceWith(response);
 			}
 		});
 
 
 	}
-	// $(".hoverid").hover(function() {
-
-	// 	var abc = $(this).data("hid");
-	// 	console.log(abc);
-	// 	var val = $('.testone').val();
-	// 	console.log(val);
-
-	// 	$.ajax({
-	// 		// 'type': 'POST',
-	// 		// 'url': 'handlers/route_request.php',
-	// 		// 'dataType': 'html',
-	// 		'success': function(data) {
-	// 			// console.log(data);
-	// 		}
-	// 	});
-	// });
 </script>

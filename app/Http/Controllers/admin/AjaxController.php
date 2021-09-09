@@ -161,7 +161,10 @@ class AjaxController extends Controller
 			->orderBy("lawyer_enrollment_category.id", 'desc')
 			->get();
 
-		echo $query[0]->category_name;
+		$st = isset($query[0]) ? $query[0] : false;
+		if ($st) {
+			echo $query[0]->category_name;
+		}
 	}
 
 	public function getexitservicename(Request $request)
