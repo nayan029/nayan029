@@ -56,7 +56,8 @@ $login = Auth::user();
 									<li class="ul-title">Research Paper</li>
 									<li class="li-border"></li>
 									<?php
-									$listAdviceQuery = DB::table('main_legal_query')->where('legal_query_type_id', '1')->where('status', 1)->where('deleted_at', NULL)->limit(3)->get();
+									$listAdviceQuery = DB::table('main_legal_query')->where('legal_query_type_id', '1')->where('status', 1)->where('deleted_at', NULL)->take(5)->orderBy('type_name', 'asc')->get();
+
 									foreach ($listAdviceQuery as $keyQuery) {
 
 									?>
@@ -75,7 +76,7 @@ $login = Auth::user();
 									<li class="ul-title">Notes</li>
 									<li class="li-border"></li>
 									<?php
-									$listLegalGuides = DB::table('main_legal_query')->where('legal_query_type_id', '2')->where('status', 1)->where('deleted_at', NULL)->limit(5)->get();
+									$listLegalGuides = DB::table('main_legal_query')->where('legal_query_type_id', '2')->where('status', 1)->where('deleted_at', NULL)->take(5)->orderBy('type_name', 'asc')->get();
 									foreach ($listLegalGuides as $keyGuides) {
 									?>
 										<li>
@@ -96,7 +97,7 @@ $login = Auth::user();
 									<li class="ul-title">Bare Acts</li>
 									<li class="li-border"></li>
 									<?php
-									$getquerysdatas = DB::table('main_legal_query')->where('legal_query_type_id', '3')->where('status', 1)->where('deleted_at', NULL)->limit(5)->get();
+									$getquerysdatas = DB::table('main_legal_query')->where('legal_query_type_id', '3')->where('status', 1)->where('deleted_at', NULL)->orderBy('type_name', 'asc')->get();
 									foreach ($getquerysdatas as $value) {
 
 									?>
@@ -136,7 +137,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Documentation</li> -->
 													<!-- <li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(10)->get();
+													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(10)->orderBy('service_name','asc')->get();
 
 
 													foreach ($listLegalGuides as $keyGuides) {
@@ -220,7 +221,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->limit(6)->get();
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->limit(6)->orderBy('service_name','asc')->get();
 													foreach ($listLegalGuides as $keyGuides) {
 														// echo $keyGuides->id;
 													?>
@@ -251,7 +252,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(6)->get();
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(6)->orderBy('service_name','asc')->get();
 
 													foreach ($listLegalGuides as $keyGuides) {
 

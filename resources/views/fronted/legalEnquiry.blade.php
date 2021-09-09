@@ -92,7 +92,7 @@
                 <span id="iname_error" style="color:red;"></span>
                 <div class="sa-pb">
                   <label for="inputName" class="form-label sa-color2 sa-label">Contact no.</label><span style="color: red;">*</span>
-                  <input type="number" class="form-control sa-form-font half-border-radius" placeholder="Enter your Contact No." name="mobile" id="imobile">
+                  <input type="number" class="form-control sa-form-font half-border-radius" placeholder="Enter your Contact No." name="mobile" id="imobile" maxlength="12">
                   
                 </div>
                 <span id="imobile_error" style="color:red;"></span>
@@ -288,6 +288,10 @@
     var email = $('#iemail').val();
     var otherinfo = $('#otherinfo').val();
     var i = 0;
+
+    var cnt = 0;
+    var f = 0;
+
     $('#iname_error').html("");
     $('#imobile_error').html("");
     $('#iemail_error').html("");
@@ -298,6 +302,16 @@
     if(phone == ""){
       $('#imobile_error').html("Mobile is Required");
       i++;
+    }
+    if (phone.length > 12) {
+      $('#imobile_error').html("Please enter valid mobile ");
+      
+      i++;
+
+      f++;
+      if (i == 1) {
+        $('#imobile').focus();
+      }
     }
     if(email == ""){
       $('#iemail_error').html("Email is Required");

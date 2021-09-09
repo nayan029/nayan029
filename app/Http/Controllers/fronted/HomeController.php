@@ -433,6 +433,9 @@ class HomeController extends Controller
     {
         $auth = Auth::user();
         $uid = $auth->id;
+        $this->data['title'] = "All Enquiry";
+        // $this->data['enquiryUserId'] = $enquiryUserId = legalenquiry::where('id', $id)->whereNull('deleted_at')->first();
+
         $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
         $this->data['enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
         return view('fronted.userquestionslist', $this->data);
@@ -570,9 +573,9 @@ class HomeController extends Controller
             );
             // **status update when fees pay**
 
-            // $status['status'] = '2';
-            // $enquiry = legalenquiry::find($id);
-            // $enquiry->update($status);
+            $status['status'] = '2';
+            $enquiry = legalenquiry::find($id);
+            $enquiry->update($status);
 
             // **status update when fees pay** 
 

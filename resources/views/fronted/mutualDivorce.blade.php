@@ -32,7 +32,6 @@
         </div> -->
 
         <p class="fs-20 pt-3 pb-3">{{$getquerys->short_description}}</p>
-        <p class="mt-3 mb-0 fs-20">Please fill up to get more information on process</p>
 
       </div>
     </div>

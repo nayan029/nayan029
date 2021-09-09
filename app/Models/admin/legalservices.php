@@ -57,13 +57,13 @@ class legalservices extends Authenticatable
     public static function getfamilyData()
     {
         // return "true";
-        $query = legalservices::where('category_id', 1)->orderBy('id', 'desc')->get();
+        $query = legalservices::where('category_id', 1)->orderBy('service_name', 'asc')->get();
         return $query;
     }
     public static function getpropertyData()
     {
         // return "true";
-        $query = legalservices::where('category_id', 2)->orderBy('id', 'desc')->get();
+        $query = legalservices::where('category_id', 2)->orderBy('service_name', 'asc')->get();
         return $query;
     }
     public static function getdocData()

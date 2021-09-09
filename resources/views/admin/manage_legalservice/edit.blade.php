@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span> {{$data->category_id }}
+                                        <label for="exampleInputContactNo">Type </label><span style="color: red;">*</span> 
                                         <Select class="form-control" id="category" name="category_id" onchange="getsubcategory(this.value);">
                                             <option @if($data->category_id=="1"){{"selected"}}@endif value="1">Legal Aid</option>
                                             <option @if($data->category_id=="2"){{"selected"}}@endif value="2">Documentation</option>
