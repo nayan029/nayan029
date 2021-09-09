@@ -33,7 +33,7 @@
             <!-- user account -->
 
             <div class="sa-application">
-              <a href="javascript:void(0)">
+              <a href="{{URL::to('/')}}/account/customer/my-booking">
                 <h5 class="sa-color2 mb-3">My Bookings ({{count($total_booking)}}) </h5>
               </a>
             </div>
@@ -46,7 +46,7 @@
                   </a>
                 </div>
                 <div class="col-md-8 mt-3 pl-0">
-                  <a href="javascript:void(0)">
+                  <a href="{{URL::to('/')}}/account/customer/my-booking">
                     <p class="fs-20">View your bookings</p>
                   </a>
                 </div>
@@ -55,7 +55,6 @@
 
             <div class="sa-application">
               <a href="{{URL::to('/')}}/account/all-questions">
-                <!-- {{count($my_questions)}} -->
                 <h5 class="sa-color2 mb-3">My Enquiry ({{count($total_enquiry_data)}})</h5>
               </a>
             </div>

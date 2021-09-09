@@ -548,12 +548,13 @@ class HomeController extends Controller
     public function addOrderData(Request $request)
     {
 
-
+        // return $request->all();
+        // $id = $request->id;
         $this->data['auth'] = auth()->user();
         $this->data['response'] = $request->all();
         /*  booking temp data  */
 
-        // $id = $request->id;
+        $id = $request->id;
         $validator = Validator::make($request->all(), [
             'fees' => 'required',
         ]);
@@ -637,5 +638,17 @@ class HomeController extends Controller
         $data['price'] = $request->input('price');
 
         return view('fronted.payumoney', $data);
+    }
+
+    public function myBookings()
+    {
+        $this->data['title'] = "My Cart";
+        $auth = Auth::user();
+        $uid = $auth->id;
+        $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
+        $this->data['enquiry_data'] = $enquirydatas = legalenquiry::myCartDetails($uid)->get();
+        $this->data['payment_details'] = bookingTemp::getDataById($uid);
+
+        return view('fronted.usercart', $this->data);
     }
 }
