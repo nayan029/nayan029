@@ -4,10 +4,11 @@
         <div class="sa-application">
             <p class="sa-color2">Lawyer Detail</p>
         </div>
+
     </div>
     <div class="row">
-                    <a href="{{URL::to('/')}}/account/all-questions" type="button" class="btn btn-outline-primary sa-color3 mr-5  poppins-light">Back</a>
-                </div>
+        <a href="{{URL::to('/')}}/account/all-questions" type="button" class="btn btn-outline-primary sa-color3 mr-5  poppins-light">Back</a>
+    </div>
     <div class="sa-enroll-details">
         <div class="container">
             <!-- <div class="mitem3"> -->
@@ -100,7 +101,7 @@
                         <?php
                         ob_start();
                         foreach ($specialization as $result) {
-                            echo ucfirst($result->category_name) .',';
+                            echo ucfirst($result->category_name) . ',';
                         }
                         $output = ob_get_clean();
                         echo rtrim($output, ','); ?></p>
@@ -122,17 +123,21 @@
                 <input type="hidden" name="id" value="{{request('id');}}">
                 <div class="row">
 
-                    <input type="radio" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}">
+                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
                     <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div>
 
-                    <input type="radio" name="fees" id="fees" value="{{$lawyerData->fees}}">
+                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2">
                     <div class="col-md-2 sa-color2">Fees(By per days) - {{$lawyerData->fees}}</div>
 
-                    <input type="radio" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}">
+                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3">
                     <div class="col-md-5 sa-color2">Full Legal Representation - {{$lawyerData->full_legal_fees}}</div>
                 </div>
                 <span id="fees_error" style="color: red;"></span>
-                
+                <input type="hidden" name="type" id="radio_id">
+
+                <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
+                <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
+
                 <div class="row">
                     <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now</button>
                 </div>
@@ -151,3 +156,11 @@
     </div>
 </div>
 @include('fronted/include/footer')
+<script>
+    test();
+
+    function test() {
+        var id = $('input[name="fees"]:checked').attr("data-id");
+        $('#radio_id').val(id);
+    }
+</script>

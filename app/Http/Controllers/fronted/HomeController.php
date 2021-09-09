@@ -571,6 +571,9 @@ class HomeController extends Controller
                 'lawyer_id' => $request->lawyer_id,
                 'user_id' => $request->customer_id,
                 'status' => 1,
+                'type' => $request->type,
+                'issue_id' => $request->issue_id,
+                'subissue_id' => $request->subissue_id,
             );
             // **status update when fees pay**
 

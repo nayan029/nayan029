@@ -2,7 +2,7 @@
 <div class="container">
     <div class="col-md-12">
         <div class="sa-application">
-            <p class="sa-color2">All Enquiry</p>
+            <p class="sa-color2">My Cart</p>
         </div>
     </div>
     <div class="col-md-12 pl-0 pr-0">
@@ -10,16 +10,19 @@
             <tr>
 
                 <td class="sa-color2 sr-b-right">Booking Id </td>
+                <td class="sa-color2 sr-b-right">Type </td>
+                <td class="sa-color2 sr-b-right">Issue Name </td>
                 <td class="sa-color2 sr-b-right">User Name</td>
                 <td class="sa-color2 sr-b-right">Lawyer Name</td>
-
                 <td class="sa-color2 sr-b-right">Amount</td>
                 <td class="sa-color2 sr-b-right">Created Date</td>
                 @php $i = 1; @endphp
                 @foreach($payment_details as $data)
             <tr>
-                {{$data}}
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->id)){{$data->id}}@else{{"N/A"}}@endif </td>
+
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->type) && $data->type == '1'){{"Basic Fees"}}@elseif(isset($data->type) && $data->type == '2'){{"Fees(By per days)"}}@elseif(isset($data->type) && $data->type == '3'){{"Full Legal Representation"}}@endif </td>
+                <td class="sr-p-white sr-b-right text-white"> @if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white"> @if(isset($data->user_name)){{$data->user_name}}@else{{"N/A"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_name)){{$data->lawyer_name}}@else{{"N/A"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount)){{$data->amount}}@else{{"N/A"}}@endif</td>

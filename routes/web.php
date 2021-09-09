@@ -281,7 +281,7 @@ Route::get('/my-account', [FrontedHomeController::class, 'myAccount']);
 Route::resource('/my-profile', 'App\Http\Controllers\fronted\userProfileController');
 Route::get('/account/all-questions', [FrontedHomeController::class, 'allQuestions']);
 Route::get('/enquiryView/{id}', [FrontedHomeController::class, 'enquiryView']);
-Route::get('/account/customer/my-booking',[FrontedHomeController::class,'myBookings']);
+Route::get('/account/customer/my-booking', [FrontedHomeController::class, 'myBookings']);
 //-----------------------------------------user account---------------------------------------------
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
