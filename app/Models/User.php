@@ -221,7 +221,14 @@ class User extends Authenticatable
     }
     public static function getLawyers()
     {
-        $query =  User::where('email_verify', 1)->where('user_type', 3)->where('status', 1)->orderBy('id', 'desc')->limit(5)->get();
+        $query =  User::select('users.*', 'legal_advice_qa_category.category_name')
+            ->leftjoin('lawyer_enrollment_category', function ($join) {
+                $join->on('users.id', '=', 'lawyer_enrollment_category.userid');
+            })
+            ->leftjoin('legal_advice_qa_category', function ($join) {
+                $join->on('lawyer_enrollment_category.categoryid', '=', 'legal_advice_qa_category.id');
+            })
+            ->where('users.email_verify', 1)->where('users.user_type', 3)->where('users.status', 1)->where('users.step', '3')->orderBy('users.id', 'desc')->limit(5)->get();
         return $query;
     }
     public static function getRecordByData($location, $cat, $court, $expi, $language, $gender, $rating, $short_by)

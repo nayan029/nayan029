@@ -395,7 +395,7 @@
 			<div class="team-col">
 				<div class="team-box">
 					<!-- /* advocate/{{$data->id}} */ -->
-					<a href="javascript:void(0)" class="hoverid" onmouseover="change({{$data->id}})">
+					<a href="javascript:void(0)" class="hoverid">
 						<input type="hidden" name="id" id="id_{{$data->id}}" class="testone" data-hid="{{$data->id}}" value="{{$data->id}}">
 						@if($data->profileimage)
 						<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
@@ -410,7 +410,7 @@
 							@endif
 							<div class="inner">
 								<h5>{{$data->name." ".$data->username}}</h5>
-								<h6><span id="catname_{{$data->id}}"></span></h6>
+								<h6><span id="catname_{{$data->id}}">{{$data->category_name}}</span></h6>
 								<p></p>
 							</div>
 						</div>
@@ -497,9 +497,9 @@
 				<div class="bottom">
 					<!-- image -->
 					@if($data->profileimage)
-					<img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$data->profileimage}}" class="site-stg-img site-stg-img2 sr-image" id="blah" />
+					<img style="height: 60px;width: 48px;object-fit: cover;border-radius: 50%;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$data->profileimage}}" class="site-stg-img site-stg-img2 sr-image" id="blah" />
 					@else
-					<img style="border: 1px solid #ccc;" width="58px" height="58px" src="{{asset('fronted/images/advocate-vibhor-agarwal.jpg')}}" class="site-stg-img site-stg-img2 sr-image">
+					<img style="height: 60px;width: 48px;object-fit: cover;border-radius: 50%;" width="58px" height="58px" src="{{asset('fronted/images/advocate-vibhor-agarwal.jpg')}}" class="site-stg-img site-stg-img2 sr-image">
 					@endif
 
 					<!-- image -->
@@ -968,19 +968,19 @@
 	// })
 </script>
 <script>
-	function change(id) {
-		$.ajax({
-			'type': 'POST',
-			'url': '{{URL::to("/")}}/fronted/getcategoryname',
-			data: {
-				"_token": "{{ csrf_token() }}",
-				"id": id
-			},
-			'success': function(data) {
-				$('#catname_' + id).text(data);
-			}
-		});
+	// function change(id) {
+	// 	$.ajax({
+	// 		'type': 'POST',
+	// 		'url': '{{URL::to("/")}}/fronted/getcategoryname',
+	// 		data: {
+	// 			"_token": "{{ csrf_token() }}",
+	// 			"id": id
+	// 		},
+	// 		'success': function(data) {
+	// 			$('#catname_' + id).text(data);
+	// 		}
+	// 	});
 
 
-	}
+	// }
 </script>

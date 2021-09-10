@@ -26,25 +26,27 @@ class ServiceSubCategory extends Authenticatable
         'deleted_flag',
     ];
 
-    public static function insert($data){
+    public static function insert($data)
+    {
         $auth = auth()->user();
-        if($auth){
+        if ($auth) {
             $data['created_by'] = $auth->id;
         }
         $data['created_at'] = date('Y-m-d H:i:s');
         $insert = new ServiceSubCategory($data);
-                $insert->save();
+        $insert->save();
         return $insert_id = $insert->id;
     }
 
-    public static function getBYServiceById($service_id){
-        $getData = ServiceSubCategory::where('service_id',$service_id)->where('deleted_flag','N')->get();
+    public static function getBYServiceById($service_id)
+    {
+        $getData = ServiceSubCategory::where('service_id', $service_id)->where('deleted_flag', 'N')->orderBy('description', 'asc')->get();
         return $getData;
     }
 
-    public static function getById($id){
-        $getData = ServiceSubCategory::where('id',$id)->where('deleted_flag','N')->first();
+    public static function getById($id)
+    {
+        $getData = ServiceSubCategory::where('id', $id)->where('deleted_flag', 'N')->first();
         return $getData;
     }
-
 }
