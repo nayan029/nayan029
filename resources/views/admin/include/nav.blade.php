@@ -176,14 +176,14 @@
                   </a>
                 </li>
               </ul>
-              <ul class="nav nav-treeview">
+              <!-- <ul class="nav nav-treeview">
                 <li id="category_menu" class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/manageCategory" class="nav-link" id="manage_category">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Manage Category</p>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="nav nav-treeview">
                 <li id="admin_menu" class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/manageAdmin" class="nav-link" id="manage_admin">
@@ -193,14 +193,14 @@
                 </li>
               </ul>
 
-              <ul class="nav nav-treeview">
+              <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/legal-issue" class="nav-link" id="legal_issue">
                     <i class="fas fa-balance-scale nav-icon"></i>
                     <p>Legal Issue</p>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="<?php echo URL::to('/'); ?>/admin/adviceCategory" class="nav-link" id="advice_cat">

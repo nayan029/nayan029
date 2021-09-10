@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\admin\sitesetting;
 use App\Models\User;
+use App\Models\admin\legalenquiry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,7 @@ class HomeController extends Controller
         $this->data['lawyerdata'] = User::gettotlaLawyers();
         $this->data['totaluserdata'] = User::gettotalUsers();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
+        $this->data['legalEnquiry'] = legalenquiry::getAllDataofEnquiry();
         return view('admin.home',$this->data);
     }
 }

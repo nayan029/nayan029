@@ -192,11 +192,12 @@
 
 <script>
     function change_status(id, ass_status, enquiry_id) {
-        if (status == 0) {
-            var statusNew = 'Assign';
+        
+        if (ass_status == 0) {
+            var statusNew = 'Disapprove';
         } else {
 
-            var statusNew = 'Disapprove';
+            var statusNew = 'Assign';
         }
         Swal.fire({
             title: 'Are you sure?',

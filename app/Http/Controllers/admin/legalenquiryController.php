@@ -54,7 +54,7 @@ class legalenquiryController extends Controller
         $enquiry_id = $request->enquiry_id;
         // $sql = User::where("id", $id)->update(array("assign_lawyer" => $ass_status));
 
-        $sqlData = legalenquiry::where("id", $enquiry_id)->update(array("lawyer_id" => $id));
+        $sqlData = legalenquiry::where("id", $enquiry_id)->update(array("lawyer_id" => $id,"assign_lawyer" => $ass_status));
 
         return $ass_status;        
     }

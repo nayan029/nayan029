@@ -69,7 +69,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>0</h3>
+                            <h3>{{count($legalEnquiry)}}</h3>
 
                             <p>Total Enquiry</p>
                         </div>

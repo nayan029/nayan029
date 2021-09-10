@@ -21,17 +21,17 @@ class MainLegalQuery extends Authenticatable
     }
     public static function getallPapers()
     {
-        $query = MainLegalQuery::where('legal_query_type_id', '1')->where('status', '1')->orderBy('id', 'desc')->get();
+        $query = MainLegalQuery::where('legal_query_type_id', '1')->where('status', '1')->orderBy('title', 'asc')->get();
         return $query;
     }
     public static function getallNotes()
     {
-        $query = MainLegalQuery::where('legal_query_type_id', '2')->where('status', '1')->orderBy('id', 'desc')->get();
+        $query = MainLegalQuery::where('legal_query_type_id', '2')->where('status', '1')->orderBy('title', 'asc')->get();
         return $query;
     }
     public static function getallBareAct()
     {
-        $query = MainLegalQuery::where('legal_query_type_id', '3')->where('status', '1')->orderBy('id', 'desc')->get();
+        $query = MainLegalQuery::where('legal_query_type_id', '3')->where('status', '1')->orderBy('title', 'asc')->get();
         return $query;
     }
     public static function getrecordById($id)

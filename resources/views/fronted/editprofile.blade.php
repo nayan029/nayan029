@@ -90,7 +90,7 @@
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label>
 
-                                        <div class="d-flex">
+                                        <!-- <div class="d-flex">
                                             <div class="pm-check pr-3">
                                                 <input class="form-check-input language" @if('english'==$user_language[0]) {{'checked'}} @endif name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
@@ -105,7 +105,7 @@
                                                     Hindi
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <span id="language_error" style="color: red;"></span>
 
                                     </div>
@@ -154,7 +154,7 @@
                                         <span id="sinstitution_error" style="color: red;"></span>
                                     </div>
                                     @endif
-                                    
+
                                     <div class="col-md-12 sa-pb">
                                         <h5 class=""></h5>
                                     </div>
@@ -218,7 +218,7 @@
                                         </div>
                                     </div>
 
-                                    
+
 
                                     <div class="col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Courts</label>
@@ -242,7 +242,7 @@
                                         </div>
 
                                     </div>
-                                    
+
 
                                 </div>
 
@@ -378,7 +378,7 @@
         $('#basicFees_error').html("");
         $('#fees_error').html("");
         $('#fullLegal_error').html("");
-        
+
         $('#price_error').html("");
 
         $('#degree_error').html("");
@@ -439,20 +439,17 @@
             }
         }
 
-        if(basic_fees.trim() == '') 
-        {
+        if (basic_fees.trim() == '') {
             $("#basicFees_error").html("Please enter basic fees.");
         } else {
             $("#basicFees_error").html("");
         }
-        if(fees.trim() == '') 
-        {
+        if (fees.trim() == '') {
             $("#fees_error").html("Please enter fees.");
         } else {
             $("#fees_error").html("");
         }
-        if(full_legal.trim() == '') 
-        {
+        if (full_legal.trim() == '') {
             $("#fullLegal_error").html("Please enter full legal representation fees.");
         } else {
             $("#fullLegal_error").html("");

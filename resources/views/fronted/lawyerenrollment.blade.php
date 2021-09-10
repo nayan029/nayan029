@@ -1038,9 +1038,13 @@
         // }
 
         if (specialization.trim() == '') {
+            // alert(specialization)
             $("#category_error").html("Please select specialization");
-        } else {
-            $("#category_error").html("");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#specialization').focus();
+            }
         }
 
         if (basic_fees.trim() == '') {

@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>Sr No</th>
                                         <th>Area Of Law</th>
-                                        <th>City</th>
+                                        <!-- <th>City</th> -->
                                         <th>Subject</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -50,7 +50,7 @@
 
                                         <td>{{$i}}</td>
                                         <td>{{$data->lawarea}}</td>
-                                        <td>{{$data->city}}</td>
+                                        <!-- <td>{{$data->city}}</td> -->
                                         <td> {{substr($data->subject,0, 40)}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->email}}</td>
