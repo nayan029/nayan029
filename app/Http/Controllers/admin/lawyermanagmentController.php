@@ -50,6 +50,7 @@ class lawyermanagmentController extends Controller
     }
     public function update(Request $request, $id)
     {
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             'experience' => 'required',
             'court' => 'required',
@@ -75,6 +76,11 @@ class lawyermanagmentController extends Controller
             $input['srollno'] = $request->sdegreename;
             $input['syear'] = $request->syear;
             $input['sinstitue'] = $request->sinstitution;
+
+            $input['basic_fees'] = $request->price;
+            $input['fees'] = $request->fees;
+            $input['full_legal_fees'] = $request->fullprice;
+
 
 
 
@@ -115,7 +121,7 @@ class lawyermanagmentController extends Controller
                     $inser_id->save();
                 }
             }
-            
+
             if ($request->hasfile('profileimage')) {
                 $file = $request->file('profileimage');
                 $name = $file->getClientOriginalName();

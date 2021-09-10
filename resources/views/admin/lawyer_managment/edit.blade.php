@@ -144,9 +144,24 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEduction">Price</label><span style="color: red;">*</span>
-                                        <input type="text" class="form-control" id="price" name="price" value="@if(isset($lawyerdata->price)){{$lawyerdata->price}} @endif" placeholder="confirm password">
+                                        <label for="exampleInputEduction">Basic Fees</label><span style="color: red;">*</span>
+                                        <input type="text" class="form-control" id="price" name="price" value="@if(isset($lawyerdata->basic_fees)){{$lawyerdata->basic_fees}} @endif" placeholder="Basic Fees">
                                         <span style="color:red;" id="price_error"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEduction">Fees (By per days)</label><span style="color: red;">*</span>
+                                        <input type="text" class="form-control" id="fees" name="fees" value="@if(isset($lawyerdata->fees)){{$lawyerdata->fees}} @endif" placeholder="Fees (By per fees) ">
+                                        <span style="color:red;" id="fees_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEduction">Full Legal Representation</label><span style="color: red;">*</span>
+                                        <input type="text" class="form-control" id="fullprice" name="fullprice" value="@if(isset($lawyerdata->full_legal_fees)){{$lawyerdata->full_legal_fees}} @endif" placeholder="Full Legal Representation">
+                                        <span style="color:red;" id="fullprice_error"></span>
                                     </div>
                                 </div>
 
@@ -244,6 +259,8 @@
         var court = $('#court').val();
         var specialization = $("#specialization").val();
         var price = $("#price").val();
+        var fees = $("#fees").val();
+        var fullprice = $("#fullprice").val();
 
         var mobile = $('#mobile').val();
 
@@ -265,6 +282,8 @@
         $('#about_error').html("");
         $('#specialization_error').html("");
         $('#price_error').html("");
+        $('#fees_error').html("");
+        $('#fullprice_error').html("");
 
         $('#degree_error').html("");
         $('#year_error').html("");
@@ -333,11 +352,29 @@
 
 
         if (price.trim() == '') {
-            $('#price_error').html("Please enter price");
+            $('#price_error').html("Please enter fees");
             cnt = 1;
             f++;
             if (f == 1) {
                 $('#price').focus();
+            }
+        }
+
+        if (fees.trim() == '') {
+            $('#fees_error').html("Please enter fees");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#fees').focus();
+            }
+        }
+
+        if (fullprice.trim() == '') {
+            $('#fullprice_error').html("Please enter Full Legal Representation");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#fullprice').focus();
             }
         }
 
