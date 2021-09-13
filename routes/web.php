@@ -120,6 +120,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/customer_managment', 'App\Http\Controllers\admin\customerManagmentController');
 
     Route::resource('admin/manage-lawyer', 'App\Http\Controllers\admin\lawyermanagmentController');
+    Route::post('admin/manage-lawyer/show-lawyer/{id}', 'App\Http\Controllers\admin\lawyermanagmentController@showLawyer');
     Route::get('/admin/lawyerProfile/{id}', [lawyermanagmentController::class, 'lawyerProfile']);
 
     Route::resource('admin/legal-services', 'App\Http\Controllers\admin\legalserviceController');

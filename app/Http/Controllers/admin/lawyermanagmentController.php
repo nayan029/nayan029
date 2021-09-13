@@ -193,4 +193,23 @@ class lawyermanagmentController extends Controller
         $this->data['title'] = "Lawyera Profile";
         return view('admin/lawyer_managment/lawyerProfile', $this->data);
     }
+    public function showLawyer(Request $request, $id)
+    {
+        // return $request->all();
+        $data = User::where('id', $id)->first();
+        $status = 1;
+        $statusname = "Show";
+        if ($data->show_lawyer == 1) {
+            $statusname = "Hide";
+            $status = 0;
+        }
+        $delete = User::where('id', $id)->update(['show_lawyer' => $status]);
+
+        if ($delete) {
+            Session::flash('success', 'Successfully ' . $statusname . "Lawyer");
+        } else {
+            Session::flash('error', 'Sorry, something went wrong. Please try again');
+        }
+        return $delete;
+    }
 }

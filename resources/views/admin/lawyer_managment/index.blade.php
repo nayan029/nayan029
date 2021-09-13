@@ -75,6 +75,23 @@
                                             $status1 = 'Not Verified';
                                         }
 
+                                        /* show lawyer*/
+
+                                        if ($data->show_lawyer == 1) {
+                                            $classone = 'success';
+                                            $statusone = 'Active';
+                                            $thumbsone = 'down';
+                                            $statustxtone = 'Hide Lawyer';
+                                        } else {
+                                            $classone = 'danger';
+                                            $statusone = 'Inactive';
+                                            $thumbsone = 'up';
+                                            $statustxtone = 'Show Lawyer';
+                                        }
+
+
+                                        /* show lawyer*/
+
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
@@ -102,6 +119,10 @@
                                                 <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="functiondelete('{{ $data->id }}','delete','')"></i></a>
                                                 <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
                                                     <i class="far fa-thumbs-{{$thumbs}}"></i>
+                                                </a>
+
+                                                <a title="{{$statustxtone}}" href="#" onclick="showlawyer('{{ $data->id }}','status','{{$thumbsone}}')">
+                                                    <i class="far fa-thumbs-{{$thumbsone}}"></i>
                                                 </a>
                                                 <!-- onclick="functiondelete('{{ $data->id }}')" -->
                                             </td>
@@ -188,5 +209,45 @@
 
         //     }
         // });
+    }
+
+    function showlawyer(id, type, th) {
+
+        if (th == 'up') {
+            var message = "Show lawyer?";
+        } else {
+            var message = "Hide lawyer?";
+        }
+
+
+        Swal.fire({
+            title: message,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: "No",
+            closeOnConfirm: true,
+            closeOnCancel: true
+
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: "<?php echo URL::to('/'); ?>/admin/manage-lawyer/show-lawyer/" + id + "?type=" + type,
+                    method: "post",
+                    data: {
+                        id: id,
+                        _token: "<?php echo csrf_token(); ?>"
+                    },
+                    success: function(response) {
+                        if (response) {
+                            location.reload();
+
+                        }
+                    }
+                });
+
+            }
+        })
     }
 </script>
