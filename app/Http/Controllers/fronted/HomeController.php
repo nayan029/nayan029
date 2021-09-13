@@ -516,9 +516,14 @@ class HomeController extends Controller
     {
         $id = $request->id;
         $this->data['title'] = "Legal Query";
+
         $this->data['dataLegalQuery'] = MainLegalQuery::where('id', $id)->where('status', '1')->first();
-        $this->data['description'] = querySubCategory::getBYQueryById($id);
-        return view('fronted.legalQuery', $this->data);
+        if (isset($this->data['dataLegalQuery'])) {
+            $this->data['description'] = querySubCategory::getBYQueryById($id);
+            return view('fronted.legalQuery', $this->data);
+        } else {
+            return redirect('/');
+        }
     }
     public function loginNew()
     {
@@ -664,7 +669,7 @@ class HomeController extends Controller
 
         //$this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
         $this->data['enquiry_data'] = $enquirydatas = legalenquiry::customerCartDetails($uid)->get();
-       
+
         return view('fronted.userbookhistory', $this->data);
     }
 }
