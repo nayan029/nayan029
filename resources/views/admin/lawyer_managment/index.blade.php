@@ -75,10 +75,6 @@
                                             $status1 = 'Not Verified';
                                         }
 
-
-
-
-
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
@@ -107,8 +103,7 @@
                                                 <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
                                                     <i class="far fa-thumbs-{{$thumbs}}"></i>
                                                 </a>
-
-
+                                                <!-- onclick="functiondelete('{{ $data->id }}')" -->
                                             </td>
                                         </tr>
                                     <?php

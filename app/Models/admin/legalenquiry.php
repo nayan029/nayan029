@@ -96,6 +96,47 @@ class legalenquiry extends Authenticatable
             
         return $query;
     }
+    public static function customerCartDetails($uid)
+    {
+        $query = legalenquiry::select('legal_enquiry.*','users.name as uname','users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name','booking_temp.type as feestype')
+            ->leftjoin('legal_advice_qa_category', function ($join) {
+                $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
+            })
+            ->leftjoin('service_sub_category', function ($join) {
+                $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
+            })
+            ->leftjoin('booking_temp', function ($join) {
+                $join->on('booking_temp.lawyer_id', '=', 'legal_enquiry.lawyer_id');
+            })
+            ->leftjoin('users', function ($join) {
+                $join->on('booking_temp.user_id', '=', 'users.id');
+            })
+            ->where('legal_enquiry.lawyer_id', $uid)
+            ->orderBy("legal_enquiry.id", 'desc')
+            ->where('legal_enquiry.status', '2');
+            
+        return $query;
+    }
+    public static function allBookingHistoryData()
+    {
+        $query = legalenquiry::select('legal_enquiry.*','users.name as uname','users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name','booking_temp.type as feestype')
+            ->leftjoin('legal_advice_qa_category', function ($join) {
+                $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
+            })
+            ->leftjoin('service_sub_category', function ($join) {
+                $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
+            })
+            ->leftjoin('booking_temp', function ($join) {
+                $join->on('booking_temp.lawyer_id', '=', 'legal_enquiry.lawyer_id');
+            })
+            ->leftjoin('users', function ($join) {
+                $join->on('booking_temp.user_id', '=', 'users.id');
+            })
+           
+            ->orderBy("legal_enquiry.id", 'desc');
+           
+        return $query;
+    }
     public static function getAllDataofEnquiry()
     {
         $query = legalenquiry::where('deleted_at', NULL)->orderBy('id', 'ASC')->get();

@@ -190,6 +190,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::post('admin/getexitadvicecategoryedit', 'App\Http\Controllers\admin\AjaxController@getexitadvicecategoryedit');
 
     Route::post('/admin/legal-service-description', 'App\Http\Controllers\admin\legalissueController@store');
+    Route::get('/admin/bookingHistory', 'App\Http\Controllers\fronted\enquiryController@bookingHistory');
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------
@@ -282,6 +283,8 @@ Route::resource('/my-profile', 'App\Http\Controllers\fronted\userProfileControll
 Route::get('/account/all-questions', [FrontedHomeController::class, 'allQuestions']);
 Route::get('/enquiryView/{id}', [FrontedHomeController::class, 'enquiryView']);
 Route::get('/account/customer/my-booking', [FrontedHomeController::class, 'myBookings']);
+
+Route::get('/user-book-history', [FrontedHomeController::class, 'userBookHistory']);
 //-----------------------------------------user account---------------------------------------------
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');

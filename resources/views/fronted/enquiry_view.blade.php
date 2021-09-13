@@ -139,7 +139,8 @@
                 <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
 
                 <div class="row">
-                    <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now</button>
+                    <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
+                    </button>
                 </div>
             </form>
 

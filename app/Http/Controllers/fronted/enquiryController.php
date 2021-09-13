@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\admin\enquiry;
 use App\Models\admin\sitesetting;
+use App\Models\admin\legalenquiry;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -167,5 +168,16 @@ class enquiryController extends Controller
             Session::flash('error', 'Sorry, something went wrong. Please try again');
             return redirect()->back();
         }
+    }
+    public function bookingHistory(Request $request)
+    {
+        // $auth = Auth::user();
+        // $this->data['name'] = $name = $request->name;
+        // $this->data['contact_us_data'] = enquiry::getContacts($name);
+        // $this->data['userdata'] = User::getrecordbyid($auth->id);
+
+        $this->data['enquiry_data'] = $enquirydatas = legalenquiry::allBookingHistoryData()->get();
+        
+        return view('admin.enquiry.booking_histori', $this->data);
     }
 }

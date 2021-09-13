@@ -287,6 +287,14 @@ $login = Auth::user();
 						<li class="nav-item">
 							<a class="nav-link " id="contact-us" href="<?php echo URL::to('/'); ?>/contact-us">Contact</a>
 						</li>
+
+						<!-- User Booking History -->
+						@if(@$login->user_type == '3')
+						<li class="nav-item">
+							<a class="nav-link " id="book_history" href="<?php echo URL::to('/'); ?>/user-book-history">Customer Booking History</a>
+						</li>
+						@endif
+
 						<!-- <li class="nav-item" id="legalservie">
 							<a class="nav-link" href="">LEGAL SERVICE</a>
 							<div class="inner-menu">

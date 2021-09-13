@@ -12,10 +12,23 @@
                                 <label for="imageUpload"></label>
                             </div>
                             <div class="avatar-preview">
-                                @if(isset($user_login->profileimage))
+                                <!--  @if(isset($user_login->profileimage))
                                 <div id="imagePreview" style="background-image: url( {{URL::to('/')}}/uploads/lawyerprofile/{{$user_login->profileimage}});">
                                     @else
                                     <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                        @endif
+
+                                    </div>
+                                </div> -->
+                                @if(isset($user_login->profileimage))
+                                <div id="" style="">
+                                    <img id="imagePreview" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$user_login->profileimage}}" style="background-image;">
+
+
+                                    @else
+                                    <div id="" style="">
+                                        <img id="imagePreview" src="http://i.pravatar.cc/500?img=7" style="background-image;">
+
                                         @endif
 
                                     </div>
@@ -90,7 +103,7 @@
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label>
 
-                                        <!-- <div class="d-flex">
+                                        <div class="d-flex">
                                             <div class="pm-check pr-3">
                                                 <input class="form-check-input language" @if('english'==$user_language[0]) {{'checked'}} @endif name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
@@ -105,7 +118,7 @@
                                                     Hindi
                                                 </label>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <span id="language_error" style="color: red;"></span>
 
                                     </div>

@@ -645,7 +645,7 @@ class HomeController extends Controller
 
     public function myBookings()
     {
-        $this->data['title'] = "My Cart";
+        $this->data['title'] = "Booking History";
         $auth = Auth::user();
         $uid = $auth->id;
         $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
@@ -653,5 +653,18 @@ class HomeController extends Controller
         $this->data['payment_details'] = bookingTemp::getDataById($uid);
 
         return view('fronted.usercart', $this->data);
+    }
+
+    // Show customer booking history at lawyer side
+    public function userBookHistory()
+    {
+        $this->data['title'] = "User Booking History";
+        $auth = Auth::user();
+        $uid = $auth->id;
+
+        //$this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
+        $this->data['enquiry_data'] = $enquirydatas = legalenquiry::customerCartDetails($uid)->get();
+       
+        return view('fronted.userbookhistory', $this->data);
     }
 }

@@ -312,6 +312,12 @@
                 <p> Enquiry</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/bookingHistory" class="nav-link" id="bookinghistory">
+                <i class="fas fa-users nav-icon"></i>
+                <p> Booking History</p>
+              </a>
+            </li>
             <!-- <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/court-managment" class="nav-link" id="court">
                 <i class="fas fa-users nav-icon"></i>
