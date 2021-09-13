@@ -6090,3 +6090,48 @@ height: 21px;
     border-bottom: 0;
     margin-bottom: 0;
 }
+.avatar-upload .avatar-preview img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/*13/09/2021*/
+
+.sa-img-account{
+    width: 80px;
+    height: auto;
+}
+
+.sa-account-flex{
+    display: flex;
+    align-items: center;
+}
+
+.sa-mitem-text{
+    margin-bottom: 0px!important;
+    font-size: 16px!important;
+}
+
+.sa-cursor{
+    cursor: auto;
+}
+
+.sr-t-bordered {
+    border: 1px solid #8F8F8F!important;
+}
+
+.sr-t-bordered td, .sr-t-bordered th {
+    border: 1px solid #8F8F8F!important;
+}
+
+.sr-t-bordered tr td.sr-b-right {
+    border-top: 0px;
+}
+
+.sa-font-acctable{
+    font-size: 14px;
+}

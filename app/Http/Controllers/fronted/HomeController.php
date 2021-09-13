@@ -225,6 +225,7 @@ class HomeController extends Controller
         $auth = auth()->user();
         if ($auth) {
             if ($auth->user_type == '2') {
+                $this->data['userdata'] = $auth;
                 $this->data['id'] = $id;
                 $this->data['title'] = "Legal Enquiry";
                 $this->data['category'] = adviceCategory::getquestioncategorylist();

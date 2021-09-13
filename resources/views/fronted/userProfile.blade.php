@@ -57,6 +57,8 @@
                                 <a class="nav-link active" id="pills-pro-personal-tab" data-toggle="pill" href="#pills-personal" role="tab" aria-controls="pills-personal" aria-selected="true">Personal Information</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" id="pills-password-tab" data-toggle="pill" href="#pills-special" role="tab" aria-controls="pills-special" aria-selected="false">Change Password</a>
+
                             </li>
                         </ul>
                     </div>
@@ -90,12 +92,7 @@
                                         <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" />
                                         @endif
 
-
                                     </div>
-
-
-
-
                                 </div>
 
                                 <div class="row">
@@ -107,6 +104,42 @@
                             </div>
                     </form>
                     <!-- tab2 -->
+                    <div class="tab-pane fade" id="pills-special" role="tabpanel" aria-labelledby="pills-password-tab">
+                        <form method="post" id="password_form" action="{{URL::to('/')}}/lawyer/change_password/{{$user_login->id}}">
+                            @csrf
+                            <div class="row ">
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label sa-color2 sa-label">Old Password</label>
+                                        <input type="password" class="form-control sa-form-font half-border-radius" name="oldpassword" id="oldpassword" placeholder="old password">
+                                    </div>
+                                    <span style="color: red;" id="oldpassword_error"></span>
+                                </div>
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label sa-color2 sa-label">New Password</label>
+                                        <input type="password" class="form-control sa-form-font half-border-radius" name="newpassword" id="newpassword" placeholder="New password">
+                                    </div>
+                                    <span style="color: red;" id="newpassword_error"></span>
+
+                                </div>
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label sa-color2 sa-label">Confirm Password</label>
+                                        <input type="password" class="form-control sa-form-font half-border-radius" name="confirmpassword" id="confirmpassword" placeholder="Confirm password">
+                                    </div>
+                                    <span style="color: red;" id="confirmpassword_error"></span>
+
+                                </div>
+                                <div class="col-md-7 ">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-outline-primary sa-color3  poppins-light">Change Password</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
                     <!-- end tab2 -->
                 </div>
 
@@ -205,6 +238,88 @@
             return false;
         } else {
 
+            return true;
+        }
+
+    })
+
+
+    //change password
+    $('#password_form').submit(function(e) {
+
+        var oldpassword = $('#oldpassword').val();
+        var newpassword = $('#newpassword').val();
+        var confirm_password = $('#confirmpassword').val();
+        var cnt = 0;
+        $('#oldpassword_error').html("");
+        $('#newpassword_error').html("");
+        $('#confirmpassword_error').html("");
+
+
+        if (oldpassword.trim() == '') {
+            $('#oldpassword_error').html("Please enter old password");
+            cnt = 1;
+        }
+
+        if (oldpassword) {
+
+            $.ajax({
+                url: "<?php echo URL::to('/'); ?>/admin/check_oldpassword",
+                type: "POST",
+                data: {
+                    old_password: oldpassword,
+                    _token: "<?php echo csrf_token(); ?>"
+                },
+                success: function(response) {
+
+                    if (response == 1) {
+
+                    } else {
+                        $('#oldpassword_error').html("Old Password does not match");
+                        cnt = 1;
+                    }
+                }
+            });
+        }
+
+        if (newpassword.trim() == '') {
+            $('#newpassword_error').html("Please enter new password");
+            cnt = 1;
+        }
+        var number = /([0-9])/;
+        var alphabets = /([a-zA-Z])/;
+        var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+
+        if (newpassword) {
+            if (newpassword.length < 8) {
+                $('#newpassword_error').html("Password should be atleast 8 characters");
+                cnt = 1;
+            } else {
+                if (newpassword.match(number) && newpassword.match(alphabets) && newpassword.match(special_characters)) {
+
+                } else {
+                    $('#newpassword_error').html(
+                        "Must contain min. 8 characters with at least 1 number and 1 special character");
+                    cnt = 1;
+                }
+            }
+        }
+
+        if (confirm_password.trim() == '') {
+            $('#confirmpassword_error').html("Please enter confirm Password");
+            cnt = 1;
+        }
+        if (newpassword != confirm_password) {
+
+            $('#confirmpassword_error').html("New Password and Confirm Password does not match");
+            cnt = 1;
+        }
+
+
+
+        if (cnt == 1) {
+            return false;
+        } else {
             return true;
         }
 

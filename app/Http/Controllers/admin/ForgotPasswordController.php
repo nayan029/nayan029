@@ -418,7 +418,8 @@ class ForgotPasswordController extends Controller
 
                 if ($update) {
                     Session::flash('success', 'Password changed successfully.');
-                    return redirect('/lawyer/edit-profile');
+                    // return redirect('/lawyer/edit-profile');
+                    return redirect()->back();
                 } else {
                     Session::flash('error', 'Sorry, something went wrong. Please try again');
                     return redirect()->back();

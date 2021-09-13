@@ -18,14 +18,14 @@
 
             <div class="mitem3">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <a href="{{URL::to('/')}}/my-profile">
-                    <img src="{{asset('fronted/images//user.png')}}">
+                    <img src="{{asset('fronted/images//user.png')}}" class="sa-img-account">
                   </a>
                 </div>
-                <div class="col-md-8 mt-3 pl-0">
+                <div class="col-md-8 pl-0 sa-account-flex">
                   <a href="{{URL::to('/')}}/my-profile">
-                    <p class="fs-20">View your profile</p>
+                    <p class="fs-20 sa-mitem-text">View your profile</p>
                   </a>
                 </div>
               </div>
@@ -40,14 +40,14 @@
 
             <div class="mitem3">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <a href="#">
-                    <img src="{{asset('fronted/images/crt1.png')}}">
+                    <img src="{{asset('fronted/images/crt1.png')}}" class="sa-img-account">
                   </a>
                 </div>
-                <div class="col-md-8 mt-3 pl-0">
+                <div class="col-md-8 pl-0 sa-account-flex">
                   <a href="{{URL::to('/')}}/account/customer/my-booking">
-                    <p class="fs-20">View your bookings</p>
+                    <p class="fs-20 sa-mitem-text">View your bookings</p>
                   </a>
                 </div>
               </div>
@@ -61,14 +61,14 @@
 
             <div class="mitem3">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <a href="{{URL::to('/')}}/account/all-questions">
-                    <img src="{{asset('fronted/images//pt1.png')}}">
+                    <img src="{{asset('fronted/images//pt1.png')}}" class="sa-img-account">
                   </a>
                 </div>
-                <div class="col-md-8 mt-3 pl-0">
+                <div class="col-md-8 pl-0 sa-account-flex">
                   <a href="{{URL::to('/')}}/account/all-questions">
-                    <p class="fs-20">View your enquiry</p>
+                    <p class="fs-20 sa-mitem-text">View your enquiry</p>
                   </a>
                 </div>
               </div>

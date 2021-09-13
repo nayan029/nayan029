@@ -86,7 +86,7 @@
               <div class="col-md-12 mt-1">
                 <div class="sa-pb">
                   <label for="inputName" class="form-label sa-color2 sa-label">Name</label><span style="color: red;">*</span>
-                  <input type="text" class="form-control sa-form-font half-border-radius" placeholder="Enter your name" id="iname" name="name" maxlength="250">
+                  <input type="text" value="@if(isset($userdata->name)){{$userdata->name}}@endif" class="form-control sa-form-font half-border-radius" placeholder="Enter your name" id="iname" name="name" maxlength="250">
                   
                 </div>
                 <span id="iname_error" style="color:red;"></span>

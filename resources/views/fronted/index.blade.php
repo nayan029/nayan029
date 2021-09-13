@@ -395,7 +395,7 @@
 			<div class="team-col">
 				<div class="team-box">
 					<!-- /* advocate/{{$data->id}} */ -->
-					<a href="javascript:void(0)" class="hoverid">
+					<a href="javascript:void(0)" class="hoverid sa-cursor">
 						<input type="hidden" name="id" id="id_{{$data->id}}" class="testone" data-hid="{{$data->id}}" value="{{$data->id}}">
 						@if($data->profileimage)
 						<img class="main" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$data->profileimage}}">
