@@ -180,7 +180,7 @@
                                     <div class="col-md-12 sa-pb">
                                         <h5 class=""></h5>
                                     </div>
-                                    <div class="col-md-12 sa-pb">
+                                    <div class="col-md-12 sa-pb mt-3">
                                         <h5 class="experience-title">Specialization</h5>
                                     </div>
 
@@ -193,9 +193,14 @@
                                     <div class="col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label" title="Basic example" multiple="multiple" name="example-basic">Specialization</label>
                                         <div class="row sr-pad1">
+
+
                                             <div class="col-md-4">
+
                                                 <div class="pm-check " id="catcheck">
-                                                      <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
+
+
+                                                    <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
                                                         <option value="">Select Specialization</option>
                                                         @foreach ($category as $data)
                                                         <option @if(in_array($data->id, $user_category)) {{"selected"}} @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
@@ -204,7 +209,11 @@
                                                 </div>
                                                 <span id="specialization_error" style="color: red;"></span>
                                             </div>
+
+
+
                                         </div>
+
                                     </div>
 
 
@@ -242,10 +251,10 @@
                                             <div class="row sr-pad1">
                                                 @foreach ($court as $data)
                                                 <div class="col-md-4">
-                                                    <div class="pm-check " id="courtcheck">
+                                                    <div class="pm-check pmsa-check" id="courtcheck">
                                                         <input class="form-check-input court" @if(in_array($data->id, $user_court)) {{"checked"}} @endif name="court[]" type="checkbox" value="{{$data->id}}" id="{{ $data->name}}">
                                                         <span class="real-checkbox"></span>
-                                                        <label class="form-check-label" for="{{$data->name}}">
+                                                        <label class="form-check-label pmsa-labels" for="{{$data->name}}">
                                                             {{$data->name}}
                                                         </label>
                                                     </div>

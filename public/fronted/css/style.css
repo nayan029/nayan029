@@ -6057,7 +6057,14 @@ button.owl-prev {}
 .themis-figurine-stands .themis-figurine, .themis-figurine-stands2 .themis-figurine {
     opacity: 0.6;
 }
-.experience-title {border-bottom: 1px solid;padding-bottom: 10px;margin-bottom: 10px;}
+.experience-title {
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 .hindum-arriage-act {
     border-bottom: 1px solid #404040;
     padding: 10px 0;
@@ -6176,3 +6183,21 @@ height: 21px;
 .sub-sa-pr{
     padding-right: 0px;
 }
+
+.sa-overflow{
+    overflow: auto;
+}
+
+/*start 14/09/2021*/
+
+.pmsa-check .real-checkbox{
+    top: 1px!important;
+}
+.pmsa-check{
+    margin-top: 6px;
+}
+
+.pmsa-labels{
+    font-size: 14px;
+}
+
