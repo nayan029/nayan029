@@ -5,7 +5,7 @@
             <p class="sa-color2">All Enquiry</p>
         </div>
     </div>
-    <div class="col-md-12 pl-0 pr-0">
+    <div class="col-md-12 pl-0 pr-0 sa-overflow">
         <table class="table table-bordered sr-t-bordered sa-font-acctable">
             <tr>
                 <!-- <td class="sa-color2">Name</td> -->
@@ -33,7 +33,7 @@
                 <!-- <td class="sr-p-white sr-b-right text-white">@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif </td> -->
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif
                     <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>
-                    <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_id)){{"Assign"}}@else{{"Not Assign"}}@endif </td>
+                    <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_id)){{"Assign"}}@else<span style="color: red;">Not Assign</span>@endif </td>
                 <td>
                     <!-- <a title="view" href="" data-toggle="modal" data-target="#seeDetails{{$i}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->
 

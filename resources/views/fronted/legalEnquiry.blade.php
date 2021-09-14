@@ -116,7 +116,7 @@
         </div>
 
         <div class="row d-flex justify-content-center mt-3">
-          <div class="col-md-8 p-0">
+          <div class="col-md-8 sub-sa-pr">
             <div class="row">
               <div class="col-md-12 ">
                 <!-- <a href="#" class="btn btn-outline-primary" id="prevbtn3">Prev</a> -->

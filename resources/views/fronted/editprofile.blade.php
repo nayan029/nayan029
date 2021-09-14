@@ -206,18 +206,18 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-4 sa-pb">
+                                    <!-- <div class="col-md-4 sa-pb">
 
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
                                             <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->basic_fees)){{$user_login->basic_fees}}@else{{"N/A"}}@endif'>
                                             <span id="basicFees_error" style="color:red"></span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4 sa-pb">
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees (By per days)</label><span style="color: red;"> *</span>
+                                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees (By per date)</label><span style="color: red;"> *</span>
                                             <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->fees)){{$user_login->fees}}@else{{"N/A"}}@endif'>
                                             <span id="fees_error" style="color:red"></span>
                                         </div>
@@ -225,7 +225,7 @@
                                     <div class="col-md-4 sa-pb">
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1" class="sa-color2">Full Legal Representation</label><span style="color: red;"> *</span>
+                                            <label for="exampleFormControlTextarea1" class="sa-color2">Legal Representation</label><span style="color: red;"> *</span>
                                             <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)" value='@if(isset($user_login->full_legal_fees)){{$user_login->full_legal_fees}}@else{{"N/A"}}@endif'>
                                             <span id="fullLegal_error" style="color:red"></span>
                                         </div>
@@ -363,20 +363,20 @@
         var court = $('#court').val();
         var specialization = $("#specialization").val();
 
-        var basic_fees = $('#basic_fees').val();
+        // var basic_fees = $('#basic_fees').val();
         var fees = $('#fees').val();
         var full_legal = $('#full_legal').val();
 
-        var price = $("#price").val();
+        // var price = $("#price").val();
 
         var degreename = $('#degreename').val();
         var year = $('#year').val();
         var institution = $('#institution').val();
 
 
-        var sdegreename = $('#sdegreename').val();
-        var syear = $('#syear').val();
-        var sinstitution = $('#sinstitution').val();
+        // var sdegreename = $('#sdegreename').val();
+        // var syear = $('#syear').val();
+        // var sinstitution = $('#sinstitution').val();
 
         // alert(specialization)
 
@@ -388,7 +388,7 @@
         $('#about_error').html("");
         $('#specialization_error').html("");
 
-        $('#basicFees_error').html("");
+        // $('#basicFees_error').html("");
         $('#fees_error').html("");
         $('#fullLegal_error').html("");
 
@@ -452,11 +452,11 @@
             }
         }
 
-        if (basic_fees.trim() == '') {
-            $("#basicFees_error").html("Please enter basic fees.");
-        } else {
-            $("#basicFees_error").html("");
-        }
+        // if (basic_fees.trim() == '') {
+        //     $("#basicFees_error").html("Please enter basic fees.");
+        // } else {
+        //     $("#basicFees_error").html("");
+        // }
         if (fees.trim() == '') {
             $("#fees_error").html("Please enter fees.");
         } else {
@@ -468,14 +468,14 @@
             $("#fullLegal_error").html("");
         }
 
-        if (price.trim() == '') {
-            $('#price_error').html("Please enter price");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#price').focus();
-            }
-        }
+        // if (price.trim() == '') {
+        //     $('#price_error').html("Please enter price");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#price').focus();
+        //     }
+        // }
 
         if (degreename.trim() == '') {
             $('#degree_error').html("Please enter degree name");
@@ -505,38 +505,37 @@
         }
 
 
-        if (sdegreename.trim() == '') {
-            $('#sdegree_error').html("Please enter degree name");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#sdegreename').focus();
-            }
-        }
+        // if (sdegreename.trim() == '') {
+        //     $('#sdegree_error').html("Please enter degree name");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#sdegreename').focus();
+        //     }
+        // }
 
-        if (syear.trim() == '') {
-            $('#syear_error').html("Please enter year");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#syear').focus();
-            }
-        }
+        // if (syear.trim() == '') {
+        //     $('#syear_error').html("Please enter year");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#syear').focus();
+        //     }
+        // }
 
-        if (sinstitution.trim() == '') {
-            $('#sinstitution_error').html("Please enter institution name");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#sinstitution').focus();
-            }
-        }
+        // if (sinstitution.trim() == '') {
+        //     $('#sinstitution_error').html("Please enter institution name");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#sinstitution').focus();
+        //     }
+        // }
 
         if (cnt == 1) {
             return false;
         } else {
-            // $("#reg_btn").html("Loading...");
-            // $(':input[type="submit"]').prop('disabled', true);
+           
             return true;
         }
 

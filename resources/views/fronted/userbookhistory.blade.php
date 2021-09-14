@@ -31,10 +31,8 @@
                 <td class="sr-p-white sr-b-right text-white"> @if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td>
 
                 <td class="sr-p-white sr-b-right text-white">
-                	@if($data->feestype == 1)
-                		Basic Fees
-                	@elseif($data->feestype == 2)
-                		Fees(By per days)
+                	@if($data->feestype == 2)
+                		Fees(By per date)
                 	@else
                 		Full Legal Representation
                 	@endif

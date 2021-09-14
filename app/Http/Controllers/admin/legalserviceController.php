@@ -47,7 +47,7 @@ class legalserviceController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id' => 'required',
-            'service_title' => 'required',
+            // 'service_title' => 'required',
             'short_description' => 'required',
             'image' => 'required',
             // 'description' => 'required',
@@ -64,7 +64,7 @@ class legalserviceController extends Controller
             $input['category_id'] = $request->category_id;
             $input['service_name'] = $request->name;
             $input['rating'] = "1";
-            $input['service_title'] = $request->service_title;
+            // $input['service_title'] = $request->service_title;
             $input['short_discription'] = $request->short_description;
             $input['discription'] = $request->description;
 
@@ -142,7 +142,7 @@ class legalserviceController extends Controller
         // die();
         $validator = Validator::make($request->all(), [
             'service_name' => 'required',
-            'service_title' => 'required',
+            // 'service_title' => 'required',
             'short_description' => 'required',
             'category_id' => 'required',
             // 'description' => 'required',
@@ -156,7 +156,7 @@ class legalserviceController extends Controller
             $auth = Auth::user();
             $input = $request->all();
             $input['service_name'] = $request->service_name;
-            $input['service_title'] = $request->service_title;
+            // $input['service_title'] = $request->service_title;
             $input['category_id'] = $request->category_id;
             $input['discription'] = $request->description;
             $input['updated_by'] = $auth->id;

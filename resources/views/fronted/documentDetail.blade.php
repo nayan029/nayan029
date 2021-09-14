@@ -18,7 +18,7 @@
         ?>
         <div class="row">
           <div class="col-md-9">
-            <h2 class="sa-color1 d-flex justify-content-between">{{$getquerys->service_name}}
+              <h2 class="sa-color1 d-flex justify-content-between">{{$getquerys->service_name}}
               <!-- <div>
                 <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-primary sa-color3 poppins-light ml-4">Find A Lawyer</a>
               </div> -->
@@ -36,13 +36,11 @@
             <p class="fs-20 pt-3 pb-0 mb-0">{{$getquerys->short_description}}</p>
           </div>
           <div class="col-md-3 d-flex align-items-center res-search-md">
-            <form method="GET">
-              <div class="filter-group mutual-sa-search d-flex">
-                <input type="text" name="name" id="name_input">
-
-                <button type="button" onclick="getData(this)" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
-              </div>
-            </form>
+            <!-- <div class="filter-group mutual-sa-search d-flex">
+                <input type="text" name="name">
+                
+                <button type="submit" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
+            </div> -->
           </div>
         </div>
       </div>
@@ -51,7 +49,7 @@
 </div>
 
 
-<div class="sa-enroll-details" id="databox">
+<div class="sa-enroll-details">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -66,7 +64,7 @@
             @foreach($sub_service_list as $subService)
             <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}"><i class="fa fa-arrow-right"></i> {{ $subService->description }}</a> <br />
             @endforeach
-            @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
+           @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
 
 
             <div class="mb-4 sr-l-space">
@@ -225,22 +223,4 @@
       </div>
     </div>
   </div>
-  @include('fronted/include/footer')
-  <script>
-    function getData(val) {
-      var inputname = $('#name_input').val();
-      $.ajax({
-        url: "{{ URL::to('/')}}/find-name",
-        type: "post",
-        data: {
-          inputname: inputname,
-          _token: "<?php echo csrf_token(); ?>"
-        },
-        success: function(response) {
-          var res = JSON.toString(response);
-          $('#databox').html(response);
-        }
-      });
-
-    }
-  </script>
+@include('fronted/include/footer')

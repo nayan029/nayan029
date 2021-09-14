@@ -3034,6 +3034,7 @@ footer {
 .team-box:hover {
 
     top: -30px;
+    margin-top: 10px;
 
 }
 
@@ -3872,7 +3873,7 @@ footer {
 
     position: absolute;
 
-    bottom: -3px;
+    bottom: -4px;
 
     left: -1px;
 
@@ -4652,7 +4653,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .header-title .inner{
 
-    padding: 50px 0;
+    padding: 35px 0;
 
     background: #0C0B0B;
 
@@ -4737,6 +4738,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #ECA835; 
 
     margin-bottom:20px;
+
+    justify-content: center;
 
 }
 
@@ -6103,7 +6106,8 @@ height: 21px;
 
 .sa-img-account{
     width: 80px;
-    height: auto;
+    height: 80px;
+    object-fit: contain;
 }
 
 .sa-account-flex{
@@ -6134,4 +6138,41 @@ height: 21px;
 
 .sa-font-acctable{
     font-size: 14px;
+}
+
+.sa-profile-center{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-nav .nav-item > .dot-remove-sa:last-child:after{
+    display: none;
+}
+
+.mutual-sa-search img{
+    position: inherit!important;
+    height: auto!important;
+    width: 31px;
+}
+
+.mutual-sa-search input{
+    padding: 6px 10px 6px 10px!important;
+}
+
+.sa-footer-mb li{
+    margin-bottom: 0px;
+}
+
+.btn-outline-search:hover {
+    border-color: var(--primary-color);
+}
+
+.btn-outline-search{
+    padding: 3px 10px;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.sub-sa-pr{
+    padding-right: 0px;
 }

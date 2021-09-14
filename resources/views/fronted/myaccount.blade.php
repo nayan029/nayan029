@@ -18,7 +18,7 @@
 
             <div class="mitem3">
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 resa-pro-acc">
                   <a href="{{URL::to('/')}}/my-profile">
                     <img src="{{asset('fronted/images//user.png')}}" class="sa-img-account">
                   </a>
@@ -40,7 +40,7 @@
 
             <div class="mitem3">
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 resa-pro-acc">
                   <a href="#">
                     <img src="{{asset('fronted/images/crt1.png')}}" class="sa-img-account">
                   </a>
@@ -61,7 +61,7 @@
 
             <div class="mitem3">
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 resa-pro-acc">
                   <a href="{{URL::to('/')}}/account/all-questions">
                     <img src="{{asset('fronted/images//pt1.png')}}" class="sa-img-account">
                   </a>

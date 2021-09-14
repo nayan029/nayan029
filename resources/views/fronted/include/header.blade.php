@@ -62,7 +62,7 @@ $login = Auth::user();
 
 									?>
 
-										<li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $keyQuery->id ?>">{{ucfirst($keyQuery->type_name)}}</a></li>
+										<li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $keyQuery->id ?>">{{ucfirst($keyQuery->title)}}</a></li>
 
 									<?php } ?>
 
@@ -80,7 +80,7 @@ $login = Auth::user();
 									foreach ($listLegalGuides as $keyGuides) {
 									?>
 										<li>
-											<a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $keyGuides->id ?>">{{ucfirst($keyGuides->type_name)}}</a>
+											<a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $keyGuides->id ?>">{{ucfirst($keyGuides->title)}}</a>
 										</li>
 									<?php } ?>
 
@@ -97,11 +97,11 @@ $login = Auth::user();
 									<li class="ul-title">Bare Acts</li>
 									<li class="li-border"></li>
 									<?php
-									$getquerysdatas = DB::table('main_legal_query')->where('legal_query_type_id', '3')->where('status', 1)->where('deleted_at', NULL)->orderBy('type_name', 'asc')->get();
+									$getquerysdatas = DB::table('main_legal_query')->where('legal_query_type_id', '3')->where('status', 1)->where('deleted_at', NULL)->orderBy('id', 'asc')->take(5)->get();
 									foreach ($getquerysdatas as $value) {
 
 									?>
-										<li><a href="<?php echo URL::to('/legalQueryDesc') ?>?id=<?= $value->id ?>">{{ucfirst($value->type_name)}}</a></li>
+										<li><a href="<?php echo URL::to('/legalQueryDesc') ?>?id=<?= $value->id ?>">{{ucfirst($value->title)}}</a></li>
 
 									<?php } ?>
 									<!-- <li><a href="<?php echo URL::to('/') ?>/indian-kanoon">Indian Kanoon</a></li>
@@ -143,7 +143,7 @@ $login = Auth::user();
 													foreach ($listLegalGuides as $keyGuides) {
 
 													?>
-														<li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
+														<li><a href="<?php echo URL::to('/'); ?>/legal-services/documents/{{$keyGuides->slug}}">{{ucfirst($keyGuides->service_name)}}</a></li>
 													<?php } ?>
 
 													<li>
@@ -285,14 +285,14 @@ $login = Auth::user();
 						</li>
 						<!-- legal services -->
 						<li class="nav-item">
-							<a class="nav-link " id="contact-us" href="<?php echo URL::to('/'); ?>/contact-us">Contact</a>
+							<a class="nav-link dot-remove-sa" id="contact-us" href="<?php echo URL::to('/'); ?>/contact-us">Contact</a>
 						</li>
 
 						<!-- User Booking History -->
 						@if(@$login->user_type == '3')
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link " id="book_history" href="<?php echo URL::to('/'); ?>/user-book-history">Customer Booking History</a>
-						</li>
+						</li> -->
 						@endif
 
 						<!-- <li class="nav-item" id="legalservie">
@@ -463,6 +463,7 @@ $login = Auth::user();
 																																						echo "";
 																																					} ?>
 									</a>
+								<a class="dropdown-item" id="book_history" href="<?php echo URL::to('/'); ?>/user-book-history"><i class="icon fa fa-shopping-cart"></i> Booking History</a>
 
 									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
 									<!-- <a class="dropdown-item" href="<?php echo URL::to('/') ?>/lawyer-profile"><img src="{{asset('fronted/images/gridicons_user.png')}}" alt="icon" class="icon" >My Profile</a> -->

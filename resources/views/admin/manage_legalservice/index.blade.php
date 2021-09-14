@@ -28,7 +28,7 @@
 
                             <form class="form-inline mb-3" method="GET" action="<?php echo URL::to('/') ?>/admin/legal-services">
                                 <div class="form-group mr-2">
-                                    <input type="text" class="form-control w-180px" value="{{$service_title}}" id="" name="title" placeholder="Service Title">
+                                    <input type="text" class="form-control w-180px" value="{{$service_title}}" id="" name="title" placeholder="Service Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary ml-2">Filter</button>
                                 <a href="<?php echo URL::to('/'); ?>/admin/legal-services"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
@@ -45,7 +45,7 @@
                                         <th>Sr No</th>
                                         <th>Type</th>
                                         <th>Service Name</th>
-                                        <th>ServiceTitle</th>
+                                        <!-- <th>ServiceTitle</th> -->
                                         <!-- <th>Descriptions</th> -->
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -69,7 +69,7 @@
 
                                             </td>
                                             <td>{{$data->service_name}}</td>
-                                            <td>{{$data->service_title}}</td>
+                                            <!-- <td>{{$data->service_title}}</td> -->
 
                                             <!-- <td></td> -->
 

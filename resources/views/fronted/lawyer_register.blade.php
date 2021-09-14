@@ -17,12 +17,12 @@
 
 <body>
 	<section class="signin-section before-border">
-		<div class="themis-figurine">
+		<div class="themis-figurine mobile-customer-sec">
 			<img src="<?php echo URL::to('/'); ?>/fronted/images/Rectangle101.png" class="themis">
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-6 col1">
+				<div class="col-md-6 mobile-customer-sec col1">
 				
 					<div class="mid">
 						<div class="sa-small-logocenter">

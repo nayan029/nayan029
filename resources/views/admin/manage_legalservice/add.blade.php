@@ -53,14 +53,14 @@
 
               <div class="row">
 
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                   <div class="form-group">
                     <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
                     <input type="text" class="form-control" id="service_title" name="service_title" aria-describedby="emailHelp" placeholder="Enter Title">
                     <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
                   </div>
-                </div>
-                <div class="col-sm-6">
+                </div> -->
+                <div class="col-sm-12">
                   <div class="form-group">
                     <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
                     <input type="text" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
@@ -143,7 +143,7 @@
     var image = $('#image').val();
     // var description = CKEDITOR.instances.description.getData();
 
-    var service_title = $('#service_title').val();
+    // var service_title = $('#service_title').val();
     var category = $('#category').val();
 
     var cnt = 0;
@@ -212,14 +212,14 @@
       });
     }
 
-    if (service_title.trim() == '') {
-      $('#title_error').html("Please enter service title");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#title_title').focus();
-      }
-    }
+    // if (service_title.trim() == '') {
+    //   $('#title_error').html("Please enter service title");
+    //   cnt = 1;
+    //   f++;
+    //   if (f == 1) {
+    //     $('#title_title').focus();
+    //   }
+    // }
 
     if (short_description.trim() == '') {
       $('#short_description_error').html("Please enter Short description");

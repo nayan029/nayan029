@@ -41,7 +41,7 @@ class legalservices extends Authenticatable
     {
         $query =  legalservices::where('status', 1)->orderBy('id', 'desc');
         
-        $temp = "service_title like '%$title%' ";
+        $temp = "service_name like '%$title%' ";
         if ($title != "") {
             $query = $query->whereRaw($temp);
         }

@@ -123,14 +123,14 @@
                 <input type="hidden" name="id" value="{{request('id');}}">
                 <div class="row">
 
-                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
-                    <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div>
+                    <!-- <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
+                    <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div> -->
 
-                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2">
-                    <div class="col-md-2 sa-color2">Fees(By per days) - {{$lawyerData->fees}}</div>
+                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2">
+                    <div class="col-md-2 sa-color2">Fees(By per date) - {{$lawyerData->fees}}</div>
 
                     <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3">
-                    <div class="col-md-5 sa-color2">Full Legal Representation - {{$lawyerData->full_legal_fees}}</div>
+                    <div class="col-md-5 sa-color2">Legal Representation - {{$lawyerData->full_legal_fees}}</div>
                 </div>
                 <span id="fees_error" style="color: red;"></span>
                 <input type="hidden" name="type" id="radio_id">

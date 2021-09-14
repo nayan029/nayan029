@@ -9,7 +9,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;">
-        <h2 class="sa-color1">{{$dataLegalQuery->title}}</h2>
+        <h2 class="sa-color1 res-lq-font">{{$dataLegalQuery->title}}</h2>
         <a download="{{$dataLegalQuery->document}}" class="btn btn-primary" target="_blank" href="{{URL::to('/')}}/uploads/document/{{$dataLegalQuery->document}}"><i class="fas fa-download"></i> Download</a>
 
       </div>

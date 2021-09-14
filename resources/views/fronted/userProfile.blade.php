@@ -86,10 +86,10 @@
                                         <input type="file" class="form-control" id="profilepic" name="profilepic" placeholder="Profileimge">
                                         <span style="color:red;" id="profilepic_error"><?php echo $errors->customer_error->first('company_logo'); ?></span>
                                         @if($user_login->profileimage)
-                                        <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$user_login->profileimage}}" class="site-stg-img site-stg-img2 sr-image" id="blah" />
+                                        <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/uploads/userprofile/{{$user_login->profileimage}}" class="site-stg-img site-stg-img2 sr-image mt-3" id="blah" />
                                         @else
                                         <br>
-                                        <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" />
+                                        <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 mt-3 sr-image" id="blah" />
                                         @endif
 
                                     </div>

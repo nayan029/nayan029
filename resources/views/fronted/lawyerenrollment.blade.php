@@ -275,20 +275,20 @@
                             <span id="about_error" style="color:red"></span>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
                             <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)">
                             <span id="basicFees_error" style="color:red"></span>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per days)</label><span style="color: red;"> *</span>
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per date)</label><span style="color: red;"> *</span>
                             <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fees_error" style="color:red"></span>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1" class="sa-color2">Full Legal Representation</label><span style="color: red;"> *</span>
+                            <label for="exampleFormControlTextarea1" class="sa-color2">Legal Representation</label><span style="color: red;"> *</span>
                             <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fullLegal_error" style="color:red"></span>
                         </div>
@@ -1004,7 +1004,7 @@
         // var category = $("#catcheck input[type=checkbox]:checked").length;
         var specialization = $("#specialization").val();
 
-        var basic_fees = $('#basic_fees').val();
+        // var basic_fees = $('#basic_fees').val();
         var fees = $('#fees').val();
         var full_legal = $('#full_legal').val();
 
@@ -1041,17 +1041,13 @@
             // alert(specialization)
             $("#category_error").html("Please select specialization");
             cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#specialization').focus();
-            }
         }
 
-        if (basic_fees.trim() == '') {
-            $("#basicFees_error").html("Please enter basic fees.");
-        } else {
-            $("#basicFees_error").html("");
-        }
+        // if (basic_fees.trim() == '') {
+        //     $("#basicFees_error").html("Please enter basic fees.");
+        // } else {
+        //     $("#basicFees_error").html("");
+        // }
         if (fees.trim() == '') {
             $("#fees_error").html("Please enter fees.");
         } else {
@@ -1066,8 +1062,6 @@
         if (cnt == 1) {
             return false;
         } else {
-            // $("#reg_btn").html("Loading...");
-            // $(':input[type="submit"]').prop('disabled', true);
             return true;
         }
     })

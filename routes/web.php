@@ -290,6 +290,9 @@ Route::get('/user-book-history', [FrontedHomeController::class, 'userBookHistory
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
 Route::post('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@getData');
+
+Route::post('/find-name', 'App\Http\Controllers\fronted\findLawyer@getName');
+
 Route::get('/legalQueryDesc', 'App\Http\Controllers\fronted\HomeController@legalQueryDesc');
 
 Route::get('/{category}', [FrontedHomeController::class, 'divorce_legalAdvice']);
@@ -299,6 +302,7 @@ Route::get('/lawyer/enrollment', [FrontedHomeController::class, 'enrollment']);
 Route::post('/lawyer/enrollment', [enrollmentController::class, 'index']);
 
 Route::get('/legal-services/{category}', [FrontedHomeController::class, 'family_services']);
+Route::get('/legal-services/documents/{category}', [FrontedHomeController::class, 'document_services']);
 
 Route::get('indian-kanoons/{name}', 'App\Http\Controllers\admin\indianKanoonController@dataById');
 

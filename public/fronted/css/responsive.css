@@ -52,10 +52,34 @@
 
 }
 
+@media screen and (min-width: 992px) and (max-width:1199px){
+	.team-col {
+	    width: 23%;
+	    flex: 0 0 23%;
+	    max-width: 23%;
+	 }
+	 .at-legal-buddy .col2 img {
+	    height: 434px;
+	 }
+	 .at-legal-buddy {
+	    padding: 35px 0;
+	}
+	.figure-sec {
+    padding: 40px 0;
+}
+}
+
 
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-
+	.team-col {
+	    width: 23%;
+	    flex: 0 0 23%;
+	    max-width: 23%;
+	 }
+	.figure-sec {
+	    padding: 40px 0;
+	}
 	.masonry {
 
 		-moz-column-count: 2;
@@ -165,8 +189,8 @@
 	.team-box .main,
 
 	.team-box .text img {
-
-		height: 315px;
+		height: 196px;
+		/*height: 315px;*/
 
 	}
 
@@ -347,6 +371,10 @@
 		padding: 60px 0;
 
 	}
+
+	.at-legal-buddy {
+    padding: 35px 0;
+}
 
 	.after-text {
 
@@ -580,6 +608,40 @@
 
 
 @media (max-width: 767px) {
+	.res-lq-font{
+		font-size: 30px;
+	}
+	
+	.why-legal-buddy .col2 {
+	    text-align: center;
+	 }
+	.sub-sa-pr {
+	    padding-right: 10px;
+	}
+	.res-search-md{
+		margin-top: 10px;
+	}
+	.sr-res-card {
+	    margin: 0px 10px 20px;
+	}
+	.aiming-section{
+		padding: 25px 0;
+	}
+	.mitem .bottom{
+		padding: 0px;
+	}
+	.team-col {
+	    width: 50%;
+	    flex: 0 0 50%;
+	    max-width: 50%;
+	}
+	.sa-team-itext .text h5{
+		font-size: 15px;
+	}
+
+	.sa-manage .title{
+		margin-bottom: 60px!important;
+	}
 
 	.navbar-brand img {
 
@@ -686,6 +748,8 @@
 	.aiming-item .col1 .text {
 
 		margin-top: 0;
+
+		max-width: inherit;
 
 	}
 
@@ -1029,7 +1093,7 @@
 
 	.at-legal-buddy {
 
-		padding: 50px 0;
+		padding: 25px 0;
 
 	}
 
@@ -1299,9 +1363,13 @@
 
 		height: auto;
 
-		padding: 40px;
+		padding: 21px;
+   
+   	width: 345px;
 
-		width: 230px;
+		/*padding: 40px;
+
+		width: 230px;*/
 
 		margin: auto;
 

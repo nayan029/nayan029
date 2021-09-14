@@ -168,6 +168,17 @@ class HomeController extends Controller
 
         return view('fronted.mutualDivorce', $this->data);
     }
+    public function document_services(Request $request, $name)
+    {
+        $part1 = $name;
+        $this->data['title'] = "Get Your " . $part1 . " Done By Experts Advocates ";
+        $this->data['search_name'] = $search_name = $request->search_name;
+        $this->data['getquerys'] = legalservices::familylist($part1);
+        $this->data['advicecategory'] = $serviceData = legalservices::getDataBySlugName($name);
+        $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($serviceData->id);
+
+        return view('fronted.documentDetail', $this->data);
+    }
 
     /* service urls */
 
@@ -257,12 +268,14 @@ class HomeController extends Controller
     public function allAid(Request $request)
     {
         $this->data['title'] = "LEGAL AID";
+        $this->data['aids'] = "Aids";
         $this->data['advicecategory'] = legalservices::getfamilyData();
         return view('fronted.allAids', $this->data);
     }
     public function allDocs(Request $request)
     {
         $this->data['title'] = "LEGAL Documents";
+        $this->data['docs'] = "Documents";
         $this->data['advicecategory'] = legalservices::getpropertyData();
         return view('fronted.allAids', $this->data);
     }

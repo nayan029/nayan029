@@ -51,14 +51,14 @@
                                         <span style="color:red;" id="name_error"><?php echo $errors->profile_error->first('title'); ?></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <!-- <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail">Service Title</label><span style="color: red;">*</span>
                                         <input type="text" value="{{$data->service_title}}" class="form-control" id="service_title" name="service_title" aria-describedby="emailHelp" placeholder="Enter Title">
                                         <span style="color:red;" id="title_error"><?php echo $errors->profile_error->first('image'); ?></span>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
+                                </div> -->
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
                                         <input type="text" value="{{$data->short_description}}" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
@@ -154,7 +154,7 @@
         // var description = $('#description').val();
         // var description = CKEDITOR.instances.description.getData();
 
-        var service_title = $('#service_title').val();
+        // var service_title = $('#service_title').val();
         // var category = $('#category').val();
         var image = $('#image').val();
 
@@ -176,14 +176,14 @@
         var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
 
 
-        if (service_title.trim() == '') {
-            $('#title_error').html("Please enter service title");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#title_title').focus();
-            }
-        }
+        // if (service_title.trim() == '') {
+        //     $('#title_error').html("Please enter service title");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#title_title').focus();
+        //     }
+        // }
 
         // if (category.trim() == '') {
         //     $('#category_error').html("Please select category");

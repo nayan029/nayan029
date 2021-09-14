@@ -5,7 +5,9 @@ namespace App\Http\Controllers\fronted;
 use App\Http\Controllers\Controller;
 use App\Models\admin\adviceCategory;
 use App\Models\admin\court;
+use App\Models\admin\legalservices;
 use App\Models\admin\location;
+use App\Models\admin\ServiceSubCategory;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,6 +58,14 @@ class findLawyer extends Controller
         $this->data['category'] = adviceCategory::getquestioncategorylist();
 
         return view('fronted.userbox',$this->data);
+
+    }
+
+    public function getName(Request $request)
+    {
+        $inputname = $request->inputname;
+        $this->data['user_data'] = ServiceSubCategory::getByName($inputname);
+        return view('fronted.databox',$this->data);
 
     }
 }

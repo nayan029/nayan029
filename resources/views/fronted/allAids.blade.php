@@ -2,7 +2,7 @@
 <div class="sa-enroll-details">
   <div class="container">
     <div class="sa-application">
-      <h3 class="sa-color2 mb-4">Free Legal Services From Top Rated Lawyers</h3>
+      <h3 class="sa-color2 mb-4">Free Legal @if(isset($docs)){{"Documentation"}}@elseif(isset($aids)){{"Services"}}@endif From Top Rated Lawyers</h3>
     </div>
 
     <div class="row">
@@ -28,7 +28,7 @@
           <?php foreach ($advicecategory as $data) {
           ?>
             <div class="col-md-12">
-              <ul class="footer-ul">
+              <ul class="footer-ul sa-footer-mb">
 
                 <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
 
@@ -36,7 +36,7 @@
             </div>
           <?php } ?>
           <div class="col-md-6">
-            <ul class="footer-ul">
+            <ul class="footer-ul sa-footer-mb">
               <!-- <li><a href="#"><i class="fa fa-arrow-right"></i> Divorce</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Medical Negligence</a></li>
 					<li><a href="#"><i class="fa fa-arrow-right"></i> Landlord/Tenant</a></li>

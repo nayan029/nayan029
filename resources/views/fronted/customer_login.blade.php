@@ -19,8 +19,8 @@
 			<img src="{{asset('fronted/images/themis-figurine-stands-white-wooden-table-stack-old-books-scales-law-lawyer-business-concept-image 1.png')}}" class="themis-figurine">
 		</div>
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6 col1">					
+			<div class="row saflex-col">
+				<div class="col-md-6 resa-get-login col1">					
 					<!-- <a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo"></a> -->
 					<div class="mid">
 					<div class="sa-small-logocenter">
