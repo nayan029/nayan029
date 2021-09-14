@@ -465,7 +465,7 @@ $login = Auth::user();
 									</a>
 								<a class="dropdown-item" id="book_history" href="<?php echo URL::to('/'); ?>/user-book-history"><i class="icon fa fa-shopping-cart"></i> Booking History</a>
 
-									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
+								<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
 									<!-- <a class="dropdown-item" href="<?php echo URL::to('/') ?>/lawyer-profile"><img src="{{asset('fronted/images/gridicons_user.png')}}" alt="icon" class="icon" >My Profile</a> -->
 
 

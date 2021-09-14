@@ -75,6 +75,10 @@ class lawyerProfileController extends Controller
             $input['syear'] = $request->syear;
             $input['sinstitue'] = $request->sinstitution;
 
+            $input['allotmentno'] = $request->allotment;
+            $input['membershipno'] = $request->membership;
+
+
             // $input['location'] = $request->location;
 
 

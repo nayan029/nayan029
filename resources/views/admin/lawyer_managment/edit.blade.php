@@ -142,13 +142,31 @@
                                         <span style="color:red;" id="institution_error"></span>
                                     </div>
                                 </div>
+                                <!-- allotment no and membership no -->
                                 <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEduction">Allotment Number</label><span style="color: red;">*</span>
+                                        <input name="allotment" type="text" value='@if(isset($lawyerdata->allotmentno)){{$lawyerdata->allotmentno}}@else{{"N/A"}}@endif' class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
+                                        <span id="allotment_error" style="color: red;"></span>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Membership number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="membership" type="text" value='@if(isset($lawyerdata->membershipno)){{$lawyerdata->membershipno}}@else{{"N/A"}}@endif' class="form-control sa-form-font half-border-radius" id="membership" placeholder="" maxlength="13">
+                                        <span id="membership_error" style="color: red;"></span>
+                                    </div>
+                                </div>
+
+                                <!-- allotment no and membership no -->
+                                <!-- <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="exampleInputEduction">Basic Fees</label><span style="color: red;">*</span>
                                         <input type="text" class="form-control" id="price" name="price" value="@if(isset($lawyerdata->basic_fees)){{$lawyerdata->basic_fees}} @endif" placeholder="Basic Fees">
                                         <span style="color:red;" id="price_error"></span>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
@@ -269,6 +287,8 @@
         var institution = $('#institution').val();
         var image = $('#image').val();
 
+        var allotment = $('#allotment').val();
+        var memership = $('#membership').val();
 
 
 
@@ -292,6 +312,8 @@
         $('#sdegree_error').html("");
         $('#syear_error').html("");
         $('#sinstitution_error').html("");
+        $('#allotment_error').html();
+        $('#membership_error').html();
 
 
         // if (image.trim() == '') {
@@ -351,14 +373,14 @@
         }
 
 
-        if (price.trim() == '') {
-            $('#price_error').html("Please enter fees");
-            cnt = 1;
-            f++;
-            if (f == 1) {
-                $('#price').focus();
-            }
-        }
+        // if (price.trim() == '') {
+        //     $('#price_error').html("Please enter fees");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#price').focus();
+        //     }
+        // }
 
         if (fees.trim() == '') {
             $('#fees_error').html("Please enter fees");
@@ -402,6 +424,23 @@
             f++;
             if (f == 1) {
                 $('#institution').focus();
+            }
+        }
+        if (allotment.trim() == '') {
+            $('#allotment_error').html("Please enter allotment number");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#allotment').focus();
+            }
+        }
+
+        if (memership.trim() == '') {
+            $('#membership_error').html("Please enter membership number");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#membership').focus();
             }
         }
 

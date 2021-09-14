@@ -3,6 +3,7 @@
 	<head>
 	  <title>Legal Bench | Login</title>
 	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" href="<?php echo URL::to('/'); ?>/fronted/images/favicon.png" type="image/png" sizes="16x16">
 	  <link rel="stylesheet" href="{{asset('fronted/css/bootstrap.min.css')}}">
 	  <link rel="stylesheet" href="{{asset('fronted/css/themify-icons.css')}}">

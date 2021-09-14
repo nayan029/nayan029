@@ -40,7 +40,7 @@
                             </div>
 
                             <h3 class="profile-username text-center">{{ucfirst($userdata->name." ".$userdata->username)}}</h3>
-                            <p class="text-center">@if($userdata->nicno) {{$userdata->nicno}} @else {{"N/A"}} @endif</p>
+                            <!-- <p class="text-center">@if($userdata->nicno) {{$userdata->nicno}} @else {{"N/A"}} @endif</p> -->
                             <!-- <p class="text-muted text-center">Software Engineer</p> -->
 
                         </div>
@@ -115,6 +115,15 @@
                                                 <tr>
                                                     <th scope="row" style="color: #007bff;"> Experience ::</th>
                                                     <td> @if($userdata->experience) {{ucfirst($userdata->experience )}} @else {{"N/A"}} @endif</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" style="color: #007bff;"> Allotment Number ::</th>
+                                                    <td> @if($userdata->allotmentno) {{ucfirst($userdata->allotmentno )}} @else {{"N/A"}} @endif</td>
+
+                                                </tr> <tr>
+                                                    <th scope="row" style="color: #007bff;"> Membership Number ::</th>
+                                                    <td> @if($userdata->membershipno) {{ucfirst($userdata->membershipno )}} @else {{"N/A"}} @endif</td>
 
                                                 </tr>
                                                 <tr>

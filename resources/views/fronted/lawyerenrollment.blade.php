@@ -165,10 +165,21 @@
                                         </select>
                                         <span id="nationality_error" style="color: red;"></span>
                                     </div> -->
-                                    <div class="col-lg-6 col-md-12 sa-pb">
+                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">NIC number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
                                         <input name="nicno" type="text" class="form-control sa-form-font half-border-radius" id="nicno" placeholder="" maxlength="13">
                                         <span id="nicno_error" style="color: red;"></span>
+                                    </div> -->
+                                    <div class="col-lg-6 col-md-12 sa-pb">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="allotment" type="text" class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
+                                        <span id="allotment_error" style="color: red;"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 sa-pb">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Membership  number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="membership" type="text" class="form-control sa-form-font half-border-radius" id="membership" placeholder="" maxlength="13">
+                                        <span id="membership_error" style="color: red;"></span>
+                                    </div>
 
                                         <!--   <input type="text" class="form-control sa-form-font sa-nic" maxlength="13">
                                  <div class="sa-span">
@@ -186,7 +197,6 @@
                                     <span></span>
                                     <span></span>
                                  </div> -->
-                                    </div>
                                     <!-- <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">Location </label><span style="color: red;"> *</span>
                                         <select name="location" id="location" class="form-control sa-form-font half-border-radius">
@@ -661,7 +671,9 @@
 
 
         // var nationality = $('#nationality').val();
-        var nicno = $('#nicno').val();
+        // var nicno = $('#nicno').val();
+        var allotment = $('#allotment').val();
+        var memership = $('#membership').val();
 
         var language = $('input[name=language]:checked').val();
 
@@ -696,7 +708,10 @@
 
         // $('#nationality_error').html();
         $('#language_error').html("");
-        $('#nicno_error').html();
+        // $('#nicno_error').html();
+
+        $('#allotment_error').html();
+        $('#membership_error').html();
 
         $('#emobile_error').html();
 
@@ -871,12 +886,30 @@
         //         $('#nationality').focus();
         //     }
         // }
-        if (nicno.trim() == '') {
-            $('#nicno_error').html("Please enter nic no");
+        // if (nicno.trim() == '') {
+        //     $('#nicno_error').html("Please enter nic no");
+        //     cnt = 1;
+        //     f++;
+        //     if (f == 1) {
+        //         $('#nicno').focus();
+        //     }
+        // }
+        
+        if (allotment.trim() == '') {
+            $('#allotment_error').html("Please enter allotment number");
             cnt = 1;
             f++;
             if (f == 1) {
-                $('#nicno').focus();
+                $('#allotment').focus();
+            }
+        }
+
+        if (memership.trim() == '') {
+            $('#membership_error').html("Please enter membership number");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#membership').focus();
             }
         }
 

@@ -60,6 +60,8 @@ class User extends Authenticatable
         'deleted_at',
         'deleted_by',
         'assign_lawyer',
+        'allotmentno',
+        'membershipno',
     ];
 
     /**

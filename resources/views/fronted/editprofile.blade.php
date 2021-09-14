@@ -89,7 +89,16 @@
                                     <div class="col-md-12 sa-pb">
                                         <h5 class="experience-title">Personal Information</h5>
                                     </div>
-
+                                    <div class="col-lg-6 col-md-6 sa-pb mb-2">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="allotment" type="text" value='@if(isset($user_login->allotmentno)){{$user_login->allotmentno}}@else{{"N/A"}}@endif' class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
+                                        <span id="allotment_error" style="color: red;"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 sa-pb mb-2">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Membership Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="membership" type="text" value='@if(isset($user_login->membershipno)){{$user_login->membershipno}}@else{{"N/A"}}@endif' class="form-control sa-form-font half-border-radius" id="membership" placeholder="" maxlength="13">
+                                        <span id="membership_error" style="color: red;"></span>
+                                    </div>
                                     <div class="col-md-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Experience</label>
                                         <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" value='@if(isset($user_login->experience)){{$user_login->experience}}@else{{"N/A"}}@endif' placeholder="Enter Experience">
@@ -206,6 +215,8 @@
                                         </div>
 
                                     </div>
+
+
                                     <!-- <div class="col-md-4 sa-pb">
 
                                         <div class="form-group">
@@ -372,6 +383,8 @@
         var degreename = $('#degreename').val();
         var year = $('#year').val();
         var institution = $('#institution').val();
+        var allotment = $('#allotment').val();
+        var memership = $('#membership').val();
 
 
         // var sdegreename = $('#sdegreename').val();
@@ -401,6 +414,9 @@
         $('#sdegree_error').html("");
         $('#syear_error').html("");
         $('#sinstitution_error').html("");
+        $('#allotment_error').html();
+        $('#membership_error').html();
+
 
 
         // if (image.trim() == '') {
@@ -503,7 +519,23 @@
                 $('#institution').focus();
             }
         }
+        if (allotment.trim() == '') {
+            $('#allotment_error').html("Please enter allotment number");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#allotment').focus();
+            }
+        }
 
+        if (memership.trim() == '') {
+            $('#membership_error').html("Please enter membership number");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#membership').focus();
+            }
+        }
 
         // if (sdegreename.trim() == '') {
         //     $('#sdegree_error').html("Please enter degree name");
@@ -535,7 +567,7 @@
         if (cnt == 1) {
             return false;
         } else {
-           
+
             return true;
         }
 

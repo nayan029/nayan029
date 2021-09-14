@@ -66,7 +66,15 @@
 	}
 	.figure-sec {
     padding: 40px 0;
-}
+	}
+	.themis-figurine .themis {
+	    object-fit: cover;
+	    height: 100vh;
+	    width: 50%;
+	}
+	.pm-check .real-checkbox {
+	    top: 0px;
+	 }
 }
 
 
@@ -608,8 +616,55 @@
 
 
 @media (max-width: 767px) {
+	.signin-section .col1 .mid {
+	    margin: 0 auto;
+	    text-align: center;
+	    /*display: none;*/
+	}
+	.pm-check .real-checkbox {
+	    top: 1px;
+	 }
+	.themis-figurine{
+		display: none;
+	}
+	.signin-section .col1 .bottom {
+	    margin-top: inherit;
+	}
+	.signin-section .col1, .signin-section .col2 {
+	    min-height: inherit;
+	}
+	.signin-section .col2 .top {
+    	height: auto;
+ 	}
+ 	.signin-section .col1 {
+	    padding-bottom: 1px;
+	}
+	.signin-section .col2 {
+	    padding-top: 0px;
+	}
+	.themis-figurine-stands{
+		display: none;
+	}
+	.saflex-col{
+		flex-direction: column;
+	}
+	.resa-get-login{
+		width: 100%;
+    	flex: 0 0 100%;
+    	max-width: 100%;
+	}
+	/*.signin-section .mobile-customer-sec{
+		display: none!important;
+	}*/
 	.res-lq-font{
 		font-size: 30px;
+	}
+	.sa-account-flex{
+		justify-content: center;
+	}
+	.resa-pro-acc{
+		display: flex;
+		justify-content: center;
 	}
 	
 	.why-legal-buddy .col2 {
@@ -1469,3 +1524,4 @@
 	}
 
 }
+

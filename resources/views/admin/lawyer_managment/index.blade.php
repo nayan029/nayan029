@@ -80,12 +80,12 @@
                                         if ($data->show_lawyer == 1) {
                                             $classone = 'success';
                                             $statusone = 'Active';
-                                            $thumbsone = 'down';
+                                            $thumbsone = 'times';
                                             $statustxtone = 'Hide Lawyer';
                                         } else {
                                             $classone = 'danger';
                                             $statusone = 'Inactive';
-                                            $thumbsone = 'up';
+                                            $thumbsone = 'check';
                                             $statustxtone = 'Show Lawyer';
                                         }
 
@@ -122,7 +122,7 @@
                                                 </a>
 
                                                 <a title="{{$statustxtone}}" href="#" onclick="showlawyer('{{ $data->id }}','status','{{$thumbsone}}')">
-                                                    <i class="far fa-thumbs-{{$thumbsone}}"></i>
+                                                    <i class="fas fa-{{$thumbsone}}"></i>
                                                 </a>
                                                 <!-- onclick="functiondelete('{{ $data->id }}')" -->
                                             </td>
@@ -213,7 +213,7 @@
 
     function showlawyer(id, type, th) {
 
-        if (th == 'up') {
+        if (th == 'show') {
             var message = "Show lawyer?";
         } else {
             var message = "Hide lawyer?";
