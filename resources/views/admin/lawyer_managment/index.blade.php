@@ -120,8 +120,8 @@
                                                 <a title="{{$statustxt}}" href="#" onclick="functiondelete('{{ $data->id }}','status','{{$thumbs}}')">
                                                     <i class="far fa-thumbs-{{$thumbs}}"></i>
                                                 </a>
-
-                                                <a title="{{$statustxtone}}" href="#" onclick="showlawyer('{{ $data->id }}','status','{{$thumbsone}}')">
+                                                <a title="{{$statustxtone}}" href="#"  onclick="showlawyer('{{ $data->id }}','status','{{$thumbsone}}')" 
+                                                @if($thumbsone=='times') style="color: red;"@else style="color: green;"  @endif>
                                                     <i class="fas fa-{{$thumbsone}}"></i>
                                                 </a>
                                                 <!-- onclick="functiondelete('{{ $data->id }}')" -->
