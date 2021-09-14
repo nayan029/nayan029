@@ -51,13 +51,29 @@
                     <!-- About Me Box -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Practice Area</h3>
+                            <h3 class="card-title">About</h3>
                         </div>
 
                         <div class="card-body">
-                            <p>
-                                @if($userdata->about) {{$userdata->about}} @else {{"N/A"}} @endif
-                            </p>
+                        <div class="mt-2">
+                                <span style="color: #007bff;">Specialization:</span>
+                                <hr>
+                                <span>@if(isset($user_category)) {{$user_category[0]['category_name']}} @else {{"N/A"}} @endif</span>
+                            </div>
+
+                            <div class="">
+                                <span style="color: #007bff;">Practice Area:</span>
+                                <hr>
+                                <span>@if($userdata->about) {{$userdata->about}} @else {{"N/A"}} @endif</span>
+                            </div>
+
+                            <div class="mt-2">
+                                <span style="color: #007bff;">court:</span>
+                                <hr>
+                                <span>@if(isset($user_court)) @foreach($user_court as $court)  {{ $loop->first ? '' : ', ' }}{{$court->court_name}}   @endforeach @endif</span>
+                            </div>
+
+
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -87,47 +103,48 @@
                                                 <a href="#">{{$userdata->name." ".$userdata->username}}</a>
                                                 <!-- <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a> -->
                                             </span>
-                                            <span class="description"><?= date("d-M-Y", strtotime(Auth::user()->created_at)); ?></span>
+                                            <span class="description">BirthDate : <?= date("d-M-Y", strtotime(Auth::user()->ldob)); ?></span>
                                         </div>
                                         <!-- /.user-block -->
                                         <table class="table">
                                             <tbody>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th scope="row" style="color: #007bff;"> Name of lawyer ::</th>
                                                     <td> {{$userdata->name." ".$userdata->username}}</td>
 
-                                                </tr>
+                                                </tr> -->
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Email ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Email :</th>
                                                     <td> {{$userdata->email}}</td>
 
                                                 </tr>
 
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Mobile ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Mobile :</th>
                                                     <td> @if($userdata->mobile) {{$userdata->mobile}} @else {{"N/A"}} @endif </td>
                                                 </tr>
 
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Location ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Location :</th>
                                                     <td> @if($userdata->location) {{ucfirst($userdata->location)}} @else {{"N/A"}} @endif</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Experience ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Experience :</th>
                                                     <td> @if($userdata->experience) {{ucfirst($userdata->experience )}} @else {{"N/A"}} @endif</td>
 
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Allotment Number ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Allotment Number :</th>
                                                     <td> @if($userdata->allotmentno) {{ucfirst($userdata->allotmentno )}} @else {{"N/A"}} @endif</td>
 
-                                                </tr> <tr>
-                                                    <th scope="row" style="color: #007bff;"> Membership Number ::</th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" style="color: #007bff;"> Membership Number :</th>
                                                     <td> @if($userdata->membershipno) {{ucfirst($userdata->membershipno )}} @else {{"N/A"}} @endif</td>
 
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Languages ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Languages :</th>
                                                     <td>
                                                         <?php
                                                         ob_start();
@@ -140,7 +157,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" style="color: #007bff;"> Signature ::</th>
+                                                    <th scope="row" style="color: #007bff;"> Signature :</th>
                                                     <td> <?php
                                                             if ($userdata->siganturepic) {
                                                             ?>

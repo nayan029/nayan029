@@ -187,8 +187,11 @@ class lawyermanagmentController extends Controller
     {
         $auth = Auth::user();
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
+        $this->data['user_court'] = lawyercourt::getrecordenrollmentbyid($id);
 
+         $this->data['user_category'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
         //   return  $this->data['userdata'] = User::getrecordbyid($id);  die;
+
         $this->data['userdata'] = User::getrecordbyid($id);
         $this->data['title'] = "Lawyera Profile";
         return view('admin/lawyer_managment/lawyerProfile', $this->data);

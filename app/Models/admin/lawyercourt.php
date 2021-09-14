@@ -34,9 +34,9 @@ class lawyercourt extends Authenticatable
     public static function getrecordenrollmentbyid($id)
     {
 
-        $query = lawyercourt::select('lawyer_enrollment_court.*', 'legal_advice_qa_category.category_name as category_name')
-            ->leftjoin('legal_advice_qa_category', function ($join) {
-                $join->on('lawyer_enrollment_court.categoryid', '=', 'legal_advice_qa_category.id');
+        $query = lawyercourt::select('lawyer_enrollment_court.*', 'court.name as court_name')
+            ->leftjoin('court', function ($join) {
+                $join->on('lawyer_enrollment_court.courtid', '=', 'court.id');
             })
             ->where('lawyer_enrollment_court.userid', $id)
             ->orderBy("lawyer_enrollment_court.id", 'desc')

@@ -193,14 +193,9 @@
                                     <div class="col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label" title="Basic example" multiple="multiple" name="example-basic">Specialization</label>
                                         <div class="row sr-pad1">
-
-
                                             <div class="col-md-4">
-
                                                 <div class="pm-check " id="catcheck">
-
-
-                                                    <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
+                                                      <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
                                                         <option value="">Select Specialization</option>
                                                         @foreach ($category as $data)
                                                         <option @if(in_array($data->id, $user_category)) {{"selected"}} @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
@@ -209,11 +204,7 @@
                                                 </div>
                                                 <span id="specialization_error" style="color: red;"></span>
                                             </div>
-
-
-
                                         </div>
-
                                     </div>
 
 
