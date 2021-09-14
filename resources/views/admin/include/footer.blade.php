@@ -64,5 +64,47 @@
 	toastr.error('<?php echo Session::get('error') ?>', '', {timeOut: 5000});
 	</script>
 	@endif
+
+  <script>
+      //lawyer notification
+
+          function getLawyerNotification()
+          {
+
+        $.ajax({
+          url: "<?php echo URL::to('/'); ?>/notification/lawyer_notification",    
+          type: "GET",
+          data: {_token: "{{ csrf_token()}}"},
+          success: function (response) {
+            $('#lawyernotifcation').html(response);
+
+          }
+        });	
+      }
+      getLawyerNotification();
+      setInterval(function () {
+        getLawyerNotification();
+      }, 1000);
+
+      //customer notification
+
+      function getCustomerNotification()
+          {
+
+        $.ajax({
+          url: "<?php echo URL::to('/'); ?>/notification/customer_notification",    
+          type: "GET",
+          data: {_token: "{{ csrf_token()}}"},
+          success: function (response) {
+            $('#customernotifcation').html(response);  
+
+          }
+        });	
+      }
+      getCustomerNotification();
+      setInterval(function () {
+        getCustomerNotification();
+      }, 1000);
+  </script>
 </body>
 </html>

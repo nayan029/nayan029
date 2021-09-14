@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\admin\legalissue;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use DB;
 
@@ -28,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Using view composer to set following variables globally
         view()->composer('*', function ($view) {
-            
+
             // $listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->limit(6)->get();
             // $view->with('listLegalGuides', $listLegalGuides);
 
@@ -40,7 +41,28 @@ class AppServiceProvider extends ServiceProvider
             //     ->orderBy("legal_issue.id", 'desc')
             //     ->limit('6');
             // $view->with('listLegalGuidesfirst', $listLegalGuidesfirst);
+            $lawyersql = User::getNewLawyerData();
+
+            $customersql = User::getNewCustomerrData();
+            return  $view->with('lawyerNotification', $lawyersql)->with('customerNotification', $customersql);
         });
         // 
     }
+
+    /* notification */
+    public function lawyerNotification()
+    {
+        view()->composer('*', function ($view) {
+            $sql = User::getNewLawyerData();
+            return  $view->with('lawyerNotification', $sql);
+        });
+    }
+    public function customerNotification()
+    {
+        view()->composer('*', function ($view) {
+            $sql = User::getNewCustomerrData();
+            return  $view->with('customerNotification', $sql);
+        });
+    }
+    /* notification */
 }

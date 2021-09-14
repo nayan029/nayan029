@@ -32,6 +32,7 @@ class lawyermanagmentController extends Controller
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['getlawyer'] = User::getlawyertdata($name);
         $this->data['title'] = "Lawyer Mangment";
+        DB::table('users')->where('user_type','3')->update(array('notification' => 1));
         return view('admin/lawyer_managment/index', $this->data);
     }
     public function edit($id)

@@ -62,6 +62,7 @@ class User extends Authenticatable
         'assign_lawyer',
         'allotmentno',
         'membershipno',
+        'notification',
     ];
 
     /**
@@ -308,4 +309,16 @@ class User extends Authenticatable
         $query = User::where('user_type', 3)->where('email_verify', 0)->where('email', $email)->first();
         return $query;
     }
+    /* notification */
+    public static function getNewLawyerData()
+    {
+        $query = User::where('user_type', 3)->where('notification','0')->get();
+        return $query;
+    }
+    public static function getNewCustomerrData()
+    {
+        $query = User::where('user_type', 2)->where('notification','0')->get();
+        return $query;
+    }
+    /* notification */
 }

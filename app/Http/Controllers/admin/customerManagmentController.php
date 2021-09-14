@@ -8,6 +8,7 @@ use App\Models\admin\sitesetting;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Exists;
@@ -26,6 +27,8 @@ class customerManagmentController extends Controller
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         $this->data['getusers'] = User::getcustdata($name);
         $this->data['title'] = "Customer Mangment";
+       
+        DB::table('users')->where('user_type','2')->update(array('notification' => 1));
         return view('admin/customer_manegment/index', $this->data);
     }
     public function show(Request $request)

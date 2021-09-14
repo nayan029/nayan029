@@ -192,6 +192,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/admin/legal-service-description', 'App\Http\Controllers\admin\legalissueController@store');
     Route::get('/admin/bookingHistory', 'App\Http\Controllers\fronted\enquiryController@bookingHistory');
+
+    Route::get('/notification/lawyer_notification','App\Http\Controllers\admin\HomeController@lawyerNotification');
+    Route::get('/notification/customer_notification','App\Http\Controllers\admin\HomeController@customerNotification');
+
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------

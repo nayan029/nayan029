@@ -36,4 +36,17 @@ class HomeController extends Controller
         $this->data['legalEnquiry'] = legalenquiry::getAllDataofEnquiry();
         return view('admin.home',$this->data);
     }
+
+    public function lawyerNotification()
+    {
+        $sql = User::getNewLawyerData();
+         $data =  count($sql);
+        return $data;
+    }
+    public function customerNotification()
+    {
+        $sql = User::getNewCustomerrData();
+       $data =  count($sql);
+        return $data;
+    }
 }

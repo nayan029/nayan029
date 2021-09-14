@@ -214,14 +214,15 @@
             <li id="customer_menu" class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/customer_managment" class="nav-link" id="manage_customer">
                 <i class="far fa-user nav-icon"></i>
-                <p>Manage Customer</p>
+                <p>Manage Customer           
+                  </p><span id="customernotifcation" class="badge badge-pill badge-warning ml-1">{{count($customerNotification)}}</span>
               </a>
             </li>
             <li id="lawyer_menu" class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/manage-lawyer" class="nav-link" id="manage_lawyer">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
                 <i class="fas fa-gavel nav-icon"></i>
-                <p>Manage Lawyer</p>
+                <p>Manage Lawyer</p><span id="lawyernotifcation" class="badge badge-pill badge-warning ml-1">{{count($lawyerNotification)}}</span>
               </a>
             </li>
             <!-- <li class="nav-item" >
@@ -275,7 +276,7 @@
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/legal-enquiry" class="nav-link" id="legalenquiry">
                 <i class="fas fa-users nav-icon"></i>
-                <p>Legal Enquiry</p>
+                <p>Legal Enquiry</p><span id="notifcation" class="badge badge-pill badge-warning ml-1">0</span>
               </a>
             </li>
             <!-- leagl query -->
@@ -335,3 +336,4 @@
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
+  
