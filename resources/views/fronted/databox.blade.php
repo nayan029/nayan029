@@ -6,11 +6,13 @@
           <div class="col-md-12 mt-1">
             <div class="">
               <p class="ls-1"></p>
-
-              <a href="{{ URL::to('legal-enquiry') }}/{{ $user_data->id }}"><i class="fa fa-arrow-right"></i> {{ $user_data->description }}</a> <br />
+              @foreach($user_data as $data)
+              <a href="{{ URL::to('legal-enquiry') }}/{{ $data->id }}"><i class="fa fa-arrow-right"></i> {{ $data->description }}</a> <br />
+              @endforeach
             </div>
           </div>
-        </div></div>
         </div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
+</div>
