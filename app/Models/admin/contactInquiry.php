@@ -11,7 +11,7 @@ class contactInquiry extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'contact_enquiry';
-    protected $fillable = ['name', 'email', 'message','category', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['name', 'email', 'message','category', 'created_at', 'updated_at', 'deleted_at','notification'];
 
     public static function contactlistsearch($name)
     {
@@ -32,6 +32,11 @@ class contactInquiry extends Authenticatable
 			$query= $query->whereRaw($temp);
         }
 		$query= $query->paginate(10);
+        return $query;
+    }
+    public static function getnotificationcontactenquiry()
+    {
+        $query = contactInquiry::where('notification', '0')->get();
         return $query;
     }
 }

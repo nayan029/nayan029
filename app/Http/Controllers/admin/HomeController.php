@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\contactInquiry;
+use App\Models\admin\enquiry;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use App\Models\admin\legalenquiry;
@@ -53,6 +55,18 @@ class HomeController extends Controller
     public function enquiryNotification()
     {
         $sql = legalenquiry::getnotificationNewEnquiry();
+        $data =  count($sql);
+        return $data;
+    }
+    public function contactenquiryNotification()
+    {
+        $sql = contactInquiry::getnotificationcontactenquiry();
+        $data =  count($sql);
+        return $data;
+    }
+    public function enquirynewNotification()
+    {
+        $sql = enquiry::getnotification();
         $data =  count($sql);
         return $data;
     }

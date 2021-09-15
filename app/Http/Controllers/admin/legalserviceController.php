@@ -48,7 +48,7 @@ class legalserviceController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             // 'service_title' => 'required',
-            'short_description' => 'required',
+            // 'short_description' => 'required',
             'image' => 'required',
             // 'description' => 'required',
         ]);
@@ -143,7 +143,7 @@ class legalserviceController extends Controller
         $validator = Validator::make($request->all(), [
             'service_name' => 'required',
             // 'service_title' => 'required',
-            'short_description' => 'required',
+            // 'short_description' => 'required',
             'category_id' => 'required',
             // 'description' => 'required',
         ]);

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\admin\contactInquiry;
+use App\Models\admin\enquiry;
 use App\Models\admin\legalenquiry;
 use App\Models\admin\legalissue;
 use App\Models\User;
@@ -45,7 +47,9 @@ class AppServiceProvider extends ServiceProvider
             $lawyersql = User::getNewLawyerData();
             $customersql = User::getNewCustomerrData();
             $legalenquirysql = legalenquiry::getnotificationNewEnquiry();
-            return  $view->with('lawyerNotification', $lawyersql)->with('customerNotification', $customersql)->with('enquiryNotification', $legalenquirysql);
+            $contactenquirysql = contactInquiry::getnotificationcontactenquiry();
+            $norenquirysql = enquiry::getnotification();
+            return  $view->with('lawyerNotification', $lawyersql)->with('customerNotification', $customersql)->with('enquiryNotification', $legalenquirysql)->with('contactenquiryNotification', $contactenquirysql)->with('norenquirysql',$norenquirysql);
         });
         // 
     }

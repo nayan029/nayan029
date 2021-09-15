@@ -62,7 +62,7 @@
                 </div> -->
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <label for="exampleInputContactNo">Short Description</label><span style="color: red;">*</span>
+                    <label for="exampleInputContactNo">Short Description</label>
                     <input type="text" maxlength="250" class="form-control" id="short_description" name="short_description" aria-describedby="numberHelp" placeholder="Enter Short Description">
                     <span style="color:red;" id="short_description_error"><?php echo $errors->profile_error->first('short_description'); ?></span>
                   </div>
@@ -138,7 +138,7 @@
   $('#main_form').submit(function(e) {
 
     var name = $('#name').val();
-    var short_description = $('#short_description').val();
+    // var short_description = $('#short_description').val();
     // var description = $('#description').val();
     var image = $('#image').val();
     // var description = CKEDITOR.instances.description.getData();
@@ -149,7 +149,7 @@
     var cnt = 0;
     var f = 0;
     $('#name_error').html("");
-    $('#short_description_error').html("");
+    // $('#short_description_error').html("");
     $('#description_error').html("");
     $('#title_error').html("");
 
@@ -221,14 +221,14 @@
     //   }
     // }
 
-    if (short_description.trim() == '') {
-      $('#short_description_error').html("Please enter Short description");
-      cnt = 1;
-      f++;
-      if (f == 1) {
-        $('#short_description').focus();
-      }
-    }
+    // if (short_description.trim() == '') {
+    //   $('#short_description_error').html("Please enter Short description");
+    //   cnt = 1;
+    //   f++;
+    //   if (f == 1) {
+    //     $('#short_description').focus();
+    //   }
+    // }
 
     if (image.trim() == '') {
       $('#image_error').html("Please select Pictures");

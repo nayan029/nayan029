@@ -196,6 +196,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/notification/lawyer_notification','App\Http\Controllers\admin\HomeController@lawyerNotification');
     Route::get('/notification/customer_notification','App\Http\Controllers\admin\HomeController@customerNotification');
     Route::get('/notification/enquiry_notification','App\Http\Controllers\admin\HomeController@enquiryNotification');
+    Route::get('/notification/contactenquiry_notification','App\Http\Controllers\admin\HomeController@contactenquiryNotification');
+    Route::get('/notification/enquirynew_notification','App\Http\Controllers\admin\HomeController@enquirynewNotification');
+
 
 });
 

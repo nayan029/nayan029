@@ -215,14 +215,14 @@
               <a href="<?php echo URL::to('/'); ?>/admin/customer_managment" class="nav-link" id="manage_customer">
                 <i class="far fa-user nav-icon"></i>
                 <p>Manage Customer           
-                  </p><span id="customernotifcation" class="badge badge-pill badge-warning ml-1">{{count($customerNotification)}}</span>
+                  </p><span id="customernotifcation" class="badge badge-pill badge-warning ml-1" @if(count($customerNotification) == 0) style="display:none;" @endif>{{count($customerNotification)}}</span>
               </a>
             </li>
             <li id="lawyer_menu" class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/manage-lawyer" class="nav-link" id="manage_lawyer">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
                 <i class="fas fa-gavel nav-icon"></i>
-                <p>Manage Lawyer</p><span id="lawyernotifcation" class="badge badge-pill badge-warning ml-1">{{count($lawyerNotification)}}</span>
+                <p>Manage Lawyer</p><span id="lawyernotifcation" class="badge badge-pill badge-warning ml-1" @if(count($lawyerNotification) == 0) style="display:none;" @endif>{{count($lawyerNotification)}}</span>
               </a>
             </li>
             <!-- <li class="nav-item" >
@@ -276,7 +276,7 @@
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/legal-enquiry" class="nav-link" id="legalenquiry">
                 <i class="fas fa-users nav-icon"></i>
-                <p>Legal Enquiry</p><span id="enquirynotifcation" class="badge badge-pill badge-warning ml-1">{{count($enquiryNotification)}}</span>
+                <p>Legal Enquiry</p><span id="enquirynotifcation" class="badge badge-pill badge-warning ml-1" @if(count($enquiryNotification) == 0) style="display:none;" @endif>{{count($enquiryNotification)}}</span>
               </a>
             </li>
             <!-- leagl query -->
@@ -304,13 +304,14 @@
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/ContactEnquiry" class="nav-link" id="contactenquiry">
                 <i class="fas fa-users nav-icon"></i>
-                <p>Contact Enquiry</p>
+                <p>Contact Enquiry</p><span id="contactenquirynotifcation" class="badge badge-pill badge-warning ml-1" @if(count($contactenquiryNotification) == 0) style="display:none;" @endif>{{count($contactenquiryNotification)}}</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/enquiry" class="nav-link" id="enquiry">
                 <i class="fas fa-users nav-icon"></i>
                 <p> Enquiry</p>
+                <span id="enquirynewnotifcation" class="badge badge-pill badge-warning ml-1"  @if(count($norenquirysql) == 0) style="display:none;" @endif>{{count($norenquirysql)}}</span>
               </a>
             </li>
             <li class="nav-item">

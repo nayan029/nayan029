@@ -9,6 +9,7 @@ use App\Models\admin\contactInquiry;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -33,6 +34,7 @@ class ContactEnquiryController extends Controller
         $this->data['name'] = $name = $request->name;
         $this->data['contact_us_data'] = contactInquiry::getContacts($name); 
         $this->data['userdata'] = User::getrecordbyid($auth->id);
+        DB::table('contact_enquiry')->update(array('notification' => 1));
         return view('admin.contactEnquiry.index', $this->data);
     }
     public function store(Request $request)

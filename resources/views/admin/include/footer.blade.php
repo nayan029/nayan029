@@ -66,10 +66,9 @@
 	@endif
 
   <script>
-      //lawyer notification
-
-          function getLawyerNotification()
-          {
+    function getLawyerNotification()
+    {
+            //lawyer notification
 
         $.ajax({
           url: "<?php echo URL::to('/'); ?>/notification/lawyer_notification",    
@@ -80,51 +79,90 @@
 
           }
         });	
-      }
-      getLawyerNotification();
-      setInterval(function () {
-        getLawyerNotification();
-      }, 1000);
 
-      //customer notification
-
-      function getCustomerNotification()
-          {
-
+        //enquiry new notification
+        
         $.ajax({
+          url: "<?php echo URL::to('/'); ?>/notification/enquirynew_notification",    
+          type: "GET",
+          data: {_token: "{{ csrf_token()}}"},
+          success: function (response) {
+
+            if(response > 0)
+            {
+                $('#enquirynewnotifcation').show();  
+                $('#enquirynewnotifcation').html(response);  
+            }
+            else{
+               $('#enquirynewnotifcation').hide();  
+            }
+
+          }
+        });
+
+         //customer notification
+         $.ajax({
           url: "<?php echo URL::to('/'); ?>/notification/customer_notification",    
           type: "GET",
           data: {_token: "{{ csrf_token()}}"},
           success: function (response) {
-            $('#customernotifcation').html(response);  
+
+            if(response > 0)
+            {
+                $('#customernotifcation').show();  
+                $('#customernotifcation').html(response);  
+            }
+            else{
+               $('#customernotifcation').hide();  
+            }
 
           }
         });	
-      }
-      getCustomerNotification();
-      setInterval(function () {
-        getCustomerNotification();
-      }, 1000);
 
        //leagal enquiry notification
-
-       function getenquiryNotification()
-          {
-
-        $.ajax({
+       $.ajax({
           url: "<?php echo URL::to('/'); ?>/notification/enquiry_notification",    
           type: "GET",
           data: {_token: "{{ csrf_token()}}"},
           success: function (response) {
-            $('#enquirynotifcation').html(response);  
+
+            if(response > 0)
+            {
+                $('#enquirynotifcation').show();  
+                $('#enquirynotifcation').html(response);  
+            }
+            else{
+               $('#enquirynotifcation').hide();  
+            }
 
           }
         });	
+
+       //leagal contact-enquiry notification
+       $.ajax({
+          url: "<?php echo URL::to('/'); ?>/notification/contactenquiry_notification",    
+          type: "GET",
+          data: {_token: "{{ csrf_token()}}"},
+          success: function (response) {
+
+            if(response > 0)
+            {
+                $('#contactenquirynotifcation').show();  
+                $('#contactenquirynotifcation').html(response);  
+            }
+            else{
+               $('#contactenquirynotifcation').hide();  
+            }
+
+          }
+        });	
+
       }
-      getenquiryNotification();
+      getLawyerNotification();
       setInterval(function () {
-        getenquiryNotification();
-      }, 1000);
+        getLawyerNotification();
+      }, 200000);
+
   </script>
 </body>
 </html>
