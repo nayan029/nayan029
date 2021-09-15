@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\adminMangmentController;
 use App\Http\Controllers\admin\BlogMangementController as AdminBlogMangementController;
+use App\Http\Controllers\admin\documentDeatailsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\fronted\HomeController as FrontedHomeController;
@@ -199,7 +200,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/notification/contactenquiry_notification','App\Http\Controllers\admin\HomeController@contactenquiryNotification');
     Route::get('/notification/enquirynew_notification','App\Http\Controllers\admin\HomeController@enquirynewNotification');
 
-
+    // document details
+    Route::resource('/admin/document-deatils',documentDeatailsController::class);
+    Route::get('/admin/add-document-details',[documentDeatailsController::class,'addDetails']);
+    // document details
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------

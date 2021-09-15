@@ -265,7 +265,14 @@
                 <p>Other Resources</p>
               </a>
             </li> -->
-
+             <!-- leagl query -->
+             <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/query-category" class="nav-link" id="lawyer_cat">
+                <i class="fas fa-th nav-icon"></i>
+                <p>Legal Query </p>
+              </a>
+            </li>
+            <!-- legal query -->
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/legal-services" class="nav-link" id="legal_service">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
@@ -279,14 +286,7 @@
                 <p>Legal Enquiry</p><span id="enquirynotifcation" class="badge badge-pill badge-warning ml-1" @if(count($enquiryNotification) == 0) style="display:none;" @endif>{{count($enquiryNotification)}}</span>
               </a>
             </li>
-            <!-- leagl query -->
-            <li class="nav-item">
-              <a href="<?php echo URL::to('/'); ?>/admin/query-category" class="nav-link" id="lawyer_cat">
-                <i class="fas fa-th nav-icon"></i>
-                <p>Legal Query </p>
-              </a>
-            </li>
-            <!-- legal query -->
+           
 
 
             <li class="nav-item">
@@ -318,6 +318,12 @@
               <a href="<?php echo URL::to('/'); ?>/admin/bookingHistory" class="nav-link" id="bookinghistory">
                 <i class="fas fa-users nav-icon"></i>
                 <p> Booking History</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{URL::to('/')}}/admin/document-deatils" class="nav-link" id="documentdetails">
+                <i class="fas fa-star nav-icon"></i>
+                <p> DOCUMNET DETAILS</p>
               </a>
             </li>
             <!-- <li class="nav-item">
