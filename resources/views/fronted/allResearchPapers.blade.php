@@ -2,7 +2,8 @@
 <div class="sa-enroll-details">
     <div class="container">
         <div class="sa-application">
-            <h3 class="sa-color2 mb-4">Free Legal Advice From Top Rated Lawyers</h3>
+            <h3 class="sa-color2 mb-4">Free @if(isset($researchpapers)){{"Research Paper"}}@elseif(isset($notes)){{"Notes
+"}} @elseif(isset($bars)){{"Bare Acts"}}@endif  From Top Rated Lawyers</h3>
         </div>
 
         <div class="row">

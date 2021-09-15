@@ -549,18 +549,21 @@ class HomeController extends Controller
     public function allResearchPapers(Request $request)
     {
         $this->data['title'] = "Research Papers";
+        $this->data['researchpapers'] = '1';
         $this->data['allQuerys'] = MainLegalQuery::getallPapers();
         return view('fronted.allResearchPapers', $this->data);
     }
     public function allNotes(Request $request)
     {
         $this->data['title'] = "Notes";
+        $this->data['notes'] = '1';
         $this->data['allQuerys'] = MainLegalQuery::getallNotes();
         return view('fronted.allResearchPapers', $this->data);
     }
     public function allBarsAct(Request $request)
     {
         $this->data['title'] = "Bare Acts";
+        $this->data['bars'] = '1';
         $this->data['allQuerys'] = MainLegalQuery::getallBareAct();
         return view('fronted.allResearchPapers', $this->data);
     }

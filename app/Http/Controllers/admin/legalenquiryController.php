@@ -10,6 +10,7 @@ use App\Models\admin\legalenquiry;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -35,6 +36,7 @@ class legalenquiryController extends Controller
         $this->data['enquiry_list'] = legalenquiry::getAllData(); 
         $this->data['enquiry_data'] = legalenquiry::enquirylist(); 
         $this->data['userdata'] = User::getrecordbyid($auth->id);
+        DB::table('legal_enquiry')->update(array('notification' => 1));
         return view('admin.legalenquiry.index', $this->data);
     }
     public function show($id)

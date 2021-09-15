@@ -11,7 +11,7 @@ class legalenquiry extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'legal_enquiry';
-    protected $fillable = ['user_id', 'issue_id', 'subissue_id', 'location', 'name', 'mobile', 'email', 'other_info', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'deleted_by', 'deleted_at', 'lawyer_id','assign_lawyer'];
+    protected $fillable = ['user_id', 'issue_id', 'subissue_id', 'location', 'name', 'mobile', 'email', 'other_info', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'deleted_by', 'deleted_at', 'lawyer_id','assign_lawyer','notification'];
 
     public static function getrecordbyid($id)
     {
@@ -141,6 +141,11 @@ class legalenquiry extends Authenticatable
     {
         $query = legalenquiry::where('deleted_at', NULL)->orderBy('id', 'ASC')->get();
 
+        return $query;
+    }
+    public static function getnotificationNewEnquiry()
+    {
+        $query = legalenquiry::where('notification', '0')->get();
         return $query;
     }
 }

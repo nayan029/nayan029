@@ -237,8 +237,12 @@
           _token: "<?php echo csrf_token(); ?>"
         },
         success: function(response) {
-          var res = JSON.toString(response);
-          $('#databox').html(response);
+          if (response!=='') {
+            var res = JSON.toString(response);
+            $('#databox').html(response);
+          }else{
+            location.reload();
+          }
         }
       });
 

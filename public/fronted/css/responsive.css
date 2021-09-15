@@ -633,9 +633,9 @@
 	.signin-section .col1, .signin-section .col2 {
 	    min-height: inherit;
 	}
-	.signin-section .col2 .top {
+	/*.signin-section .col2 .top {
     	height: auto;
- 	}
+ 	}*/
  	.signin-section .col1 {
 	    padding-bottom: 1px;
 	}
@@ -665,6 +665,15 @@
 	.resa-pro-acc{
 		display: flex;
 		justify-content: center;
+	}
+	.mobile-hide{
+		display: none!important;
+	}
+	.mobile-show{
+		display: block;
+	}
+	.mb-mob-0{
+		margin-bottom:0;
 	}
 	
 	.why-legal-buddy .col2 {

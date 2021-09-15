@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\admin\sitesetting;
 use App\Models\User;
@@ -34,19 +35,25 @@ class HomeController extends Controller
         $this->data['totaluserdata'] = User::gettotalUsers();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['legalEnquiry'] = legalenquiry::getAllDataofEnquiry();
-        return view('admin.home',$this->data);
+        return view('admin.home', $this->data);
     }
 
     public function lawyerNotification()
     {
         $sql = User::getNewLawyerData();
-         $data =  count($sql);
+        $data =  count($sql);
         return $data;
     }
     public function customerNotification()
     {
         $sql = User::getNewCustomerrData();
-       $data =  count($sql);
+        $data =  count($sql);
+        return $data;
+    }
+    public function enquiryNotification()
+    {
+        $sql = legalenquiry::getnotificationNewEnquiry();
+        $data =  count($sql);
         return $data;
     }
 }

@@ -29,9 +29,11 @@
           ?>
             <div class="col-md-12">
               <ul class="footer-ul sa-footer-mb">
-
-                <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
-
+              @if(isset($docs))
+                <li><a href="<?php echo URL::to('/'); ?>/legal-services/documents/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
+              @else
+              <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
+              @endif
               </ul>
             </div>
           <?php } ?>

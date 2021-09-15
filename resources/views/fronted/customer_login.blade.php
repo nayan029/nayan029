@@ -23,14 +23,14 @@
 			<div class="row saflex-col">
 				<div class="col-md-6 resa-get-login col1">					
 					<!-- <a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo"></a> -->
-					<div class="mid">
+					<div class="mid mobile-hide">
 					<div class="sa-small-logocenter">
 							<a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo sa-small-logo"></a>
 						</div>
 						<h3>Get your justice </h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>				
 					</div>
-					<div class="bottom">
+					<div class="bottom mobile-hide">
 						<ul class="social">
 						<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
 							<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
@@ -68,6 +68,13 @@
 								    <div class="text-center pt-3">
 								    	<!-- <button type="button" class="btn btn-gradient">Sign In</button> -->
 								    	<button type="submit"  class="btn btn-gradient">Sign In</button>
+								    	<div class="mobile-show desk-hide mt-4">
+											<ul class="social">
+											<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
+												<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
+												<li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
+											</ul>
+										</div>
 								    </div>
 							    </form>
 							</div>
@@ -76,6 +83,7 @@
 					<div class="bottom">
 						<a href="<?php echo URL::to('/') ?>/register">I Need to Signup</a>
 					</div>
+					
 				</div>
 			</div>
 		</div>

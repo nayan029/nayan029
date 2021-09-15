@@ -105,6 +105,26 @@
       setInterval(function () {
         getCustomerNotification();
       }, 1000);
+
+       //leagal enquiry notification
+
+       function getenquiryNotification()
+          {
+
+        $.ajax({
+          url: "<?php echo URL::to('/'); ?>/notification/enquiry_notification",    
+          type: "GET",
+          data: {_token: "{{ csrf_token()}}"},
+          success: function (response) {
+            $('#enquirynotifcation').html(response);  
+
+          }
+        });	
+      }
+      getenquiryNotification();
+      setInterval(function () {
+        getenquiryNotification();
+      }, 1000);
   </script>
 </body>
 </html>

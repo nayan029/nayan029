@@ -64,8 +64,12 @@ class findLawyer extends Controller
     public function getName(Request $request)
     {
         $inputname = $request->inputname;
-        $this->data['user_data'] = ServiceSubCategory::getByName($inputname);
-        return view('fronted.databox',$this->data);
+        if (isset($inputname)) {
+            $this->data['user_data'] = ServiceSubCategory::getByName($inputname);
+            return view('fronted.databox',$this->data);
+        }else {
+            // return redirect()->back();
+        }
 
     }
 }

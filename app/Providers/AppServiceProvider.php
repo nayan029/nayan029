@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\admin\legalenquiry;
 use App\Models\admin\legalissue;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
@@ -42,27 +43,10 @@ class AppServiceProvider extends ServiceProvider
             //     ->limit('6');
             // $view->with('listLegalGuidesfirst', $listLegalGuidesfirst);
             $lawyersql = User::getNewLawyerData();
-
             $customersql = User::getNewCustomerrData();
-            return  $view->with('lawyerNotification', $lawyersql)->with('customerNotification', $customersql);
+            $legalenquirysql = legalenquiry::getnotificationNewEnquiry();
+            return  $view->with('lawyerNotification', $lawyersql)->with('customerNotification', $customersql)->with('enquiryNotification', $legalenquirysql);
         });
         // 
     }
-
-    /* notification */
-    public function lawyerNotification()
-    {
-        view()->composer('*', function ($view) {
-            $sql = User::getNewLawyerData();
-            return  $view->with('lawyerNotification', $sql);
-        });
-    }
-    public function customerNotification()
-    {
-        view()->composer('*', function ($view) {
-            $sql = User::getNewCustomerrData();
-            return  $view->with('customerNotification', $sql);
-        });
-    }
-    /* notification */
 }

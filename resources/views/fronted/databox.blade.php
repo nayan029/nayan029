@@ -6,9 +6,11 @@
           <div class="col-md-12 mt-1">
             <div class="">
               <p class="ls-1"></p>
+              @if(isset($user_data) && $user_data!=='NULL')
               @foreach($user_data as $data)
               <a href="{{ URL::to('legal-enquiry') }}/{{ $data->id }}"><i class="fa fa-arrow-right"></i> {{ $data->description }}</a> <br />
               @endforeach
+              @endif
             </div>
           </div>
         </div>

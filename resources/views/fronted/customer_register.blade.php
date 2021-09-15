@@ -24,20 +24,23 @@
 			<div class="row">
 				<div class="col-md-6 mobile-customer-sec col1">
 					<!-- <a href="<?php echo URL::to('/'); ?>/"><img src="<?php echo URL::to('/'); ?>/fronted//images/small-logo.png" class="small-logo"></a> -->
-					<div class="mid">
+					<div class="mid mobile-hide">
 					<div class="sa-small-logocenter">
 							<a href="<?php echo URL::to('/'); ?>/"><img src="{{asset('fronted/images/small-logo.png')}}" class="small-logo sa-small-logo"></a>
 						</div>
 						<h3>Get your justice </h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
 					</div>
-					<div class="bottom">
+					<div class="sa-small-logocenter text-center desk-hide mobile-show">
+						<a href="<?php echo URL::to('/'); ?>/">
+							<img src="{{asset('fronted/images/logo.png')}}" alt="big-logo" class="big-logo"></a>
+					</div>
+					<div class="bottom mobile-hide">
 						<ul class="social">
 							<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
 							<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
 							<li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
 						</ul>
-
 					</div>
 				</div>
 				<div class="col-md-6 col2">
@@ -94,14 +97,22 @@
 
 									<div class="text-center">
 										<button id="reg_btn" onclick=" if(!this.form.checkbox.checked){ alert('You must agree to the terms first.');return false;}" type="submit" class="btn btn-gradient btn-outline-primary sign-up">Sign Up</button>
+										<div class="mobile-show desk-hide mt-4">
+											<ul class="social">
+											<li><a href="https://twitter.com/?lang=en" target="_blank"><i class="ti-twitter-alt"></i></a></li>
+												<li><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
+												<li><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
+											</ul>
+										</div>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-					<div class="bottom">
+					<div class="bottom mb-mob-0">
 						<span class="alr">Already Signed Up? Go ahead and</span>
 						<a href="<?php echo URL::to('/') ?>/login">SignIn</a>
+
 					</div>
 				</div>
 			</div>

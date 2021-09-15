@@ -276,7 +276,7 @@
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/legal-enquiry" class="nav-link" id="legalenquiry">
                 <i class="fas fa-users nav-icon"></i>
-                <p>Legal Enquiry</p><span id="notifcation" class="badge badge-pill badge-warning ml-1">0</span>
+                <p>Legal Enquiry</p><span id="enquirynotifcation" class="badge badge-pill badge-warning ml-1">{{count($enquiryNotification)}}</span>
               </a>
             </li>
             <!-- leagl query -->

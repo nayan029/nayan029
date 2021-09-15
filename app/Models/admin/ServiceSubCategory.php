@@ -51,7 +51,11 @@ class ServiceSubCategory extends Authenticatable
     }
     public static function getByName($name)
     {
-        $getData = ServiceSubCategory::where('description', 'like', '%' .$name . '%')->where('deleted_flag', 'N')->get(); 
-        return $getData;
+        if (isset($name)) {
+            $getData = ServiceSubCategory::where('description', 'like', $name . '%')->where('deleted_flag', 'N')->get(); 
+            return $getData;
+        }else {
+            // return redirect()->back();
+        }
     }
 }
