@@ -178,14 +178,14 @@
 
                                         <div class="sa-lang-check">
                                             <div class="pm-check ">
-                                                <input class="form-check-input language" @if('english'==$user_language[0]) {{'checked'}} @endif  name="language[]" type="checkbox" value="english" id="one">
+                                                <input class="form-check-input language" @if(in_array('english', $user_language)) {{'checked'}} @endif  name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="one">
                                                     English
                                                 </label>
                                             </div>
                                             <div class="pm-check ">
-                                                <input class="form-check-input language" @if('hindi'==$user_language[0]) {{'checked'}} @endif name="language[]" type="checkbox" value="hindi" id="two">
+                                                <input class="form-check-input language" @if(in_array('hindi', $user_language)) {{'checked'}} @endif name="language[]" type="checkbox" value="hindi" id="two">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="two">
                                                     Hindi

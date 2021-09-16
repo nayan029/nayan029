@@ -52,7 +52,7 @@
                                         <td>{{$i}}</td>
                                         <td>@if( $data->type=='2') {{"Content"}} @elseif($data->type=='1') {{"Image"}} @endif </td>
                                         <td>{{$data->title}}</td>
-                                        <td>@if(isset($data->type) && $data->type=='2') {!!$data->description!!} @endif</td> 
+                                        <td>@if(isset($data->type) && $data->type=='2') {!! substr($data->description, 0, 50);!!} @endif</td> 
                                         <td>@if(isset($data->type) && $data->type=='1') <img src="{{URL::to('/')}}/uploads/document_image/{{$data->image}}" alt="image" style="height: 100px; width:100px">@endif</td>
                                         <td>{{$data->created_at}}</td>
                                         <td>
