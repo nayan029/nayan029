@@ -41,8 +41,8 @@
                                     <tr>
                                         <th>Sr No</th>
                                         <th>Profile</th>
-                                        <th>Name</th>
-                                        <th>Username</th>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
                                         <th>Email Id</th>
                                         <th>Created Date</th>
                                         <th>Status</th>
@@ -55,7 +55,7 @@
                                     $i = ($getusers->currentpage() - 1) * $getusers->perpage() + 1;
 
                                     foreach ($getusers as $data) {
-                                        if ($data->status == 1) {
+                                        if ($data->status == 1 && $data->email_verify == 1) {
                                             $class = 'success';
                                             $status = 'Active';
                                             $thumbs = 'down';
@@ -65,14 +65,6 @@
                                             $status = 'Inactive';
                                             $thumbs = 'up';
                                             $statustxt = 'Make Active';
-                                        }
-
-                                        if ($data->email_verify == 1) {
-                                            $class1 = 'success';
-                                            $status1 = 'Verified';
-                                        } else {
-                                            $class1 = 'danger';
-                                            $status1 = 'Not Verified';
                                         }
                                     ?>
                                         <tr>

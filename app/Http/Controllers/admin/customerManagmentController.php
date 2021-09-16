@@ -49,7 +49,7 @@ class customerManagmentController extends Controller
             $data = User::where('id', $id)->first();
             $status = 1;
             $statusname = "Activated";
-            if ($data->status == 1) {
+            if ($data->status == 1 && $data->email_verify == 1) {
                 $statusname = "Inactivated";
                 $status = 0;
             }
