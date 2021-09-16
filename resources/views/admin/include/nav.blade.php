@@ -323,7 +323,7 @@
             <li class="nav-item">
               <a href="{{URL::to('/')}}/admin/document-deatils" class="nav-link" id="documentdetails">
                 <i class="fas fa-star nav-icon"></i>
-                <p> DOCUMNET DETAILS</p>
+                <p> Document Details</p>
               </a>
             </li>
             <!-- <li class="nav-item">
