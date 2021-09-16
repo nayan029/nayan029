@@ -410,12 +410,13 @@ class HomeController extends Controller
         if (isset($auth)) {
             if ($auth) {
                 if ($auth->user_type == 3) {
-                    $this->data['test'] = $auth = Auth::user();
                     $this->data['title'] = "Enrollment";
                     $this->data['step'] = User::getsteps($auth->id);
                     // $this->data['category'] = legalservices::getfamilyData();
                     // $this->data['allAids'] = legalservices::getfamilyData();
-
+                    $this->data['user_category'] = lawyerenrollmentcatgeory::getDataById($auth->id)->pluck('categoryid')->toArray();
+                    $this->data['user_court'] = lawyercourt::getrecordbyid($auth->id)->pluck('courtid')->toArray();
+                    $this->data['user_language'] = lawyerlanguages::getrecordbyid($auth->id)->pluck('language')->toArray();
                     $this->data['category'] = adviceCategory::categorylistenrollment();
                     $this->data['lawyerDataNew'] = User::getrecordbyid($auth->id);
                     $this->data['catdata'] = lawyerenrollmentcatgeory::getusercategorys($auth->id);

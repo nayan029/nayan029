@@ -52,12 +52,12 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">First Name</label><span style="color: red;"> *</span>
-                                        <input type="text" value="@if(isset($test->name)){{$test->name}}@endif" name="lname" class="form-control sa-form-font half-border-radius" id="ename" placeholder="Enter your first name">
+                                        <input type="text" value="@if(isset($lawyerDataNew->name)){{$lawyerDataNew->name}}@endif" name="lname" class="form-control sa-form-font half-border-radius" id="ename" placeholder="Enter your first name" maxlength="200">
                                         <span id="ename_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Last Name</label><span style="color: red;"> </span>
-                                        <input type="text" value="@if (isset($test->username)){{$test->username}}@endif" name="fathername" class="form-control sa-form-font half-border-radius" id="fathername" placeholder="Enter your Last Name">
+                                        <input type="text" value="@if (isset($lawyerDataNew->username)){{$lawyerDataNew->username}}@endif" name="fathername" class="form-control sa-form-font half-border-radius" id="fathername" placeholder="Enter your Last Name" maxlength="200">
                                         <span id="fathername_error" style="color: red;"></span>
                                     </div>
 
@@ -68,8 +68,7 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">DOB</label><span style="color: red;"> *</span>
-                                        <!-- <input type="date" name="dob" class="form-control sa-form-font half-border-radius" id="dob"> -->
-                                        <input type="text" name="ldob" id="inputDate" class="form-control date sa-form-font half-border-radius sr-cal" placeholder="dd/mm/yyy" autocomplete="off" readonly>
+                                        <input type="text" value="@if(isset($lawyerDataNew->ldob)){{ date('d-m-Y', strtotime($lawyerDataNew->ldob))}}@endif" name="ldob" id="inputDate" class="form-control date sa-form-font half-border-radius sr-cal" placeholder="dd/mm/yyy" autocomplete="off" readonly>
                                         <span id="dob_error" style="color: red;"></span>
 
                                     </div>
@@ -82,10 +81,11 @@
                                         <span id="image_error" style="color:red;"></span>
                                     </div>
                                     <div class="col-md-4 col-lg-2 sa-bgs sa-pb">
-
-                                        <!-- <img style="border: 1px solid #ccc;" width="58px" height="58px" src="<?php echo URL::to('/'); ?>/assets/img/avatar5.png" class="site-stg-img site-stg-img2 sr-image" id="blah" /> -->
-                                        <!-- <img id="blah" src="{{asset('fronted/images/new-images/bgs-01.png')}}" alt="your image" id="blah" /> -->
+                                        @if(isset($lawyerDataNew->profileimage))
+                                        <img id="blah" src="{{URL::to('/')}}/uploads/lawyerprofile/{{$lawyerDataNew->profileimage}}" alt="your image" id="blah" />
+                                        @else
                                         <img id="blah" src="{{asset('fronted/images/user.png')}}" alt="your image" id="blah" />
+                                        @endif
                                     </div>
 
                                 </div>
@@ -103,11 +103,11 @@
                                         <label for="inputName" class="form-label sa-color2 sa-label">Degree Name</label><span style="color: red;"> *</span>
                                         <div class="row">
                                             <div class="col-md-12 pb-3">
-                                                <input name="frollno" type="text" class="form-control sa-form-font half-border-radius" id="frollno" placeholder="Degree Name">
+                                                <input name="frollno" value="@if(isset($lawyerDataNew->frollno)){{$lawyerDataNew->frollno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="frollno" placeholder="Degree Name" maxlength="200">
                                                 <span id="frollno_error" style="color: red;"></span>
                                             </div>
                                             <div class="col-md-12 pb-3">
-                                                <input name="srollno" type="text" class="form-control sa-form-font half-border-radius" id="srollno" placeholder="Degree Name">
+                                                <input name="srollno"  value="@if(isset($lawyerDataNew->srollno)){{$lawyerDataNew->srollno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="srollno" placeholder="Degree Name" maxlength="200">
                                                 <span id="srollno_error" style="color: red;"></span>
 
                                             </div>
@@ -121,124 +121,71 @@
                                         <label for="inputName" class="form-label sa-color2 sa-label ">Year</label><span style="color: red;"> *</span>
                                         <div class="row">
                                             <div class="col-md-12 pb-3">
-                                                <input name="fyear" type="text" class="form-control sa-form-font half-border-radius" id="fyear" placeholder="Year">
+                                                <input name="fyear"  value="@if(isset($lawyerDataNew->fyear)){{$lawyerDataNew->fyear}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="fyear" placeholder="Year" maxlength="4">
                                                 <span id="fyear_error" style="color: red;"></span>
                                             </div>
                                             <div class="col-md-12 pb-3">
-                                                <input name="syear" type="text" class="form-control sa-form-font half-border-radius" id="syear" placeholder="Year">
+                                                <input name="syear"  value="@if(isset($lawyerDataNew->syear)){{$lawyerDataNew->syear}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="syear" placeholder="Year" maxlength="4">
                                                 <span id="syear_error" style="color: red;"></span>
                                             </div>
-                                            <!-- <div class="col-md-12">
-                                                <input name="tyear" type="text" class="form-control sa-form-font half-border-radius" id="tyear" placeholder="LL.B Year">
-                                                <span id="tyear_error" style="color: red;"></span>
-                                            </div> -->
+                                            
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label ">Institution</label><span style="color: red;"> *</span>
                                         <div class="row">
                                             <div class="col-md-12 pb-3">
-                                                <input name="finstitue" type="text" class="form-control sa-form-font half-border-radius" id="finsti" placeholder=" Institution">
+                                                <input name="finstitue"  value="@if(isset($lawyerDataNew->finstitue)){{$lawyerDataNew->finstitue}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="finsti" placeholder=" Institution" maxlength="50">
                                                 <span id="finsti_error" style="color: red;"></span>
                                             </div>
                                             <div class="col-md-12 pb-3">
-                                                <input name="sinstitue" type="text" class="form-control sa-form-font half-border-radius" id="sinsti" placeholder=" Institution">
+                                                <input name="sinstitue" value="@if(isset($lawyerDataNew->sinstitue)){{$lawyerDataNew->sinstitue}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="sinsti" placeholder=" Institution" maxlength="50">
                                                 <span id="sinsti_error" style="color: red;"></span>
                                             </div>
-                                            <!-- <div class="col-md-12">
-                                                <input name="tinstitue" type="text" class="form-control sa-form-font half-border-radius" id="tinsti" placeholder="LL.B Institution">
-                                                <span id="tinsti_error" style="color: red;"></span>
-                                            </div> -->
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label"> Nationality of applicant</label><span style="color: red;"> *</span>
-                                        <select name="nationality" class="form-select sa-form-font border-radius-5px" id="nationality">
-                                            <option value="">Select your nationality</option>
-                                            <option value="1">India</option>
-                                            <option value="2">U.S.A</option>
-                                            <option value="3">Sri Lanka</option>
-                                        </select>
-                                        <span id="nationality_error" style="color: red;"></span>
-                                    </div> -->
-                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate" class="form-label sa-color2 sa-label">NIC number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
-                                        <input name="nicno" type="text" class="form-control sa-form-font half-border-radius" id="nicno" placeholder="" maxlength="13">
-                                        <span id="nicno_error" style="color: red;"></span>
-                                    </div> -->
+                                    
                                     <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate" class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
-                                        <input name="allotment" type="text" class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
+                                        <label for="inputDate"  class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="allotment"  value="@if(isset($lawyerDataNew->allotmentno)){{$lawyerDataNew->allotmentno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
                                         <span id="allotment_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputDate" class="form-label sa-color2 sa-label">Membership  number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
-                                        <input name="membership" type="text" class="form-control sa-form-font half-border-radius" id="membership" placeholder="" maxlength="13">
+                                        <input name="membership" value="@if(isset($lawyerDataNew->membershipno)){{$lawyerDataNew->membershipno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="membership" placeholder="" maxlength="13">
                                         <span id="membership_error" style="color: red;"></span>
                                     </div>
 
-                                        <!--   <input type="text" class="form-control sa-form-font sa-nic" maxlength="13">
-                                 <div class="sa-span">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                 </div> -->
-                                    <!-- <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate" class="form-label sa-color2 sa-label">Location </label><span style="color: red;"> *</span>
-                                        <select name="location" id="location" class="form-control sa-form-font half-border-radius">
-                                            <option value="">Select Location</option>
-                                            @foreach ($location as $data)
-                                            <option value="{{$data->name}}">{{ucfirst($data->name)}}</option>
-                                            @endforeach
-                                        </select>
-                                        <span id="location_error" style="color: red;"></span>
-                                    </div> -->
-
-
-
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Mobile No</label><span style="color: red;"> *</span>
-                                        <input type="number" name="mobile" class="form-control sa-form-font half-border-radius" id="emobile" placeholder="Enter your Mobile No">
+                                        <input type="number" value="@if(isset($lawyerDataNew->mobile)){{$lawyerDataNew->mobile}}@endif" maxlength="12" name="mobile" class="form-control sa-form-font half-border-radius" id="emobile" placeholder="Enter your Mobile No">
                                         <span id="emobile_error" style="color: red;"></span>
                                     </div>
 
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Experience </label><span style="color: red;"> *</span>
-                                        <input type="text" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="20">
+                                        <input type="text" value="@if(isset($lawyerDataNew->experience)){{$lawyerDataNew->experience}}@endif"     name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="2">
                                         <span id="experience_error" style="color: red;"></span>
                                     </div>
-                                    <!-- <div class="col-md-12 col-lg-6 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Price</label><span style="color: red;"> *</span>
-                                        <input type="number" maxlength="11" name="basic_price" class="form-control sa-form-font half-border-radius" id="basic_price" placeholder="Enter price">
-                                        <span id="basic_price_error" style="color: red;"></span>
-                                    </div> -->
+                                    
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
 
                                         <div class="sa-lang-check">
                                             <div class="pm-check ">
-                                                <input class="form-check-input language" name="language[]" type="checkbox" value="english" id="one">
+                                                <input class="form-check-input language" @if('english'==$user_language[0]) {{'checked'}} @endif  name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="one">
                                                     English
                                                 </label>
                                             </div>
                                             <div class="pm-check ">
-                                                <input class="form-check-input language" name="language[]" type="checkbox" value="hindi" id="two">
+                                                <input class="form-check-input language" @if('hindi'==$user_language[0]) {{'checked'}} @endif name="language[]" type="checkbox" value="hindi" id="two">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="two">
                                                     Hindi
@@ -247,23 +194,7 @@
                                         </div>
                                         <span id="language_error" style="color: red;"></span>
                                     </div>
-                                    <!-- <div class="col-lg-4 sa-pb">
-                                        <label for="inputName" class="form-label sa-color2 sa-label">Gender</label><span style="color:red;"> *</span>
-                                        <select name="gender" class="form-select sa-form-font border-radius-5px" id="gender">
-                                            <option value="">Select Gender</option>
-                                            <option value="m">Male</option>
-                                            <option value="f">female</option>
-                                        </select>
-                                        <span id="gender_error" style="color: red;"></span>
-                                    </div> -->
-                                    <!-- <div class="col-lg-4 sa-pb">
-                                 <label for="inputName" class="form-label sa-color2 sa-label">Date</label>
-                                 <input type="text" class="form-control sa-form-font half-border-radius" id="" placeholder="Date of last">
-                              </div>
-                              <div class="col-lg-4 sa-pb">
-                                 <label for="inputName" class="form-label sa-color2 sa-label">Roll No</label>
-                                 <input type="text" class="form-control sa-form-font half-border-radius" id="" placeholder="Your Roll No">
-                              </div> -->
+                                    
                                 </div>
 
                             </div>
@@ -281,25 +212,21 @@
                     <div class="sa-personal">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Practice Area</label><span style="color: red;"> *</span>
-                            <textarea name="about" maxlength="250" class="form-control" id="about_data" rows="3"></textarea>
+                            <textarea name="about"    maxlength="250" class="form-control" id="about_data" rows="3">@if(isset($lawyerDataNew->about)){{$lawyerDataNew->about}}@endif</textarea>
                             <span id="about_error" style="color:red"></span>
                         </div>
 
-                        <!-- <div class="form-group">
-                            <label for="exampleFormControlTextarea1" class="sa-color2">Basic Fees</label><span style="color: red;"> *</span>
-                            <input type="text" name="basic_fees" id="basic_fees" class="form-control" onkeypress="return isNumber(event)">
-                            <span id="basicFees_error" style="color:red"></span>
-                        </div> -->
+                      
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per date)</label><span style="color: red;"> *</span>
-                            <input type="text" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
+                            <input type="text"  value="@if(isset($lawyerDataNew->fees)){{$lawyerDataNew->fees}}@endif"  name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fees_error" style="color:red"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Legal Representation</label><span style="color: red;"> *</span>
-                            <input type="text" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)">
+                            <input type="text"  value="@if(isset($lawyerDataNew->full_legal_fees)){{$lawyerDataNew->full_legal_fees}}@endif" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fullLegal_error" style="color:red"></span>
                         </div>
 
@@ -312,15 +239,11 @@
                             <div class="col-md-3">
 
                                 <div class="pm-check " id="catcheck">
-                                    <!-- <input class="form-check-input" name="category[]" type="radio" value="<?php echo $data->id; ?>" id="<?php echo $data->category_name; ?>">
-                                        <label class="form-radio-label" for="<?php echo $data->category_name; ?>">
-                                            <?php echo $data->category_name; ?>
-                                        </label> -->
-
+                                   
                                     <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
                                         <option value="">Select Specialization</option>
                                         @foreach ($category as $data)
-                                        <option value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
+                                        <option  @if(isset($user_category)) @if(in_array($data->id, $user_category)) {{"selected"}} @endif @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -340,7 +263,7 @@
                                 @foreach ($court as $data)
                                 <div class="col-md-3">
                                     <div class="pm-check " id="courtcheck">
-                                        <input class="form-check-input court" name="court[]" type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->name; ?>">
+                                        <input class="form-check-input court" name="court[]" @if(in_array($data->id, $user_court)) {{"checked"}} @endif type="checkbox" value="<?php echo $data->id; ?>" id="<?php echo $data->name; ?>">
                                         <span class="real-checkbox"></span>
                                         <label class="form-check-label" for="<?php echo $data->name; ?>">
                                             <?php echo $data->name; ?>
@@ -1061,6 +984,11 @@
         }
         if (length < 1) {
             $("#court_error").html("Please select court");
+            cnt = 1;
+            f++;
+            if (f == 1) {
+                $('#courtcheck').focus();
+            }
         } else {
             $("#court_error").html("");
         }

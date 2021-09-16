@@ -111,7 +111,6 @@
 
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label>
-
                                         <div class="d-flex">
                                             <div class="pm-check pr-3">
                                                 <input class="form-check-input language" @if('english'==$user_language[0]) {{'checked'}} @endif name="language[]" type="checkbox" value="english" id="one">
