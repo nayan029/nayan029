@@ -77,7 +77,7 @@ class enrollmentController extends Controller
 
         if ($request->about) {
             // $about = $request->about;
-            $inputa['step'] = '2';
+            $inputa['steptwo'] = '1';
             $inputa['fees'] = $request->fees;
             $inputa['full_legal_fees'] = $request->full_legal;
             $inputuser = User::find($auth->id);
@@ -92,7 +92,7 @@ class enrollmentController extends Controller
                 $inser_id = new lawyercourt($array);
                 $inser_id->save();
 
-                $step['step'] = '2';
+                $step['steptwo'] = '1';
                 $inputuser = User::find($auth->id);
                 $inputuser->update($step);
             }
@@ -107,7 +107,7 @@ class enrollmentController extends Controller
                 $inser_id = new lawyerenrollmentcatgeory($array);
                 $inser_id->save();
 
-                $step['step'] = '2';
+                $step['steptwo'] = '1';
                 $inputuser = User::find($auth->id);
                 $inputuser->update($step);
             }
@@ -117,7 +117,7 @@ class enrollmentController extends Controller
             $name = $file->getClientOriginalName();
             $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
             $file->move(public_path() . '/uploads/signature/', $name);
-            $inputs['step'] = '3';
+            $inputs['stepthree'] = '1';
             $inputs['siganturepic'] = $name;
         }
         if (isset($request->siganturepic)) {

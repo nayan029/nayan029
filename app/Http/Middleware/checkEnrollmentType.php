@@ -26,7 +26,7 @@ class checkEnrollmentType
 
             if (isset($auth->step)) {
 
-                if ($auth->step == 0 || $auth->step == 1 || $auth->step == 2) {
+                if ($auth->step == 0 || $auth->steptwo == 0 || $auth->stepthree == 0) {
                     return redirect('/lawyer/enrollment');
                 } else {
                     return $next($request);

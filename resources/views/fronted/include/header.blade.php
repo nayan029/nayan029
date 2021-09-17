@@ -501,13 +501,12 @@ $login = Auth::user();
 	</header>
 	<br>
 	@if(isset($login['step']) && $login->user_type == '3')
-	@if($login['step'] == '0' || $login['step'] == '1' || $login['step'] == '2')
+	@if($login['step'] == '0' || $login['steptwo'] == '0' || $login['stepthree'] == '0')
 	<div class="container">
 		<div class="alert alert-danger text-center" role="alert">
 			Please Complete Profile Information
 		</div>
 	</div>
-
 	@endif
 	@endif
 	<button type="button" class="btn btn-enquiry sr-enquiry" data-toggle="modal" data-target="#exampleModal">

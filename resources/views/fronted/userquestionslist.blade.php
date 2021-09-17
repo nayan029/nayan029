@@ -21,6 +21,7 @@
                 <td class="sa-color2 sr-b-right">Action</td>
             </tr>
             @php $i = 1; @endphp
+            @if(count($enquiry_data)>0)
             @foreach($enquiry_data as $data)
             <tr>
                 <!-- {{$data->lawyer_id}} -->
@@ -64,6 +65,9 @@
             <!-- modal -->
             @php $i++; @endphp
             @endforeach
+            @else
+            <td colspan="7" class="sr-p-white sr-b-right text-white text-center">{{"No Enquiry Found"}}</td>
+            @endif
 
         </table>
     </div>

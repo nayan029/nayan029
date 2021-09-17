@@ -313,6 +313,12 @@ Route::get('indian-kanoon/{category}', [FrontedHomeController::class, 'divorce_l
 Route::get('/lawyer/enrollment', [FrontedHomeController::class, 'enrollment']);
 Route::post('/lawyer/enrollment', [enrollmentController::class, 'index']);
 
+Route::post('/lawyer/getexitallotmentno','App\Http\Controllers\admin\AjaxController@getexitallotmentno');
+Route::post('/lawyer/getexitenrollmentno','App\Http\Controllers\admin\AjaxController@getexitenrollmentno');
+
+Route::post('/lawyer/getexitallotmentnoedit','App\Http\Controllers\admin\AjaxController@getexitallotmentnoedit');
+Route::post('/lawyer/getexitenrollmentnoedit','App\Http\Controllers\admin\AjaxController@getexitenrollmentnoedit');
+
 Route::get('/legal-services/{category}', [FrontedHomeController::class, 'family_services']);
 Route::get('/legal-services/documents/{category}', [FrontedHomeController::class, 'document_services']);
 

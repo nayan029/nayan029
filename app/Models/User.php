@@ -46,6 +46,8 @@ class User extends Authenticatable
         "location",
         "siganturepic",
         'step',
+        'steptwo',
+        'stepthree',
         'about',
         'experience',
         'gender',
@@ -219,7 +221,7 @@ class User extends Authenticatable
     }
     public static function getsteps($id)
     {
-        $query = User::select('step')->where('id', $id)->first();
+        $query = User::select('step','steptwo','stepthree')->where('id', $id)->first();
         return $query;
     }
     public static function getLawyers()

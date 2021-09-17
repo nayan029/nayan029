@@ -11,26 +11,13 @@
 
             <ul class="nav nav-pills " id="pills-tab" role="tablist">
                 <li class="nav-item ">
-
-                    <?php
-                    // print_r($step['step']); die;
-                    /*
-                    if ($step['step'] == 0) {
-                                            echo "active";
-                                        }
-                                        
-                                         if ($step['step'] == 1) {
-                                            echo "active";
-                                        } 
-                                        */
-                    ?>
                     <a class="nav-link @if($step['step'] == 0) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-personal" role="tab" aria-controls="home" aria-selected="true">Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if($step['step'] == 1) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-special" role="tab" aria-controls="home" aria-selected="true">Specialization</a>
+                    <a class="nav-link @if($step['steptwo'] == 0 && $step['stepthree'] == 1 && $step['step'] == 1) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-special" role="tab" aria-controls="home" aria-selected="true">Specialization</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if($step['step'] == 2) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-sign" role="tab" aria-controls="home" aria-selected="true">Oath and Signature</a>
+                    <a class="nav-link @if($step['stepthree'] == 0 && $step['steptwo'] == 1 && $step['step'] == 1) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-sign" role="tab" aria-controls="home" aria-selected="true">Oath and Signature</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link <?php if ($step['step'] == 3) {
@@ -107,7 +94,7 @@
                                                 <span id="frollno_error" style="color: red;"></span>
                                             </div>
                                             <div class="col-md-12 pb-3">
-                                                <input name="srollno"  value="@if(isset($lawyerDataNew->srollno)){{$lawyerDataNew->srollno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="srollno" placeholder="Degree Name" maxlength="200">
+                                                <input name="srollno" value="@if(isset($lawyerDataNew->srollno)){{$lawyerDataNew->srollno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="srollno" placeholder="Degree Name" maxlength="200">
                                                 <span id="srollno_error" style="color: red;"></span>
 
                                             </div>
@@ -121,42 +108,42 @@
                                         <label for="inputName" class="form-label sa-color2 sa-label ">Year</label><span style="color: red;"> *</span>
                                         <div class="row">
                                             <div class="col-md-12 pb-3">
-                                                <input name="fyear"  value="@if(isset($lawyerDataNew->fyear)){{$lawyerDataNew->fyear}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="fyear" placeholder="Year" maxlength="4">
+                                                <input name="fyear" value="@if(isset($lawyerDataNew->fyear)){{$lawyerDataNew->fyear}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="fyear" placeholder="Year" maxlength="4">
                                                 <span id="fyear_error" style="color: red;"></span>
                                             </div>
                                             <div class="col-md-12 pb-3">
-                                                <input name="syear"  value="@if(isset($lawyerDataNew->syear)){{$lawyerDataNew->syear}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="syear" placeholder="Year" maxlength="4">
+                                                <input name="syear" value="@if(isset($lawyerDataNew->syear)){{$lawyerDataNew->syear}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="syear" placeholder="Year" maxlength="4">
                                                 <span id="syear_error" style="color: red;"></span>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label ">Institution</label><span style="color: red;"> *</span>
                                         <div class="row">
                                             <div class="col-md-12 pb-3">
-                                                <input name="finstitue"  value="@if(isset($lawyerDataNew->finstitue)){{$lawyerDataNew->finstitue}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="finsti" placeholder=" Institution" maxlength="50">
+                                                <input name="finstitue" value="@if(isset($lawyerDataNew->finstitue)){{$lawyerDataNew->finstitue}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="finsti" placeholder=" Institution" maxlength="50">
                                                 <span id="finsti_error" style="color: red;"></span>
                                             </div>
                                             <div class="col-md-12 pb-3">
                                                 <input name="sinstitue" value="@if(isset($lawyerDataNew->sinstitue)){{$lawyerDataNew->sinstitue}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="sinsti" placeholder=" Institution" maxlength="50">
                                                 <span id="sinsti_error" style="color: red;"></span>
                                             </div>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    
+
                                     <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate"  class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
-                                        <input name="allotment"  value="@if(isset($lawyerDataNew->allotmentno)){{$lawyerDataNew->allotmentno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <input name="allotment" value="@if(isset($lawyerDataNew->allotmentno)){{$lawyerDataNew->allotmentno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
                                         <span id="allotment_error" style="color: red;"></span>
                                     </div>
                                     <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate" class="form-label sa-color2 sa-label">Membership  number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Membership number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
                                         <input name="membership" value="@if(isset($lawyerDataNew->membershipno)){{$lawyerDataNew->membershipno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="membership" placeholder="" maxlength="13">
                                         <span id="membership_error" style="color: red;"></span>
                                     </div>
@@ -169,16 +156,16 @@
 
                                     <div class="col-md-12 col-lg-6 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label">Experience </label><span style="color: red;"> *</span>
-                                        <input type="text" value="@if(isset($lawyerDataNew->experience)){{$lawyerDataNew->experience}}@endif"     name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="2">
+                                        <input type="text" value="@if(isset($lawyerDataNew->experience)){{$lawyerDataNew->experience}}@endif" name="experience" class="form-control sa-form-font half-border-radius" id="experience" placeholder="Enter your experience" maxlength="2">
                                         <span id="experience_error" style="color: red;"></span>
                                     </div>
-                                    
+
                                     <div class="col-lg-6 col-md-12 sa-pb">
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label><span style="color: red;"> *</span>
 
                                         <div class="sa-lang-check">
                                             <div class="pm-check ">
-                                                <input class="form-check-input language" @if(in_array('english', $user_language)) {{'checked'}} @endif  name="language[]" type="checkbox" value="english" id="one">
+                                                <input class="form-check-input language" @if(in_array('english', $user_language)) {{'checked'}} @endif name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="one">
                                                     English
@@ -194,7 +181,7 @@
                                         </div>
                                         <span id="language_error" style="color: red;"></span>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
@@ -206,27 +193,27 @@
             </div>
             </form>
             <!-- tab2 -->
-            <div class="tab-pane fade   @if($step['step'] == 1) {{'active show'}} @else {{''}} @endif" id="pills-special" role="tabpanel" aria-labelledby="pills-special-tab">
+            <div class="tab-pane fade   @if($step['step'] == 1 && $step['stepthree'] == 1 && $step['steptwo'] == 0) {{'active show'}} @else {{''}} @endif" id="pills-special" role="tabpanel" aria-labelledby="pills-special-tab">
                 <form id="main_idtwo" action="<?php echo URL::to('/'); ?>/lawyer/enrollment" method="POST">
                     @csrf
                     <div class="sa-personal">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Practice Area</label><span style="color: red;"> *</span>
-                            <textarea name="about"    maxlength="250" class="form-control" id="about_data" rows="3">@if(isset($lawyerDataNew->about)){{$lawyerDataNew->about}}@endif</textarea>
+                            <textarea name="about" maxlength="250" class="form-control" id="about_data" rows="3">@if(isset($lawyerDataNew->about)){{$lawyerDataNew->about}}@endif</textarea>
                             <span id="about_error" style="color:red"></span>
                         </div>
 
-                      
+
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Fees(By per date)</label><span style="color: red;"> *</span>
-                            <input type="text"  value="@if(isset($lawyerDataNew->fees)){{$lawyerDataNew->fees}}@endif"  name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
+                            <input type="text" value="@if(isset($lawyerDataNew->fees)){{$lawyerDataNew->fees}}@endif" name="fees" id="fees" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fees_error" style="color:red"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1" class="sa-color2">Legal Representation</label><span style="color: red;"> *</span>
-                            <input type="text"  value="@if(isset($lawyerDataNew->full_legal_fees)){{$lawyerDataNew->full_legal_fees}}@endif" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)">
+                            <input type="text" value="@if(isset($lawyerDataNew->full_legal_fees)){{$lawyerDataNew->full_legal_fees}}@endif" name="full_legal" id="full_legal" class="form-control" onkeypress="return isNumber(event)">
                             <span id="fullLegal_error" style="color:red"></span>
                         </div>
 
@@ -239,11 +226,11 @@
                             <div class="col-md-3">
 
                                 <div class="pm-check " id="catcheck">
-                                   
+
                                     <select name="category[]" id="specialization" class="form-control sa-form-font half-border-radius">
                                         <option value="">Select Specialization</option>
                                         @foreach ($category as $data)
-                                        <option  @if(isset($user_category)) @if(in_array($data->id, $user_category)) {{"selected"}} @endif @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
+                                        <option @if(isset($user_category)) @if(in_array($data->id, $user_category)) {{"selected"}} @endif @endif value="{{$data->id}}">{{ucfirst($data->category_name)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -292,7 +279,7 @@
             </div>
             <!-- end tab2 -->
             <!-- tab3 -->
-            <div class="tab-pane fade  @if($step['step'] == 2) {{'active show'}} @else {{''}} @endif" id="pills-sign" role="tabpanel" aria-labelledby="pills-sign-tab">
+            <div class="tab-pane fade  @if($step['stepthree'] == 0 && $step['step'] == 1 && $step['steptwo'] == 1 ) {{'active show'}} @else {{''}} @endif" id="pills-sign" role="tabpanel" aria-labelledby="pills-sign-tab">
                 <form id="signature_frm" action="<?php echo URL::to('/'); ?>/lawyer/enrollment" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="container">
@@ -310,7 +297,14 @@
                             <div class=" col-md-6 pl-4">
                                 <div class="mitem3 text-center">
                                     <div class="sr-card ">
+                                        <!-- signature pic -->
+
+
+                                        @if(isset($lawyerDataNew->siganturepic))
+                                        <img id="blah" class="sr-sign-img" src="{{URL::to('/')}}/uploads/signature/{{$lawyerDataNew->siganturepic}}" alt="your image" id="blah" />
+                                        @else
                                         <img id="signatureblah" class="sr-sign-img" src="{{asset('fronted/images/new-images/Sign.png')}}" alt="your image">
+                                        @endif
                                     </div>
 
                                     <div class=" sa-pb">
@@ -817,7 +811,7 @@
         //         $('#nicno').focus();
         //     }
         // }
-        
+
         if (allotment.trim() == '') {
             $('#allotment_error').html("Please enter allotment number");
             cnt = 1;
@@ -825,6 +819,30 @@
             if (f == 1) {
                 $('#allotment').focus();
             }
+        }else{
+            $.ajax({
+            url: "<?php echo URL::to('/'); ?>/lawyer/getexitallotmentno",
+            type: "POST",
+            data: {
+                name: allotment,
+                _token: "<?php echo csrf_token(); ?>"
+            },
+            success: function(response) {
+                if (response) {
+                    if (response=='1') {
+                    $('#allotment_error').html("Allotment number is already exists");
+                    cnt = 1;
+                    f++;
+                    if (f == 1) {
+                        $('#allotment').focus();
+                    }
+                }
+                }
+
+
+            }
+        });
+
         }
 
         if (memership.trim() == '') {
@@ -834,7 +852,37 @@
             if (f == 1) {
                 $('#membership').focus();
             }
+        }else{
+              //ajax for alreday exist data allotment no or membershipno start        
+            $.ajax({
+            url: "<?php echo URL::to('/'); ?>/lawyer/getexitenrollmentno",
+            type: "POST",
+            data: {
+                name: memership,
+                _token: "<?php echo csrf_token(); ?>"
+            },
+            success: function(response) {
+                if (response) {
+                    if (response=='1') {
+                        
+                        $('#membership_error').html("Membership number is aleready exists");
+                        cnt = 1;
+                        f++;
+                        if (f == 1) {
+                            $('#membership').focus();
+                        }
+                    }
+                }
+
+
+            }
+        });
+        //ajax for alreday exist data allotment no or membershipno close
+
         }
+
+      
+
 
         if (emobile.trim() == '') {
             $('#emobile_error').html("Please enter mobile no");

@@ -113,7 +113,7 @@
                                         <label for="inputName" class="form-label sa-color2 sa-label"> Language</label>
                                         <div class="d-flex">
                                             <div class="pm-check pr-3">
-                                                <input class="form-check-input language"   @if(in_array('english', $user_language)) {{'checked'}} @endif name="language[]" type="checkbox" value="english" id="one">
+                                                <input class="form-check-input language" @if(in_array('english', $user_language)) {{'checked'}} @endif name="language[]" type="checkbox" value="english" id="one">
                                                 <span class="real-checkbox"></span>
                                                 <label class="form-check-label  sa-label" for="one">
                                                     English
@@ -525,6 +525,30 @@
             if (f == 1) {
                 $('#allotment').focus();
             }
+        } else {
+            $.ajax({
+                url: "<?php echo URL::to('/'); ?>/lawyer/getexitallotmentnoedit",
+                type: "POST",
+                data: {
+                    name: allotment,
+                    id: <?php echo $user_login->id; ?>,
+                    _token: "<?php echo csrf_token(); ?>"
+                },
+                success: function(response) {
+                    if (response) {
+                        if (response == '1') {
+                            $('#allotment_error').html("Allotment number is already exists");
+                            cnt = 1;
+                            f++;
+                            if (f == 1) {
+                                $('#allotment').focus();
+                            }
+                        }
+                    }
+
+
+                }
+            });
         }
 
         if (memership.trim() == '') {
@@ -534,6 +558,28 @@
             if (f == 1) {
                 $('#membership').focus();
             }
+        } else {
+            $.ajax({
+                url: "<?php echo URL::to('/'); ?>/lawyer/getexitenrollmentnoedit",
+                type: "POST",
+                data: {
+                    name: memership,
+                    id: <?php echo $user_login->id; ?>,
+                    _token: "<?php echo csrf_token(); ?>"
+                },
+                success: function(response) {
+                    if (response) {
+                        if (response == '1') {
+                            $('#membership_error').html("Membership number is aleready exists");
+                            cnt = 1;
+                            f++;
+                            if (f == 1) {
+                                $('#membership').focus();
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         // if (sdegreename.trim() == '') {

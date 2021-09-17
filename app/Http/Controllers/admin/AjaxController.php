@@ -195,4 +195,54 @@ class AjaxController extends Controller
 		}
 		echo $cat_array;
 	}
+
+
+	//get exist enrollment or allotment no 
+
+	public function getexitallotmentno(Request $request)
+	{
+		$auth = Auth::user();
+		$data = User::where('allotmentno', $request->name)->first();
+
+		if ($data) {
+			echo 1;
+		} else {
+			echo 0;
+		}
+	}
+
+	public function getexitenrollmentno(Request $request)
+	{
+		$auth = Auth::user();
+		$data = User::where('membershipno', $request->name)->first();
+
+		if ($data) {
+			echo 1;
+		} else {
+			echo 0;
+		}
+	}
+
+
+	public function getexitenrollmentnoedit(Request $request)
+	{
+		$auth = Auth::user();
+		$data = User::where('id', '!=', $request->id)->where('membershipno', '=', $request->name)->first();
+		if ($data) {
+			echo 1;
+		} else {
+			echo 0;
+		}
+	}
+	public function getexitallotmentnoedit(Request $request)
+	{
+		$auth = Auth::user();
+		$data = User::where('id', '!=', $request->id)->where('allotmentno', '=', $request->name)->first();
+
+		if ($data) {
+			echo 1;
+		} else {
+			echo 0;
+		}
+	}
 }

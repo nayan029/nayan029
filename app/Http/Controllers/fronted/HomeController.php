@@ -509,7 +509,7 @@ class HomeController extends Controller
         $auth = Auth::user();
         if ($auth) {
             if ($auth->user_type == 3) {
-                if ($auth->step == 3) {
+                if ($auth->step == 1 && $auth->steptwo == 1 && $auth->stepthree == 1) {
                     $this->data['user_login'] = $auth;
                     $this->data['court'] = court::getAllRecord();
                     $this->data['category'] = adviceCategory::getquestioncategorylist();

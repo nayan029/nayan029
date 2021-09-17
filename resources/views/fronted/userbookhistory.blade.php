@@ -20,6 +20,7 @@
                 
             </tr>
             @php $i = 1; @endphp
+            @if(count($enquiry_data)>0)
             @foreach($enquiry_data as $data)
             <tr>
                
@@ -46,6 +47,9 @@
            
             @php $i++; @endphp
             @endforeach
+            @else 
+            <td colspan="8" class="sr-p-white sr-b-right text-white text-center">{{"No Booking History Found"}}</td>
+            @endif
 
         </table>
     </div>
