@@ -66,7 +66,7 @@
             @php $i++; @endphp
             @endforeach
             @else
-            <td colspan="7" class="sr-p-white sr-b-right text-white text-center">{{"No Enquiry Found"}}</td>
+            <td colspan="7" class="sr-p-white sr-b-right text-white text-center">{{"No enquiry found"}}</td>
             @endif
 
         </table>
