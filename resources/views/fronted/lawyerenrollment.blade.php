@@ -14,7 +14,7 @@
                     <a class="nav-link @if($step['step'] == 0) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-personal" role="tab" aria-controls="home" aria-selected="true">Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if($step['steptwo'] == 0 && $step['stepthree'] == 1 && $step['step'] == 1) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-special" role="tab" aria-controls="home" aria-selected="true">Specialization</a>
+                    <a class="nav-link @if($step['steptwo'] == 0 && $step['stepthree'] == 0 && $step['step'] == 1) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-special" role="tab" aria-controls="home" aria-selected="true">Specialization</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if($step['stepthree'] == 0 && $step['steptwo'] == 1 && $step['step'] == 1) {{'active'}} @else {{''}} @endif" id="home-tab" data-toggle="tab" href="#pills-sign" role="tab" aria-controls="home" aria-selected="true">Oath and Signature</a>
@@ -193,7 +193,7 @@
             </div>
             </form>
             <!-- tab2 -->
-            <div class="tab-pane fade   @if($step['step'] == 1 && $step['stepthree'] == 1 && $step['steptwo'] == 0) {{'active show'}} @else {{''}} @endif" id="pills-special" role="tabpanel" aria-labelledby="pills-special-tab">
+            <div class="tab-pane fade   @if($step['step'] == 1 && $step['stepthree'] == 0 && $step['steptwo'] == 0) {{'active show'}} @else {{''}} @endif" id="pills-special" role="tabpanel" aria-labelledby="pills-special-tab">
                 <form id="main_idtwo" action="<?php echo URL::to('/'); ?>/lawyer/enrollment" method="POST">
                     @csrf
                     <div class="sa-personal">

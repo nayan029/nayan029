@@ -28,18 +28,17 @@ class enrollmentController extends Controller
     {
         // return $request->all(); die();
         $auth = Auth::user();
-        // $stepcount = $auth->step;
+        $step = $auth->step;
+        $steptwo = $auth->steptwo;
+        $stepthree = $auth->stepthree;
         $input = $request->all();
-
-
-
 
         // $input['court'] = $request->court;
         // $input['experience'] = $request->experience;
         // $input['finstitue'] = $request->finstitue;
         // $input['sinstitue'] = $request->sinstitue;
         // $input['tinstitue'] = $request->tinstitue;
-       
+
         if ($request->lname) {
             $input['ldob'] = date('Y-m-d H:i:s', strtotime($request->ldob));
             $input['location'] = "Delhi";
@@ -67,24 +66,30 @@ class enrollmentController extends Controller
                 $inser_id = new lawyerlanguages($array);
                 $inser_id->save();
 
-                $step['step'] = '1';
-                $inputuser = User::find($auth->id);
-                $inputuser->update($step);
+                // $step['step'] = '1';
+                // $inputuser = User::find($auth->id);
+                // $inputuser->update($step);
             }
         }
         $first = User::find($auth->id);
         $first->update($input);
 
         if ($request->about) {
-            // $about = $request->about;
-            $inputa['steptwo'] = '1';
-            $inputa['fees'] = $request->fees;
-            $inputa['full_legal_fees'] = $request->full_legal;
-            $inputuser = User::find($auth->id);
-            $inputuser->update($inputa);
+            if ($step == 1) {
+                // $about = $request->about;
+                $inputa['steptwo'] = '1';
+                $inputa['fees'] = $request->fees;
+                $inputa['full_legal_fees'] = $request->full_legal;
+                $inputuser = User::find($auth->id);
+                $inputuser->update($inputa);
+            } else {
+                Session::flash('error', 'Sorry,Please fill personal information');
+                return redirect()->back();
+            }
         }
 
         if ($request->court) {
+
             $delete = DB::table('lawyer_enrollment_court')->where('userid', $auth->id)->delete();
             foreach ($request->court as $courtdata) {
                 $array = array('userid' => $auth->id, 'courtid' => $courtdata, 'created_at' => date('Y:m:d h:i:s'));
@@ -92,9 +97,9 @@ class enrollmentController extends Controller
                 $inser_id = new lawyercourt($array);
                 $inser_id->save();
 
-                $step['steptwo'] = '1';
-                $inputuser = User::find($auth->id);
-                $inputuser->update($step);
+                // $step['steptwo'] = '1';
+                // $inputuser = User::find($auth->id);
+                // $inputuser->update($step);
             }
         }
 
@@ -107,18 +112,24 @@ class enrollmentController extends Controller
                 $inser_id = new lawyerenrollmentcatgeory($array);
                 $inser_id->save();
 
-                $step['steptwo'] = '1';
-                $inputuser = User::find($auth->id);
-                $inputuser->update($step);
+                // $step['steptwo'] = '1';
+                // $inputuser = User::find($auth->id);
+                // $inputuser->update($step);
             }
         }
         if ($request->hasfile('siganturepic')) {
-            $file = $request->file('siganturepic');
-            $name = $file->getClientOriginalName();
-            $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
-            $file->move(public_path() . '/uploads/signature/', $name);
-            $inputs['stepthree'] = '1';
-            $inputs['siganturepic'] = $name;
+                    if ($step == 1 && $steptwo == 1) {
+                        $file = $request->file('siganturepic');
+                        $name = $file->getClientOriginalName();
+                        $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                        $file->move(public_path() . '/uploads/signature/', $name);
+                        $inputs['stepthree'] = '1';
+                        $inputs['siganturepic'] = $name;
+                    } else {
+                        Session::flash('error', 'Sorry, Please fill personal information and specialization');
+                        return redirect()->back();
+                    }
+           
         }
         if (isset($request->siganturepic)) {
             $inputusersignature = User::find($auth->id);
