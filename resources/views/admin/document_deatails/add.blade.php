@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small>Add Document Details</small></h1>
+                    <h1 class="m-0 text-dark"><small>Add New Content</small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/home">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/document-deatils">Document Details</a></li>
-                        <li class="breadcrumb-item">Add Document Details</li>
+                        <li class="breadcrumb-item"><a href="<?php echo URL::to('/') ?>/admin/document-deatils">New Content</a></li>
+                        <li class="breadcrumb-item">Add New Content</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

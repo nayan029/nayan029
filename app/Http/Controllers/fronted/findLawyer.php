@@ -57,8 +57,7 @@ class findLawyer extends Controller
         $this->data['user_data'] = User::getRecordByData($slug, $cat, $court, $expi, $lang, $gender, $rating, $short_by);
         $this->data['category'] = adviceCategory::getquestioncategorylist();
 
-        return view('fronted.userbox',$this->data);
-
+        return view('fronted.userbox', $this->data);
     }
 
     public function getName(Request $request)
@@ -66,10 +65,29 @@ class findLawyer extends Controller
         $inputname = $request->inputname;
         if (isset($inputname)) {
             $this->data['user_data'] = ServiceSubCategory::getByName($inputname);
-            return view('fronted.databox',$this->data);
-        }else {
+            return view('fronted.databox', $this->data);
+        } else {
             // return redirect()->back();
         }
-
+    }
+    public function getDocs(Request $request)
+    {
+        // return $request->all();
+        $inputname = $request->inputname;
+        if (isset($inputname)) {
+            $this->data['user_data'] = legalservices::getByName($inputname);
+            return view('fronted.datadocs', $this->data);
+        } else {
+            // return redirect()->back();
+        }
+    }
+    public function getAids(Request $request)
+    {
+        $inputname = $request->inputname;
+        if (isset($inputname)) {
+            $this->data['user_data'] = legalservices::getByName($inputname);
+            return view('fronted.dataaids', $this->data);
+        } else {
+        }
     }
 }

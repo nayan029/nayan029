@@ -138,4 +138,11 @@ class legalservices extends Authenticatable
             ->where('status', 1)
             ->first();
     }
+    public static function getByName($name)
+    {
+        if (isset($name)) {
+            $getData = legalservices::where('service_name', 'like', $name . '%')->where('deleted_at', NULL)->get();
+            return $getData;
+        }
+    }
 }

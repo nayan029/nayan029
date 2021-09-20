@@ -279,7 +279,7 @@ class HomeController extends Controller
         $this->data['title'] = "LEGAL Documents";
         $this->data['docs'] = "Documents";
         $this->data['advicecategory'] = legalservices::getpropertyData();
-        return view('fronted.allAids', $this->data);
+        return view('fronted.allDocs', $this->data);
     }
 
     public function freeGuides(Request $requestl)

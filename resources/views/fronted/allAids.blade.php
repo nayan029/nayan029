@@ -2,10 +2,19 @@
 <div class="sa-enroll-details">
   <div class="container">
     <div class="sa-application">
-      <h3 class="sa-color2 mb-4">Free Legal @if(isset($docs)){{"Documentation"}}@elseif(isset($aids)){{"Services"}}@endif From Top Rated Lawyers</h3>
+      <div class="d-flex align-items-center res-search-md justify-content-between">
+      <h3 class="sa-color2 mb-4">Free Legal {{"Legal AID"}} From Top Rated Lawyers</h3>
+        <form method="GET">
+          <div class="filter-group mutual-sa-search d-flex">
+            <input type="text" name="name" id="name_input">
+
+            <button type="button" onclick="getData(this)" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="databox">
       <div class="col-md-12 ">
         <div class="row">
           <!-- <div class="col-md-5 d-flex align-items-center">
@@ -29,11 +38,8 @@
           ?>
             <div class="col-md-12">
               <ul class="footer-ul sa-footer-mb">
-              @if(isset($docs))
-                <li><a href="<?php echo URL::to('/'); ?>/legal-services/documents/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
-              @else
-              <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
-              @endif
+
+                <li><a href="<?php echo URL::to('/'); ?>/legal-services/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
               </ul>
             </div>
           <?php } ?>
@@ -243,3 +249,25 @@
   </div>
 </div>
 @include('fronted/include/footer')
+<script>
+    function getData(val) {
+      var inputname = $('#name_input').val();
+      $.ajax({
+        url: "{{ URL::to('/')}}/find-aid",
+        type: "post",
+        data: {
+          inputname: inputname,
+          _token: "<?php echo csrf_token(); ?>"
+        },
+        success: function(response) {
+          if (response!=='') {
+            var res = JSON.toString(response);
+            $('#databox').html(response);
+          }else{
+            location.reload();
+          }
+        }
+      });
+
+    }
+  </script>

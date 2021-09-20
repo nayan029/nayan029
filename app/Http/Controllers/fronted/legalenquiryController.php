@@ -75,6 +75,7 @@ class legalenquiryController extends Controller
                 'mobile' => request('phone'),
                 'email' => $uemail,
                 'status' => '1',
+                'documentid' => request('doumnetid'),
                 'other_info' => request('otherinfo'),
                 'created_at' => date('Y-m-d H:i:s'),
             );
@@ -93,13 +94,13 @@ class legalenquiryController extends Controller
             $inser_id->save();
             $inser_id = $inser_id->id;
         }
-        exit;
-        // if ($inser_id) {
-        //     Session::flash('success', 'Successfully Inserted');
-        //     return redirect()->back();
-        // } else {
-        //     Session::flash('error', 'Sorry, something went wrong. Please try again');
-        //     return redirect()->back();
-        // }
+        // exit;
+        if ($inser_id) {
+            Session::flash('success', 'Successfully Inserted');
+            return redirect()->back();
+        } else {
+            Session::flash('error', 'Sorry, something went wrong. Please try again');
+            return redirect()->back();
+        }
     }
 }

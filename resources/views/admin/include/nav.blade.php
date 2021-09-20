@@ -321,6 +321,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/document-enquiry" class="nav-link" id="documentenquiry">
+                <i class="fas fa-users nav-icon"></i>
+                <p> Document Enquiry</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{URL::to('/')}}/admin/document-deatils" class="nav-link" id="documentdetails">
                 <i class="fas fa-link nav-icon"></i>
                 <p> Add New Content</p>

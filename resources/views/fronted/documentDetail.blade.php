@@ -4,50 +4,24 @@
     <div class="container">
       <div class="sa-application">
         <?php if ($getquerys == null) {
-          // print_r($getquerys);
-          // return view('/'); 
-
-          // return view('fronted.index');
-
-          die;
         } else {
-          // dd($getquerys);
-          // echo "nio";
-          // die();
         }
         ?>
         <div class="row">
           <div class="col-md-12">
-              <h2 class="sa-color1 d-flex justify-content-between">{{$getquerys->service_name}}
-              <!-- <div>
-                <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-primary sa-color3 poppins-light ml-4">Find A Lawyer</a>
-              </div> -->
+            <h2 class="sa-color1 d-flex justify-content-between  res-lq-font">{{$getquerys->service_name}}
+              <a data-toggle="modal" data-target="#enquiryModal" href="#" class="btn btn-primary"> Enquiry Now</a>
             </h2>
-
-            <!-- <div class="col-md-12 pl-0 pt-3 pb-3">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="pl-4">4.8 | 241+ ratings</span>
-            </div> -->
-
             <p class="fs-20 pt-3 pb-0 mb-0">{{$getquerys->short_description}}</p>
           </div>
           <div class="col-md-3 d-flex align-items-center res-search-md">
-            <!-- <div class="filter-group mutual-sa-search d-flex">
-                <input type="text" name="name">
-                
-                <button type="submit" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
-            </div> -->
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="sa-enroll-details">
   <div class="container">
@@ -60,11 +34,10 @@
 
             </div>
 
-
             @foreach($sub_service_list as $subService)
             <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}"><i class="fa fa-arrow-right"></i> {{ $subService->description }}</a> <br />
             @endforeach
-           @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
+            @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
 
 
             <div class="mb-4 sr-l-space">
@@ -93,134 +66,136 @@
         </div>
 
       </div>
-      <!-- <div class=" col-md-5 pl-4">
-        <div class="mitem text-center">
-          <div class="sr-card ">
-            <img src="{{asset('fronted/images/user.png')}}">
-            <h5 class="mt-4 sr-title">Googling your legal issue online?</h5>
-          </div>
-          <p>The internet is not a lawyer and neither are you.
-            <br />
-            Talk to a real lawyer about your legal issue.
-          </p>
-          <a href="<?php echo URL::to('/'); ?>/legal-enquiry">
-            <button type="submit" class="btn btn-outline-primary min-w120 ">Find a Lawyer Now</button></a>
-        </div>
+      <!-- modal start -->
 
-
-      </div>
-    </div> -->
-
-      <!-- <div class="row mt-4">
-          <div class="col-md-12">
-            <div class="sa-application">
-                <h5 class="sa-color2">Get Legal Advice Over the Phone</h5>
+      <div class="modal fade" id="enquiryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: #222;">Enquiry Now</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="mb-4 sr-l-space">
-              <p>Going through a divorce? Launching a business? Hurt in a car accident? Writing a will? Facing a lawsuit? In any of these situations, you may consider hiring a lawyer to advise you or represent your interests. While each state has many lawyers to choose from, choosing the right lawyer can make the difference between a pleasant and a frustrating experience. The phone advice received from legal experts can make one understand the intricacies involved in a particular case and can help the party understand his or her legal journey.</p>  
-            </div>
-            <div class="mb-4 sr-l-space">
-              <p>It's important to understand that a good lawyer doesn't guarantee that you'll win your case. However, having a good lawyer will give you the best chances for a favorable outcome and the comfort of knowing that you had the best legal representation. The first step in hiring a lawyer is choosing one in the practice area that is related to your legal matter because this will ensure that the lawyer is well versed in cases similar to yours.</p>  
-            </div>
-            <div class="mb-4 sr-l-space">
-              <p>.com makes it easier for you to get legal advice from Top Rated Lawyers across the country. Discuss your legal issue over phone, email, schedule an office meeting, or consult with any of the listed Lawyers at your home / office. We are ready to help you, as per your convenience.</p>  
-            </div>
-           
-            
-          </div>
-        </div> -->
+            <form method="POST" action="{{URL::to('/')}}/insert-quer" id="main_new_form">
+              <div class="modal-body">
+                @csrf
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control border-radius-5px" id="ename" aria-describedby="nameHelp" placeholder="Name" autocomplete="off" maxlength="250">
+                  <span id="ename_error" style="color: red;"></span>
+                </div>
+                <div class="form-group">
+                  <input type="number" name="phone" class="form-control border-radius-5px" id="emobile" aria-describedby="nameHelp" placeholder="Mobile number" autocomplete="off" maxlength="12">
+                  <span id="emobile_error" style="color: red;"></span>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control border-radius-5px" id="eemail" aria-describedby="emailHelp" placeholder="Email (Optional)" autocomplete="off" maxlength="250">
+                  <span id="eemail_error" style="color: red;"></span>
+                </div>
+                <div class="form-group">
+                <input type="hidden" name="doumnetid" value="{{$getquerys->id}}" class="form-control border-radius-5px" id="doumnetid" aria-describedby="emailHelp" placeholder="Email (Optional)" autocomplete="off" maxlength="250">
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
 
-      <!-- <div class="row mt-30">
-      <div class="col-md-6">
-
-        <div class="mitem3">
-          <div class="sr-card">
-            <a href="#">
-              <h5 class="sr-title2 d-flex align-items-center">
-                15 Minutes Divorce Advice Session by Phone</h5>
-            </a>
-          </div>
-          <div class="col-md-12 pl-0 pt-3 pb-3">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="pl-4"> 4.8 |371+ ratings</span>
-          </div>
-          <p class="mb-20">Ask questions and get advice from a local experienced advocate on divo....</p>
-          <div class="ml-auto">
-            <a href="#" class="btn btn-outline-primary">Learn More</a>
           </div>
         </div>
-
       </div>
-      <div class="col-md-6">
+      <!-- modal end -->
 
-        <div class="mitem3">
-          <div class="sr-card">
-            <a href="#">
-              <h5 class="sr-title2 d-flex align-items-center">
-                15 Minutes Divorce Advice Session by Phone</h5>
-            </a>
-          </div>
-          <div class="col-md-12 pl-0 pt-3 pb-3">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="pl-4"> 4.8 |371+ ratings</span>
-          </div>
-          <p class="mb-20">Ask questions and get advice from a local experienced advocate on divo....</p>
-          <div class="ml-auto">
-            <a href="#" class="btn btn-outline-primary">Learn More</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="row ">
-      <div class="col-md-12 sr-center">
-        <a href="" class="btn btn-outline-primary">See All Family / Matrimonial Legal Services</a>
-
-      </div>
-    </div> -->
 
       <div class="row mb-5">
         <div class="col-md-12">
           <div>
-            <!-- <h2 class="sr-t">50,000 People Choose Every Day</h2> -->
           </div>
-          <!-- <div class="row mt-5 sr-c ">
-            <div class="col-md-4 text-center">
-              <h6 class="sr-sub-t">INDIA’S LEADING LEGAL PLATFORM</h6>
 
-              <p>Get the legal help & representation from over 10000 </p>
-              <p>lawyers across 700 cities in India</p>
-              <a href="{{URL::to('/')}}/free-legal-advice-phone">
-                <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Talk to a Lawyer</button>
-              </a>
-
-            </div>
-            <div class="col-md-4 text-center">
-              <h6 class="sr-sub-t">FREE LEGAL ADVICE</h6>
-              <p>Post your question for free and get response from</p>
-              <p>experienced lawyers within 48 hours</p>
-              <a href="{{URL::to('/')}}/ask-a-free-question">
-                <button type="submit" class="btn btn-outline-primary min-w120 mt-4 mb-4">Ask a Free Question</button>
-              </a>
-            </div>
-            <div class="col-md-4 text-center">
-
-              <h6 class="sr-sub-t">HIRE A LAWYER</h6>
-              <p>Contact and get legal assistance from our lawyer</p>
-              <p> network for your specific matter</p>
-
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
-@include('fronted/include/footer')
+  @include('fronted/include/footer')
+  <script>
+    $('#main_new_form').submit(function(e) {
+
+      var ename = $('#ename').val();
+      var eemail = $('#eemail').val();
+      var emobile = $('#emobile').val();
+
+
+      var cnt = 0;
+      var f = 0;
+
+      $('#ename_error').html("");
+      $('#eemail_error').html("");
+      $('#emobile_error').html("");
+
+
+
+      var number = /([0-9])/;
+      var alphabets = /([a-zA-Z])/;
+      var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+
+      // if (email.trim() == '') {
+      // 	$('#email_error').html("Please enter Email");
+      // 	cnt = 1;
+      // 	f++;
+      // 	if (f == 1) {
+      // 		$('#email').focus();
+      // 	}
+      // }
+      if (ename.trim() == '') {
+        $('#ename_error').html("Please enter name");
+        cnt = 1;
+        f++;
+        if (f == 1) {
+          $('#ename').focus();
+        }
+      }
+
+
+      function ValidateEmail(eemail) {
+        var expr =
+          /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        return expr.test(eemail);
+      };
+
+      if (eemail) {
+        if (!ValidateEmail(eemail)) {
+          $('#eemail_error').html("Please enter valid email");
+          cnt = 1;
+          f++;
+          if (f == 1) {
+            $('#eemail').focus();
+          }
+        }
+      }
+
+      if (emobile.trim() == '') {
+        $('#emobile_error').html("Please enter mobile number");
+        cnt = 1;
+        f++;
+        if (f == 1) {
+          $('#emobile').focus();
+        }
+      }
+      if (emobile.length > 12) {
+        $('#emobile_error').html("Please enter valid mobile ");
+        cnt = 1;
+        f++;
+        if (f == 1) {
+          $('#emobile').focus();
+        }
+      }
+
+      if (cnt == 1) {
+        return false;
+      } else {
+        return true;
+      }
+
+
+    })
+  </script>

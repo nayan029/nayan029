@@ -17,6 +17,7 @@ use App\Http\Controllers\fronted\enrollmentController;
 use App\Http\Controllers\fronted\legalenquiryController;
 use App\Http\Controllers\admin\ForgotPasswordController;
 use App\Http\Controllers\admin\lawyermanagmentController;
+use App\Http\Controllers\fronted\documentenquiryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -204,6 +205,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/admin/document-deatils',documentDeatailsController::class);
     Route::get('/admin/add-document-details',[documentDeatailsController::class,'addDetails']);
     // document details
+
+
+    Route::resource('/admin/document-enquiry',documentenquiryController::class);
+
+
+
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------
@@ -305,6 +312,8 @@ Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
 Route::post('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@getData');
 
 Route::post('/find-name', 'App\Http\Controllers\fronted\findLawyer@getName');
+Route::post('/find-docs', 'App\Http\Controllers\fronted\findLawyer@getDocs');
+Route::post('/find-aid', 'App\Http\Controllers\fronted\findLawyer@getAids');
 
 Route::get('/legalQueryDesc', 'App\Http\Controllers\fronted\HomeController@legalQueryDesc');
 
@@ -338,6 +347,8 @@ Route::resource('/write-review', 'App\Http\Controllers\fronted\reviewController'
 Route::get('/experts/reviews/{id}', 'App\Http\Controllers\fronted\reviewController@allReviews');
 
 Route::resource('/enquiry-form', 'App\Http\Controllers\fronted\enquiryController');
+
+Route::resource('/document-form', 'App\Http\Controllers\fronted\documentenquiryController');
 
 Route::get('/lawyer/edit-profile', [FrontedHomeController::class, 'editProfile']);
 Route::post('/lawyer/edit-profile/{id}', 'App\Http\Controllers\fronted\lawyerProfileController@update');
