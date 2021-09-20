@@ -571,7 +571,7 @@ class HomeController extends Controller
     public function addOrderData(Request $request)
     {
 
-        return $request->all();
+        // return $request->all();
         // $id = $request->id;
         $this->data['auth'] = auth()->user();
         $this->data['response'] = $request->all();

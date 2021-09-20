@@ -138,7 +138,7 @@
                                 <div class="row">
 
                                     <div class="col-lg-6 col-md-12 sa-pb">
-                                        <label for="inputDate" class="form-label sa-color2 sa-label">Allotment Number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
+                                        <label for="inputDate" class="form-label sa-color2 sa-label">Allotment number <img class="ml-1" src="{{asset('fronted/images/svg/ant-design_info-circle-filled.svg')}}"></label><span style="color: red;"> *</span>
                                         <input name="allotment" value="@if(isset($lawyerDataNew->allotmentno)){{$lawyerDataNew->allotmentno}}@endif" type="text" class="form-control sa-form-font half-border-radius" id="allotment" placeholder="" maxlength="13">
                                         <span id="allotment_error" style="color: red;"></span>
                                     </div>
@@ -819,31 +819,32 @@
             if (f == 1) {
                 $('#allotment').focus();
             }
-        }else{
-            $.ajax({
-            url: "<?php echo URL::to('/'); ?>/lawyer/getexitallotmentno",
-            type: "POST",
-            data: {
-                name: allotment,
-                _token: "<?php echo csrf_token(); ?>"
-            },
-            success: function(response) {
-                if (response) {
-                    if (response=='1') {
-                    $('#allotment_error').html("Allotment number is already exists");
-                    cnt = 1;
-                    f++;
-                    if (f == 1) {
-                        $('#allotment').focus();
-                    }
-                }
-                }
-
-
-            }
-        });
-
         }
+        // else{
+        //     $.ajax({
+        //     url: "{{URL::to('/')}}/lawyer/getexitallotmentno",
+        //     type: "POST",
+        //     data: {
+        //         name: allotment,
+        //         _token: "<?php echo csrf_token(); ?>"
+        //     },
+        //     success: function(response) {
+        //         if (response) {
+        //             if (response=='1') {
+        //             $('#allotment_error').html("Allotment number is already exists");
+        //             cnt = 1;
+        //             f++;
+        //             if (f == 1) {
+        //                 $('#allotment').focus();
+        //             }
+        //         }
+        //         }
+
+
+        //     }
+        // });
+
+        // }
 
         if (memership.trim() == '') {
             $('#membership_error').html("Please enter membership number");
@@ -852,34 +853,35 @@
             if (f == 1) {
                 $('#membership').focus();
             }
-        }else{
+        }
+        // else{
               //ajax for alreday exist data allotment no or membershipno start        
-            $.ajax({
-            url: "<?php echo URL::to('/'); ?>/lawyer/getexitenrollmentno",
-            type: "POST",
-            data: {
-                name: memership,
-                _token: "<?php echo csrf_token(); ?>"
-            },
-            success: function(response) {
-                if (response) {
-                    if (response=='1') {
+        //     $.ajax({
+        //     url: {{URL::to('/')}}/lawyer/getexitenrollmentno",
+        //     type: "POST",
+        //     data: {
+        //         name: memership,
+        //         _token: "<?php echo csrf_token(); ?>"
+        //     },
+        //     success: function(response) {
+        //         if (response) {
+        //             if (response=='1') {
                         
-                        $('#membership_error').html("Membership number is aleready exists");
-                        cnt = 1;
-                        f++;
-                        if (f == 1) {
-                            $('#membership').focus();
-                        }
-                    }
-                }
+        //                 $('#membership_error').html("Membership number is aleready exists");
+        //                 cnt = 1;
+        //                 f++;
+        //                 if (f == 1) {
+        //                     $('#membership').focus();
+        //                 }
+        //             }
+        //         }
 
 
-            }
-        });
+        //     }
+        // });
         //ajax for alreday exist data allotment no or membershipno close
 
-        }
+        // }
 
       
 

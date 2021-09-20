@@ -74,7 +74,7 @@
                                                 @endif
                                                 @endif
                                             </span>
-                                            <span><a href="javascript:void(0)"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-eye" aria-hidden="true"></i></a></span>
+                                            <!-- <span><a href="javascript:void(0)"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-eye" aria-hidden="true"></i></a></span> -->
                                         </td>
                                         <!-- modal start -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
