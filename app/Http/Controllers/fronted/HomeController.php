@@ -571,7 +571,7 @@ class HomeController extends Controller
     public function addOrderData(Request $request)
     {
 
-        // return $request->all();
+        return $request->all();
         // $id = $request->id;
         $this->data['auth'] = auth()->user();
         $this->data['response'] = $request->all();
@@ -588,18 +588,25 @@ class HomeController extends Controller
                 ->withErrors($validator, 'add_error')
                 ->withInput();
         } else {
+            $order = new bookingTemp;
+
+            $order->user_id = Auth()->id();
+            // $latestOrder = bookingTemp::orderBy('id','DESC')->first();
+            $order->orderid = 'B'.str_pad(date("Ymdhis") + 1, 8, "0", STR_PAD_LEFT);
+        
             $input = array(
-                'created_at' => date('Y-m-d H:i:s'),
                 'amount' => $request->fees,
+                'orderid'=>$order->orderid,
                 'lawyer_id' => $request->lawyer_id,
                 'user_id' => $request->customer_id,
                 'status' => 1,
                 'type' => $request->type,
                 'issue_id' => $request->issue_id,
                 'subissue_id' => $request->subissue_id,
+                'created_at' => date('Y-m-d H:i:s'),
             );
             // **status update when fees pay**
-
+            // return $input;
             $status['status'] = '2';
             $enquiry = legalenquiry::find($id);
             $enquiry->update($status);
@@ -686,8 +693,9 @@ class HomeController extends Controller
         $uid = $auth->id;
 
         //$this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
-        $this->data['enquiry_data'] = $enquirydatas = legalenquiry::customerCartDetails($uid)->get();
-
+        $this->data['enquiry_data'] = legalenquiry::customerCartDetails($uid)->get();
+        // $this->data['enquiry_data'] = bookingTemp::customerCartDetails($uid)->get();
+        // dd($this->data['enquiry_data']);
         return view('fronted.userbookhistory', $this->data);
     }
 }

@@ -10,6 +10,7 @@
             <tr>
 
                 <td class="sa-color2 sr-b-right">Id </td>
+                <td class="sa-color2 sr-b-right">Booking Id </td>
                 <td class="sa-color2 sr-b-right">Issue Name </td>
                 <!-- <td class="sa-color2 sr-b-right">User Name</td> -->
                 <td class="sa-color2 sr-b-right">Lawyer Name</td>
@@ -23,6 +24,7 @@
                 @foreach($payment_details as $data)
             <tr>
                 <td class="sr-p-white sr-b-right text-white">{{$i}}</td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->orderid)){{$data->orderid}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white"> @if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td>
                 <!-- <td class="sr-p-white sr-b-right text-white"> @if(isset($data->user_name)){{$data->user_name}}@else{{"N/A"}}@endif</td> -->
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_name)){{$data->lawyer_name}}@else{{"N/A"}}@endif</td>
