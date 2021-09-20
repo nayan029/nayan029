@@ -28,7 +28,8 @@
 
                             <form class="form-inline mb-3" method="GET" action="<?php echo URL::to('/') ?>/admin/legal-services">
                                 <div class="form-group mr-2">
-                                    <input type="text" class="form-control w-180px" value="{{$service_title}}" id="" name="title" placeholder="Service Name">
+                                    <input type="text" class="form-control w-180px" value="{{$type}}" id="" name="type" placeholder="Type Name">
+                                    <input type="text" class="form-control w-180px  ml-2" value="{{$service_title}}" id="" name="title" placeholder="Service Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary ml-2">Filter</button>
                                 <a href="<?php echo URL::to('/'); ?>/admin/legal-services"><button type="button" class="btn btn-dark ml-2">Reset</button></a>

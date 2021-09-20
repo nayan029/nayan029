@@ -27,10 +27,14 @@ class legalserviceController extends Controller
     public function index(Request $request)
     {
         // echo "adda";die;
+        // return $request->all();
         $auth = Auth::user();
         $this->data['service_title'] = $title = $request->title;
+
+        $this->data['type'] = $type = $request->type;
+        
         $this->data['userdata'] = User::getrecordbyid($auth->id);
-        $this->data['getservices'] = legalservices::getservices($title);
+        $this->data['getservices'] = legalservices::getservices($title,$type);
         return view('admin/manage_legalservice/index', $this->data);
     }
 
@@ -49,7 +53,7 @@ class legalserviceController extends Controller
             'category_id' => 'required',
             // 'service_title' => 'required',
             // 'short_description' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
             // 'description' => 'required',
         ]);
 

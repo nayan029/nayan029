@@ -73,7 +73,7 @@
 
 
               <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-4" id="himg">
                   <label for="exampleInputContactNo">Image </label><span style="color: red;">*</span>
                   <input type="file" class="form-control" id="image" name="image" placeholder="select image">
                   <span style="color:red;" id="image_error"><?php echo $errors->profile_error->first('image'); ?></span>
@@ -82,7 +82,7 @@
 
               <div class="col-sm-12" style="display: none;" id="desc">
                 <div class="form-group">
-                  <label for="exampleInputEduction">Description</label><span style="color: red;">*</span>
+                  <label for="exampleInputEduction">Description</label>
                   <textarea class="form-control" id="description" name="description" aria-describedby="nameHelp" placeholder="User Description"></textarea>
                   <span style="color:red;" id="description_error"><?php echo $errors->customer_error->first('discription'); ?></span>
                 </div>
@@ -118,6 +118,7 @@
       success: function(response) {
         $('#name').html(response);
         if (type == '2') {
+          $('#himg').css('display','none');
           $('#desc').css('display', 'block');
           CKEDITOR.replace('description');
         } else {
@@ -230,10 +231,10 @@
     //   }
     // }
 
-    if (image.trim() == '') {
-      $('#image_error').html("Please select Pictures");
-      cnt = 1;
-    }
+    // if (image.trim() == '') {
+    //   $('#image_error').html("Please select Pictures");
+    //   cnt = 1;
+    // }
     if (image) {
       var formData = new FormData();
       var file = document.getElementById('image').files[0];

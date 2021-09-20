@@ -37,14 +37,25 @@ class legalservices extends Authenticatable
         $query =  legalservices::where('status', 1)->orderBy('id', 'desc')->get();
         return $query;
     }
-    public static function getservices($title)
+    public static function getservices($title, $type)
     {
         $query =  legalservices::where('status', 1)->orderBy('id', 'desc');
-        
+
         $temp = "service_name like '%$title%' ";
         if ($title != "") {
             $query = $query->whereRaw($temp);
         }
+        //type
+        if ($type == 'Documentation') {
+            $type = "2";
+        } elseif ($type == 'Legal Aid') {
+            $type =  "1";
+        }
+        $temp = "category_id = $type";
+        if ($type != "") {
+            $query = $query->whereRaw($temp);
+        }
+
         $query = $query->paginate(10);
         return $query;
     }
@@ -118,13 +129,13 @@ class legalservices extends Authenticatable
     public static function familylist($name)
     {
         // return $name; die;
-        $query = legalservices::where('slug', $name)->orderBy('id', 'desc')->first();   
+        $query = legalservices::where('slug', $name)->orderBy('id', 'desc')->first();
         return $query;
     }
     public static function getDataBySlugName($name)
     {
-         return $getData = legalservices::where('slug', $name)
-             ->where('status', 1)
-             ->first();
+        return $getData = legalservices::where('slug', $name)
+            ->where('status', 1)
+            ->first();
     }
 }
