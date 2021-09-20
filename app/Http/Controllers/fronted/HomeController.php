@@ -9,6 +9,7 @@ use App\Models\admin\blogs;
 use App\Models\admin\bookingTemp;
 use App\Models\admin\Category;
 use App\Models\admin\court;
+use App\Models\admin\documentDetails;
 use App\Models\admin\freeQuestions;
 use App\Models\admin\legalenquiry;
 use App\Models\admin\guides;
@@ -32,6 +33,7 @@ use App\Models\admin\MainLegalQuery;
 use App\Models\admin\querySubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use View;
@@ -697,5 +699,12 @@ class HomeController extends Controller
         // $this->data['enquiry_data'] = bookingTemp::customerCartDetails($uid)->get();
         // dd($this->data['enquiry_data']);
         return view('fronted.userbookhistory', $this->data);
+    }
+    public function viewPage(Request $request, $id)
+    {
+        $decryptid = Crypt::decrypt($id);
+        $this->data['title'] = "Document  Details";
+        $this->data['allContent'] = documentDetails::getRecordById($decryptid)->get();
+        return view('/admin/document_deatails/site', $this->data);
     }
 }

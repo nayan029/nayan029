@@ -52,12 +52,13 @@
                                         <td>{{$i}}</td>
                                         <td>@if( $data->type=='2') {{"Content"}} @elseif($data->type=='1') {{"Image"}} @endif </td>
                                         <td>{{$data->title}}</td>
-                                        <td>@if(isset($data->type) && $data->type=='2') {!! substr($data->description, 0, 50);!!} @endif</td> 
-                                        <td>@if(isset($data->type) && $data->type=='1') <img src="{{URL::to('/')}}/uploads/document_image/{{$data->image}}" alt="image" style="height: 100px; width:100px">@endif</td>
+                                        <td>@if(isset($data->type) && $data->type=='2') {!! substr($data->description, 0, 50);!!} @endif</td>
+                                        <td>@if(isset($data->type) && $data->type=='1') <img src="{{URL::to('/')}}/uploads/document_image/{{$data->image}}" alt="image" style="height: 70px; width:70px">@endif</td>
                                         <td>{{$data->created_at}}</td>
                                         <td>
-                                            <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt mr-2" onclick="functiondelete('{{ $data->id }}','delete')"></i></a>
-                                            <a title="Edit" class="mr-2" href="{{URL::to('/')}}/admin/document-deatils/{{$data->id}}"><i class="fas fa-edit text-info font-16"></i></a>
+                                            <a title="Delete" href="javascript:void(0)" class="sa-icons active"><i class="fas fa-trash-alt " onclick="functiondelete('{{ $data->id }}','delete')"></i></a>
+                                            <a title="Edit" class="ml-2" href="{{URL::to('/')}}/admin/document-deatils/{{$data->id}}"><i class="fas fa-edit text-info font-16"></i></a>
+                                            <a target="_blank" title="View" class="" href="{{URL::to('/')}}/admin/view-content/{{App\Helpers\CryptHelper::encryptstring($data->id)}}"><i class="fas fa-eye text-info font-16"></i></a>
 
                                         </td>
 

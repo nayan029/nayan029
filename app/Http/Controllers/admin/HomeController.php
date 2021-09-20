@@ -70,4 +70,5 @@ class HomeController extends Controller
         $data =  count($sql);
         return $data;
     }
+   
 }

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
+
 
 class documentDeatailsController extends Controller
 {
@@ -139,4 +141,5 @@ class documentDeatailsController extends Controller
             return redirect()->back();
         }
     }
+
 }

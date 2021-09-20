@@ -17,7 +17,7 @@
         }
         ?>
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-12">
               <h2 class="sa-color1 d-flex justify-content-between">{{$getquerys->service_name}}
               <!-- <div>
                 <a href="{{URL::to('/')}}/legal-enquiry" class="btn btn-primary sa-color3 poppins-light ml-4">Find A Lawyer</a>

@@ -322,8 +322,8 @@
             </li>
             <li class="nav-item">
               <a href="{{URL::to('/')}}/admin/document-deatils" class="nav-link" id="documentdetails">
-                <i class="fas fa-star nav-icon"></i>
-                <p> Document Details</p>
+                <i class="fas fa-link nav-icon"></i>
+                <p> Add New Content</p>
               </a>
             </li>
             <!-- <li class="nav-item">
