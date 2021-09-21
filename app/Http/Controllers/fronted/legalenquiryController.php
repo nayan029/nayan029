@@ -51,56 +51,66 @@ class legalenquiryController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request->all();  die;
-        $loginDetail = Auth::user();
-        $uemail = $loginDetail->email;
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'phone' => 'required',
-            // 'city' => 'required',
-        ]);
+        // return $request->all();
+        $auth = auth()->user();
+        if ($auth) {
+            if ($auth->user_type == '2') {
+                $loginDetail = Auth::user();
+                $uemail = $loginDetail->email;
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'phone' => 'required',
+                    // 'city' => 'required',
+                ]);
 
-        if ($validator->fails()) {
-            return redirect("enquiry")
-                ->withErrors($validator, 'legal-enquiry')
-                ->withInput();
-        } else {
-
-
-            $insert_array = array(
-                'user_id' => $loginDetail->id,
-                'issue_id' => request('service_id'),
-                'subissue_id' => request('sub_service_id'),
-                'name' => request('name'),
-                'mobile' => request('phone'),
-                'email' => $uemail,
-                'status' => '1',
-                'documentid' => request('doumnetid'),
-                'other_info' => request('otherinfo'),
-                'created_at' => date('Y-m-d H:i:s'),
-            );
-            // // $input = $request->all();
-            // $input['issue_id'] = $request->issue_id;
-            // $input['subissue_id'] = $request->subissueid;
-            // // $input['location'] = $request->city;
-            // $input['name'] = $request->name;
-            // $input['mobile'] = $request->phone;
-            // $input['email'] = $request->email;
-            // $input['other_info'] = $request->otherinfo;
-            // $input['created_at'] = date('Y-m-d H:i:s');
+                if ($validator->fails()) {
+                    return redirect("enquiry")
+                        ->withErrors($validator, 'legal-enquiry')
+                        ->withInput();
+                } else {
 
 
-            $inser_id = new legalenquiry($insert_array);
-            $inser_id->save();
-            $inser_id = $inser_id->id;
+                    $insert_array = array(
+                        'user_id' => $loginDetail->id,
+                        'issue_id' => request('service_id'),
+                        'subissue_id' => request('sub_service_id'),
+                        'name' => request('name'),
+                        'mobile' => request('phone'),
+                        'email' => $uemail,
+                        'status' => '1',
+                        'documentid' => request('doumnetid'),
+                        'other_info' => request('otherinfo'),
+                        'created_at' => date('Y-m-d H:i:s'),
+                    );
+                    // // $input = $request->all();
+                    // $input['issue_id'] = $request->issue_id;
+                    // $input['subissue_id'] = $request->subissueid;
+                    // // $input['location'] = $request->city;
+                    // $input['name'] = $request->name;
+                    // $input['mobile'] = $request->phone;
+                    // $input['email'] = $request->email;
+                    // $input['other_info'] = $request->otherinfo;
+                    // $input['created_at'] = date('Y-m-d H:i:s');
+
+
+                    $inser_id = new legalenquiry($insert_array);
+                    $inser_id->save();
+                    $inser_id = $inser_id->id;
+
+                    if ($inser_id) {
+                        Session::flash('success', 'Successfully Inserted');
+                        return redirect()->back();
+                    } else {
+                        Session::flash('error', 'Sorry, something went wrong. Please try again');
+                        return redirect()->back();
+                    }
+                }
+            }else {
+                return redirect('/login');
+            }
+        }else {
+            return redirect('/login');        
         }
-        // exit;
-        if ($inser_id) {
-            Session::flash('success', 'Successfully Inserted');
-            return redirect()->back();
-        } else {
-            Session::flash('error', 'Sorry, something went wrong. Please try again');
-            return redirect()->back();
-        }
+       
     }
 }

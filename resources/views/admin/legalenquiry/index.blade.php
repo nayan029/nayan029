@@ -55,7 +55,8 @@
                                     <tr>
                                         <td>{{$i}}</td>
                                         <!-- <td>{{$data->issue_name}}</td> -->
-                                        <td>{{$data->subissue_name." - ".$data->issue_name}}</td>
+                                        <td>@if(isset($data->subissue_name)){{$data->subissue_name." - ".$data->issue_name}} @endif
+                                             @if(isset($data->document_name)){{$data->document_name}}@endif</td>
                                         <td>{{$data->name}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
                                         <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>

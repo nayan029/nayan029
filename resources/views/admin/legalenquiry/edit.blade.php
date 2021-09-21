@@ -29,7 +29,9 @@
 
                             <tr>
                                 <th>Issue Name</th>
-                                <td>{{$enquirydata->issue_name ? $enquirydata->issue_name : '-'}} - {{$enquirydata->subissue_name ? $enquirydata->subissue_name : '-'}}</td>
+                                <td> @if(isset($enquirydata->issue_name)){{$enquirydata->issue_name ? $enquirydata->issue_name : '-'}} - {{$enquirydata->subissue_name ? $enquirydata->subissue_name : '-'}}@endif
+                                @if(isset($enquirydata->document_name)){{$enquirydata->document_name}}@endif
+                                </td>
                             </tr>
                             <!-- <tr>
                                 <th>Subissue Name</th>
