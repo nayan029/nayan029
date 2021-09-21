@@ -43,6 +43,7 @@
                                         <th>Email</th>
                                         <th>Mobile</th>
                                         <!-- <th>Message</th> -->
+                                        <th>Service Type</th>
                                         <th>Create Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -60,6 +61,8 @@
                                         <td>{{$data->name}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
                                         <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>
+                                    <td> @if(isset($data->document_name)){{"Documentation"}}@endif  @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
+
                                         <!-- <td>@if(isset($data->other_info)){{$data->other_info}}@else{{"N/A"}}@endif</td> -->
                                         <td>{{ date("d-M-Y h:i A", strtotime($data->created_at))}}</td>
                                         <td>

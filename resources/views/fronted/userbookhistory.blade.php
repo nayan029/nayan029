@@ -16,6 +16,7 @@
                 <td class="sa-color2 sr-b-right">Issue Name </td>
                 <!-- <td class="sa-color2 sr-b-right">Type Name </td> -->
                 <td class="sa-color2 sr-b-right">Fees Type</td>
+                <td class="sa-color2 sr-b-right">Service Type</td>
                 <td class="sa-color2 sr-b-right">Created Date</td>
                 <td class="sa-color2 sr-b-right">Payment Status</td>
                 <td class="sa-color2 sr-b-right">Enquiry Status</td>
@@ -33,7 +34,11 @@
                 <!-- <td class="sr-p-white sr-b-right text-white">@if(isset($data->orderid)){{$data->orderid}}@endif</td> -->
                 <td class="sr-p-white text-white">{{$data->name}}</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{"N/A"}}@endif - @if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif </td>
+                <td class="sr-p-white sr-b-right text-white">
+                @if(isset($data->subissue_name)){{$data->subissue_name." - "}}@else{{""}}@endif 
+                    @if(isset($data->issue_name)){{$data->issue_name}}@else{{""}}@endif 
+                    @if(isset($data->document_name)){{$data->document_name}}@endif
+            </td>
                 <!-- <td class="sr-p-white sr-b-right text-white"></td> -->
 
                 <td class="sr-p-white sr-b-right text-white">
@@ -43,7 +48,7 @@
                     Full Legal Representation
                     @endif
                 </td>
-
+                <td class="sr-p-white sr-b-right text-white"> @if(isset($data->document_name)){{"Documentation"}}@endif  @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>
                 <td class="sr-p-white sr-b-right text-white">Success</td>
                 <td class="sr-p-white sr-b-right text-white">Open</td>

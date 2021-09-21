@@ -117,7 +117,6 @@
 
             <form method="POST" action="{{URL::to('/')}}/pay-fees" id="fees_main">
                 @csrf
-
                 <input type="hidden" name="lawyer_id" value="{{$lawyerData->id}}">
                 <input type="hidden" name="customer_id" value="{{$enquiryUserId->user_id}}">
                 <input type="hidden" name="id" value="{{request('id');}}">
@@ -137,6 +136,7 @@
 
                 <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
                 <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
+                <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
 
                 <div class="row">
                     <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now

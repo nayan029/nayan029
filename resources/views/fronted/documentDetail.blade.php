@@ -7,13 +7,23 @@
               } else {
               }
               ?> -->
+        @php
+        $auth = auth()->user();
+        @endphp
         <div class="row">
           <div class="col-md-12">
             <h2 class="sa-color1 d-flex justify-content-between  res-lq-font">{{$getquerys->service_name}}
+
+              @if($auth)
               <a data-toggle="modal" data-target="#enquiryModal" href="#" class="btn btn-primary"> Enquiry Now</a>
+              @else
+              <a href="{{URL::to('/login')}}" class="btn btn-primary"> Enquiry Now</a>
+              @endif
 
             </h2>
             <p class="fs-20 pt-3 pb-0 mb-0">{{$getquerys->short_description}}</p>
+          </div>
+          <div class="col-md-12">
           </div>
           <div class="col-md-3 d-flex align-items-center res-search-md">
 
@@ -84,7 +94,7 @@
               <div class="modal-body">
                 @csrf
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control border-radius-5px" id="ename" aria-describedby="nameHelp" placeholder="Name" autocomplete="off" maxlength="250">
+                  <input value="@if(isset($auth->name)){{$auth->name}}@endif" type="text" name="name" class="form-control border-radius-5px" id="ename" aria-describedby="nameHelp" placeholder="Name" autocomplete="off" maxlength="250">
                   <span id="ename_error" style="color: red;"></span>
                 </div>
                 <div class="form-group">
@@ -107,6 +117,7 @@
           </div>
         </div>
       </div>
+
       <!-- modal end -->
 
 

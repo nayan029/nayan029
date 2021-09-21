@@ -235,6 +235,7 @@ class HomeController extends Controller
     }
     public function legalEnquiry(Request $request, $id)
     {
+        // return $request->all();
         $auth = auth()->user();
         if ($auth) {
             if ($auth->user_type == '2') {
@@ -524,6 +525,9 @@ class HomeController extends Controller
                     Session::flash('error', 'Sorry,  Please fill enrollment form');
                     return redirect('/');
                 }
+            }else{
+            return view('fronted.lawyer_login', $this->data);
+
             }
         } else {
             return view('fronted.lawyer_login', $this->data);
@@ -605,6 +609,7 @@ class HomeController extends Controller
                 'type' => $request->type,
                 'issue_id' => $request->issue_id,
                 'subissue_id' => $request->subissue_id,
+                'documentid' => $request->documentid,
                 'created_at' => date('Y-m-d H:i:s'),
             );
             // **status update when fees pay**
