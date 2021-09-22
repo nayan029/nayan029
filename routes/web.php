@@ -195,26 +195,23 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/legal-service-description', 'App\Http\Controllers\admin\legalissueController@store');
     Route::get('/admin/bookingHistory', 'App\Http\Controllers\fronted\enquiryController@bookingHistory');
 
-    Route::get('/notification/lawyer_notification','App\Http\Controllers\admin\HomeController@lawyerNotification');
-    Route::get('/notification/customer_notification','App\Http\Controllers\admin\HomeController@customerNotification');
-    Route::get('/notification/enquiry_notification','App\Http\Controllers\admin\HomeController@enquiryNotification');
-    Route::get('/notification/contactenquiry_notification','App\Http\Controllers\admin\HomeController@contactenquiryNotification');
-    Route::get('/notification/enquirynew_notification','App\Http\Controllers\admin\HomeController@enquirynewNotification');
+    Route::get('/notification/lawyer_notification', 'App\Http\Controllers\admin\HomeController@lawyerNotification');
+    Route::get('/notification/customer_notification', 'App\Http\Controllers\admin\HomeController@customerNotification');
+    Route::get('/notification/enquiry_notification', 'App\Http\Controllers\admin\HomeController@enquiryNotification');
+    Route::get('/notification/contactenquiry_notification', 'App\Http\Controllers\admin\HomeController@contactenquiryNotification');
+    Route::get('/notification/enquirynew_notification', 'App\Http\Controllers\admin\HomeController@enquirynewNotification');
 
     // document details
-    Route::resource('/admin/document-deatils',documentDeatailsController::class);
-    Route::get('/admin/add-document-details',[documentDeatailsController::class,'addDetails']);
+    Route::resource('/admin/document-deatils', documentDeatailsController::class);
+    Route::get('/admin/add-document-details', [documentDeatailsController::class, 'addDetails']);
     // document details
-
-
-    Route::resource('/admin/document-enquiry',documentenquiryController::class);
-
-
-
+    // Route::resource('/admin/document-enquiry',documentenquiryController::class);
+    Route::resource('/admin/document-enquiry', documentenquiryController::class);
+    Route::post('/admin/document/upload', [documentenquiryController::class, 'uploaddocument']);
 });
 
 //------------------------------------------------------------- ADMIN --------------------------------------------------------------
-Route::get('/admin/view-content/{id}',[FrontedHomeController::class,'viewPage']);
+Route::get('/admin/view-content/{id}', [FrontedHomeController::class, 'viewPage']);
 
 
 //---------------------------------------------------------------------FRONTED---------------------------------------------------------
@@ -248,6 +245,7 @@ Route::get('/divorce-lawyers', [FrontedHomeController::class, 'divorceLawyers'])
 Route::get('/legal-enquiry/{id}', [FrontedHomeController::class, 'legalEnquiry']);
 Route::post('/legal-enquiry', [legalenquiryController::class, 'test']);
 Route::post('/insert-quer', [legalenquiryController::class, 'store']);
+Route::post('/insert-document', [legalenquiryController::class, 'storedocument']);
 Route::post('/get-subissue', 'App\Http\Controllers\admin\AjaxController@getsubissue');
 //----------------------------------legal issue----------------------------------------
 
@@ -306,6 +304,9 @@ Route::get('/enquiryView/{id}', [FrontedHomeController::class, 'enquiryView']);
 Route::get('/account/customer/my-booking', [FrontedHomeController::class, 'myBookings']);
 
 Route::get('/user-book-history', [FrontedHomeController::class, 'userBookHistory']);
+//documentation
+Route::get('/account/all-documentation', [FrontedHomeController::class, 'allDocuments']);
+//documentation
 //-----------------------------------------user account---------------------------------------------
 
 Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
@@ -323,11 +324,11 @@ Route::get('indian-kanoon/{category}', [FrontedHomeController::class, 'divorce_l
 Route::get('/lawyer/enrollment', [FrontedHomeController::class, 'enrollment']);
 Route::post('/lawyer/enrollment', [enrollmentController::class, 'index']);
 
-Route::post('/lawyer/getexitallotmentno','App\Http\Controllers\admin\AjaxController@getexitallotmentno');
-Route::post('/lawyer/getexitenrollmentno','App\Http\Controllers\admin\AjaxController@getexitenrollmentno');
+Route::post('/lawyer/getexitallotmentno', 'App\Http\Controllers\admin\AjaxController@getexitallotmentno');
+Route::post('/lawyer/getexitenrollmentno', 'App\Http\Controllers\admin\AjaxController@getexitenrollmentno');
 
-Route::post('/lawyer/getexitallotmentnoedit','App\Http\Controllers\admin\AjaxController@getexitallotmentnoedit');
-Route::post('/lawyer/getexitenrollmentnoedit','App\Http\Controllers\admin\AjaxController@getexitenrollmentnoedit');
+Route::post('/lawyer/getexitallotmentnoedit', 'App\Http\Controllers\admin\AjaxController@getexitallotmentnoedit');
+Route::post('/lawyer/getexitenrollmentnoedit', 'App\Http\Controllers\admin\AjaxController@getexitenrollmentnoedit');
 
 Route::get('/legal-services/{category}', [FrontedHomeController::class, 'family_services']);
 Route::get('/legal-services/documents/{category}', [FrontedHomeController::class, 'document_services']);

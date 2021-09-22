@@ -33,8 +33,8 @@ class legalenquiryController extends Controller
         $auth = Auth::user();
         // $this->data['contact_us_data'] = contactInquiry::all()->paginate(3)->sortByDesc('id'); 
         $this->data['name'] = $name = $request->name;
-        $this->data['enquiry_list'] = legalenquiry::getAllData(); 
-        $this->data['enquiry_data'] = legalenquiry::enquirylist(); 
+        $this->data['enquiry_list'] = legalenquiry::getAllData();
+        $this->data['enquiry_data'] = legalenquiry::enquirylist();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         DB::table('legal_enquiry')->update(array('notification' => 1));
         return view('admin.legalenquiry.index', $this->data);
@@ -42,11 +42,10 @@ class legalenquiryController extends Controller
     public function show($id)
     {
         // return "true";
-        $this->data['enquiry_id'] = $id; 
+        $this->data['enquiry_id'] = $id;
         $this->data['enquirydata'] = legalenquiry::enquirylistedit($id);
-        $this->data['getActivelawyer'] = User::getActivelawyertdata(); 
+        $this->data['getActivelawyer'] = User::getActivelawyertdata();
         return view('admin.legalenquiry.edit', $this->data);
-
     }
     public function update_statuss(Request $request)
     {
@@ -56,11 +55,11 @@ class legalenquiryController extends Controller
         $enquiry_id = $request->enquiry_id;
         // $sql = User::where("id", $id)->update(array("assign_lawyer" => $ass_status));
 
-        $sqlData = legalenquiry::where("id", $enquiry_id)->update(array("lawyer_id" => $id,"assign_lawyer" => $ass_status));
+        $sqlData = legalenquiry::where("id", $enquiry_id)->update(array("lawyer_id" => $id, "assign_lawyer" => $ass_status));
 
-        return $ass_status;        
+        return $ass_status;
     }
-   
+
     public function destroy(Request $request, $id)
     {
         $delete = legalenquiry::where('id', $id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
@@ -73,5 +72,19 @@ class legalenquiryController extends Controller
         }
         // return $delete;
 
+    }
+
+    public function allDocuments()
+    {
+        $auth = Auth::user();
+        if (isset($auth)) {
+            $uid = $auth->id;
+            $this->data['userdata'] = User::getrecordbyid($uid);
+            $this->data['title'] = "All Documentations";
+            $this->data['getData'] = legalenquiry::loginUserDocumentlist($uid);
+            return view('admin.document_enquiry.index', $this->data);
+        } else {
+            return view('fronted.customer_login', $this->data);
+        }
     }
 }

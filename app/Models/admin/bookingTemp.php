@@ -13,7 +13,7 @@ class bookingTemp extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'booking_temp';
-    protected $fillable = ['id', 'orderid', 'user_id', 'lawyer_id', 'amount', 'status', 'type', 'issue_id', 'subissue_id', 'created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by','documentid'];
+    protected $fillable = ['id', 'orderid', 'user_id', 'lawyer_id', 'amount', 'status', 'type', 'issue_id', 'subissue_id', 'created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by','documentid','oid'];
 
 
     public static function getDataById($id)

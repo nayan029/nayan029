@@ -30,12 +30,20 @@ class documentenquiryController extends Controller
     }
     public function index(Request $request)
     {
+        // $auth = Auth::user();
+        // $this->data['name'] = $name = $request->name;
+        // $this->data['getData'] = documentEnquiry::getContacts($name);
+        // $this->data['userdata'] = User::getrecordbyid($auth->id);
+        // return view('admin.document_enquiry.index', $this->data);
+
         $auth = Auth::user();
-        $this->data['name'] = $name = $request->name;
-        $this->data['getData'] = documentEnquiry::getContacts($name);
-        $this->data['userdata'] = User::getrecordbyid($auth->id);
-        // DB::table('enquiry')->update(array('notification' => 1));
-        return view('admin.document_enquiry.index', $this->data);
+        if (isset($auth)) {
+            $uid = $auth->id;
+            $this->data['userdata'] = User::getrecordbyid($uid);
+            $this->data['title'] = "All Documentations";
+            $this->data['getData'] = legalenquiry::loginUserDocumentlist($uid);
+            return view('admin.document_enquiry.index', $this->data);
+        }
     }
     public function edit($id)
     {
@@ -80,7 +88,7 @@ class documentenquiryController extends Controller
 
         $auth = Auth::user();
         if ($request->type == "delete") {
-            $delete = documentEnquiry::where('id', $id)->update(['deleted_by' => $auth->id, 'deleted_at' => date('Y-m-d H:i:s')]);
+            $delete = legalenquiry::where('id', $id)->update(['deleted_by' => $auth->id, 'deleted_at' => date('Y-m-d H:i:s')]);
         }
         /*staus change*/ else {
             $data = documentEnquiry::where('id', $id)->first();
@@ -102,5 +110,31 @@ class documentenquiryController extends Controller
             Session::flash('error', 'Sorry, something went wrong. Please try again');
         }
         return $delete;
+    }
+    public function uploaddocument(Request $request)
+    {
+        // return $request->all();  
+        $auth = Auth::user();
+        $validator = Validator::make($request->all(), [
+            'document' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, '/admin/document-enquiry')
+                ->withInput();
+        } else {
+            $id = $request->id;
+            if ($request->hasfile('document')) {
+                $file = $request->file('document');
+                $name = $file->getClientOriginalName();
+                $name = str_replace(" ", "", date("Ymdhis") + 1 . $name);
+                $file->move(public_path() . '/uploads/legal_documents/', $name);
+                $input = $name;
+                $update = legalenquiry::where('id', $id)->update(['updated_by' => $auth->id, 'updated_at' => date('Y-m-d H:i:s'), 'document' => $input]);
+            }
+            Session::flash('success', 'Successfully Inserted');
+            return redirect()->back();
+        }
     }
 }

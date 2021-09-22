@@ -440,6 +440,7 @@ class HomeController extends Controller
             $uid = $auth->id;
             $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
             $this->data['total_enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
+            $this->data['total_document_data'] = legalenquiry::loginUserDocumentlist($uid);
             $this->data['total_booking'] = legalenquiry::totalCart($uid);
             $this->data['title'] = "My Account";
             return view('fronted.myaccount', $this->data);
@@ -450,13 +451,14 @@ class HomeController extends Controller
     public function allQuestions()
     {
         $auth = Auth::user();
-        $uid = $auth->id;
-        $this->data['title'] = "All Enquiry";
-        // $this->data['enquiryUserId'] = $enquiryUserId = legalenquiry::where('id', $id)->whereNull('deleted_at')->first();
-
-        $this->data['my_questions'] = freeQuestions::getRecordByUserId($uid);
-        $this->data['enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
-        return view('fronted.userquestionslist', $this->data);
+        if (isset($auth)) {
+            $uid = $auth->id;
+            $this->data['title'] = "All Enquiry";
+            $this->data['enquiry_data'] = legalenquiry::loginUserEnquirylist($uid);
+            return view('fronted.userquestionslist', $this->data);
+        } else {
+            return view('fronted.customer_login', $this->data);
+        }
     }
     public function enquiryView($id)
     {
@@ -525,9 +527,8 @@ class HomeController extends Controller
                     Session::flash('error', 'Sorry,  Please fill enrollment form');
                     return redirect('/');
                 }
-            }else{
-            return view('fronted.lawyer_login', $this->data);
-
+            } else {
+                return view('fronted.lawyer_login', $this->data);
             }
         } else {
             return view('fronted.lawyer_login', $this->data);
@@ -577,8 +578,6 @@ class HomeController extends Controller
     public function addOrderData(Request $request)
     {
 
-        // return $request->all();
-        // $id = $request->id;
         $this->data['auth'] = auth()->user();
         $this->data['response'] = $request->all();
         /*  booking temp data  */
@@ -595,14 +594,12 @@ class HomeController extends Controller
                 ->withInput();
         } else {
             $order = new bookingTemp;
-
             $order->user_id = Auth()->id();
-            // $latestOrder = bookingTemp::orderBy('id','DESC')->first();
-            $order->orderid = 'B'.str_pad(date("Ymdhis") + 1, 8, "0", STR_PAD_LEFT);
-        
+            $order->orderid = 'B' . str_pad(date("Ymdhis") + 1, 8, "0", STR_PAD_LEFT);
+
             $input = array(
                 'amount' => $request->fees,
-                'orderid'=>$order->orderid,
+                'orderid' => $order->orderid,
                 'lawyer_id' => $request->lawyer_id,
                 'user_id' => $request->customer_id,
                 'status' => 1,
@@ -613,62 +610,17 @@ class HomeController extends Controller
                 'created_at' => date('Y-m-d H:i:s'),
             );
             // **status update when fees pay**
-            // return $input;
             $status['status'] = '2';
             $enquiry = legalenquiry::find($id);
             $enquiry->update($status);
 
             // **status update when fees pay** 
-
-
-
             $userOrderData = bookingTemp::create($input);
             $insertId = $userOrderData->id;
             return redirect('/fees/final-pay?id=' . $insertId . '&price=' . $request->fees);
-            // return redirect('/fees/final-pay-fees', $this->data);
-
+         
 
         }
-
-
-
-        // PAYU MONEY
-
-        // $id = $request->id;
-        // $validator = Validator::make($request->all(), [
-        //     'fees' => 'required',
-        // ]);
-
-
-        // if ($validator->fails()) {
-        //     return redirect("/")
-        //         ->withErrors($validator, 'add_error')
-        //         ->withInput();
-        // } else {
-        //     $input = array(
-        //         'created_at' => date('Y-m-d H:i:s'),
-        //         'amount' => $request->fees,
-        //         'lawyer_id' => $request->lawyer_id,
-        //         'user_id' => $request->customer_id,
-        //         'status' => 1,
-        //     );
-        //     $status['status'] = '2';
-
-        //     $enquiry = legalenquiry::find($id);
-        //     $enquiry->update($status);
-
-
-        // $userOrderData = Order::create($input);
-
-        //     if ($userOrderData) {
-        //         Session::flash('success', 'Fees pay successfully.');
-        //         return redirect('/my-account');
-        //     } else {
-
-        //         Session::flash('error', 'Sorry, something went wrong. Please try again');
-        //         return redirect()->back();
-        //     }
-        // }
     }
 
     public function payumoney(Request $request)
@@ -711,5 +663,17 @@ class HomeController extends Controller
         $this->data['title'] = "Document  Details";
         $this->data['allContent'] = documentDetails::getRecordById($decryptid)->get();
         return view('/admin/document_deatails/site', $this->data);
+    }
+    public function allDocuments()
+    {
+        $auth = Auth::user();
+        if (isset($auth)) {
+            $uid = $auth->id;
+            $this->data['title'] = "All Documentations";
+            $this->data['all_documentations'] = legalenquiry::loginUserDocumentlist($uid);
+            return view('fronted.usedocumentationslist', $this->data);
+        } else {
+            return view('fronted.customer_login', $this->data);
+        }
     }
 }

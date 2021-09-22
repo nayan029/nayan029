@@ -141,5 +141,4 @@ class documentDeatailsController extends Controller
             return redirect()->back();
         }
     }
-
 }

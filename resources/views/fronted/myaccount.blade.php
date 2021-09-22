@@ -74,6 +74,29 @@
               </div>
             </div>
 
+            <!-- documemtation -->
+            <div class="sa-application">
+              <a href="{{URL::to('/')}}/account/all-documentation">
+                <h5 class="sa-color2 mb-3">My Documents ({{count($total_document_data)}})</h5>
+              </a>
+            </div>
+            <div class="mitem3">
+              <div class="row">
+                <div class="col-md-2 resa-pro-acc">
+                  <a href="{{URL::to('/')}}/account/all-documentation">
+                    <img src="{{asset('fronted/images//pt1.png')}}" class="sa-img-account">
+                  </a>
+                </div>
+                <div class="col-md-8 pl-0 sa-account-flex">
+                  <a href="{{URL::to('/')}}/account/all-documentation">
+                    <p class="fs-20 sa-mitem-text">View your document</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- documentation -->
+
           </div>
         </div>
       </div>
