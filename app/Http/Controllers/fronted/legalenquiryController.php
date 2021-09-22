@@ -166,7 +166,7 @@ class legalenquiryController extends Controller
                     //insert into booking 
 
                     if ($inser_id) {
-                        Session::flash('success', 'Successfully Inserted');
+                        Session::flash('success', 'Successfully Paid');
                         return redirect()->back();
                     } else {
                         Session::flash('error', 'Sorry, something went wrong. Please try again');

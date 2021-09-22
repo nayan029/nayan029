@@ -15,7 +15,11 @@
             <h2 class="sa-color1 d-flex justify-content-between  res-lq-font">{{$getquerys->service_name}}
 
               @if($auth)
+              @if($existsData=='1')
+              <a href="#" class="btn btn-primary"> Already Requested</a>
+              @else
               <a data-toggle="modal" data-target="#enquiryModal" href="#" class="btn btn-primary"> Download Now</a>
+              @endif
               @else
               <a href="{{URL::to('/login')}}" class="btn btn-primary"> Enquiry Now</a>
               @endif
@@ -26,7 +30,6 @@
           <div class="col-md-12">
           </div>
           <div class="col-md-3 d-flex align-items-center res-search-md">
-
           </div>
         </div>
       </div>

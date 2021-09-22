@@ -72,4 +72,10 @@ class bookingTemp extends Authenticatable
             
         return $query;
     }
+    public static function GetDataByServiceId($id,$uid)
+    {
+        // return $id;
+        $query = bookingTemp::where('documentid',$id)->where('user_id',$uid);
+        return $query;
+    }
 }

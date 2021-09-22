@@ -172,10 +172,19 @@ class HomeController extends Controller
     }
     public function document_services(Request $request, $name)
     {
+        $auth = auth()->user();
+        $uid = $auth->id;
         $part1 = $name;
         $this->data['title'] = "Get Your " . $part1 . " Done By Experts Advocates ";
         $this->data['search_name'] = $search_name = $request->search_name;
-        $this->data['getquerys'] = legalservices::familylist($part1);
+        $this->data['getquerys'] = $getquiry =legalservices::familylist($part1);
+        $servieceid =  $getquiry->id;
+        $this->data['checkserviceid'] = $existsdoc = bookingTemp::GetDataByServiceId($servieceid,$uid)->first();
+       if (isset($existsdoc)) {
+           $this->data['existsData'] = '1';
+       } else {
+        $this->data['existsData'] = '0';
+       }
         $this->data['advicecategory'] = $serviceData = legalservices::getDataBySlugName($name);
         $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($serviceData->id);
 
