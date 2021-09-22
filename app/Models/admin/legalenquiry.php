@@ -168,7 +168,7 @@ class legalenquiry extends Authenticatable
     }
     public static function getnotificationNewEnquiry()
     {
-        $query = legalenquiry::where('notification', '0')->get();
+        $query = legalenquiry::where('notification', '0')->where('documentid',null)->get();
         return $query;
     }
     public static function loginUserDocumentlist()

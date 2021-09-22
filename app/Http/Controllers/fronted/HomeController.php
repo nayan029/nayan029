@@ -173,13 +173,17 @@ class HomeController extends Controller
     public function document_services(Request $request, $name)
     {
         $auth = auth()->user();
-        $uid = $auth->id;
+       
+        
         $part1 = $name;
         $this->data['title'] = "Get Your " . $part1 . " Done By Experts Advocates ";
         $this->data['search_name'] = $search_name = $request->search_name;
         $this->data['getquerys'] = $getquiry =legalservices::familylist($part1);
         $servieceid =  $getquiry->id;
+        if (isset($auth)) {
+        $uid = $auth->id;
         $this->data['checkserviceid'] = $existsdoc = bookingTemp::GetDataByServiceId($servieceid,$uid)->first();
+        }   
        if (isset($existsdoc)) {
            $this->data['existsData'] = '1';
        } else {
@@ -189,6 +193,7 @@ class HomeController extends Controller
         $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($serviceData->id);
 
         return view('fronted.documentDetail', $this->data);
+      
     }
 
     /* service urls */
@@ -684,5 +689,10 @@ class HomeController extends Controller
         } else {
             return view('fronted.customer_login', $this->data);
         }
+    }
+    public function newPage(Request $request)
+    {
+        $this->data['title'] = "New  Page";
+        return view('fronted.newPage', $this->data);
     }
 }

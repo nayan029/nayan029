@@ -11,10 +11,13 @@
         $auth = auth()->user();
         @endphp
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10">
             <h2 class="sa-color1 d-flex justify-content-between  res-lq-font">{{$getquerys->service_name}}
-
-              @if($auth)
+            </h2>
+            <p class="fs-20 pt-3 pb-0 mb-0">{{$getquerys->short_description}}</p>
+          </div>
+          <div class="col-md-2">
+          @if($auth)
               @if($existsData=='1')
               <a href="#" class="btn btn-primary"> Already Requested</a>
               @else
@@ -24,8 +27,6 @@
               <a href="{{URL::to('/login')}}" class="btn btn-primary"> Enquiry Now</a>
               @endif
 
-            </h2>
-            <p class="fs-20 pt-3 pb-0 mb-0">{{$getquerys->short_description}}</p>
           </div>
           <div class="col-md-12">
           </div>

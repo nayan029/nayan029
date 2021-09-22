@@ -287,6 +287,8 @@ $login = Auth::user();
 						<li class="nav-item">
 							<a class="nav-link dot-remove-sa" id="contact-us" href="<?php echo URL::to('/'); ?>/contact-us">Contact</a>
 						</li>
+						<!-- <a href="#" class="btn btn-primary">SUMBIT CONTENT</a> -->
+						
 
 						<!-- User Booking History -->
 						@if(@$login->user_type == '3')
