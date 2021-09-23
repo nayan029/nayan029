@@ -50,10 +50,15 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="d-flex">
+                                <!-- <div class="d-flex">
                                     <span><img src="{{asset('fronted/images/map-marker-icon.png')}}" class="mr-2"></span>
                                     <p class="sr-p-title">Location : </p>
                                     <p>{{ucfirst($lawyerData->location)}}</p>
+                                </div> -->
+                                <div class="d-flex">
+                                    <span><img src="{{asset('fronted/images/suitcase-icon.png')}}" class="mr-2"></span>
+                                    <p class="sr-p-title">Experience :</p>
+                                    <p>@if($lawyerData->experience) {{ucfirst($lawyerData->experience )}} @else {{"0"}} @endif</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -74,11 +79,11 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="d-flex">
+                                <!-- <div class="d-flex">
                                     <span><img src="{{asset('fronted/images/suitcase-icon.png')}}" class="mr-2"></span>
                                     <p class="sr-p-title">Experience :</p>
                                     <p>@if($lawyerData->experience) {{ucfirst($lawyerData->experience )}} @else {{"0"}} @endif</p>
-                                </div>
+                                </div> -->
 
 
 
@@ -137,11 +142,13 @@
                 <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
                 <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
                 <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
-
+                        @if(isset($exists))
+                        @else
                 <div class="row">
                     <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
                     </button>
                 </div>
+                @endif
             </form>
 
 

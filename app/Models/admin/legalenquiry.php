@@ -44,12 +44,15 @@ class legalenquiry extends Authenticatable
     }
     public static function loginUserEnquirylist($uid)
     {
-        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name')
+        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name','users.name as lawyer_name')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
             })
             ->leftjoin('service_sub_category', function ($join) {
                 $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
+            })
+            ->leftjoin('users', function ($join) {
+                $join->on('legal_enquiry.lawyer_id', '=', 'users.id');
             })
             // ->leftjoin('legal_services', function ($join) {
             //     $join->on('legal_enquiry.documentid', '=', 'legal_services.id');

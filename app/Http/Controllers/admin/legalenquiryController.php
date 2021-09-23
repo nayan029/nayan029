@@ -25,7 +25,7 @@ class legalenquiryController extends Controller
     function __construct()
     {
         // $this->middleware('CheckEmailVerify');
-        $this->data['title'] = 'Legal Enquiry';
+        $this->data['title'] = 'Legal AID Enquiry';
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
     public function index(Request $request)

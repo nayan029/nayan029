@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small>Legal Enquiry</small></h1>
+                    <h1 class="m-0 text-dark"><small>Legal Aid Enquiry</small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,8 @@
                                         <th>Email</th>
                                         <th>Mobile</th>
                                         <!-- <th>Message</th> -->
-                                        <th>Service Type</th>
+                                        <!-- <th>Service Type</th> -->
+                                        <th>Assigne Lawyer</th>
                                         <th>Create Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -61,9 +62,9 @@
                                         <td>{{$data->name}}</td>
                                         <td>@if(isset($data->email)){{$data->email}}@else{{"N/A"}}@endif</td>
                                         <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>
-                                    <td> @if(isset($data->document_name)){{"Documentation"}}@endif  @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
-
+                                    <!-- <td> @if(isset($data->document_name)){{"Documentation"}}@endif  @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td> -->
                                         <!-- <td>@if(isset($data->other_info)){{$data->other_info}}@else{{"N/A"}}@endif</td> -->
+                                        <td>@if(isset($data->assign_lawyer)) {{"Assign"}} @else {{"Not Assign"}} @endif </td>
                                         <td>{{ date("d-M-Y h:i A", strtotime($data->created_at))}}</td>
                                         <td>
                                             <a title="View" class="mr-2" href="{{ URL::to('/')}}/admin/legal-enquiry/{{$data->id}}/edit" onclick=""><i class="fas fa-eye text-info font-16"></i></a>

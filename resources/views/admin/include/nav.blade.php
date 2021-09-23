@@ -283,7 +283,13 @@
             <li class="nav-item">
               <a href="<?php echo URL::to('/'); ?>/admin/legal-enquiry" class="nav-link" id="legalenquiry">
                 <i class="fas fa-users nav-icon"></i>
-                <p>Legal Enquiry</p><span id="enquirynotifcation" class="badge badge-pill badge-warning ml-1" @if(count($enquiryNotification) == 0) style="display:none;" @endif>{{count($enquiryNotification)}}</span>
+                <p>Legal Aid Enquiry</p><span id="enquirynotifcation" class="badge badge-pill badge-warning ml-1" @if(count($enquiryNotification) == 0) style="display:none;" @endif>{{count($enquiryNotification)}}</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo URL::to('/'); ?>/admin/document-enquiry" class="nav-link" id="documentenquiry">
+                <i class="fas fa-users nav-icon"></i>
+                <p> Document Enquiry</p>
               </a>
             </li>
            
@@ -320,12 +326,7 @@
                 <p> Booking History</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo URL::to('/'); ?>/admin/document-enquiry" class="nav-link" id="documentenquiry">
-                <i class="fas fa-users nav-icon"></i>
-                <p> Document Enquiry</p>
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a href="{{URL::to('/')}}/admin/document-deatils" class="nav-link" id="documentdetails">
                 <i class="fas fa-link nav-icon"></i>

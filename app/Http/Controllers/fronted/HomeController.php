@@ -173,27 +173,26 @@ class HomeController extends Controller
     public function document_services(Request $request, $name)
     {
         $auth = auth()->user();
-       
-        
+
+
         $part1 = $name;
         $this->data['title'] = "Get Your " . $part1 . " Done By Experts Advocates ";
         $this->data['search_name'] = $search_name = $request->search_name;
-        $this->data['getquerys'] = $getquiry =legalservices::familylist($part1);
+        $this->data['getquerys'] = $getquiry = legalservices::familylist($part1);
         $servieceid =  $getquiry->id;
         if (isset($auth)) {
-        $uid = $auth->id;
-        $this->data['checkserviceid'] = $existsdoc = bookingTemp::GetDataByServiceId($servieceid,$uid)->first();
-        }   
-       if (isset($existsdoc)) {
-           $this->data['existsData'] = '1';
-       } else {
-        $this->data['existsData'] = '0';
-       }
+            $uid = $auth->id;
+            $this->data['checkserviceid'] = $existsdoc = bookingTemp::GetDataByServiceId($servieceid, $uid)->first();
+        }
+        if (isset($existsdoc)) {
+            $this->data['existsData'] = '1';
+        } else {
+            $this->data['existsData'] = '0';
+        }
         $this->data['advicecategory'] = $serviceData = legalservices::getDataBySlugName($name);
         $this->data['sub_service_list'] = ServiceSubCategory::getBYServiceById($serviceData->id);
 
         return view('fronted.documentDetail', $this->data);
-      
     }
 
     /* service urls */
@@ -490,9 +489,17 @@ class HomeController extends Controller
         if (isset($enquiryUserId->lawyer_id)) {
 
             $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
+            $issueid = $enquiryUserId->issue_id;
+            $user_id = $uid;
+            $order =  bookingTemp::where('user_id', $uid)->where('issue_id', $issueid)->first();
+            if ($order) {
+                 $this->data['exists'] = '1';
+            }
+
+
             return view('fronted.enquiry_view', $this->data);
         } else {
-            Session::flash('error', 'Sorry, you have no lawyer assigne. Please try again');
+            Session::flash('error', 'Sorry, you have no lawyer assigne.');
             return redirect()->back();
         }
     }
@@ -632,8 +639,6 @@ class HomeController extends Controller
             $userOrderData = bookingTemp::create($input);
             $insertId = $userOrderData->id;
             return redirect('/fees/final-pay?id=' . $insertId . '&price=' . $request->fees);
-         
-
         }
     }
 
@@ -692,7 +697,7 @@ class HomeController extends Controller
     }
     public function newPage(Request $request)
     {
-        $this->data['title'] = "New  Page";
+        $this->data['title'] = "Submit Content";
         return view('fronted.newPage', $this->data);
     }
 }

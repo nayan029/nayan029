@@ -19,7 +19,7 @@
                 <td class="sa-color2 sr-b-right">Service Type</td>
                 <td class="sa-color2 sr-b-right">Created Date</td>
                 <td class="sa-color2 sr-b-right">Status</td>
-                <td class="sa-color2 sr-b-right">Action</td>
+                <td class="sa-color2 sr-b-right">Lawyer Name</td>
             </tr>
             @php $i = 1; @endphp
             @if(count($enquiry_data)>0)
@@ -38,11 +38,18 @@
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white"> @if(isset($data->document_name)){{"Documentation"}}@endif  @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_id)){{"Assign"}}@else<span style="color: red;">Not Assign</span>@endif </td>
+                <td class="sr-p-white sr-b-right text-white">
+                    @if(isset($data->lawyer_id)){{"Assign"}}@else<span style="color: red;">Not Assign</span>@endif 
+                
+                </td>
                 <td>
                     <!-- <a title="view" href="" data-toggle="modal" data-target="#seeDetails{{$i}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->
-
-                    <a title="view" href="<?php echo URL::to('/'); ?>/enquiryView/{{$data->id}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a>
+                    <!-- <a title="view" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->
+                   @if(isset($data->lawyer_name))
+                    <a style="color:green;" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" title="view">{{$data->lawyer_name}} </a>
+                    @else
+                    <a style="color: red;" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" title="view">N/A </a>
+                    @endif
                 </td>
             </tr>
             <!-- Modal -->

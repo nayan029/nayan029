@@ -5549,7 +5549,7 @@ ol.sr-ol li p.sr-white {
     border-radius: 6px;
 }
 .sr-profile .pro-img{
-    height: 180PX;
+    height: 140PX;
     width: 100%;
     max-height: 200px;
     border-radius: 5px;
@@ -5770,6 +5770,14 @@ ul.navbar-nav .nav-link{
         bottom: 26px;
     right: 244px;
  }
+ .sub-con-btn {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    padding: 2px 6px;
+    font-size: 9px;
+    border-radius: 2px;
+}
  .cont-img{
      object-fit: contain;
  }

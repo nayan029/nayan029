@@ -24,7 +24,7 @@ $login = Auth::user();
 <body>
 	<header>
 		<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-light">
+			<nav class="navbar navbar-expand-lg navbar-light sr-rel">
 				<a class="navbar-brand" href="<?php echo URL::to('/'); ?>/">
 					<img src="{{asset('fronted/images/logo.png')}}" alt="logo">
 				</a>
@@ -281,7 +281,7 @@ $login = Auth::user();
 						@endif
 
 						<li class="nav-item" id="about">
-							<a class="nav-link" href="<?php echo URL::to('/'); ?>/about-us">About</a>
+							<a class="nav-link" href="<?php echo URL::to('/'); ?>/about-us">About Us</a>
 						</li>
 						<!-- legal services -->
 						<li class="nav-item">
@@ -498,6 +498,10 @@ $login = Auth::user();
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="ti-menu"></span>
 				</button>
+
+				<a class="btn btn-primary sub-con-btn" href="{{URL::to('/')}}/page/submit-post" role="button">Submit Content</a>
+
+
 			</nav>
 		</div>
 	</header>

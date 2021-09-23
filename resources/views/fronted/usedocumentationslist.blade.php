@@ -11,7 +11,7 @@
 
                 <td class="sa-color2 sr-b-right">Sr No </td>
                 <td class="sa-color2 sr-b-right">Documentation </td>
-                <td class="sa-color2 sr-b-right">Service Type</td>
+                <!-- <td class="sa-color2 sr-b-right">Service Type</td> -->
                 <td class="sa-color2 sr-b-right">Created Date</td>
                 <td class="sa-color2 sr-b-right">Action</td>
             </tr>
@@ -21,18 +21,20 @@
             <tr>
                 <td class="sr-p-white sr-b-right text-white">{{$i}}</td>
                 <td class="sr-p-white sr-b-right text-white"> @if(isset($data->document_name)){{$data->document_name}}@endif</td>
-                <td class="sr-p-white sr-b-right text-white"> {{"Documentation"}}</td>
+                <!-- <td class="sr-p-white sr-b-right text-white"> {{"Documentation"}}</td>  -->
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>
                 <td>
                     @if(isset($data->document))
                     <a download title="Download Now" target="_blank" href="{{ URL::to('/')}}/uploads/legal_documents/{{$data->document}}" class="sa-icons1 active"><i class="fa fa-download ml-2"></i></a>
+                    @else
+                    <a style="color:red;" onclick="message()" title="Download Now" href="#" class="sa-icons1 active"><i class="fa fa-download ml-2"></i></a>
                     @endif
                 </td>
             </tr>
             @php $i++; @endphp
             @endforeach
             @else
-            <td colspan="7" class="sr-p-white sr-b-right text-white text-center">{{"No enquiry found"}}</td>
+            <td colspan="7" class="sr-p-white sr-b-right text-white text-center">{{"No data found"}}</td>
             @endif
 
         </table>
@@ -46,3 +48,10 @@
     </div>
 </div>
 @include('fronted/include/footer')
+<script>
+    function message() {
+        toastr.error('Soory you have no allocated document', '', {
+            timeOut: 4000
+        });
+    }
+</script>

@@ -361,7 +361,7 @@ Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxControll
 
 Route::post('pay-fees', [FrontedHomeController::class, 'addOrderData']);
 Route::get('fees/final-pay', [FrontedHomeController::class, 'payumoney']);
-Route::get('new/page', [FrontedHomeController::class, 'newPage']);
+Route::get('page/submit-post', [FrontedHomeController::class, 'newPage']);
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

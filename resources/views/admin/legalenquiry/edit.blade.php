@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><small>Legal Enquiry View</small></h1>
+                    <h1 class="m-0 text-dark"><small>Legal Aid Enquiry View</small></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 mt-2">
                     <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     <div class="card-body">
-                        <h4>Legal Enquiry Detail</h4>
+                        <h4>Legal Aid Enquiry Detail</h4>
                         <table id="example2" class="table table-bordered table-hover">
 
                             <tr>
