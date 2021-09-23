@@ -173,8 +173,6 @@ class HomeController extends Controller
     public function document_services(Request $request, $name)
     {
         $auth = auth()->user();
-
-
         $part1 = $name;
         $this->data['title'] = "Get Your " . $part1 . " Done By Experts Advocates ";
         $this->data['search_name'] = $search_name = $request->search_name;
@@ -489,9 +487,10 @@ class HomeController extends Controller
         if (isset($enquiryUserId->lawyer_id)) {
 
             $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
-            $issueid = $enquiryUserId->issue_id;
             $user_id = $uid;
-            $order =  bookingTemp::where('user_id', $uid)->where('issue_id', $issueid)->first();
+            // $order =  bookingTemp::where('user_id', $uid)->where('issue_id', $issueid)->first();
+            $order =  legalenquiry::where('user_id', $uid)->where('status', '2')->where('id',$id)->first();
+
             if ($order) {
                  $this->data['exists'] = '1';
             }
@@ -598,7 +597,7 @@ class HomeController extends Controller
     }
     public function addOrderData(Request $request)
     {
-
+        //  $request->all();
         $this->data['auth'] = auth()->user();
         $this->data['response'] = $request->all();
         /*  booking temp data  */
@@ -628,6 +627,7 @@ class HomeController extends Controller
                 'issue_id' => $request->issue_id,
                 'subissue_id' => $request->subissue_id,
                 'documentid' => $request->documentid,
+                'oid' => $id,
                 'created_at' => date('Y-m-d H:i:s'),
             );
             // **status update when fees pay**

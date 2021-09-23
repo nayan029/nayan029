@@ -37,10 +37,10 @@
                                             <!-- <h1 class="entry-title">How to Submit Post at Legal Bench</h1> -->
                                         </header>
                                         <div class="entry-content">
-                                            <h2><strong>Submit Post at Legal Bench – Haq Se #Apna Bench – Empowering People</strong></h2>
+                                            <h4><strong>Submit Post at Legal Bench – Haq Se #Apna Bench – Empowering People</strong></h4>
                                             <p style="text-align: justify;">Have an idea or opportunity burning in your brain that you would love to share? Something you need to get off your chest? Is it gritty, genuine, controversial or just a bit informative? Then you might be our kind of writer! It’s time to value all our contributors and increase their contributions. Reach out to our readers where we have <strong>1 million+ monthly views.</strong></p>
                                             <p style="text-align: justify;">You can simply <strong>email </strong>your<strong> Word File/Doc. </strong>to <a href="mailto:media@legal bench.in"><strong>media@legal bench.in</strong></a></p>
-                                            <h3><strong>Your Email Must Contain:</strong></h3>
+                                            <h4><strong>Your Email Must Contain:</strong></h4>
                                             <ol>
                                                 <li><strong>Subject:</strong> Request for Publication</li>
                                                 <li><strong>Body</strong> of the Email Shall Contain: <ol>
@@ -55,8 +55,8 @@
                                             <blockquote>
                                                 <p style="text-align: justify;">After the submission is in moderation, our editors can review it, decide if it’s a good fit (message you if it needs work), and schedule it for publication. Upon being published, you should be sent an email notification. <strong>We take a maximum of 72 hours to revert for articles, please be patient.</strong></p>
                                             </blockquote>
-                                            <p>Note: By submitting your content you confirm all our <strong><a href="{{url::tO('/')}}/page/terms-of-use">Terms of Service.</a></strong></p>
-                                            <h2><strong>Guideline while submitting an Article/Post:-</strong></h2>
+                                            <p>Note: By submitting your content you confirm all our <strong><a target="_blank" href="{{url::tO('/')}}/page/terms-of-use">Terms of Service.</a></strong></p>
+                                            <h4><strong>Guideline while submitting an Article/Post:-</strong></h4>
                                             <ol>
                                                 <li>Use only authentic sources for your research. AVOID PLAGIARISM.</li>
                                                 <li>Keep the content formal.</li>
@@ -65,7 +65,7 @@
                                                 <li>Mention case laws with proper citations.</li>
                                             </ol>
                                             <p>For any further assistance let us know by writing to us at <a href="mailto:media@legal bench.in"><strong>media@legal bench.in</strong></a> Or call us at<strong> 78360 70747</strong> <strong>(Mon-Sat 11:00 – 1:00 PM and 3:00-5:00 PM).</strong></p>
-                                            <h2><strong>Guideline while submitting an Event/Press Release:-</strong></h2>
+                                            <h4><strong>Guideline while submitting an Event/Press Release:-</strong></h4>
                                             <ol>
                                                 <li>Your Post shall Contain the following in a word file:- <ol>
                                                         <li>Title</li>

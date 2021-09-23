@@ -179,6 +179,9 @@ class enquiryController extends Controller
         // $this->data['userdata'] = User::getrecordbyid($auth->id);
 
         $this->data['enquiry_data'] = $enquirydatas = legalenquiry::allBookingHistoryData()->get();
+
+        // $this->data['enquiry_data'] = $enquirydatas = legalenquiry::myCartDetails($uid)->get();
+
         
         return view('admin.enquiry.booking_histori', $this->data);
     }

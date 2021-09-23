@@ -38,7 +38,7 @@
           <div class="col-md-3 d-flex align-items-center res-search-md">
             <form method="GET">
               <div class="filter-group mutual-sa-search d-flex">
-                <input type="text" name="name" id="name_input">
+                <input placeholder="Search" type="text" name="name" id="name_input">
 
                 <button type="button" onclick="getData(this)" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
               </div>

@@ -34,10 +34,11 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No</th>
+                                        <th>Booking Id</th>
                                         <th>Customer Name</th>
                                         <th>Issue Name</th>
-                                        <th>Type Name</th>
-                                        <th>Fees Type</th>
+                                        <!-- <th>Type Name</th> -->
+                                        <th>Amount</th>
                                         <th>Mobile</th>
                                         <th>Created Date</th>
                                         <th>Payment Status</th>
@@ -46,32 +47,32 @@
                                 <tbody>
                                     @php $i = 1; @endphp
                                     @foreach($enquiry_data as $data)
-
-
                                     <tr>
-
                                         <td>{{$i}}</td>
+                                        <td>@if(isset($data->orderid)){{$data->orderid}}@endif</td>
                                         <td>{{$data->uname}} {{$data->username}}</td>
-                                        <td>@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{"N/A"}}@endif</td>
-                                        <td>@if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td>
+                                        <td>@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{""}}@endif
+                                            @if(isset($data->issue_name)){{"-".$data->issue_name}}@else{{""}}@endif
+                                            @if(isset($data->document_name)){{$data->document_name}}@endif
+
+                                        </td>
+                                        <!-- <td>@if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td> -->
                                         <td>
+                                            @if(isset($data->amount)){{"₹".$data->amount}}@else{{"-"}}@endif
                                             @if($data->feestype == 1)
-                                            Basic Fees
+                                            -Basic Fees
                                             @elseif($data->feestype == 2)
-                                            Fees(By per days)
-                                            @else
-                                            Full Legal Representation
+                                            -Fees(By per days)
+                                            @elseif($data->feestype == 3)
+                                            -Full Legal Representation
                                             @endif
                                         </td>
-                                        <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"N/A"}}@endif</td>
+                                        <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"-"}}@endif</td>
                                         <td>@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif</td>
                                         <td><span title="{{$data->feedback}}">
                                                 @if(isset($data->status))
-                                                @if($data->status=='1')
-                                                {{"Pending"}}
-                                                @else
-                                                {{"success"}}
-                                                @endif
+
+                                                <span style="color: green;">Success</span>
                                                 @endif
                                             </span>
                                             <!-- <span><a href="javascript:void(0)"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-eye" aria-hidden="true"></i></a></span> -->

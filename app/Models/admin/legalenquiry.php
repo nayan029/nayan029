@@ -12,7 +12,7 @@ class legalenquiry extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'legal_enquiry';
-    protected $fillable = ['user_id', 'issue_id', 'subissue_id', 'location', 'name', 'mobile', 'email', 'other_info', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'deleted_by', 'deleted_at', 'lawyer_id', 'assign_lawyer', 'notification', 'documentid','document','docstatus'];
+    protected $fillable = ['user_id', 'issue_id', 'subissue_id', 'location', 'name', 'mobile', 'email', 'other_info', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'deleted_by', 'deleted_at', 'lawyer_id', 'assign_lawyer', 'notification', 'documentid', 'document', 'docstatus'];
 
     public static function getrecordbyid($id)
     {
@@ -44,7 +44,7 @@ class legalenquiry extends Authenticatable
     }
     public static function loginUserEnquirylist($uid)
     {
-        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name','users.name as lawyer_name')
+        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'users.name as lawyer_name')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
             })
@@ -99,7 +99,7 @@ class legalenquiry extends Authenticatable
     }
     public static function myCartDetails($uid)
     {
-        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'legal_services.service_name as document_name','booking_temp.orderid as orderid')
+        $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'legal_services.service_name as document_name', 'booking_temp.orderid as orderid')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
             })
@@ -145,21 +145,48 @@ class legalenquiry extends Authenticatable
     }
     public static function allBookingHistoryData()
     {
-        $query = legalenquiry::select('legal_enquiry.*', 'users.name as uname', 'users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'booking_temp.type as feestype')
+        //     $query = legalenquiry::select('legal_enquiry.*', 'users.name as uname', 'users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'booking_temp.type as feestype','booking_temp.orderid as order_id','booking_temp.amount as amount','legal_services.service_name as document_name')
+        //         ->leftjoin('legal_advice_qa_category', function ($join) {
+        //             $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
+        //         })
+        //         ->leftjoin('service_sub_category', function ($join) {
+        //             $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
+        //         })
+        //         ->leftjoin('booking_temp', function ($join) {
+        //             $join->on('booking_temp.lawyer_id', '=', 'legal_enquiry.lawyer_id');
+        //         })
+        //         ->leftjoin('users', function ($join) {
+        //             $join->on('booking_temp.user_id', '=', 'users.id');
+        //         })
+        //         ->leftjoin('legal_services', function ($join) {
+        //             $join->on('legal_enquiry.documentid', '=', 'legal_services.id');
+        //         })
+
+        //         ->where('legal_enquiry.status', '2')
+        //         ->ORwhere('legal_enquiry.docstatus', '2')
+        //         ->orderBy("legal_enquiry.id", 'desc');
+
+
+        $query = legalenquiry::select('legal_enquiry.*',  'users.name as uname', 'users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'legal_services.service_name as document_name', 'booking_temp.orderid as orderid','booking_temp.amount as amount','booking_temp.type as feestype')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
             })
             ->leftjoin('service_sub_category', function ($join) {
                 $join->on('legal_enquiry.subissue_id', '=', 'service_sub_category.id');
             })
+            ->leftjoin('legal_services', function ($join) {
+                $join->on('legal_enquiry.documentid', '=', 'legal_services.id');
+            })
             ->leftjoin('booking_temp', function ($join) {
-                $join->on('booking_temp.lawyer_id', '=', 'legal_enquiry.lawyer_id');
+                $join->on('legal_enquiry.id', '=', 'booking_temp.oid');
             })
             ->leftjoin('users', function ($join) {
                 $join->on('booking_temp.user_id', '=', 'users.id');
             })
+            ->orderBy("legal_enquiry.id", 'desc')
+            ->where('legal_enquiry.status', '2')
+            ->ORwhere('legal_enquiry.docstatus', '2');
 
-            ->orderBy("legal_enquiry.id", 'desc');
 
         return $query;
     }
@@ -171,7 +198,7 @@ class legalenquiry extends Authenticatable
     }
     public static function getnotificationNewEnquiry()
     {
-        $query = legalenquiry::where('notification', '0')->where('documentid',null)->get();
+        $query = legalenquiry::where('notification', '0')->where('documentid', null)->get();
         return $query;
     }
     public static function loginUserDocumentlist()

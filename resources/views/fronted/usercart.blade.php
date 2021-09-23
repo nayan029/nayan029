@@ -40,7 +40,7 @@
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount)){{"₹".$data->amount}}@else{{"N/A"}}@endif 
                 @if(isset($data->type) && $data->type == '2'){{"-Fees(By per date)"}}@elseif(isset($data->type) && $data->type == '3'){{"-Legal Representation"}}@else{{''}}@endif
                 </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount)){{"Success"}}@else{!!"<span style='color:red;'>Pending<span>"!!}@endif</td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount))<span style="color:green;">Success</span>@else{!!"<span style='color:red;'>Pending<span>"!!}@endif</td>
             </tr>
             @php $i++; @endphp
             @endforeach
