@@ -55,7 +55,7 @@
                                             <blockquote>
                                                 <p style="text-align: justify;">After the submission is in moderation, our editors can review it, decide if it’s a good fit (message you if it needs work), and schedule it for publication. Upon being published, you should be sent an email notification. <strong>We take a maximum of 72 hours to revert for articles, please be patient.</strong></p>
                                             </blockquote>
-                                            <p>Note: By submitting your content you confirm all our <strong><a href="https://www.legal bench.in/terms-of-service/">Terms of Service.</a></strong></p>
+                                            <p>Note: By submitting your content you confirm all our <strong><a href="{{url::tO('/')}}/page/terms-of-use">Terms of Service.</a></strong></p>
                                             <h2><strong>Guideline while submitting an Article/Post:-</strong></h2>
                                             <ol>
                                                 <li>Use only authentic sources for your research. AVOID PLAGIARISM.</li>
