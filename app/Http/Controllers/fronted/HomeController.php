@@ -680,7 +680,7 @@ class HomeController extends Controller
     {
         $decryptid = Crypt::decrypt($id);
         $this->data['title'] = "Document  Details";
-        $this->data['allContent'] = documentDetails::getRecordById($decryptid)->get();
+        $this->data['allContent'] = documentDetails::getRecordById($decryptid)->first();
         return view('/admin/document_deatails/site', $this->data);
     }
     public function allDocuments()
