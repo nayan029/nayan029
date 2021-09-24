@@ -1,14 +1,12 @@
 @include('fronted/include/header')
 <div class="container">
     <div class="col-md-12">
-        <div class="sa-application">
+        <div class="sa-application d-flex justify-content-between">
             <p class="sa-color2">Lawyer Detail</p>
+            <a href="{{URL::to('/')}}/account/all-questions" type="button" class="sa-color3   poppins-light">Back<span class="ml-2"><i class="fa fa-arrow-right"></i></span></a>
         </div>
-
     </div>
-    <div class="row">
-        <a href="{{URL::to('/')}}/account/all-questions" type="button" class="btn btn-outline-primary sa-color3 mr-5  poppins-light">Back</a>
-    </div>
+    
     <div class="sa-enroll-details">
         <div class="container">
             <!-- <div class="mitem3"> -->
@@ -90,66 +88,90 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-2 sa-color2">Practice areas :</div>
+                        <div class="col-md-10">
+                            <p>{{ucfirst($lawyerData->about)}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 sa-color2">Specialization :</div>
+                        <div class="col-md-10">
+                            <p>
+                                <?php
+                                ob_start();
+                                foreach ($specialization as $result) {
+                                    echo ucfirst($result->category_name) . ',';
+                                }
+                                $output = ob_get_clean();
+                                echo rtrim($output, ','); ?></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 sa-color2">Court :</div>
+                        <div class="col-md-10">
+                            <p>Karnataka High Court, Supreme Court Of India</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="POST" action="{{URL::to('/')}}/pay-fees" id="fees_main">
+                                @csrf
+                                <input type="hidden" name="lawyer_id" value="{{$lawyerData->id}}">
+                                <input type="hidden" name="customer_id" value="{{$enquiryUserId->user_id}}">
+                                <input type="hidden" name="id" value="{{request('id');}}">
+                                <div class="row">
+
+                                    <!-- <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
+                                    <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div> -->
+
+                            <!-- <div class="mitem3 sr-radio-card ">
+                <input type="radio" name="legal-issue1" class="sr-radio-card-inputs">
+                 <i class="fa fa-check-square-o sr-radio-icon"></i>
+                     <p class="sr-title2 mb-3">
+                        Divorce/Matrimonial Issue </p> 
+                </div> -->
+                                <div class="sr-rel enq-view">
+                                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2">
+                                    <div class="mitem3 sr-radio-card sr-enq">
+                                         <div class="sa-color3">
+                                            <div class="enq-radio">{{$lawyerData->fees}}</div>
+                                                Fees(By per date)  </div>
+                                    </div>
+                                   
+                                </div>
+
+
+                                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3">
+                                    <div class="col-md-5 sa-color2">Legal Representation - {{$lawyerData->full_legal_fees}}</div>
+                                </div>
+                                <span id="fees_error" style="color: red;"></span>
+                                <input type="hidden" name="type" id="radio_id">
+
+                                <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
+                                <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
+                                <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
+                                        @if(isset($exists))
+                                        @else
+                                <div class="row">
+                                    <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
+                                    </button>
+                                </div>
+                                @endif
+                            </form>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-2 sa-color2">Practice areas :</div>
-                <div class="col-md-10">
-                    <p>{{ucfirst($lawyerData->about)}}</p>
-                </div>
-            </div>
+            
 
-            <div class="row">
-                <div class="col-md-2 sa-color2">Specialization :</div>
-                <div class="col-md-10">
-                    <p>
-                        <?php
-                        ob_start();
-                        foreach ($specialization as $result) {
-                            echo ucfirst($result->category_name) . ',';
-                        }
-                        $output = ob_get_clean();
-                        echo rtrim($output, ','); ?></p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2 sa-color2">Court :</div>
-                <div class="col-md-10">
-                    <p>Karnataka High Court, Supreme Court Of India</p>
-                </div>
-            </div>
-
-            <form method="POST" action="{{URL::to('/')}}/pay-fees" id="fees_main">
-                @csrf
-                <input type="hidden" name="lawyer_id" value="{{$lawyerData->id}}">
-                <input type="hidden" name="customer_id" value="{{$enquiryUserId->user_id}}">
-                <input type="hidden" name="id" value="{{request('id');}}">
-                <div class="row">
-
-                    <!-- <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
-                    <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div> -->
-
-                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2">
-                    <div class="col-md-2 sa-color2">Fees(By per date) - {{$lawyerData->fees}}</div>
-
-                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3">
-                    <div class="col-md-5 sa-color2">Legal Representation - {{$lawyerData->full_legal_fees}}</div>
-                </div>
-                <span id="fees_error" style="color: red;"></span>
-                <input type="hidden" name="type" id="radio_id">
-
-                <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
-                <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
-                <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
-                        @if(isset($exists))
-                        @else
-                <div class="row">
-                    <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
-                    </button>
-                </div>
-                @endif
-            </form>
+            
 
 
         </div>

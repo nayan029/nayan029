@@ -6211,3 +6211,9 @@ height: 21px;
 .desk-hide{
     display: none;
 }
+/*23-9-2021*/
+.enq-view input[type=radio]:checked + .sr-enq {
+    background: #eca835;
+    color: #fff!important;
+}
+/*end 23-9-2021*/

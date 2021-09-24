@@ -253,7 +253,7 @@
 @include('fronted/include/footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
-        var route = "{{ url('/search/autocomplete-search') }}";
+        var route = "{{ url('/search/autocomplete-search/two') }}";
         $('#search').typeahead({
             source: function (query, process) {
                 return $.get(route, {

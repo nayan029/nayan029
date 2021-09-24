@@ -18,6 +18,7 @@ use App\Http\Controllers\fronted\legalenquiryController;
 use App\Http\Controllers\admin\ForgotPasswordController;
 use App\Http\Controllers\admin\lawyermanagmentController;
 use App\Http\Controllers\fronted\documentenquiryController;
+use App\Http\Controllers\fronted\TypeaheadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -362,7 +363,9 @@ Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxControll
 Route::post('pay-fees', [FrontedHomeController::class, 'addOrderData']);
 Route::get('fees/final-pay', [FrontedHomeController::class, 'payumoney']);
 Route::get('page/submit-post', [FrontedHomeController::class, 'newPage']);
-
+Route::get('/search/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
+Route::get('/search/autocomplete-search/two', [TypeaheadController::class, 'autocompleteSearchSecond']);
+Route::get('/search/autocomplete-search/three', [TypeaheadController::class, 'autocompleteSearchThirds']);
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
 
