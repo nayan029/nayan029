@@ -32,9 +32,9 @@
                                     <div class="form-group">
                                         <label for="exampleInputFirstName">Type</label><span style="color: red;">*</span>
                                         <select name="type" id="type" class="form-control" onchange="getsubcategory(this.value);">
-                                            <option value="">Select Type</option>
-                                            <option @if($detailsData->type = "1") {{"selected"}} @endif value="1">Image</option>
-                                            <option @if($detailsData->type = "2") {{"selected"}} @endif value="2">Content</option>
+                                            <!-- <option value="">Select Type</option> -->
+                                            <option @if($detailsData->type == "1") {{"selected"}} @endif value="1">Image</option>
+                                            <option @if($detailsData->type == "2") {{"selected"}} @endif value="2">Content</option>
                                         </select>
                                         <span style="color:red;" id="type_error"></span>
                                     </div>
@@ -48,9 +48,12 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group" style="display: none;" id="hideimg">
-                                        <label for="exampleInputEmail">Image</label><span style="color: red;">*</span>
+                                        <label for="exampleInputEmail">Image</label>
                                         <input type="file" class="form-control" id="image" name="image" aria-describedby="emailHelp" placeholder="Enter Image">
                                         <span style="color:red;" id="image_error"><?php echo $errors->profile_error->first('image'); ?></span>
+                                        @if(isset($detailsData->image))
+                                        <img class="mt-2" src="{{URL::to('/')}}/uploads/document_image/{{$detailsData->image}}" height="20%" width="20%" alt="image">
+                                        @endif
                                     </div>
                                 </div>
 

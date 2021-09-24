@@ -135,20 +135,41 @@
                      <p class="sr-title2 mb-3">
                         Divorce/Matrimonial Issue </p> 
                 </div> -->
+                                
                                 <div class="sr-rel enq-view">
-                                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2">
-                                    <div class="mitem3 sr-radio-card sr-enq">
-                                         <div class="sa-color3">
-                                            <div class="enq-radio">{{$lawyerData->fees}}</div>
-                                                Fees(By per date)  </div>
+                                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2" class="enquiry-radio">
+                                    <div class="mitem3 sr-enq">
+                                        <div class="price-card">
+                                            <i class="fa fa-credit-card " ></i>
+                                            <div class="enq-radio">Rs. {{$lawyerData->fees}}</div>
+                                        </div>
                                     </div>
-                                   
+                                    <p class="mb-0 mt-2">Fees(By per date) </p>
                                 </div>
 
+                                <div class="sr-rel enq-view ml-3">
+                                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
+                                    <div class="mitem3 sr-enq">
+                                         <div class="price-card">
+                                            <i class="fa fa-credit-card " ></i>
+                                            <div class="enq-radio">Rs. {{$lawyerData->full_legal_fees}}</div>
+                                            
+                                        </div>
+                                    </div>
+                                    <p class="mb-0 mt-2">Legal Representation </p>
 
-                                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3">
-                                    <div class="col-md-5 sa-color2">Legal Representation - {{$lawyerData->full_legal_fees}}</div>
                                 </div>
+                                <!-- <div class="sr-rel enq-view ml-3">
+                                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
+                                    <div class="mitem3 sr-enq">
+                                         <div class="price-card">
+                                            <div class="enq-radio">Rs. {{$lawyerData->full_legal_fees}}</div>
+                                            Legal Representation 
+                                        </div>
+                                    </div>
+
+                                </div> -->
+
                                 <span id="fees_error" style="color: red;"></span>
                                 <input type="hidden" name="type" id="radio_id">
 
@@ -157,7 +178,7 @@
                                 <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
                                         @if(isset($exists))
                                         @else
-                                <div class="row">
+                                <div class="ml-3">
                                     <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
                                     </button>
                                 </div>

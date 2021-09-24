@@ -6216,4 +6216,38 @@ height: 21px;
     background: #eca835;
     color: #fff!important;
 }
+.enquiry-radio{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    height: 100%;
+    z-index: 1;
+}
+.enq-view{
+    text-align: center;
+}
+.enq-radio{
+    font-size:17px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom:2px;
+
+}
+.price-card{
+    font-size:13px;
+    color:#fff;
+}
+.sr-enq{
+    padding:15px;
+}
+.price-card i{
+    color: #eca835;
+    font-size: 37px;
+    margin-bottom: 6px;
+}
+
 /*end 23-9-2021*/

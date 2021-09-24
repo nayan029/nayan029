@@ -1,19 +1,3 @@
-<!-- <div class="container">
-    <table class="table mt-5">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Image</th>
-            </tr>
-        </thead>
-        <tbody>
-          
-            <tr>
-        </tbody>
-    </table>
-</div> -->
 <!DOCTYPE html>
 <html lang="en">
 
