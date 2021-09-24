@@ -27,14 +27,17 @@
 
                 </div>
                 <div class="row sr-border mt-4 ">
-                    <?php foreach ($advicecategory as $data) {
-                    ?>
-                        <div class="col-md-12">
-                            <ul class="footer-ul sa-footer-mb">
-                                <li><a href="{{URL::to('/') }}/legal-services/documents/{{$data->slug}}"><i class="fa fa-arrow-right"></i> {{ucfirst($data->service_name)}}</a></li>
-                            </ul>
-                        </div>
-                    <?php } ?>
+                    @php $i= 1; @endphp
+
+                    @foreach ($advicecategory as $data)
+                    <div class="col-md-12">
+                        <ul class="footer-ul sa-footer-mb">
+                            <li><a href="{{URL::to('/') }}/legal-services/documents/{{$data->slug}}">{{$i."."}} {{ucfirst($data->service_name)}}</a></li>
+                        </ul>
+                    </div>
+                    @php $i++; @endphp
+
+                    @endforeach
                     <div class="col-md-6">
                         <ul class="footer-ul sa-footer-mb">
 

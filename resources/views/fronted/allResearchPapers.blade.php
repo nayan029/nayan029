@@ -35,16 +35,18 @@
         </div>
         <div class="row sr-border mt-4 " id="databox">
           <!-- <h5 class="sa-color2 mb-3"><b>Over 123046 legal queries answered by our top experts</b></h5> -->
-          <?php foreach ($allQuerys as $data) {
-          ?>
+        @php  $i= 1; @endphp
+          @foreach ($allQuerys as $data) 
+         
             <div class="col-md-12">
               <ul class="footer-ul sa-footer-mb">
 
-                <li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $data->id ?>"><i class="fa fa-arrow-right"></i> {{ucfirst($data->title)}}</a></li>
+                <li><a href="<?php echo URL::to('/legalQueryDesc'); ?>?id=<?= $data->id ?>">{{$i.". "}}{{ucfirst($data->title)}}</a></li>
 
               </ul>
             </div>
-          <?php } ?>
+            @php $i++; @endphp
+         @endforeach
           <div class="col-md-6">
             <ul class="footer-ul">
               <!-- <li><a href="#"><i class="fa fa-arrow-right"></i> Divorce</a></li>

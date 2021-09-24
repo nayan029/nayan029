@@ -62,9 +62,11 @@
 
             </div>
 
-
+            @php $i= 1; @endphp
             @foreach($sub_service_list as $subService)
-            <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}"><i class="fa fa-arrow-right"></i> {{ $subService->description }}</a> <br />
+            <a href="{{ URL::to('legal-enquiry') }}/{{ $subService->id }}">{{$i."."}} {{ $subService->description }}</a> <br />
+            @php $i++; @endphp
+            
             @endforeach
             @if($getquerys->category_id == '2') {!! $getquerys->description !!} @endif
 
