@@ -9,6 +9,7 @@ class CryptHelper {
 	public static function encryptstring($string){
 		
 		 $encrypted = Crypt::encrypt($string);
+		 
 		return $encrypted;
 	}
 	

@@ -38,9 +38,9 @@
                                         <th>Customer Name</th>
                                         <th>Issue Name</th>
                                         <!-- <th>Type Name</th> -->
-                                        <th>Amount</th>
-                                        <th>Mobile</th>
+                                        <th>Type</th>
                                         <th>Created Date</th>
+                                        <th>Amount</th>
                                         <th>Payment Status</th>
                                     </tr>
                                 </thead>
@@ -50,7 +50,9 @@
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>@if(isset($data->orderid)){{$data->orderid}}@endif</td>
-                                        <td>{{$data->uname}} {{$data->username}}</td>
+                                        <td>{{$data->uname}} {{$data->username}} 
+                                        @if(isset($data->mobile)){{"-".$data->mobile}}@else{{""}}@endif
+                                        </td>
                                         <td>@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{""}}@endif
                                             @if(isset($data->issue_name)){{"-".$data->issue_name}}@else{{""}}@endif
                                             @if(isset($data->document_name)){{$data->document_name}}@endif
@@ -58,24 +60,26 @@
                                         </td>
                                         <!-- <td>@if(isset($data->issue_name)){{$data->issue_name}}@else{{"N/A"}}@endif</td> -->
                                         <td>
-                                            @if(isset($data->amount)){{"₹".$data->amount}}@else{{"-"}}@endif
                                             @if($data->feestype == 1)
-                                            -Basic Fees
+                                            Legal Aid-Basic Fees
                                             @elseif($data->feestype == 2)
-                                            -Fees(By per days)
+                                            Legal Aid-Fees(By per days)
                                             @elseif($data->feestype == 3)
-                                            -Full Legal Representation
+                                            Legal Aid-Full Legal Representation
+                                            @else
+                                            {{"Documentation"}}
                                             @endif
                                         </td>
-                                        <td>@if(isset($data->mobile)){{$data->mobile}}@else{{"-"}}@endif</td>
                                         <td>@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif</td>
+                                        <td>
+                                        @if(isset($data->amount)){{"₹ ".$data->amount}}@else{{"-"}}@endif
+                                        </td>
                                         <td><span title="{{$data->feedback}}">
                                                 @if(isset($data->status))
 
                                                 <span style="color: green;">Success</span>
                                                 @endif
                                             </span>
-                                            <!-- <span><a href="javascript:void(0)"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-eye" aria-hidden="true"></i></a></span> -->
                                         </td>
                                         <!-- modal start -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

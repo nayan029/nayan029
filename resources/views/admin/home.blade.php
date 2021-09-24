@@ -39,7 +39,7 @@
                     </div> -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{{count($totaluserdata)}}</h3>
+                            <h3>@if(isset($totaluserdata)){{count($totaluserdata)}}@endif</h3>
 
                             <p>Total User</p>
                         </div>
@@ -54,7 +54,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{count($lawyerdata)}}<sup style="font-size: 20px"></sup></h3>
+                            <h3>@if(isset($lawyerdata)){{count($lawyerdata)}}@endif<sup style="font-size: 20px"></sup></h3>
 
                             <p>Total Lawyer</p>
                         </div>
@@ -69,7 +69,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{count($legalEnquiry)}}</h3>
+                            <h3>@if(isset($legalEnquiry)){{count($legalEnquiry)}}@endif</h3>
 
                             <p>Total Enquiry</p>
                         </div>
@@ -84,14 +84,14 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>0</h3>
+                            <h3>@if(isset($total_revenue)){{count($total_revenue)}}@endif</h3>
 
                             <p>Total Revenue</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{URL::to('/')}}/admin/bookingHistory" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

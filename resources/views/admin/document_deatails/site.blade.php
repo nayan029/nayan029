@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<title>{{$sitesetting->title}} | {{$title}}</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="{{URL::to('/')}}/uploads/logo/{{$sitesetting->logo}}" type="image/png" sizes="16x16">
-	<link rel="stylesheet" href="{{asset('fronted/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('fronted/css/themify-icons.css')}}">
-	<link rel="stylesheet" href="{{asset('fronted/css/owl.carousel.css')}}">
-	<link rel="stylesheet" href="{{asset('fronted/css/select2.min.css')}}">
-	<link rel="stylesheet" href="{{asset('fronted/css/style.css')}}">
-	<link rel="stylesheet" href="{{asset('fronted/css/responsive.css')}}">
-	<link rel="stylesheet" href="{{asset('fronted/css/toastr.min.css')}}" type="text/css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
-<header>
-		<div class="container">
-        </div>
-</header>
-<div class="mt-5 header-title">
+@include('fronted/include/header')
+<div class="header-title">
   <div class="inner">
     <div class="container">
       <div class="sa-application">
@@ -97,3 +76,4 @@
       </div>
     </div>
   </div>
+@include('fronted/include/footer')

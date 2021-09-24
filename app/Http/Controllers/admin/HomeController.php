@@ -37,6 +37,7 @@ class HomeController extends Controller
         $this->data['totaluserdata'] = User::gettotalUsers();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['legalEnquiry'] = legalenquiry::getAllDataofEnquiry();
+        $this->data['total_revenue'] = $enquirydatas = legalenquiry::allBookingHistoryData()->get();
         return view('admin.home', $this->data);
     }
 
