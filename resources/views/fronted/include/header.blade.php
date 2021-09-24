@@ -9,7 +9,7 @@ $login = Auth::user();
 	<title>{{$sitesetting->title}} | {{$title}}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="<?php echo URL::to('/'); ?>/uploads/logo/{{$sitesetting->logo}}" type="image/png" sizes="16x16">
+	<link rel="icon" href="{{ URL::to('/')}}/uploads/logo/{{$sitesetting->logo}}" type="image/png" sizes="16x16">
 	<link rel="stylesheet" href="{{asset('fronted/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('fronted/css/themify-icons.css')}}">
 	<link rel="stylesheet" href="{{asset('fronted/css/owl.carousel.css')}}">
@@ -137,7 +137,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Documentation</li> -->
 													<!-- <li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(10)->orderBy('service_name','asc')->get();
+													$listLegalGuides = DB::table('legal_services')->where('category_id', '2')->where('deleted_at', NULL)->limit(10)->orderBy('service_name', 'asc')->get();
 
 
 													foreach ($listLegalGuides as $keyGuides) {
@@ -221,7 +221,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->limit(6)->orderBy('service_name','asc')->get();
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->limit(6)->orderBy('service_name', 'asc')->get();
 													foreach ($listLegalGuides as $keyGuides) {
 														// echo $keyGuides->id;
 													?>
@@ -252,7 +252,7 @@ $login = Auth::user();
 													<!-- <li class="ul-title">Legal Notice</li>
 													<li class="li-border"></li> -->
 													<?php
-													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(6)->orderBy('service_name','asc')->get();
+													$listLegalGuides = DB::table('legal_services')->where('deleted_at', NULL)->where('category_id', '1')->skip(6)->take(6)->orderBy('service_name', 'asc')->get();
 
 													foreach ($listLegalGuides as $keyGuides) {
 
@@ -288,7 +288,7 @@ $login = Auth::user();
 							<a class="nav-link dot-remove-sa" id="contact-us" href="<?php echo URL::to('/'); ?>/contact-us">Contact</a>
 						</li>
 						<!-- <a href="#" class="btn btn-primary">SUMBIT CONTENT</a> -->
-						
+
 
 						<!-- User Booking History -->
 						@if(@$login->user_type == '3')
@@ -337,7 +337,8 @@ $login = Auth::user();
 						</a>
 
 						<div class="filter-div " id="filter-div" style="display: none;">
-							<form method="GET" action="#">
+							<form method="POST" action="{{URL::to('/')}}/search/query/service">
+								@csrf
 								<h4>Filter By</h4>
 								<div class="filter-group">
 									<input type="text" name="name">
@@ -346,50 +347,10 @@ $login = Auth::user();
 
 								<div class="accordion accordion-design" id="accordionExample">
 									<div class="card">
-										<!-- <div class="card-header" id="headingOne">
-											<h2 class="mb-0">
-												<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-													Court
-												</button>
-											</h2>
-										</div> -->
 
-										<!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-											<div class="card-body"> -->
-										<!-- <div class="chandh">
-													<span>Chandhigarh</span>
-													<i class="ti-minus"></i>
-												</div> -->
-
-										<!-- <div class="mini-search">
-													<select name="court" class="filter-group select2 sr-drop" id="">
-														<option value="">Select court</option>
-														@foreach($court as $data)
-														<option value="{{$data->id}}">{{$data->name}}</option>
-														@endforeach
-													</select> -->
-										<!-- <div class="filter-gr">
-														<input type="text" name="city" class="">
-														<button class="btn">
-															<img src="{{asset('fronted/images/svg/feather_search-active.svg')}}"></button>
-													</div>
-													<ul>
-														@foreach($city as $data)
-														<li value="{{$data->name}}">{{$data->name}}</li>
-														@endforeach
-													</ul> -->
-										<!-- </div> -->
-										<!-- </div>
-										</div> -->
 									</div>
 									<div class="card">
-										<!-- <div class="card-header" id="headingTwo">
-											<h2 class="mb-0">
-												<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-													Chandhigarh
-												</button>
-											</h2>
-										</div> -->
+
 										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 											<div class="card-body">
 												Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
@@ -402,7 +363,7 @@ $login = Auth::user();
 										<div class="card-header" id="headingThree">
 											<h2 class="mb-0">
 												<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-													Category
+													Legal Query, Legal Services
 												</button>
 											</h2>
 										</div>
@@ -465,9 +426,9 @@ $login = Auth::user();
 																																						echo "";
 																																					} ?>
 									</a>
-								<a class="dropdown-item" id="book_history" href="<?php echo URL::to('/'); ?>/user-book-history"><i class="icon fa fa-shopping-cart"></i>Booking History</a>
+									<a class="dropdown-item" id="book_history" href="<?php echo URL::to('/'); ?>/user-book-history"><i class="icon fa fa-shopping-cart"></i>Booking History</a>
 
-								<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
+									<a class="dropdown-item" href="<?php echo URL::to('/') ?>/logout"><img src="{{asset('fronted/images/svg/signin.svg')}}" alt="icon" class="icon" style="transform: rotate(180deg);">Logout</a>
 									<!-- <a class="dropdown-item" href="<?php echo URL::to('/') ?>/lawyer-profile"><img src="{{asset('fronted/images/gridicons_user.png')}}" alt="icon" class="icon" >My Profile</a> -->
 
 

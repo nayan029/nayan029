@@ -372,6 +372,9 @@ Route::get('/search/autocomplete-search/three', [TypeaheadController::class, 'au
 
 Route::get('/search/find-docs',  [TypeaheadController::class, 'searchDocs']);
 Route::get('/search/find-aid', [TypeaheadController::class, 'searchAid']);
+
+Route::post('/search/query/service', [TypeaheadController::class, 'queryService']);
+
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
 

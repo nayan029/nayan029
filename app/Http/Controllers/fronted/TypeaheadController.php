@@ -43,4 +43,38 @@ class TypeaheadController extends Controller
         $this->data['user_data'] = legalservices::getAidByName($query);
         return view('fronted.dataaids', $this->data);
     }
+
+    public function queryService(Request $request)
+    {
+        $name = $request->name;
+
+        $research = MainLegalQuery::searchResearchPapaers($name);
+        $notes = MainLegalQuery::searchNotes($name);
+        $bare = MainLegalQuery::searchBarsActs($name);
+
+        $docs = legalservices::getDocumentationByName($name);
+        $aid = legalservices::getAidByName($name);
+
+        $researchcount = count($research);
+        $notescount = count($notes);
+        $barecount = count($bare);
+
+        $docscount = count($docs);
+        $aidscount = count($aid);
+
+
+        if ($researchcount > 0) {
+            return redirect('all-querys-paper');
+        } elseif ($notescount > 0) {
+            return redirect('all-querys-notes');
+        } elseif ($barecount > 0) {
+            return redirect('all-querys-acts');
+        } elseif ($docscount > 0) {
+            return redirect('all-docs');
+        } elseif ($aidscount > 0) {
+            return redirect('all-aids');
+        } else {
+            return redirect()->back();
+        }
+    }
 }
