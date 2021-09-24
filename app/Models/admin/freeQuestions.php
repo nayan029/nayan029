@@ -30,9 +30,15 @@ class freeQuestions extends Authenticatable
         'deleted_by',
 
     ];
-    public static function getAllQuestions()
+    public static function getAllQuestions($name)
     {
-        $query =  freeQuestions::where('deleted_at', NULL)->orderBy('id', 'desc')->paginate(10);
+
+        $query =  freeQuestions::where('deleted_at', NULL)->orderBy('id', 'desc');
+        $temp = "name like '%$name%' ";
+        if ($name != "") {
+            $query = $query->whereRaw($temp);
+        }
+        $query = $query->paginate(10);
         return $query;
     }
     public static function getQuestionById($id)

@@ -27,7 +27,7 @@
                             <form class="form-inline mb-3" method="GET" action="<?php echo URL::to('/') ?>/admin/court-managment">
 
                                 <div class="form-group mr-2">
-                                    <input type="text" maxlength="20" class="form-control w-180px" value="" id="" name="name" placeholder="Name">
+                                    <input type="text" maxlength="20" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary ml-2">Filter</button>
                                 <a href="<?php echo URL::to('/'); ?>/admin/court-managment"><button type="button" class="btn btn-dark ml-2">Reset</button></a>

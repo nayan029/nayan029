@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item"> Booking History</li>
                     </ol>
                 </div><!-- /.col -->
-            </div><!-- /.row -->
+            </div><!-- /.row -->    
         </div><!-- /.container-fluid -->
     </div>
 
@@ -26,7 +26,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            <form class="form-inline mb-3" method="GET" action="{{ URL::to('/') }}/admin/bookingHistory">
 
+                                <div class="form-group mr-2">
+                                    <input type="text" maxlength="40" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                                <a href="{{ URL::to('/') }}/admin/bookingHistory"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
+                            </form>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -50,8 +57,8 @@
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>@if(isset($data->orderid)){{$data->orderid}}@endif</td>
-                                        <td>{{$data->uname}} {{$data->username}} 
-                                        @if(isset($data->mobile)){{"-".$data->mobile}}@else{{""}}@endif
+                                        <td>{{$data->uname}} {{$data->username}}
+                                            @if(isset($data->mobile)){{"-".$data->mobile}}@else{{""}}@endif
                                         </td>
                                         <td>@if(isset($data->subissue_name)){{$data->subissue_name}}@else{{""}}@endif
                                             @if(isset($data->issue_name)){{"-".$data->issue_name}}@else{{""}}@endif
@@ -72,7 +79,7 @@
                                         </td>
                                         <td>@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif</td>
                                         <td>
-                                        @if(isset($data->amount)){{"₹ ".$data->amount}}@else{{"-"}}@endif
+                                            @if(isset($data->amount)){{"₹ ".$data->amount}}@else{{"-"}}@endif
                                         </td>
                                         <td><span title="{{$data->feedback}}">
                                                 @if(isset($data->status))

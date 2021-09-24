@@ -31,17 +31,17 @@ class documentenquiryController extends Controller
     public function index(Request $request)
     {
         // $auth = Auth::user();
-        // $this->data['name'] = $name = $request->name;
         // $this->data['getData'] = documentEnquiry::getContacts($name);
         // $this->data['userdata'] = User::getrecordbyid($auth->id);
         // return view('admin.document_enquiry.index', $this->data);
-
+        $this->data['name'] = $name = $request->name;
+        
         $auth = Auth::user();
         if (isset($auth)) {
             $uid = $auth->id;
             $this->data['userdata'] = User::getrecordbyid($uid);
             $this->data['title'] = "All Documentations";
-            $this->data['getData'] = legalenquiry::loginUserDocumentlist($uid);
+            $this->data['getData'] = legalenquiry::loginUserDocumentlist($name);
             return view('admin.document_enquiry.index', $this->data);
         }
     }

@@ -174,11 +174,11 @@ class enquiryController extends Controller
     public function bookingHistory(Request $request)
     {
         // $auth = Auth::user();
-        // $this->data['name'] = $name = $request->name;
+        $this->data['name'] = $name = $request->name;
         // $this->data['contact_us_data'] = enquiry::getContacts($name);
         // $this->data['userdata'] = User::getrecordbyid($auth->id);
 
-        $this->data['enquiry_data'] = $enquirydatas = legalenquiry::allBookingHistoryData()->get();
+        $this->data['enquiry_data'] = $enquirydatas = legalenquiry::allBookingHistoryData($name)->get();
 
         // $this->data['enquiry_data'] = $enquirydatas = legalenquiry::myCartDetails($uid)->get();
 

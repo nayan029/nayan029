@@ -3,11 +3,11 @@
     <div class="col-md-12">
         <div class="sa-application d-flex justify-content-between">
             <p class="sa-color2">Lawyer Detail</p>
-            <a href="{{URL::to('/')}}/account/all-questions" type="button" class="sa-color3   poppins-light">Back<span class="ml-2"><i class="fa fa-arrow-right"></i></span></a>
+            <a href="{{URL::to('/')}}/account/all-questions" type="button" class="sa-color3   poppins-light"><span class="mr-2"><i class="fa fa-arrow-left"></i></span>Back</a>
         </div>
     </div>
     
-    <div class="sa-enroll-details">
+    <div class=""> <!-- sa-enroll-details -->
         <div class="container">
             <!-- <div class="mitem3"> -->
             <div class="row sr-profile">
@@ -29,10 +29,10 @@
                 </div>
 
                 <div class="col-md-10">
-                    <div class="sr-pro">
+                    <div class="sr-pro pb-15">
                         <div class="sr-pro-card">
                             <a href="#">
-                                <h5 class="sr-pro-title mb-2"> @if(isset($lawyerData->name)){{"Advocate"." ".$lawyerData->lname." ".$lawyerData->fathername}}@endif</h5>
+                                <h5 class="sr-pro-title pb-0"> @if(isset($lawyerData->name)){{"Advocate"." ".$lawyerData->lname." ".$lawyerData->fathername}}@endif</h5>
                             </a>
 
                         </div>
@@ -44,7 +44,7 @@
                             <span class="pl-4"> 4.0 | 2+ user ratings</span>
                         </div>
                     </div>
-                    <div class="sr-loc">
+                    <div class="sr-loc pb-0">
                         <div class="row">
                             <div class="col-md-6">
 
@@ -124,41 +124,44 @@
                                 <input type="hidden" name="lawyer_id" value="{{$lawyerData->id}}">
                                 <input type="hidden" name="customer_id" value="{{$enquiryUserId->user_id}}">
                                 <input type="hidden" name="id" value="{{request('id');}}">
-                                <div class="row">
+                                <div class="row mb-4">
+
 
                                     <!-- <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
                                     <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div> -->
+                                <div class="col-md-12 ">
+                                        <div class="sa-color2">Select Payment :</div>
+                                </div>
+                                <div class="col-md-7 mt-3">
 
-                            <!-- <div class="mitem3 sr-radio-card ">
-                <input type="radio" name="legal-issue1" class="sr-radio-card-inputs">
-                 <i class="fa fa-check-square-o sr-radio-icon"></i>
-                     <p class="sr-title2 mb-3">
-                        Divorce/Matrimonial Issue </p> 
-                </div> -->
-                                
+                                    <div class="d-flex">
                                 <div class="sr-rel enq-view">
                                     <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2" class="enquiry-radio">
-                                    <div class="mitem3 sr-enq">
+                                    <i class="fa fa-check sr-check2"></i>
+                                    <div class="mitem3 sr-enq mb-0">
                                         <div class="price-card">
                                             <i class="fa fa-credit-card " ></i>
-                                            <div class="enq-radio">Rs. {{$lawyerData->fees}}</div>
+                                            <div class="enq-radio"><span><img src="../fronted/image/rupee.png" width="11px"></span> {{$lawyerData->fees}}</div>
+                                             <p class="mb-0 ">Fees(By per date) </p>
                                         </div>
                                     </div>
-                                    <p class="mb-0 mt-2">Fees(By per date) </p>
+                                   
                                 </div>
 
                                 <div class="sr-rel enq-view ml-3">
                                     <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
-                                    <div class="mitem3 sr-enq">
+                                    <i class="fa fa-check sr-check2"></i>
+                                    <div class="mitem3 sr-enq mb-0">
                                          <div class="price-card">
                                             <i class="fa fa-credit-card " ></i>
-                                            <div class="enq-radio">Rs. {{$lawyerData->full_legal_fees}}</div>
+                                            <div class="enq-radio"><span><img src="../fronted/image/rupee.png" width="11px"></span> {{$lawyerData->full_legal_fees}}</div>
+                                             <p class="mb-0">Legal Representation </p>
                                             
                                         </div>
                                     </div>
-                                    <p class="mb-0 mt-2">Legal Representation </p>
-
                                 </div>
+                            </div>
+                            </div>
                                 <!-- <div class="sr-rel enq-view ml-3">
                                     <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
                                     <div class="mitem3 sr-enq">
@@ -178,10 +181,12 @@
                                 <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
                                         @if(isset($exists))
                                         @else
-                                <div class="ml-3">
+                                <div class="col-md-5 sr-end">
+                                <div class="ml-3 ">
                                     <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
                                     </button>
                                 </div>
+                            </div>
                                 @endif
                             </form>
                         </div>

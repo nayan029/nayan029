@@ -4,17 +4,17 @@
     <div class="sa-application d-flex justify-content-between">
       <h4 class="sa-color2 mb-4">Free @if(isset($researchpapers)){{"Research Paper"}}
         @elseif(isset($notes)){{"Notes"}} @elseif(isset($bars)){{"Bare Acts"}}@endif From Top Rated Lawyers</h4>
-        <div class="col-md-3 res-search-md">
-            <form method="GET">
-              <div class="filter-group mutual-sa-search d-flex">
-                <input placeholder="Search" type="text" name="name" id="search" autocomplete="off">
+      <div class="col-md-3 res-search-md">
+        <form method="GET">
+          <div class="filter-group mutual-sa-search d-flex">
+            <input placeholder="Search" type="text" name="name" id="search" autocomplete="off">
 
-                <button type="button" onclick="getData(this)" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
-              </div>
-            </form>
+            <button type="button" onclick="getData(this)" class="btn btn-outline-search ml-1"><img src="https://appworkdemo.com/legalbench/public/fronted/images/svg/feather_search-active.svg " class=""></button>
           </div>
+        </form>
+      </div>
     </div>
-    
+
     <div class="row">
       <div class="col-md-12 ">
         <div class="row">
@@ -60,7 +60,7 @@
             </ul>
           </div>
         </div>
-            
+
 
         <!-- <div class="row sr-border2 sr-res-card mt-5">
           <h5 class="sa-color2 mb-3"><b>Talk to a Lawyer</b></h5>
@@ -252,16 +252,18 @@
 </div>
 @include('fronted/include/footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
-        var route = "{{ url('/search/autocomplete-search') }}";
-        $('#search').typeahead({
-            source: function (query, process) {
-                return $.get(route, {
-                    query: query
-                }, function (data) {
-                  $('#databox').html(data);
-                    // return process(data);
-                });
-            }
+<script type="text/javascript">
+  var route = "{{ url('/search/autocomplete-search') }}";
+  $('#search').typeahead({
+    source: function(query, process) {
+      setInterval(function() {
+        query = $('#search').val();
+        return $.get(route, {
+          query: query
+        }, function(data) {
+          $('#databox').html(data);
         });
-    </script>
+      }, 500);
+    }
+  });
+</script>

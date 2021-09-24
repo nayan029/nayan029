@@ -25,7 +25,7 @@ class legalenquiry extends Authenticatable
 
         return $query;
     }
-    public static function enquirylist()
+    public static function enquirylist($name)
     {
         $query = legalenquiry::select('legal_enquiry.*', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name')
             ->leftjoin('legal_advice_qa_category', function ($join) {
@@ -37,9 +37,16 @@ class legalenquiry extends Authenticatable
             // ->leftjoin('legal_services', function ($join) {
             //     $join->on('legal_enquiry.documentid', '=', 'legal_services.id');
             // })
+
+
             ->where('legal_enquiry.documentid', '=', Null)
-            ->orderBy("legal_enquiry.id", 'desc')
-            ->paginate(10);
+            ->orderBy("legal_enquiry.id", 'desc');
+
+        $temp = "name like '%$name%' ";
+        if ($name != "") {
+            $query = $query->whereRaw($temp);
+        }
+        $query = $query->paginate(10);
         return $query;
     }
     public static function loginUserEnquirylist($uid)
@@ -167,7 +174,7 @@ class legalenquiry extends Authenticatable
         //         ->orderBy("legal_enquiry.id", 'desc');
 
 
-        $query = legalenquiry::select('legal_enquiry.*',  'users.name as uname', 'users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'legal_services.service_name as document_name', 'booking_temp.orderid as orderid','booking_temp.amount as amount','booking_temp.type as feestype')
+        $query = legalenquiry::select('legal_enquiry.*',  'users.name as uname', 'users.username', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name', 'legal_services.service_name as document_name', 'booking_temp.orderid as orderid', 'booking_temp.amount as amount', 'booking_temp.type as feestype')
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('legal_enquiry.issue_id', '=', 'legal_advice_qa_category.id');
             })
@@ -201,7 +208,7 @@ class legalenquiry extends Authenticatable
         $query = legalenquiry::where('notification', '0')->where('documentid', null)->get();
         return $query;
     }
-    public static function loginUserDocumentlist()
+    public static function loginUserDocumentlist($name)
     {
         $query = legalenquiry::select('legal_enquiry.*', 'legal_services.service_name as document_name')
 
@@ -211,8 +218,13 @@ class legalenquiry extends Authenticatable
             ->where('legal_enquiry.documentid', '!=', 'NULL')
             ->orderBy("legal_enquiry.id", 'desc')
             ->where('legal_enquiry.status', '1')
-            ->where('legal_enquiry.docstatus', '2')
-            ->paginate('10');
+            ->where('legal_enquiry.docstatus', '2');
+            $temp = "name like '%$name%' ";
+            if ($name != "") {
+                $query = $query->whereRaw($temp);
+            }
+            $query = $query->paginate(10);
+            // ->paginate('10');
         return $query;
     }
 }

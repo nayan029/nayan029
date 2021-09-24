@@ -21,13 +21,14 @@ class adviceCategoryController extends Controller
     {
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
-    public function index()
+    public function index(Request $request)
     {
         $this->data['title'] = "Lawyer Category";
         $auth = Auth::user();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
+        $this->data['name'] = $name = $request->name;
         $this->data['userdata'] = User::getrecordbyid($auth->id);
-        $this->data['categorylist'] = adviceCategory::categorylist();
+        $this->data['categorylist'] = adviceCategory::categorylist($name);
         return view('admin.advice_category.index', $this->data);
     }
     public function store(Request $request)

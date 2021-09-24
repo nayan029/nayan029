@@ -24,6 +24,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            <form class="form-inline mb-3" method="GET" action="{{ URL::to('/') }}/admin/query-category">
+
+                                <div class="form-group mr-2">
+                                    <input type="text" maxlength="40" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Title">
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                                <a href="{{ URL::to('/') }}/admin/query-category"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
+                            </form>
                             <!-- Button trigger modal -->
                             <!-- <button type="button" class="sa-btn-add float-right p-2" data-toggle="modal" data-target="#exampleModal">
                                 Add

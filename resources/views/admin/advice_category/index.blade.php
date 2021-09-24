@@ -24,6 +24,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            <form class="form-inline mb-3" method="GET" action="{{ URL::to('/') }}/admin/adviceCategory">
+
+                                <div class="form-group mr-2">
+                                    <input type="text" maxlength="40" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                                <a href="{{ URL::to('/') }}/admin/adviceCategory"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
+                            </form>
                             <!-- Button trigger modal -->
                             <button type="button" class="sa-btn-add float-right p-2" data-toggle="modal" data-target="#exampleModal">
                                 Add
@@ -49,7 +57,7 @@
                                                             <!-- <option value="">Select Type</option> -->
                                                             <option value="1">Legal Service</option>
                                                             <option value="2">Documentation</option>
-                                                        </select>   
+                                                        </select>
                                                         <span style="color:red;" id="type_error"></span>
                                                     </div>
                                                 </div>
@@ -93,16 +101,16 @@
                                 <tbody>
                                     <?php
                                     // $i = 1;
-                                    $i = ($categorylist->currentpage()-1)* $categorylist->perpage() + 1;
-                                    
+                                    $i = ($categorylist->currentpage() - 1) * $categorylist->perpage() + 1;
+
                                     foreach ($categorylist as $data) {
 
                                     ?>
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td> <?php echo ucfirst($data->category_name);?> </td>
-                                            <td> @if($data->type==1){{"Legal Service"}}@elseif($data->type==2){{"Documentation"}}@endif  </td>
-                                            
+                                            <td> <?php echo ucfirst($data->category_name); ?> </td>
+                                            <td> @if($data->type==1){{"Legal Service"}}@elseif($data->type==2){{"Documentation"}}@endif </td>
+
                                             <td data-order="<?= strtotime($data->created_at); ?>">
                                                 <?= date("d-M-Y h:i A", strtotime($data->created_at)); ?>
                                             </td>
@@ -114,17 +122,17 @@
                                     <?php
                                         $i++;
                                     }
-                                
+
                                     ?>
-                                    
+
                                 </tbody>
-                                
+
                             </table>
                             <br>
                             <div class="row">
                                 <div class="col-md-12">
                                     <nav aria-label="Page navigation example">
-                                    {{ $categorylist->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
+                                        {{ $categorylist->appends(request()->except('page'))->links("pagination::bootstrap-4") }}
 
                                     </nav>
                                 </div>
@@ -148,8 +156,8 @@
 </div>
 @include('admin/include/footer')
 <script>
-    $(document).ready(function () {
-        
+    $(document).ready(function() {
+
         $('#category_menu').addClass('nav-item active');
         $('#categorymaster_menu').addClass('nav-link active');
         $('#categorymaster_open').addClass('menu-open active');
@@ -158,7 +166,7 @@
 </script>
 
 <script>
-$('#advice_cat').addClass('active mm-active');
+    $('#advice_cat').addClass('active mm-active');
 
 
 
@@ -215,7 +223,7 @@ $('#advice_cat').addClass('active mm-active');
             url: "<?php echo URL::to('/'); ?>/admin/getexitadvicecategory",
             type: "POST",
             data: {
-                type:type,
+                type: type,
                 name: name,
                 _token: "<?php echo csrf_token(); ?>"
             },

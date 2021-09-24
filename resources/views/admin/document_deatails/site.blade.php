@@ -1,5 +1,5 @@
 @include('fronted/include/header')
-<div class="header-title">
+<!-- <div class="header-title">
   <div class="inner">
     <div class="container">
       <div class="sa-application">
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <div class="sa-enroll-details" id="databox">

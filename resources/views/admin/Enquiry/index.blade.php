@@ -25,14 +25,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <!-- <form class="form-inline mb-3" method="GET" action="<?php echo URL::to('/') ?>/admin/ContactEnquiry">
+                            <form class="form-inline mb-3" method="GET" action="{{ URL::to('/') }}/admin/enquiry">
 
                                 <div class="form-group mr-2">
-                                    <input type="text" maxlength="20" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
+                                    <input type="text" maxlength="40" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary ml-2">Filter</button>
-                                <a href="<?php echo URL::to('/'); ?>/admin/ContactEnquiry"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
-                            </form> -->
+                                <a href="{{ URL::to('/') }}/admin/enquiry"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
+                            </form>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -146,7 +146,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" id="append">
-       
+
     </div>
 </div>
 <!-- edit modal -->

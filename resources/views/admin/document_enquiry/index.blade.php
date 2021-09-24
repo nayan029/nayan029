@@ -16,7 +16,7 @@
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
-    </div>
+    </div> 
 
     <section class="content">
         <div class="container-fluid">
@@ -27,10 +27,10 @@
                             <form class="form-inline mb-3" method="GET" action="<?php echo URL::to('/') ?>/admin/document-enquiry">
 
                                 <div class="form-group mr-2">
-                                    <input type="text" maxlength="20" class="form-control w-180px" value="" id="" name="name" placeholder="Name">
+                                    <input type="text" maxlength="20" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary ml-2">Filter</button>
-                                <a href="<?php echo URL::to('/'); ?>/admin/enquiry-category"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
+                                <a href="<?php echo URL::to('/'); ?>/admin/document-enquiry"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
                             </form>
                             <!-- Button trigger modal -->
 

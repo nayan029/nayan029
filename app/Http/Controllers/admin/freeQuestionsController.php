@@ -32,7 +32,7 @@ class freeQuestionsController extends Controller
     {
         $auth = Auth::user();
         $this->data['name'] = $name = $request->name;
-        $this->data['quetion_list'] = freeQuestions::getAllQuestions();
+        $this->data['quetion_list'] = freeQuestions::getAllQuestions($name);
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         return view('admin.freeQuestions.index', $this->data);
     }

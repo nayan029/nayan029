@@ -25,6 +25,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            <form class="form-inline mb-3" method="GET" action="{{ URL::to('/') }}/admin/free-questions">
+
+                                <div class="form-group mr-2">
+                                    <input type="text" maxlength="40" class="form-control w-180px" value="{{$name}}" id="" name="name" placeholder="Name">
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                                <a href="{{ URL::to('/') }}/admin/free-questions"><button type="button" class="btn btn-dark ml-2">Reset</button></a>
+                            </form>
 
                         </div>
                         <!-- /.card-header -->

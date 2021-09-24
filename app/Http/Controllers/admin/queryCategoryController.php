@@ -24,14 +24,15 @@ class queryCategoryController extends Controller
     {
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
     }
-    public function index()
+    public function index(Request $request)
     {
         $this->data['title'] = "Legal Query";
         $auth = Auth::user();
         $this->data['sitesetting'] = sitesetting::getrecordbyid();
         $this->data['userdata'] = User::getrecordbyid($auth->id);
+        $this->data['name'] = $name = $request->name;
         // $this->data['categorylist'] = adviceCategory::categorylist();
-        $this->data['MainLegalQueryList'] = MainLegalQuery::getAllData();
+        $this->data['MainLegalQueryList'] = MainLegalQuery::getAllData($name);
         return view('admin.header_category.index', $this->data);
     }
     public function addLegalQuery(Request $request)

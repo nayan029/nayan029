@@ -124,7 +124,8 @@ body {
 
 body {
 
-    font-family: 'Poppins-Regular';
+   /* font-family: 'Poppins-Regular';*/
+    font-family: 'Poppins-Light';
 
 }
 
@@ -133,6 +134,7 @@ body {
 body {
 
     background: #1B1B1B;
+
 
     color: #fff;
     min-height:100vh;
@@ -614,7 +616,7 @@ section {
 
 
 header {
-
+     font-family: 'Poppins-Regular'; 
     position: relative;
 
     z-index: 999;
@@ -5590,7 +5592,8 @@ ol.sr-ol li p.sr-white {
 .sr-loc{
     padding-bottom: 15px;
     border-bottom: 1px solid #8f8f8f;
-    margin: 30px 0;
+    margin: 15px 0;
+     /*margin: 30px 0;*/
 
 }
 .sr-p-title{
@@ -5598,6 +5601,9 @@ ol.sr-ol li p.sr-white {
     padding-right: 10px;
     color: #ECA835!important;
 
+}
+.pb-15{
+    padding-bottom:15px!important;
 }
 .sr-pro-review{
     display: flex;
@@ -6084,10 +6090,9 @@ button.owl-prev {}
     font-size: 14px;
     flex: 1;
 }
-.hindum-arriage-act .fa-arrow-right, .hindum-arriage-act a{
-height: 21px;
+/*.hindum-arriage-act .fa-arrow-right, .hindum-arriage-act a{
+    height: 21px;
     width: 21px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6095,15 +6100,15 @@ height: 21px;
     flex: 0 0 21px;
     color: #fff;
     font-size: 10px;
-}
+}*/
 .hindum-arriage-act .fa-arrow-right {
     background: #464646;
     margin-right: 15px;
 }
-.hindum-arriage-act a {
+/*.hindum-arriage-act a {
     margin-left: 15px;
     background: #eca835;
-}
+}*/
 .hindum-arriage-act:last-child {
     border-bottom: 0;
     margin-bottom: 0;
@@ -6212,7 +6217,7 @@ height: 21px;
     display: none;
 }
 /*23-9-2021*/
-.enq-view input[type=radio]:checked + .sr-enq {
+.enq-view input[type=radio]:checked + i + .sr-enq {
     background: #eca835;
     color: #fff!important;
 }
@@ -6229,25 +6234,42 @@ height: 21px;
 }
 .enq-view{
     text-align: center;
+    width:180px;
 }
 .enq-radio{
-    font-size:17px;
-    font-weight: 600;
+    font-size:15px;
     letter-spacing: 0.5px;
-    margin-bottom:2px;
-
+    line-height: 15px;
 }
 .price-card{
     font-size:13px;
     color:#fff;
 }
 .sr-enq{
-    padding:15px;
+    padding:10px 9px 4px;
 }
 .price-card i{
     color: #eca835;
-    font-size: 37px;
-    margin-bottom: 6px;
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+.enq-view input[type=radio]:checked + i +.sr-enq .price-card i{
+    color:#fff;
+}
+.enq-view input[type=radio]:checked + i {
+    opacity: 1;
+}
+.sr-check2 {
+    position: absolute;
+    top: -10px;
+    right: -7px;
+    border: 2px solid #eca835;
+    border-radius: 50%;
+    background: #000;
+    padding: 4px;
+    font-size: 11px;
+    color: #eca835;
+    opacity: 0;
 }
 
 /*end 23-9-2021*/

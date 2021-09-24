@@ -19,10 +19,15 @@ class adviceCategory extends Authenticatable
         $query = adviceCategory::where('id', $id)->orderBy('id', 'ASC')->first();
         return $query;
     }
-    public static function categorylist()
+    public static function categorylist($name)
     {
-        // $query = Category::orderBy('id', 'desc')->get();
-        $query =  adviceCategory::where('status', 1)->orderBy('id', 'ASC')->paginate(10);
+       
+        $query =  adviceCategory::where('deleted_at', NULL)->where('status', 1)->orderBy('id', 'ASC');
+        $temp = "category_name like '%$name%' ";
+        if ($name != "") {
+            $query = $query->whereRaw($temp);
+        }
+        $query = $query->paginate(10);
         return $query;
     }
     public static function categorylistenrollment()

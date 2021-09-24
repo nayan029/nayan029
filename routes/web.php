@@ -314,8 +314,7 @@ Route::get('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@index');
 Route::post('/find-lawyer', 'App\Http\Controllers\fronted\findLawyer@getData');
 
 Route::post('/find-name', 'App\Http\Controllers\fronted\findLawyer@getName');
-Route::post('/find-docs', 'App\Http\Controllers\fronted\findLawyer@getDocs');
-Route::post('/find-aid', 'App\Http\Controllers\fronted\findLawyer@getAids');
+
 
 Route::get('/legalQueryDesc', 'App\Http\Controllers\fronted\HomeController@legalQueryDesc');
 
@@ -363,9 +362,16 @@ Route::post('/fronted/getcategoryname', 'App\Http\Controllers\admin\AjaxControll
 Route::post('pay-fees', [FrontedHomeController::class, 'addOrderData']);
 Route::get('fees/final-pay', [FrontedHomeController::class, 'payumoney']);
 Route::get('page/submit-post', [FrontedHomeController::class, 'newPage']);
+
 Route::get('/search/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
 Route::get('/search/autocomplete-search/two', [TypeaheadController::class, 'autocompleteSearchSecond']);
 Route::get('/search/autocomplete-search/three', [TypeaheadController::class, 'autocompleteSearchThirds']);
+
+// Route::post('/find-docs', 'App\Http\Controllers\fronted\findLawyer@getDocs');
+// Route::post('/find-aid', 'App\Http\Controllers\fronted\findLawyer@getAids');
+
+Route::get('/search/find-docs',  [TypeaheadController::class, 'searchDocs']);
+Route::get('/search/find-aid', [TypeaheadController::class, 'searchAid']);
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 
 

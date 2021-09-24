@@ -34,7 +34,8 @@ class legalenquiryController extends Controller
         // $this->data['contact_us_data'] = contactInquiry::all()->paginate(3)->sortByDesc('id'); 
         $this->data['name'] = $name = $request->name;
         $this->data['enquiry_list'] = legalenquiry::getAllData();
-        $this->data['enquiry_data'] = legalenquiry::enquirylist();
+        
+        $this->data['enquiry_data'] = legalenquiry::enquirylist($name);
         $this->data['userdata'] = User::getrecordbyid($auth->id);
         DB::table('legal_enquiry')->update(array('notification' => 1));
         return view('admin.legalenquiry.index', $this->data);
