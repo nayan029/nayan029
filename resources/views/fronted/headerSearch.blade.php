@@ -32,13 +32,8 @@
                     @php $i= 1; @endphp
                     <div class="col-md-12">
                         <ul class="footer-ul sa-footer-mb">
-                            <!-- @if(isset($category_id))
-                            @if($category_id==2)
-                            <li><a href="{{ URL::to('/legalQueryDesc') }}?id={{$query_data[0]['id']}}">{{$i."."}} @if(isset($query_data)){{$query_data[0]['title']}} @endif</a></li>
-                            @elseif($category_id == 1)
-                            <li><a href="{{ URL::to('/') }}/legal-services/{{$query_data[0]['slug']}}">{{$i."."}} @if(isset($query_data)){{$query_data[0]['service_name']}} @endif</a></li>
-                            @endif
-                            @endif -->
+                           
+                            @if(isset($query_data))
 
                             @foreach($query_data as $data)
 
@@ -49,13 +44,13 @@
                                     @endphp
                                     @endif
                                     @if($data['legal_query_type_id']==1)
-                                    -Research Paper
+                                    <b style="color:#eca835;">-Research Paper</b>
                                     @endif
                                     @if($data['legal_query_type_id']==2)
-                                    -Notes
+                                    <b style="color:#eca835;"> -Notes </b>
                                     @endif
                                     @if($data['legal_query_type_id']==3)
-                                    -Bare Acts
+                                    <b style="color:#eca835;">  -Bare Acts </b>
                                     @endif
 
                                 </a></li>
@@ -63,6 +58,9 @@
                             @endif
                             @php $i++; @endphp
                             @endforeach
+
+                            @endif
+
                             @if(isset($query_datatwo))
                             @foreach($query_datatwo as $data)
                             <li><a href="{{ URL::to('/') }}/legal-services/@php print_r($data['slug']); @endphp">{{$i."."}} @if(isset($query_datatwo))
@@ -72,10 +70,10 @@
                                     @endif
 
                                     @if($data['category_id']==1)
-                                    -Legal AID
+                                    <b style="color:#eca835;">  -Legal AID </b>
                                     @endif
                                     @if($data['category_id']==2)
-                                    -Documentation
+                                    <b style="color:#eca835;"> -Documentation </b>
                                     @endif
 
                                 </a></li>

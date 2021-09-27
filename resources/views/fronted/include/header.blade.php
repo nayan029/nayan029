@@ -404,7 +404,8 @@ $login = Auth::user();
 						</a>
 						<div class="search-div " id="search-div" style="display: none;">
 							<!-- {{URL::to('/')}}/search/lawyer/ -->
-							<form method="GET" action="#">
+							<form method="POST" action="{{URL::to('/')}}/search/query/service">
+							@csrf
 								<h4>Search By</h4>
 								<div class="filter-group d-flex">
 									<input type="text" name="name">

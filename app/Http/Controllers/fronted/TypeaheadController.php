@@ -71,16 +71,17 @@ class TypeaheadController extends Controller
 
 
                 if ($docscount > 0) {
+
                     $this->data['title'] = "Search Results";
                     $this->data['name'] = $name;
-                    $this->data['query_data'] =  $docs;
+                    $this->data['query_datatwo'] =  $docs;
                     $this->data['category_id'] =  $category;
                     $this->data['sitesetting'] = sitesetting::getrecordbyid();
                     return view('fronted.headerSearch', $this->data);
                 } elseif ($aidscount > 0) {
                     $this->data['title'] = "Search Results";
                     $this->data['name'] = $name;
-                    $this->data['query_data'] =  $aid;
+                    $this->data['query_datatwo'] =  $aid;
                     $this->data['category_id'] =  $category;
                     $this->data['sitesetting'] = sitesetting::getrecordbyid();
                     return view('fronted.headerSearch', $this->data);
@@ -125,19 +126,7 @@ class TypeaheadController extends Controller
         }
 
         if (isset($name)) {
-            // $research = MainLegalQuery::searchResearchPapaers($name);
-            // $notes = MainLegalQuery::searchNotes($name);
-            // $bare = MainLegalQuery::searchBarsActs($name);
 
-            // $docs = legalservices::getDocumentationByName($name);
-            // $aid = legalservices::getAidByName($name);
-
-            // $researchcount = count($research);
-            // $notescount = count($notes);
-            // $barecount = count($bare);
-
-            // $docscount = count($docs);
-            // $aidscount = count($aid);
 
 
             // new 
@@ -145,29 +134,15 @@ class TypeaheadController extends Controller
             $datanewt = legalservices::searchAllData($name);
             // $datanew = array_merge($datanewo, $datanewt);
 
-                $this->data['title'] = "Search Results";
-                $this->data['name'] = $name;
-                // $this->data['query_data'] = json_decode(json_encode($datanew), true);
-                $this->data['query_data'] =  $datanewo;
-                $this->data['query_datatwo'] =  $datanewt;
-                // $this->data['category_id'] =  $category;
-                $this->data['sitesetting'] = sitesetting::getrecordbyid();
-                return view('fronted.headerSearch', $this->data);
+            $this->data['title'] = "Search Results";
+            $this->data['name'] = $name;
+            // $this->data['query_data'] = json_decode(json_encode($datanew), true);
+            $this->data['query_data'] =  $datanewo;
+            $this->data['query_datatwo'] =  $datanewt;
+            // $this->data['category_id'] =  $category;
+            $this->data['sitesetting'] = sitesetting::getrecordbyid();
+            return view('fronted.headerSearch', $this->data);
             //new
-
-            // if ($researchcount > 0) {
-            //     return redirect('all-querys-paper');
-            // } elseif ($notescount > 0) {
-            //     return redirect('all-querys-notes');
-            // } elseif ($barecount > 0) {
-            //     return redirect('all-querys-acts');
-            // } elseif ($docscount > 0) {
-            //     return redirect('all-docs');
-            // } elseif ($aidscount > 0) {
-            //     return redirect('all-aids');
-            // } else {
-            //     return redirect()->back();
-            // }
         }
 
 
