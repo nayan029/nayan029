@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\adminMangmentController;
+use App\Http\Controllers\admin\AjaxController;
 use App\Http\Controllers\admin\BlogMangementController as AdminBlogMangementController;
 use App\Http\Controllers\admin\documentDeatailsController;
 use App\Http\Controllers\Auth\LoginController;
@@ -374,6 +375,11 @@ Route::get('/search/find-docs',  [TypeaheadController::class, 'searchDocs']);
 Route::get('/search/find-aid', [TypeaheadController::class, 'searchAid']);
 
 Route::post('/search/query/service', [TypeaheadController::class, 'queryService']);
+Route::post('/admin/getcategorybyname',[AjaxController::class,'getCategoryNameByType']);
+
+Route::get('/search/headerSearch',  [FrontedHomeController::class, 'headerSearch']);
+
+
 
 //----------------------------------------------------------------------FRONTED---------------------------------------------------------
 

@@ -245,4 +245,35 @@ class AjaxController extends Controller
 			echo 0;
 		}
 	}
+
+	public function getCategoryNameByType(Request $request)
+	{
+			$type = $request->type;
+		if ($type == '2') {
+			$cat_array = '<option value="">Select Legal Query</option>
+			<option value="3">Research Paper</option>
+			<option value="4">Notes</option>
+			<option value="5">Bare Acts</option>
+			';
+		} elseif ($type == '1') {
+			$cat_array = '<option value="">Select Legal Service</option>
+			<option value="2">Documentation</option>
+			<option value="1">Legal AID</option>
+			';
+		}
+
+
+		// $subcategory = adviceCategory::getDataByType($request->type);
+		// $cat_array = '<option value="">Select Service Name</option>';
+		// foreach ($subcategory as $val) {
+		// 	$selected = "";
+		// 	if ($request->service_name != "") {
+		// 		if ($request->service_name == $val->category_name) {
+		// 			$selected = "selected";
+		// 		}
+		// 	}
+		// 	$cat_array .= '<option value="' . $val->category_name . '" ' . $selected . '>' . $val->category_name . '</option>';
+		// }
+		echo $cat_array;
+	}
 }

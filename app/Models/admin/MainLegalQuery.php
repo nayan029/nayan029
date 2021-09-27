@@ -63,6 +63,13 @@ class MainLegalQuery extends Authenticatable
         $sql = MainLegalQuery::where('title', 'LIKE', '%' . $query . '%')->where('legal_query_type_id', '3')->where('status', '1')->get();
         return $sql;
     }
+
+
+    public static function serachAllData($query)
+    {
+        $sql = MainLegalQuery::where('title', 'LIKE', '%' . $query . '%')->where('status', '1')->get()->toArray();
+        return $sql;
+    }
     // search functionality legal aid and query
 
 }

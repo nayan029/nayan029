@@ -149,4 +149,21 @@
   })
 </script>
 
+<script>
+  function getsubcategory(type) {
+    $.ajax({
+      url: "{{ URL::to('/')}}/admin/getcategorybyname",
+      type: "POST",
+      data: {
+        type: type,
+        _token: "{{ csrf_token()}}"
+      },
+      success: function(response) {
+        $('#name').html(response);
+
+      }
+    });
+  }
+</script>
+
 </html>

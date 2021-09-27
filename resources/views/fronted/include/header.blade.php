@@ -363,20 +363,23 @@ $login = Auth::user();
 										<div class="card-header" id="headingThree">
 											<h2 class="mb-0">
 												<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-													Legal Query, Legal Services
+													Category
 												</button>
 											</h2>
 										</div>
 										<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 											<div class="card-body">
-												@php
-												$qcategory = DB::table('legal_advice_qa_category')->where('status', 1)->where('type','1')->orderBy('id', 'ASC')->get();
-												@endphp
-												<select name="category" class="filter-group select2 sr-drop" id="">
+												<select name="category" name="category" class="filter-group select2 sr-drop" id="" onchange="getsubcategory(this.value);">
 													<option value="">Select Category</option>
-													@foreach($qcategory as $data)
-													<option value="{{$data->id}}">{{$data->category_name}}</option>
-													@endforeach
+													<option value="1">Legal Services</option>
+													<option value="2">Legal Query</option>
+
+												</select>
+											</div>
+											<div class="card-body">
+												<select name="subcategory" class="filter-group select2 sr-drop" id="name">
+													<option value="">Select Type</option>
+
 												</select>
 											</div>
 										</div>

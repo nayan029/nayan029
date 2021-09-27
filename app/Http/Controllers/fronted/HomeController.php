@@ -700,4 +700,9 @@ class HomeController extends Controller
         $this->data['title'] = "Submit Content";
         return view('fronted.newPage', $this->data);
     }
+    public function headerSearch()
+    {
+        $this->data['title'] = "Search Content";
+        return view('fronted.headerSearch', $this->data);
+    }
 }

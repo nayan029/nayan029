@@ -158,5 +158,10 @@ class legalservices extends Authenticatable
             $sql = legalservices::where('service_name', 'LIKE', '%' . $query . '%')->where('category_id', 1)->where('deleted_at', NULL)->get();
             return $sql;
         }
+        public static function searchAllData($query)
+        {
+            $sql = legalservices::where('service_name', 'LIKE', '%' . $query . '%')->where('deleted_at', NULL)->get()->toArray();
+            return $sql;
+        }
     //search
 }
