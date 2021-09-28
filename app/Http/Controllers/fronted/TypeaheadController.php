@@ -52,15 +52,123 @@ class TypeaheadController extends Controller
 
     public function queryService(Request $request)
     {
-        // return $request->all();
         $name = $request->name;
         $category = $request->category;
         $subcategory = $request->subcategory;
 
+        if (isset($name) && isset($category) && isset($subcategory)) {
+            if ($category == '2') {
+
+                if ($subcategory == '3') {
+                    $researchone = MainLegalQuery::searchResearchPapaers($name);
+                    $researchcount = count($researchone);
+
+                    if ($researchcount > 0) {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_data'] =  $researchone;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    } else {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_data'] =  NULL;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    }
+                } elseif ($subcategory == '4') {
+                    $notesone = MainLegalQuery::searchNotes($name);
+                    $notescount = count($notesone);
+                    if ($notescount > 0) {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_data'] =  $notesone;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    } else {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_data'] =  NULL;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    }
+                } elseif ($subcategory == '5') {
+                    $bareone = MainLegalQuery::searchBarsActs($name);
+                    $barecount = count($bareone);
+                    if ($barecount > 0) {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_data'] =  $bareone;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    } else {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_data'] =  NULL;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    }
+                }
+            }
+
+            if ($category == '1') {
+                // return $request->all();
+                if ($subcategory == '2') {
+                    $docs = legalservices::getDocumentationByName($name);
+                    $docscount = count($docs);
+
+                    if ($docscount > 0) {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_datatwo'] =  $docs;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    } else {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_datatwo'] =  NULL;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    }
+                }
+                if ($subcategory == '1') {
+                    # code...
+                    $aid = legalservices::getAidByName($name);
+                    $aidscount = count($aid);
+                    if ($aidscount > 0) {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_datatwo'] =  $aid;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    } else {
+                        $this->data['title'] = "Search Results";
+                        $this->data['name'] = $name;
+                        $this->data['query_datatwo'] =  NULL;
+                        $this->data['category_id'] =  $category;
+                        $this->data['sitesetting'] = sitesetting::getrecordbyid();
+                        return view('fronted.headerSearch', $this->data);
+                    }
+                }
+                //    if ($aidscount < 0 && $docscount < 0) {
+                //         $this->data['title'] = "Search Results";
+                //         $this->data['name'] = $name;
+                //         $this->data['query_datatwo'] =  '';
+                //         return view('fronted.headerSearch', $this->data);
+                //     }
+            }
+        }
         if (isset($name) && isset($category)) {
             // return $request->all();
-
-
             if ($category == '1') {
 
                 $docs = legalservices::getDocumentationByName($name);
@@ -86,6 +194,7 @@ class TypeaheadController extends Controller
                     $this->data['sitesetting'] = sitesetting::getrecordbyid();
                     return view('fronted.headerSearch', $this->data);
                 }
+
                 // return "yes";
             }
 
@@ -125,27 +234,40 @@ class TypeaheadController extends Controller
             }
         }
 
-        if (isset($name)) {
-
-
-
-            // new 
-            $datanewo = MainLegalQuery::serachAllData($name);
+        if (isset($name) && $category == '1') {
+            // return "yes";
             $datanewt = legalservices::searchAllData($name);
-            // $datanew = array_merge($datanewo, $datanewt);
-
             $this->data['title'] = "Search Results";
             $this->data['name'] = $name;
-            // $this->data['query_data'] = json_decode(json_encode($datanew), true);
-            $this->data['query_data'] =  $datanewo;
             $this->data['query_datatwo'] =  $datanewt;
-            // $this->data['category_id'] =  $category;
             $this->data['sitesetting'] = sitesetting::getrecordbyid();
             return view('fronted.headerSearch', $this->data);
-            //new
         }
 
+        if (isset($name) && $category == '2') {
+            // return "yes";
+            $datanewo = MainLegalQuery::serachAllData($name);
+            $this->data['title'] = "Search Results";
+            $this->data['name'] = $name;
+            $this->data['query_datatwo'] =  $datanewo;
+            $this->data['sitesetting'] = sitesetting::getrecordbyid();
+            return view('fronted.headerSearch', $this->data);
+        }
 
+        if (isset($name)) {
+            // $datanew = array_merge($datanewo, $datanewt);
+            // $this->data['query_data'] = json_decode(json_encode($datanew), true);
+            // $this->data['category_id'] =  $category;
+
+            $datanewo = MainLegalQuery::serachAllData($name);
+            $datanewt = legalservices::searchAllData($name);
+            $this->data['title'] = "Search Results";
+            $this->data['name'] = $name;
+            $this->data['query_data'] =  $datanewo;
+            $this->data['query_datatwo'] =  $datanewt;
+            $this->data['sitesetting'] = sitesetting::getrecordbyid();
+            return view('fronted.headerSearch', $this->data);
+        }
 
         if (isset($category) && isset($subcategory)) {
 
