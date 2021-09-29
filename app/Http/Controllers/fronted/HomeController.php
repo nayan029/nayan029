@@ -601,7 +601,7 @@ class HomeController extends Controller
     }
     public function addOrderData(Request $request)
     {
-        //  $request->all();
+        // return $request->all();
         $this->data['auth'] = auth()->user();
         $this->data['response'] = $request->all();
         /*  booking temp data  */
@@ -620,9 +620,14 @@ class HomeController extends Controller
             $order = new bookingTemp;
             $order->user_id = Auth()->id();
             $order->orderid = 'B' . str_pad(date("Ymdhis") + 1, 8, "0", STR_PAD_LEFT);
-
+            $lawyerData = User::getrecordbyid($request->lawyer_id);
+            if ($request->type == '2') {
+                $fees = $lawyerData->fees;
+            } elseif ($request->type == '3') {
+                $fees = $lawyerData->full_legal_fees;
+            }
             $input = array(
-                'amount' => $request->fees,
+                'amount' => $fees,
                 'orderid' => $order->orderid,
                 'lawyer_id' => $request->lawyer_id,
                 'user_id' => $request->customer_id,
