@@ -35,11 +35,55 @@
 
                         </div>
                         <div class="col-md-12 sr-pro-star">
+                            @if($review != "")
+                            @if(round($review[0]->rating,0) =='1')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+                            @if(round($review[0]->rating,0) =='2')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+
+                            @if(round($review[0]->rating,0) =='3')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+
+                            @if(round($review[0]->rating,0) =='4')
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="pl-4"> 4.0 | 2+ user ratings</span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+
+                            @if(round($review[0]->rating,0) =='5')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            @endif
+                            @endif
+
+                            <span class="pl-4">
+                                @if($review != "")
+                                @php print_r(round($review[0]->rating,1)) @endphp
+                                @else 0 @endif| {{count($lawyer_review)}}+ user ratings</span>
                         </div>
                     </div>
                     <div class="sr-loc pb-0">
@@ -115,6 +159,7 @@
     </div>
     <div class="sa-application col-md-12 sr-pro-review">
         <h3 class="sa-color2">Top Reviews</h3>
+        @if($review_bid==NULL)
         @if(isset($user_login)) @if($user_login->user_type == '2')
         <div>
             <a type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#" class="btn btn-outline-primary min-w120s">Write A Review</a>
@@ -125,8 +170,10 @@
         </script>
         @endif
         @endif
+        @endif
 
     </div>
+
 
     <!-- Button trigger modal -->
 
@@ -173,7 +220,7 @@
                         <input type="hidden" name="user_name" value="{{$user_login->name}}">
                         <input type="hidden" name="user_id" value="{{$user_login->id}}">
                         <input type="hidden" name="lawyer_id" value="{{$lawyerData->id}}">
-                        <input type="hidden" name="booking_id" value="">
+                        <input type="hidden" name="booking_id" value="{{$bid}}">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

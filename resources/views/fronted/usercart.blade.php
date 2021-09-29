@@ -33,7 +33,7 @@
                     @if(isset($data->document_name)){{$data->document_name}}@endif
                 </td>
                 <!-- <td class="sr-p-white sr-b-right text-white"> @if(isset($data->user_name)){{$data->user_name}}@else{{"N/A"}}@endif</td> -->
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_name))<a href="{{URL::to('/lawyer-profile')}}/{{App\Helpers\CryptHelper::encryptstring($data->lawyer_id)}}">{{$data->lawyer_name." ".$data->lawyer_lastname}}</a>@else{{"N/A"}}@endif</td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_name))<a href="{{URL::to('/lawyer-profile')}}/{{$data->id}}/{{App\Helpers\CryptHelper::encryptstring($data->lawyer_id)}}">{{$data->lawyer_name." ".$data->lawyer_lastname}}</a>@else{{"N/A"}}@endif</td>
                 <!-- <td class="sr-p-white sr-b-right text-white">@if(isset($data->type) && $data->type == '2'){{"Fees(By per date)"}}@elseif(isset($data->type) && $data->type == '3'){{"Legal Representation"}}@else{{'-'}}@endif</td> -->
                 <td class="sr-p-white sr-b-right text-white"> @if(isset($data->document_name)){{"Documentation"}}@endif @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>

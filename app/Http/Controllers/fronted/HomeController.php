@@ -482,16 +482,21 @@ class HomeController extends Controller
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($enquiryUserId->lawyer_id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($enquiryUserId->lawyer_id);
         $this->data['lawyer_review'] = reviewrating::getrecordbylawyerid($enquiryUserId->lawyer_id);
-
         if (isset($enquiryUserId->lawyer_id)) {
-
+            $this->data['review_check'] = $review = reviewrating::getAvgRating($enquiryUserId->lawyer_id);
+            $creview =  count($review);
+            if ($creview > 0) {
+                $this->data['review'] = $review = reviewrating::getAvgRating($enquiryUserId->lawyer_id);
+            } else {
+                $this->data['review'] = "";
+            }
             $this->data['lawyerData'] =  User::getrecordbyid($enquiryUserId->lawyer_id);
             $user_id = $uid;
             // $order =  bookingTemp::where('user_id', $uid)->where('issue_id', $issueid)->first();
-            $order =  legalenquiry::where('user_id', $uid)->where('status', '2')->where('id',$id)->first();
+            $order =  legalenquiry::where('user_id', $uid)->where('status', '2')->where('id', $id)->first();
 
             if ($order) {
-                 $this->data['exists'] = '1';
+                $this->data['exists'] = '1';
             }
 
 

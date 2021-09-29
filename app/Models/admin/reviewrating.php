@@ -11,12 +11,13 @@ class reviewrating extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $table = 'review_rating';
-    protected $fillable = ['review', 'rating', 'lawyer_id', 'user_id', 'user_name', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'deleted_by', 'deleted_at'];
+    protected $fillable = ['review', 'rating', 'lawyer_id', 'user_id', 'user_name', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'deleted_by', 'deleted_at','bid'];
 
     public static function getrecordbylawyerid($lawyerid)
     {
         $query = reviewrating::where('lawyer_id', $lawyerid)->orderBy('id', 'desc')->get();
         return $query;
+
     }
     public static function getrecordbylawyeridlimit()
     {
@@ -49,4 +50,18 @@ class reviewrating extends Authenticatable
             ->get();
         return $query;
     }
+    public static function getRecordByOrderId($bid)
+    {
+        $query = reviewrating::where('bid', $bid)->first();
+        return $query;
+    }
+
+    public static function getAvgRating($lawyerid)
+    {
+        $query = reviewrating::selectRaw('review_rating.*,(select sum(rating) from review_rating where lawyer_id = '.$lawyerid.')/(select count(lawyer_id) from review_rating where lawyer_id = '.$lawyerid.') as rating')
+        ->where('lawyer_id', $lawyerid)->orderBy('id', 'desc')->get();
+        return $query;
+    }
+
+
 }

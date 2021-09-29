@@ -37,12 +37,57 @@
                             </a>
 
                         </div>
-                        <div class="col-md-12 sr-pro-star">
+                        <div class="col-md-12 sr-pro-star"> 
+                            @if($review != "")
+                            @if(round($review[0]->rating,0) =='1')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+                            @if(round($review[0]->rating,0) =='2')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+
+                            @if(round($review[0]->rating,0) =='3')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+
+                            @if(round($review[0]->rating,0) =='4')
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="pl-4"> 4.0 | 2+ user ratings</span>
+                            <span class="fa fa-star "></span>
+                            @endif
+
+
+                            @if(round($review[0]->rating,0) =='5')
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            @endif
+                            @endif
+
+                            <span class="pl-4"> 
+                            @if($review != "")
+                                 @php print_r(round($review[0]->rating,1)) @endphp 
+                              @else 0   @endif| {{count($lawyer_review)}}+ user ratings</span>
+
                         </div>
                     </div>
                     <div class="sr-loc pb-0">
@@ -110,14 +155,15 @@
                                 echo rtrim($output, ','); ?></p>
                         </div>
                     </div>
-
+                   
                     <div class="row">
                         <div class="col-md-2 sa-color2">Court :</div>
                         <div class="col-md-10">
                             <p>Karnataka High Court, Supreme Court Of India</p>
                         </div>
                     </div>
-
+                    @if(isset($exists))
+                                    @else
                     <div class="row">
                         <div class="col-md-12">
                             <form method="POST" action="{{URL::to('/')}}/pay-fees" id="fees_main">
@@ -180,8 +226,8 @@
                                     <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
                                     <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
                                     <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
-                                    @if(isset($exists))
-                                    @else
+                                    
+                                   
                                     <div class="col-md-5 sr-end">
                                         <div class="ml-3 ">
                                             <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
@@ -212,7 +258,7 @@
             @php
             $c = count($lawyer_review)
             @endphp
-            @if($c>0)             
+            @if($c>0)
             @foreach($lawyer_review as $data)
             <div class="mitem3  mt-30">
                 <div class="row">
@@ -275,8 +321,8 @@
             @endforeach
             @else
             No reviews found
-           @endif 
-           
+            @endif
+
             @if($c>5)
 
             <div class="col-md-12 pl-0">

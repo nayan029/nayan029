@@ -299,7 +299,7 @@ Route::post('getexitemailusers', 'App\Http\Controllers\admin\AjaxController@gete
 // Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileController@index');
 //lawyer profile
 
-Route::get('/lawyer-profile/{id}', 'App\Http\Controllers\fronted\lawyerProfileController@lawyerProfile');
+Route::get('/lawyer-profile/{fid}/{id}', 'App\Http\Controllers\fronted\lawyerProfileController@lawyerProfile');
 
 //lawyer profile
 //-----------------------------------------user account---------------------------------------------

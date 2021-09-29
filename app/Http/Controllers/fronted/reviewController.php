@@ -51,7 +51,7 @@ class reviewController extends Controller
             $input = $request->all();
             // $input['review'] = $request->review;
             $input['rating'] = $request->rating2;
-            // $input['rating'] = "5";
+            $input['bid'] = $request->booking_id;
             $input['user_name'] = $request->user_name;
             $input['user_id'] = $request->user_id;
             $input['lawyer_id'] = $request->lawyer_id;

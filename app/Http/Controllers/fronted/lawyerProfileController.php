@@ -205,20 +205,32 @@ class lawyerProfileController extends Controller
 
     }
 
-    public function lawyerProfile($id)
-    {   
+    public function lawyerProfile($sid, $id)
+    {
         $auth = Auth::user();
         $uid = $auth->id;
         $decryptid = Crypt::decrypt($id);
         $this->data['user_login'] = $auth;
         $this->data['title'] = "My Account";
+        $this->data['bid'] = $sid;
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($decryptid);
-        $this->data['lawyer_review'] = reviewrating::getrecordbylawyerid($decryptid);
+        $this->data['lawyer_review'] = $lawyer_review =  reviewrating::getrecordbylawyerid($decryptid);
+        $this->data['review_bid'] = reviewrating::getRecordByOrderId($sid);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($decryptid);
+
+        $this->data['review_check'] = $review = reviewrating::getAvgRating($decryptid);
+        $creview =  count($review);
+        if ($creview > 0) {
+            $this->data['review'] = $review = reviewrating::getAvgRating($decryptid);
+        } else {
+            $this->data['review'] = "";
+        }
+        // print_r(round($this->data['review'][0]->rating, 1));
 
         if (isset($decryptid)) {
 
             $this->data['lawyerData'] =  User::getrecordbyid($decryptid);
+
             $user_id = $uid;
 
             return view('fronted.lawyerProfileNew', $this->data);

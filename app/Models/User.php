@@ -233,7 +233,7 @@ class User extends Authenticatable
             ->leftjoin('legal_advice_qa_category', function ($join) {
                 $join->on('lawyer_enrollment_category.categoryid', '=', 'legal_advice_qa_category.id');
             })
-            ->where('users.email_verify', 1)->where('users.user_type', 3)->where('users.status', 1)->where('users.show_lawyer', 1)->where('users.step', '3')->orderBy('users.id', 'desc')->limit(5)->get();
+            ->where('users.email_verify', 1)->where('users.user_type', 3)->where('users.status', 1)->where('users.show_lawyer', 1)->where('users.stepthree', '1')->orderBy('users.id', 'desc')->limit(5)->get();
         return $query;
     }
     public static function getRecordByData($location, $cat, $court, $expi, $language, $gender, $rating, $short_by)
