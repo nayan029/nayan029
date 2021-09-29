@@ -18,7 +18,7 @@ class bookingTemp extends Authenticatable
 
     public static function getDataById($id)
     {
-        $query = bookingTemp::select('booking_temp.*', 'users.name as user_name', 'lawyer.name as lawyer_name', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name','legal_services.service_name as document_name')
+        $query = bookingTemp::select('booking_temp.*', 'users.name as user_name','lawyer.username as lawyer_lastname', 'lawyer.name as lawyer_name', 'legal_advice_qa_category.category_name as issue_name', 'service_sub_category.description as subissue_name','legal_services.service_name as document_name')
             ->leftjoin('users', function ($join) {
                 $join->on('booking_temp.user_id', '=', 'users.id');
             })

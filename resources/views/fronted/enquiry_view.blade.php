@@ -6,8 +6,9 @@
             <a href="{{URL::to('/')}}/account/all-questions" type="button" class="sa-color3   poppins-light"><span class="mr-2"><i class="fa fa-arrow-left"></i></span>Back</a>
         </div>
     </div>
-    
-    <div class=""> <!-- sa-enroll-details -->
+
+    <div class="">
+        <!-- sa-enroll-details -->
         <div class="container">
             <!-- <div class="mitem3"> -->
             <div class="row sr-profile">
@@ -129,40 +130,40 @@
 
                                     <!-- <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->basic_fees}}" data-id="1">
                                     <div class="col-md-2 sa-color2">Basic Fees - {{$lawyerData->basic_fees}}</div> -->
-                                <div class="col-md-12 ">
+                                    <div class="col-md-12 ">
                                         <div class="sa-color2">Select Payment :</div>
-                                </div>
-                                <div class="col-md-7 mt-3">
+                                    </div>
+                                    <div class="col-md-7 mt-3">
 
-                                    <div class="d-flex">
-                                <div class="sr-rel enq-view">
-                                    <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2" class="enquiry-radio">
-                                    <i class="fa fa-check sr-check2"></i>
-                                    <div class="mitem3 sr-enq mb-0">
-                                        <div class="price-card">
-                                            <i class="fa fa-credit-card " ></i>
-                                            <div class="enq-radio"><span><img src="../fronted/image/rupee.png" width="11px"></span> {{$lawyerData->fees}}</div>
-                                             <p class="mb-0 ">Fees(By per date) </p>
+                                        <div class="d-flex">
+                                            <div class="sr-rel enq-view">
+                                                <input type="radio" onclick="test()" checked name="fees" id="fees" value="{{$lawyerData->fees}}" data-id="2" class="enquiry-radio">
+                                                <i class="fa fa-check sr-check2"></i>
+                                                <div class="mitem3 sr-enq mb-0">
+                                                    <div class="price-card">
+                                                        <i class="fa fa-credit-card "></i>
+                                                        <div class="enq-radio"><span><img src="../fronted/image/rupee.png" width="11px"></span> {{$lawyerData->fees}}</div>
+                                                        <p class="mb-0 ">Fees(By per date) </p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="sr-rel enq-view ml-3">
+                                                <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
+                                                <i class="fa fa-check sr-check2"></i>
+                                                <div class="mitem3 sr-enq mb-0">
+                                                    <div class="price-card">
+                                                        <i class="fa fa-credit-card "></i>
+                                                        <div class="enq-radio"><span><img src="../fronted/image/rupee.png" width="11px"></span> {{$lawyerData->full_legal_fees}}</div>
+                                                        <p class="mb-0">Legal Representation </p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                   
-                                </div>
-
-                                <div class="sr-rel enq-view ml-3">
-                                    <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
-                                    <i class="fa fa-check sr-check2"></i>
-                                    <div class="mitem3 sr-enq mb-0">
-                                         <div class="price-card">
-                                            <i class="fa fa-credit-card " ></i>
-                                            <div class="enq-radio"><span><img src="../fronted/image/rupee.png" width="11px"></span> {{$lawyerData->full_legal_fees}}</div>
-                                             <p class="mb-0">Legal Representation </p>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                                <!-- <div class="sr-rel enq-view ml-3">
+                                    <!-- <div class="sr-rel enq-view ml-3">
                                     <input type="radio" onclick="test()" name="fees" id="fees" value="{{$lawyerData->full_legal_fees}}" data-id="3" class="enquiry-radio">
                                     <div class="mitem3 sr-enq">
                                          <div class="price-card">
@@ -173,21 +174,21 @@
 
                                 </div> -->
 
-                                <span id="fees_error" style="color: red;"></span>
-                                <input type="hidden" name="type" id="radio_id">
+                                    <span id="fees_error" style="color: red;"></span>
+                                    <input type="hidden" name="type" id="radio_id">
 
-                                <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
-                                <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
-                                <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
-                                        @if(isset($exists))
-                                        @else
-                                <div class="col-md-5 sr-end">
-                                <div class="ml-3 ">
-                                    <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
-                                    </button>
-                                </div>
-                            </div>
-                                @endif
+                                    <input type="hidden" name="issue_id" value="{{$enquiryUserId->issue_id}}">
+                                    <input type="hidden" name="subissue_id" value=" {{$enquiryUserId->subissue_id}}">
+                                    <input type="hidden" name="documentid" value="{{$enquiryUserId->documentid}}">
+                                    @if(isset($exists))
+                                    @else
+                                    <div class="col-md-5 sr-end">
+                                        <div class="ml-3 ">
+                                            <button type="submit" class="btn btn-outline-primary sa-color3 mt-3  poppins-light">Pay Now
+                                            </button>
+                                        </div>
+                                    </div>
+                                    @endif
                             </form>
                         </div>
                     </div>
@@ -195,15 +196,95 @@
 
                 </div>
             </div>
-            
 
-            
+
+
 
 
         </div>
         <!-- modal to write review -->
 
 
+    </div>
+    <div class="container">
+        <div class=" col-md-12">
+            <h3 class="sa-color2 border-bottom : 1px solid colorname;">Top Reviews</h3>
+            @php
+            $c = count($lawyer_review)
+            @endphp
+            @if($c>0)             
+            @foreach($lawyer_review as $data)
+            <div class="mitem3  mt-30">
+                <div class="row">
+                    <div class="sr-card col-md-2">
+                        <h5 class="user-pic">
+                            {{ substr($data->user_name, 0, 1)}}
+                        </h5>
+                    </div>
+
+                    <div class="sr-card col-md-10">
+                        <div class="col-md-12 pl-0 pt-3 pb-1">
+                            <p class="m-0">{{$data->user_name}}
+                                @if($data->rating =='1')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                @endif
+                                @if($data->rating =='2')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+
+                                @endif
+                                @if($data->rating =='3')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+
+                                @endif
+                                @if($data->rating =='4')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star "></span>
+
+                                @endif
+                                @if($data->rating =='5')
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                @endif
+
+                            </p>
+                        </div>
+                        <p class="mb-20">{{$data->review}}</p>
+
+                        <span class="pro-dt">{{date('d-m-Y', strtotime($data->created_at))}}</span>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @else
+            No reviews found
+           @endif 
+           
+            @if($c>5)
+
+            <div class="col-md-12 pl-0">
+                <a href="{{URL::to('/')}}/experts/reviews/{{$lawyerData->id}}" class="btn btn-outline-primary">View ALL</a>
+
+            </div>
+            @endif
+        </div>
     </div>
     <div class="col-md-12">
         <div class="d-flex justify-content-end pt-3">

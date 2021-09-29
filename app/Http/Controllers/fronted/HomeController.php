@@ -479,10 +479,9 @@ class HomeController extends Controller
         $this->data['enquiryUserId'] = $enquiryUserId = legalenquiry::where('id', $id)->whereNull('deleted_at')->first();
         $this->data['title'] = "My Account";
         $this->data['getActivelawyer'] = User::getActivelawyertdataview($enquiryUserId->lawyer_id);
-
-
         $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($enquiryUserId->lawyer_id);
         $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($enquiryUserId->lawyer_id);
+        $this->data['lawyer_review'] = reviewrating::getrecordbylawyerid($enquiryUserId->lawyer_id);
 
         if (isset($enquiryUserId->lawyer_id)) {
 

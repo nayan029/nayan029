@@ -45,8 +45,8 @@
                 <td>
                     <!-- <a title="view" href="" data-toggle="modal" data-target="#seeDetails{{$i}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->
                     <!-- <a title="view" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" class="sa-icons1 active"><i class="fa fa-eye ml-2"></i></a> -->
-                   @if(isset($data->lawyer_name))
-                    <a style="color:green;" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" title="view">{{$data->lawyer_name}} </a>
+                   @if(isset($data->lawyer_name)) 
+                    <a style="color:green;" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" title="view">{{$data->lawyer_name." ".$data->lawyer_lastname}} </a>
                     @else
                     <a style="color: red;" href="{{URL::to('/')}}/enquiryView/{{$data->id}}" title="view">N/A </a>
                     @endif

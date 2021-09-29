@@ -19,26 +19,26 @@
                 <td class="sa-color2 sr-b-right">Created Date</td>
                 <td class="sa-color2 sr-b-right">Amount</td>
                 <td class="sa-color2 sr-b-right">Payment Status</td>
-            </tr> 
-                @php $i = 1; @endphp
-                @if(count($payment_details)>0)
-                @foreach($payment_details as $data)
+            </tr>
+            @php $i = 1; @endphp
+            @if(count($payment_details)>0)
+            @foreach($payment_details as $data)
             <tr>
 
                 <td class="sr-p-white sr-b-right text-white">{{$i}}</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->orderid)){{$data->orderid}}@endif</td>
-                <td class="sr-p-white sr-b-right text-white"> 
-                @if(isset($data->subissue_name)){{$data->subissue_name." - "}}@else{{""}}@endif 
-                    @if(isset($data->issue_name)){{$data->issue_name}}@else{{""}}@endif 
+                <td class="sr-p-white sr-b-right text-white">
+                    @if(isset($data->subissue_name)){{$data->subissue_name." - "}}@else{{""}}@endif
+                    @if(isset($data->issue_name)){{$data->issue_name}}@else{{""}}@endif
                     @if(isset($data->document_name)){{$data->document_name}}@endif
                 </td>
                 <!-- <td class="sr-p-white sr-b-right text-white"> @if(isset($data->user_name)){{$data->user_name}}@else{{"N/A"}}@endif</td> -->
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_name)){{$data->lawyer_name}}@else{{"N/A"}}@endif</td>
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->lawyer_name))<a href="{{URL::to('/lawyer-profile')}}/{{App\Helpers\CryptHelper::encryptstring($data->lawyer_id)}}">{{$data->lawyer_name." ".$data->lawyer_lastname}}</a>@else{{"N/A"}}@endif</td>
                 <!-- <td class="sr-p-white sr-b-right text-white">@if(isset($data->type) && $data->type == '2'){{"Fees(By per date)"}}@elseif(isset($data->type) && $data->type == '3'){{"Legal Representation"}}@else{{'-'}}@endif</td> -->
-                <td class="sr-p-white sr-b-right text-white"> @if(isset($data->document_name)){{"Documentation"}}@endif  @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
+                <td class="sr-p-white sr-b-right text-white"> @if(isset($data->document_name)){{"Documentation"}}@endif @if(isset($data->subissue_name)){{"Leagl AID"}}@endif</td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->created_at)) {{date("d-m-Y", strtotime($data->created_at))}} @else{{"N/A"}}@endif </td>
-                <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount)){{"₹".$data->amount}}@else{{"N/A"}}@endif 
-                @if(isset($data->type) && $data->type == '2'){{"-Fees(By per date)"}}@elseif(isset($data->type) && $data->type == '3'){{"-Legal Representation"}}@else{{''}}@endif
+                <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount)){{"₹".$data->amount}}@else{{"N/A"}}@endif
+                    @if(isset($data->type) && $data->type == '2'){{"-Fees(By per date)"}}@elseif(isset($data->type) && $data->type == '3'){{"-Legal Representation"}}@else{{''}}@endif
                 </td>
                 <td class="sr-p-white sr-b-right text-white">@if(isset($data->amount))<span style="color:green;">Success</span>@else{!!"<span style='color:red;'>Pending<span>"!!}@endif</td>
             </tr>

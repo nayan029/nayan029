@@ -50,7 +50,7 @@
 
 
                 </div> -->
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="sa-pills-design sr-pillmain">
                         <ul class="nav nav-pills " id="pills-tab" role="tablist">
                             <li class="nav-item ">

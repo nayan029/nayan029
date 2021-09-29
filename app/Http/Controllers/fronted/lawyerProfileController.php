@@ -8,11 +8,13 @@ use App\Models\admin\lawyercourt;
 use App\Models\admin\lawyerenrollmentcatgeory;
 use Illuminate\Http\Request;
 use App\Models\admin\lawyerlanguages;
+use App\Models\admin\legalenquiry;
 use App\Models\admin\location;
 use App\Models\admin\reviewrating;
 use App\Models\admin\sitesetting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -35,12 +37,16 @@ class lawyerProfileController extends Controller
     public function index(Request $request)
     {
         $auth = Auth::user();
-        $id = $auth->id;
-        $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit($id);
-        $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
-        $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
-        $this->data['lawyerData'] = User::getrecordbyid($id);
-        return view('fronted.lawyerprofile', $this->data);
+        if ($auth) {
+            $id = $auth->id;
+            $this->data['lawyer_review'] = reviewrating::getrecordbylawyeridlimit($id);
+            $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($id);
+            $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($id);
+            $this->data['lawyerData'] = User::getrecordbyid($id);
+            return view('fronted.lawyerprofile', $this->data);
+        } else {
+            return redirect('/login');
+        }
     }
     public function update(Request $request, $id)
     {
@@ -65,7 +71,7 @@ class lawyerProfileController extends Controller
             $input['basic_fees'] = $request->basic_fees;
             $input['fees'] = $request->fees;
             $input['full_legal_fees'] = $request->full_legal;
-            
+
             $input['price'] = $request->price;
 
             $input['frollno'] = $request->degreename;
@@ -166,7 +172,7 @@ class lawyerProfileController extends Controller
             $input['profileimage'] = $name;
             // return $id;
             $inputusersignature = User::find($id);
-            
+
             // return $inputusersignature;
 
             $inputusersignature->update($input);
@@ -197,5 +203,28 @@ class lawyerProfileController extends Controller
         //     $inputusersignature->update($input);
         // }
 
+    }
+
+    public function lawyerProfile($id)
+    {   
+        $auth = Auth::user();
+        $uid = $auth->id;
+        $decryptid = Crypt::decrypt($id);
+        $this->data['user_login'] = $auth;
+        $this->data['title'] = "My Account";
+        $this->data['userlanguages'] = lawyerlanguages::getrecordbyid($decryptid);
+        $this->data['lawyer_review'] = reviewrating::getrecordbylawyerid($decryptid);
+        $this->data['specialization'] = lawyerenrollmentcatgeory::getrecordenrollmentbyid($decryptid);
+
+        if (isset($decryptid)) {
+
+            $this->data['lawyerData'] =  User::getrecordbyid($decryptid);
+            $user_id = $uid;
+
+            return view('fronted.lawyerProfileNew', $this->data);
+        } else {
+            Session::flash('error', 'Sorry, please try again');
+            return redirect()->back();
+        }
     }
 }

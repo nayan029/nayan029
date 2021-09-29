@@ -296,8 +296,12 @@ Route::get('/in-the-media', [FrontedHomeController::class, 'inTheMedia']);
 Route::get('/career', [FrontedHomeController::class, 'career']);
 Route::post('getexitemailusers', 'App\Http\Controllers\admin\AjaxController@getexitemail');
 
-Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileController@index');
+// Route::get('/lawyer-profile', 'App\Http\Controllers\fronted\lawyerProfileController@index');
+//lawyer profile
 
+Route::get('/lawyer-profile/{id}', 'App\Http\Controllers\fronted\lawyerProfileController@lawyerProfile');
+
+//lawyer profile
 //-----------------------------------------user account---------------------------------------------
 Route::get('/my-account', [FrontedHomeController::class, 'myAccount']);
 Route::resource('/my-profile', 'App\Http\Controllers\fronted\userProfileController');

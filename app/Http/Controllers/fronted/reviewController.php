@@ -36,7 +36,7 @@ class reviewController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request->all();   die;
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             'review' => 'required',
             'rating2' => 'required',
@@ -49,8 +49,9 @@ class reviewController extends Controller
         } else {
 
             $input = $request->all();
-            $input['review'] = $request->review;
+            // $input['review'] = $request->review;
             $input['rating'] = $request->rating2;
+            // $input['rating'] = "5";
             $input['user_name'] = $request->user_name;
             $input['user_id'] = $request->user_id;
             $input['lawyer_id'] = $request->lawyer_id;
